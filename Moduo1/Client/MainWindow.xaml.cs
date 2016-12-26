@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ServiceModel;
+
 
 namespace Client
 {
@@ -20,9 +22,20 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        NetTcpBinding binding = new NetTcpBinding();
+        string address = "net.tcp://localhost:9090/HiringCompanyService";
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void signInBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (ClientProxy proxy = new ClientProxy(binding, address))
+            {
+                Console.WriteLine("Poruka od servisa: " + proxy.GetData(5));
+            }
         }
     }
 }
