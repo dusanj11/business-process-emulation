@@ -17,17 +17,17 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Width="200" Height="25" Foreground="White" FontSize="14">
+        <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Width="200" Height="27" Foreground="White" FontSize="14">
             Username:
         </Label>
-        <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Width="200" Height="25">
+        <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Width="200" Height="27">
         </TextBox>
-        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Width="200" Height="25" Foreground="White" FontSize="14">
+        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Width="200" Height="27" Foreground="White" FontSize="14">
             Password:
         </Label>
-        <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Width="200" Height="25">
+        <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Width="200" Height="27">
         </TextBox>
-        <Button Name="signInBtn" Grid.Row="6" Grid.Column="1" Width="200" Height="25" Margin="0,28,0,-25" Background="Aquamarine" Foreground="DarkSlateGray">
+        <Button Name="signInBtn" Grid.Row="6" Grid.Column="1" Width="200" Height="27" Margin="0,28,0,-25" Background="Aquamarine" Foreground="DarkSlateGray" FontSize="14">
             Sign In
         </Button>
     </Grid>
