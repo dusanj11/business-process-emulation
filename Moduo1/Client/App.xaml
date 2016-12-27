@@ -7,7 +7,6 @@
         <Style TargetType="Button" x:Key="StyleButton">
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="30"></Setter>
-            <Setter Property="Margin" Value="0,28,0,-23"></Setter>
         </Style>
 
         <Style TargetType="Border" x:Key="StyleButtonBorder">

@@ -18,105 +18,76 @@
             <ColumnDefinition Width="Auto" MinWidth="317" />
             <ColumnDefinition Width="Auto" MinWidth="52" />
         </Grid.ColumnDefinitions>
-        <Button Name="showProjBtn" Grid.Row="1" Grid.Column="0" Margin="2,1,288,1">
+        <Button Name="showProjBtn" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleButton}" Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Prikaži projekte" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Prikaži projekte" Style="{StaticResource StyleButtonText}" Margin="56,4,10,-14" Width="134">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="showEmployBtn" Grid.Row="2" Grid.Column="0"  Margin="2,1,288,1" >
+        <Button Name="showEmployBtn" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Prikaži zaposlene" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Prikaži zaposlene" Style="{StaticResource StyleButtonText}" Margin="49,4,17,-14" Width="134">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="addEmployBtn" Grid.Row="3" Grid.Column="0"  Margin="2,1,288,1">
+        <Button Name="addEmployBtn" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Dodaj novog zaposlenog" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Dodaj novog zaposlenog" Style="{StaticResource StyleButtonText}" Margin="26,4,19,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="editYDBtn" Grid.Row="4" Grid.Column="0" Margin="2,1,288,1">
+        <Button Name="editYDBtn" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Izmena ličnih stavki" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Izmena ličnih stavki" Style="{StaticResource StyleButtonText}" Margin="39,4,6,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="timeTableBtn" Grid.Row="5" Grid.Column="0" Margin="2,1,288,1">
+        <Button Name="timeTableBtn" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleButton}" Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Definiši radno vreme" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Definiši radno vreme" Style="{StaticResource StyleButtonText}" Margin="39,4,6,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="passChngBtn" Grid.Row="6" Grid.Column="0" Margin="2,1,288,1">
+        <Button Name="passChngBtn" Grid.Row="6" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Promeni lozinku" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Promeni lozinku" Style="{StaticResource StyleButtonText}" Margin="51,4,-6,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="sendReqBtn" Grid.Row="7" Grid.Column="0" Margin="2,1,288,1">
+        <Button Name="sendReqBtn" Grid.Row="7" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,401,1" >
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Slanje zahteva" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Slanje zahteva" Style="{StaticResource StyleButtonText}" Margin="51,4,-6,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-
 
     </Grid>
 </Window>

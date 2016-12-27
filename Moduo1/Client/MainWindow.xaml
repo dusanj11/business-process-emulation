@@ -27,7 +27,7 @@
         </Label>
         <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleTextBox}" >
         </TextBox>
-        <Button Name="signInBtn" Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Click="signInBtn_Click">
+        <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Click="signInBtn_Click" Margin="0,31,0,-30">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleButtonBorder}">
