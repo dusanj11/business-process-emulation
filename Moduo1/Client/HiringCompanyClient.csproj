@@ -51,27 +51,35 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Windows\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ClientDialog.xaml">
+    <Page Include="Windows\ClientDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="ViewModel\ClientDialogViewModel.cs" />
+    <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClientDialog.xaml.cs">
+    <Compile Include="Windows\ClientDialog.xaml.cs">
       <DependentUpon>ClientDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientProxy.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Command\AddEmployeeCommand.cs" />
+    <Compile Include="Command\ChangePasswordCommand.cs" />
+    <Compile Include="Command\EditPersonalDataCommand.cs" />
+    <Compile Include="Command\SendRequestCommand.cs" />
+    <Compile Include="Command\ViewProjectsCommand.cs" />
+    <Compile Include="Command\ViewWorkersCommand.cs" />
+    <Compile Include="Command\WorkingHoursCommand.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

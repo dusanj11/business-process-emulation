@@ -35,7 +35,13 @@ namespace Client
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
                 Console.WriteLine("Poruka od servisa: " + proxy.GetData(5));
+                this.Hide();
+                Window frm = new ClientDialog();
+                frm.ShowDialog();
+                
             }
+
+            
         }
     }
 }
