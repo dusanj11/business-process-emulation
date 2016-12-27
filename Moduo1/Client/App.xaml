@@ -3,6 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Login Button styles -->
+        <Style TargetType="Button" x:Key="StyleButton">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Margin" Value="0,28,0,-23"></Setter>
+        </Style>
+
+        <Style TargetType="Border" x:Key="StyleButtonBorder">
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="Aquamarine"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="StyleButtonText">
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="78,3,79,-16"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        
+        <!-- Login label styles-->
+        <Style TargetType="Label" x:Key="StyleLabel">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        
+        <!-- Login TextBox styles-->
+        <Style TargetType="TextBox" x:Key="StyleTextBox">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

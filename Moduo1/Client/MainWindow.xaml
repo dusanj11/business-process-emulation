@@ -8,8 +8,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -17,25 +17,21 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Width="200" Height="27" Foreground="White" FontSize="14">
+        <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleLabel}">
             Username:
         </Label>
-        <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Width="200" Height="27">
+        <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" >
         </TextBox>
-        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Width="200" Height="27" Foreground="White" FontSize="14">
+        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}">
             Password:
         </Label>
-        <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Width="200" Height="27">
+        <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleTextBox}" >
         </TextBox>
-        <Button Name="signInBtn" Grid.Row="6" Grid.Column="1" Width="200" Height="27" Margin="0,28,0,-23">
+        <Button Name="signInBtn" Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Click="signInBtn_Click">
             <Button.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" Background="Aquamarine">
-                        <TextBlock Text="Sign In" Foreground="DarkSlateGray" 
-                                       HorizontalAlignment="Center"  
-                                       Margin="78,3,79,-16"
-                                       Height="40"
-                                       FontSize="14">
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Sign In" Style="{StaticResource StyleButtonText}">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
