@@ -32,16 +32,11 @@ namespace Client
 
         private void signInBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (ClientProxy proxy = new ClientProxy(binding, address))
-            {
-                Console.WriteLine("Poruka od servisa: " + proxy.GetData(5));
-                this.Hide();
-                Window frm = new ClientDialog();
-                frm.ShowDialog();
-                
-            }
+         
+            this.Hide();
+            Window frm = new ClientDialog();
+            frm.ShowDialog();
 
-            
         }
     }
 }

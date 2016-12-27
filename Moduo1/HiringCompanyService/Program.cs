@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using HiringCompanyContract;
 using System.ServiceModel.Description;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Data.Entity;
+using HiringCompanyService.Access;
 
 namespace HiringCompanyService
 {
@@ -13,6 +17,19 @@ namespace HiringCompanyService
     {
         static void Main(string[] args)
         {
+            
+            // set |DataDirectory| in App.config
+            string path = System.Environment.CurrentDirectory;
+            path = path.Substring(0, path.LastIndexOf("\\"));
+            path = path.Substring(0, path.LastIndexOf("\\"));
+            //path = path.Substring(0, path.LastIndexOf("bin")) + "Calculator\\DB";
+            path += "\\DB";
+            AppDomain.CurrentDomain.SetData("DataDirectory", path);
+            
+            // update database
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
+
+            
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";
