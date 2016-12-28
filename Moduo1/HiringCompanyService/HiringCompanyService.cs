@@ -14,13 +14,13 @@ namespace HiringCompanyService
         public string GetData(int value)
         {
             Console.WriteLine("Uspesno pozvana metoda...");
-            EmployeeDB.Instance.AddAction(new Data.Employee
+            EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
             {
                 Username = "Maki",
                 Password = "Maki",
                 Name = "Marko",
                 Surname = "Jelaca",
-                Position = Data.Employee.PositionEnum.PO.ToString(),
+                Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
                 StartTime = "9",
                 EndTime = "17",
                 Login = false,
@@ -28,6 +28,13 @@ namespace HiringCompanyService
                
             });
             return "OK";
+        }
+
+        public List<HiringCompanyContract.Data.Employee> GetAllEmployees()
+        {
+            Console.WriteLine("Pozvana metoda GetAllEmployees");
+            return EmployeeDB.Instance.GetEmployees();
+              
         }
     }
 }

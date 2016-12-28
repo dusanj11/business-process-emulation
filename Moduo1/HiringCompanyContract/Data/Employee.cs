@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HiringCompanyService.Data
+namespace HiringCompanyContract.Data
 {
     public class Employee
     {
@@ -157,6 +157,11 @@ namespace HiringCompanyService.Data
             {
                 hiringCompanyId = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Name " + Name + " Surname " + Surname;
         }
     }
 }

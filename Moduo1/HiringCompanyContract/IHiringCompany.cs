@@ -13,8 +13,9 @@ namespace HiringCompanyContract
     {
         [OperationContract]
         string GetData(int value);
-        
-  
+
+        [OperationContract]
+        List<Data.Employee> GetAllEmployees();
         // TODO: Add your service operations here
     }
 }

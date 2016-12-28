@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -74,7 +75,6 @@
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\EmployeeDB.cs" />
     <Compile Include="Access\IEmployeeDB.cs" />
-    <Compile Include="Data\Employee.cs" />
     <Compile Include="HiringCompanyService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,12 +103,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB\EmployeeDB.mdf">
+    <Content Include="DB\HiringCompanyDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="DB\EmployeeDB_log.ldf">
+    <Content Include="DB\HiringCompanyDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>EmployeeDB.mdf</DependentUpon>
+      <DependentUpon>HiringCompanyDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
