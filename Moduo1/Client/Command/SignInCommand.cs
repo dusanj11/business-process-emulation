@@ -27,6 +27,7 @@ namespace Client.Command
                 MessageBox.Show("Niste popunili sva polja!",
                                 "Upozorenje",
                                  MessageBoxButton.OK, MessageBoxImage.Information);
+                //lolololo
             }
 
 
