@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using HiringCompanyContract.Data;
 using System.ServiceModel;
+using Client.ViewModel;
 
 namespace Client.Command
 {
@@ -21,8 +22,11 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            ClientDialogViewModel cdvm = new ClientDialogViewModel();
+            cdvm.ErrorMessage = "Niste uneli dobre podatke"; //TESTIRAJ OVO POSTO KOD KUCE NISI
+
             Object[] parameters = parameter as Object[];
-            if(parameters == null || parameters.Length != 2 
+            if(parameters == null || parameters.Length != 3 
                 || parameters[0].ToString().Trim().Equals("")
                 || parameters[1].ToString().Trim().Equals(""))
             {
@@ -49,27 +53,52 @@ namespace Client.Command
 
                     Dictionary<String, Employee> employeeDictionary = employees.Distinct().ToDictionary(item => item.Username, item => item);
 
-                    //foreach(Employee em in employees)
-                    //{
-                    //    if(!parameters[0].ToString().Trim().Equals(em.Username) 
-                    //        || !parameters[1].ToString().Trim().Equals(em.Password))
-                    //    {
-                    //        MessageBox.Show("Niste uneli dobre podatke!",
-                    //            "greska",
-                    //             MessageBoxButton.OK, MessageBoxImage.Error);
-                    //    }
-
-                    //}
                     Employee outValue = null;
                     if(employeeDictionary.TryGetValue(parameters[0].ToString().Trim(), out outValue))
                     {
                         if(outValue.Password.Equals(parameters[1].ToString().Trim()))
                         {
-                            ClientDialog cd = new ClientDialog();
-                            cd.Show();
+                            if(outValue.Position.ToString().Equals("PO"))
+                            {
+                                ((Window)parameters[2]).Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.addEmployBtn.Visibility = Visibility.Hidden;
+                                cd.sendReqBtn.Visibility = Visibility.Hidden;
+                                cd.Show();
+                            }
+                            else if(outValue.Position.ToString().Equals("HR"))
+                            {
+                                ((Window)parameters[2]).Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.sendReqBtn.Visibility = Visibility.Hidden;
+                                cd.defUSBtn.Visibility = Visibility.Hidden;
+                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.Show();
+                            }
+                            else if (outValue.Position.ToString().Equals("CEO"))
+                            {
+                                ((Window)parameters[2]).Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.sendReqBtn.Visibility = Visibility.Hidden;
+                                cd.defUSBtn.Visibility = Visibility.Hidden;
+                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.Show();
+                            }
+                            else if (outValue.Position.ToString().Equals("SM"))
+                            {
+                                ((Window)parameters[2]).Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.sendReqBtn.Visibility = Visibility.Hidden;
+                                cd.addEmployBtn.Visibility = Visibility.Hidden;
+                                cd.defUSBtn.Visibility = Visibility.Hidden;
+                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.Show();
+                            }
+
                         }
                         else
                         {
+
                             MessageBox.Show("Niste uneli dobre podatke!",
                                 "greska",
                                  MessageBoxButton.OK, MessageBoxImage.Error);
