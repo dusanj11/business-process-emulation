@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HiringCompanyService.Data;
+using HiringCompanyContract;
+using HiringCompanyContract.Data;
 
 namespace HiringCompanyService.Access
 {
@@ -39,5 +40,21 @@ namespace HiringCompanyService.Access
                 return false;
             }
         }
+
+        public List<Employee> GetEmployees()
+        {
+            List<Employee> employees = new List<Employee>(20);
+
+            using (var access = new AccessDB())
+            {
+                foreach(var ca in access.Actions)
+                {
+                    if(ca.Login)
+                        employees.Add(ca);
+                }
+            }
+            return employees;
+        }
+
     }
 }

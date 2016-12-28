@@ -4,13 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HiringCompanyService.Data;
+using HiringCompanyContract.Data;
 
 namespace HiringCompanyService.Access
 {
     public class AccessDB : DbContext
     {
-        public AccessDB() : base("calcDB") { }
+        public AccessDB() : base("HiringCompanyDB") { }
 
         public DbSet<Employee> Actions { get; set; }
     }

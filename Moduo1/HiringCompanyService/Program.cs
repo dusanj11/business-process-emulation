@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
 using HiringCompanyContract;
 using System.ServiceModel.Description;
-using System.IO;
 using System.Data.Entity;
 using HiringCompanyService.Access;
+
 
 namespace HiringCompanyService
 {
@@ -27,8 +23,6 @@ namespace HiringCompanyService
             
             // update database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
-
-            
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";

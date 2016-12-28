@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HiringCompanyContract;
 using System.ServiceModel;
+using HiringCompanyContract.Data;
 
 namespace Client
 {
@@ -36,5 +37,12 @@ namespace Client
         {
            return factory.GetData(5);
         }
+
+        public List<Employee> GetAllEmployees()
+        {
+            return (List<Employee>)factory.GetAllEmployees();
+        }
+
+      
     }
 }

@@ -12,7 +12,7 @@ namespace HiringCompanyService.Access
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = true;   // sprecavanje gubljenja podataka prilikom brisanja nekog property prilikom mapiranja 
             ContextKey = "EmployeeDB";
         }
     }

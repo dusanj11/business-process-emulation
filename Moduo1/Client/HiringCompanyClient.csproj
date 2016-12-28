@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -119,6 +120,10 @@
     <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiringCompanyService\HiringCompanyService.csproj">
+      <Project>{e06bf5bb-e141-49c6-b639-43e8bd79f8ab}</Project>
+      <Name>HiringCompanyService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
