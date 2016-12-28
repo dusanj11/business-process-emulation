@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using HiringCompanyContract.Data;
+using System.ServiceModel;
 
 namespace Client.Command
 {
@@ -28,6 +30,34 @@ namespace Client.Command
                                 "Upozorenje",
                                  MessageBoxButton.OK, MessageBoxImage.Information);
                 //lolololo
+            }
+            else
+            {
+                NetTcpBinding binding = new NetTcpBinding();
+                string address = "net.tcp://localhost:9090/HiringCompanyService";
+
+                using(ClientProxy proxy = new ClientProxy(binding, address))
+                {
+                    List<Employee> employees = proxy.GetAllEmployees();
+                    if(employees == null || employees.Count == 0)
+                    {
+                        MessageBox.Show("Nema baze trenutno!",
+                                "Greska",
+                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    foreach(Employee em in employees)
+                    {
+                        if(!parameters[0].ToString().Trim().Equals(em.Username) 
+                            || !parameters[1].ToString().Trim().Equals(em.Password))
+                        {
+                            MessageBox.Show("Niste uneli dobre podatke!",
+                                "greska",
+                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
             }
 
 
