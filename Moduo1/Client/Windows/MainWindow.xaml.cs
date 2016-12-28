@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
+using Client.ViewModel;
 
 
 namespace Client
@@ -22,21 +23,12 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        NetTcpBinding binding = new NetTcpBinding();
-        string address = "net.tcp://localhost:9090/HiringCompanyService";
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ClientDialogViewModel();
         }
 
-        private void signInBtn_Click(object sender, RoutedEventArgs e)
-        {
-         
-            this.Hide();
-            Window frm = new ClientDialog();
-            frm.ShowDialog();
-
-        }
     }
 }

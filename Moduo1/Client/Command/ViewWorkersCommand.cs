@@ -12,7 +12,7 @@ using System.ServiceModel;
 
 namespace Client.Command
 {
-    class ViewWorkersCommand : ICommand
+    public class ViewWorkersCommand : ICommand
     {
 
         NetTcpBinding binding = new NetTcpBinding();

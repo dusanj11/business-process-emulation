@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    class WorkingHoursCommand : ICommand
+    public class WorkingHoursCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {

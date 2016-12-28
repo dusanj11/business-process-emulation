@@ -1,10 +1,14 @@
 ﻿<Window x:Class="Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cloner="clr-namespace:Client.PassingConverter"
         Title="Log in" Height="280" Width="400" Background="DimGray"  WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <cloner:PassingArguments x:Key="argumentsCloner"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -17,17 +21,33 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
+        <Label Name="errorLb" Grid.Row="1"  Style="{StaticResource StyleLabel}" Content="{Binding
+					Path=ErrorMessage,
+					UpdateSourceTrigger=PropertyChanged}"
+               Grid.ColumnSpan="3" Margin="0,1,10,0" Width="Auto" 
+               Foreground="Red" FontSize="14" HorizontalAlignment="Center">
+        </Label>
         <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleLabel}">
             Username:
         </Label>
-        <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" >
-        </TextBox>
-        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}">
+        <Grid Grid.Row="3" Grid.Column="1"  DataContext="{Binding LogInUser}">
+            <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+            </TextBox>
+        </Grid>
+        <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}"   >
             Password:
         </Label>
-        <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleTextBox}" >
-        </TextBox>
-        <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Click="signInBtn_Click" Margin="0,31,0,-30">
+        <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
+            <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Password}">
+            </TextBox>
+        </Grid>
+        <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource argumentsCloner}">
+                    <Binding Path="Text" ElementName="userTxt"/>
+                    <Binding Path="Text" ElementName="passTxt"/>
+                </MultiBinding>
+            </Button.CommandParameter>
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleButtonBorder}">

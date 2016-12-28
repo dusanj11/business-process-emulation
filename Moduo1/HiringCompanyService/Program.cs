@@ -23,7 +23,7 @@ namespace HiringCompanyService
             
             // update database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
-            
+
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";
 
