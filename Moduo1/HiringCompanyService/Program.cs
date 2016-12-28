@@ -23,19 +23,19 @@ namespace HiringCompanyService
             
             // update database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
-            EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
-            {
-                Username = "Maki",
-                Password = "Maki",
-                Name = "Marko",
-                Surname = "Jelaca",
-                Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
-                StartTime = "9",
-                EndTime = "17",
-                Login = false,
-                HiringCompanyId = "HC1"
+            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //{
+            //    Username = "Maki",
+            //    Password = "Maki",
+            //    Name = "Marko",
+            //    Surname = "Jelaca",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
+            //    StartTime = "9",
+            //    EndTime = "17",
+            //    Login = false,
+            //    HiringCompanyId = "HC1"
 
-            });
+            //});
 
 
             NetTcpBinding binding = new NetTcpBinding();

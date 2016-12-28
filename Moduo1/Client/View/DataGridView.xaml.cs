@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client.ViewModel
+namespace Client.View
 {
     /// <summary>
     /// Interaction logic for DataGridView.xaml
@@ -23,6 +23,11 @@ namespace Client.ViewModel
         public DataGridView()
         {
             InitializeComponent();
+        }
+
+        private void dataGrid1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+
         }
     }
 }

@@ -47,16 +47,41 @@ namespace Client.Command
                         return;
                     }
 
-                    foreach(Employee em in employees)
+                    Dictionary<String, Employee> employeeDictionary = employees.Distinct().ToDictionary(item => item.Username, item => item);
+
+                    //foreach(Employee em in employees)
+                    //{
+                    //    if(!parameters[0].ToString().Trim().Equals(em.Username) 
+                    //        || !parameters[1].ToString().Trim().Equals(em.Password))
+                    //    {
+                    //        MessageBox.Show("Niste uneli dobre podatke!",
+                    //            "greska",
+                    //             MessageBoxButton.OK, MessageBoxImage.Error);
+                    //    }
+
+                    //}
+                    Employee outValue = null;
+                    if(employeeDictionary.TryGetValue(parameters[0].ToString().Trim(), out outValue))
                     {
-                        if(!parameters[0].ToString().Trim().Equals(em.Username) 
-                            || !parameters[1].ToString().Trim().Equals(em.Password))
+                        if(outValue.Password.Equals(parameters[1].ToString().Trim()))
+                        {
+                            ClientDialog cd = new ClientDialog();
+                            cd.Show();
+                        }
+                        else
                         {
                             MessageBox.Show("Niste uneli dobre podatke!",
                                 "greska",
                                  MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Niste uneli dobre podatke!",
+                                "greska",
+                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
             }
 
