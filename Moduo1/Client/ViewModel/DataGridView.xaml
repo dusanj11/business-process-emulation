@@ -1,0 +1,17 @@
+﻿<Page x:Class="Client.ViewModel.DataGridView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Client.ViewModel"
+      mc:Ignorable="d"
+      Title="DataGridView" Width="481.579" Height="222.18">
+
+    <Grid Margin="0,0,10,24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="34*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid  AutoGenerateColumns="True" Height="193" HorizontalAlignment="Left" Margin="12,0,-171,0" Name="dataGrid1" VerticalAlignment="Top" Width="459" SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generiseColumn" Grid.ColumnSpan="2"></DataGrid>
+    </Grid>
+</Page>
