@@ -49,7 +49,7 @@ namespace HiringCompanyService.Access
             {
                 foreach(var ca in access.Actions)
                 {
-                    if(ca.Login)
+                    //if(ca.Login)
                         employees.Add(ca);
                 }
             }
