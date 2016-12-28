@@ -56,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\DataGridView.xaml">
+    <Page Include="View\ShowEmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -73,8 +73,8 @@
     <Compile Include="Model\LogInUser.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
-    <Compile Include="View\DataGridView.xaml.cs">
-      <DependentUpon>DataGridView.xaml</DependentUpon>
+    <Compile Include="View\ShowEmployeeView.xaml.cs">
+      <DependentUpon>ShowEmployeeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

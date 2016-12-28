@@ -16,16 +16,15 @@ using System.Windows.Shapes;
 namespace Client.View
 {
     /// <summary>
-    /// Interaction logic for DataGridView.xaml
+    /// Interaction logic for ShowEmployeeView.xaml
     /// </summary>
-    public partial class DataGridView : Page
+    public partial class ShowEmployeeView : UserControl
     {
-        public DataGridView()
+        public ShowEmployeeView()
         {
             InitializeComponent();
         }
-
-        private void dataGrid1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        private void employeeDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
         }

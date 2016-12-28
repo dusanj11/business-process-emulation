@@ -9,15 +9,21 @@ using System.Configuration;
 using HiringCompanyContract.Data;
 using System.Data.SqlClient;
 using System.ServiceModel;
+using System.Windows.Controls;
 
 namespace Client.Command
 {
     public class ViewWorkersCommand : ICommand
     {
-
+        /// <summary>
+        ///  WCF binding and address for communication with service
+        /// </summary>
         NetTcpBinding binding = new NetTcpBinding();
         string address = "net.tcp://localhost:9090/HiringCompanyService";
 
+        public View.ShowEmployeeView _showEmployeeView;
+        public Control _currentControl;
+       
 
         public bool CanExecute(object parameter)
         {
@@ -31,7 +37,11 @@ namespace Client.Command
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
                 List<Employee> employees = proxy.GetAllEmployees();
+
+                _showEmployeeView = new View.ShowEmployeeView();
+
                 
+
             }
         }
     }

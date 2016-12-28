@@ -102,7 +102,7 @@
             </Button.Template>
         </Button>
 
-        <DockPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="7" >
+        <DockPanel Name="MainWindowDockPanel" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7" >
             
         </DockPanel>
 
