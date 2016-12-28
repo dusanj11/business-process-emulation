@@ -21,9 +21,7 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        <Label Name="errorLb" Grid.Row="1"  Style="{StaticResource StyleLabel}" Content="{Binding
-					Path=ErrorMessage,
-					UpdateSourceTrigger=PropertyChanged}"
+        <Label Name="errorLb" Grid.Row="1"  Style="{StaticResource StyleLabel}"
                Grid.ColumnSpan="3" Margin="0,1,10,0" Width="Auto" 
                Foreground="Red" FontSize="14" HorizontalAlignment="Center">
         </Label>
@@ -47,6 +45,7 @@
                     <Binding Path="Text" ElementName="userTxt"/>
                     <Binding Path="Text" ElementName="passTxt"/>
                     <Binding ElementName="mainWin" />
+                    <Binding ElementName="errorLb" />
                 </MultiBinding>
             </Button.CommandParameter>
             <Button.Template>
