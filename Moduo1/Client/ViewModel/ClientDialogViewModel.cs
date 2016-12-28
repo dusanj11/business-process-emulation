@@ -11,21 +11,8 @@ namespace Client.ViewModel
 {
     class ClientDialogViewModel : INotifyPropertyChanged
     {
-        private  string errorMessage;
         private LogInUser logInUser;
 
-        public  string ErrorMessage
-        {
-            get
-            {
-                return errorMessage;
-            }
-
-            set
-            {
-                errorMessage = value;
-            }
-        }
         public LogInUser LogInUser
         {
             get

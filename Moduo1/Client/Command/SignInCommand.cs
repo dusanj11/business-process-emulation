@@ -8,6 +8,7 @@ using System.Windows.Input;
 using HiringCompanyContract.Data;
 using System.ServiceModel;
 using Client.ViewModel;
+using System.Windows.Controls;
 
 namespace Client.Command
 {
@@ -22,18 +23,17 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            ClientDialogViewModel cdvm = new ClientDialogViewModel();
-            cdvm.ErrorMessage = "Niste uneli dobre podatke"; //TESTIRAJ OVO POSTO KOD KUCE NISI
+            
 
             Object[] parameters = parameter as Object[];
-            if(parameters == null || parameters.Length != 3 
+            if(parameters == null || parameters.Length != 4 
                 || parameters[0].ToString().Trim().Equals("")
                 || parameters[1].ToString().Trim().Equals(""))
             {
                 MessageBox.Show("Niste popunili sva polja!",
                                 "Upozorenje",
                                  MessageBoxButton.OK, MessageBoxImage.Information);
-                //lolololo
+           
             }
             else
             {
@@ -98,17 +98,18 @@ namespace Client.Command
                         }
                         else
                         {
-
-                            MessageBox.Show("Niste uneli dobre podatke!",
-                                "greska",
-                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                            ((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                            //MessageBox.Show("Niste uneli dobre podatke!",
+                            //    "greska",
+                            //     MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Niste uneli dobre podatke!",
-                                "greska",
-                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                        ((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                        //MessageBox.Show("Niste uneli dobre podatke!",
+                        //        "greska",
+                        //         MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
