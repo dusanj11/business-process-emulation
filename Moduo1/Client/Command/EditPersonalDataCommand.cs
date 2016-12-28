@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    class EditPersonalDataCommand : ICommand
+    public class EditPersonalDataCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {

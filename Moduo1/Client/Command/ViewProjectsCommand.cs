@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    class ViewProjectsCommand : ICommand
+    public class ViewProjectsCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {

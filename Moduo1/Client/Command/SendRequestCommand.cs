@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    class SendRequestCommand : ICommand
+    public class SendRequestCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {

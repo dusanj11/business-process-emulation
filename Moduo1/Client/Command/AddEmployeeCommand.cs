@@ -9,7 +9,7 @@ using System.ServiceModel;
 
 namespace Client.Command
 {
-    class AddEmployeeCommand : ICommand
+    public class AddEmployeeCommand : ICommand
     {
         NetTcpBinding binding = new NetTcpBinding();
         string address = "net.tcp://localhost:9090/HiringCompanyService";

@@ -7,7 +7,6 @@ using System.ServiceModel;
 using HiringCompanyContract;
 using System.ServiceModel.Description;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
 using System.Data.Entity;
 using HiringCompanyService.Access;
 

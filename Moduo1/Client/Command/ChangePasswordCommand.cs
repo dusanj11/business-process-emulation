@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    class ChangePasswordCommand : ICommand
+    public class ChangePasswordCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {
