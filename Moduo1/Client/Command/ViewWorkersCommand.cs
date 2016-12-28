@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using System.Configuration;
 using HiringCompanyContract.Data;
-using System.Data.SqlClient;
 using System.ServiceModel;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace Client.Command
 {
     public class ViewWorkersCommand : ICommand
     {
         /// <summary>
-        ///  WCF binding and address for communication with service
+        ///     WCF binding and address for communication with service
         /// </summary>
         NetTcpBinding binding = new NetTcpBinding();
         string address = "net.tcp://localhost:9090/HiringCompanyService";
 
+        /// <summary>
+        ///     Employee table view    
+        /// </summary>
         public View.ShowEmployeeView _showEmployeeView;
-        public Control _currentControl;
+
+        /// <summary>
+        ///     Collection for mapping items to DataGrid
+        /// </summary>
+        ObservableCollection<Employee> resources = new ObservableCollection<Employee>();
        
 
         public bool CanExecute(object parameter)
@@ -38,10 +40,21 @@ namespace Client.Command
             {
                 List<Employee> employees = proxy.GetAllEmployees();
 
+                foreach (Employee em in employees)
+                    resources.Add(em);
+
+                object[] parameters = parameter as object[];
                 _showEmployeeView = new View.ShowEmployeeView();
+
+                DockPanel docPanelClientDialog =  parameters[0] as DockPanel;
+
+                _showEmployeeView.employeeDataGrid.ItemsSource = resources;
+
+                docPanelClientDialog.Children.Add(_showEmployeeView);
 
                 
 
+                
             }
         }
     }

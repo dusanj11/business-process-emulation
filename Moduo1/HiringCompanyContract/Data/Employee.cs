@@ -13,8 +13,6 @@ namespace HiringCompanyContract.Data
 
         public enum PositionEnum : int { CEO = 0, HR = 1, PO, SM};
 
-        
-        private String id;
         private String username;
         private String password;
         private String name;
@@ -24,24 +22,13 @@ namespace HiringCompanyContract.Data
         private String endTime;
         private bool login;
         private String hiringCompanyId;
+        private DateTime passwordUpadateDate;
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDtmp { get; set; }
 
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
-
+       
         public string Username
         {
             get
@@ -156,6 +143,19 @@ namespace HiringCompanyContract.Data
             set
             {
                 hiringCompanyId = value;
+            }
+        }
+
+        public DateTime PasswordUpadateDate
+        {
+            get
+            {
+                return passwordUpadateDate;
+            }
+
+            set
+            {
+                passwordUpadateDate = value;
             }
         }
 

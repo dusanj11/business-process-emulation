@@ -23,17 +23,21 @@ namespace HiringCompanyService
             
             // update database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
+
+            //DB INITIAL INSERT - test
             //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
             //{
-            //    Username = "Maki",
-            //    Password = "Maki",
-            //    Name = "Marko",
-            //    Surname = "Jelaca",
-            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
+            //    Username = "Dule",
+            //    Password = "Dule",
+            //    Name = "Dusan",
+            //    Surname = "Jeftic",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.CEO.ToString(),
             //    StartTime = "9",
             //    EndTime = "17",
             //    Login = false,
-            //    HiringCompanyId = "HC1"
+            //    HiringCompanyId = "HC1",
+            //    PasswordUpadateDate = DateTime.Now
+
 
             //});
 

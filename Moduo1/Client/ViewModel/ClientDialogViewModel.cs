@@ -11,12 +11,31 @@ namespace Client.ViewModel
 {
     class ClientDialogViewModel : INotifyPropertyChanged
     {
+        private  string errorMessage;
         private LogInUser logInUser;
 
+        public  string ErrorMessage
+        {
+            get
+            {
+                return errorMessage;
+            }
+
+            set
+            {
+                errorMessage = value;
+            }
+        }
         public LogInUser LogInUser
         {
-            get { return logInUser; }
-            set { logInUser = value; }
+            get
+            {
+                return logInUser;
+            }
+            set
+            {
+                logInUser = value;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,6 +49,10 @@ namespace Client.ViewModel
         public WorkingHoursCommand WorkingHoursCommand { get; set; }
         public LogOutCommand LogOutCommand { get; set; }
         public SignInCommand SignInCommand { get; set; }
+        public DefineUserStoriesCommand DefineUserStoriesCommand { get; set; }
+        public CreateProjectCommand CreateProjectCommand { get; set; }
+
+
 
         /// <summary>
         /// private constructor
@@ -45,6 +68,8 @@ namespace Client.ViewModel
             this.WorkingHoursCommand = new WorkingHoursCommand();
             this.LogOutCommand = new LogOutCommand();
             this.SignInCommand = new SignInCommand();
+            this.DefineUserStoriesCommand = new DefineUserStoriesCommand();
+            this.CreateProjectCommand = new CreateProjectCommand();
         }
     }
 }
