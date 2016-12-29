@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client.View
+namespace Client.PassingConverter
 {
     /// <summary>
-    /// Interaction logic for AddEmployeeView.xaml
+    /// Interaction logic for ChangePasswordView.xaml
     /// </summary>
-    public partial class AddEmployeeView : UserControl
+    public partial class ChangePasswordView : UserControl
     {
-        public AddEmployeeView()
+        public ChangePasswordView()
         {
             InitializeComponent();
-
-            //POSTAVI NOVI DATA CONTEXT
         }
     }
 }

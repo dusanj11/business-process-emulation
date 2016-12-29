@@ -4,8 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="300" d:DesignWidth="700">
+    <Grid Width="Auto" Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Name="nameLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Ime:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="surnameLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Prezime:
+        </Label>
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="usernameLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Korisničko ime:
+        </Label>
+        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="usernameTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="passwordLb" Grid.Row="6" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Šifra:
+        </Label>
+        <Grid Grid.Row="7" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="passwordTxt" Grid.Row="7" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="startTimeLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
+            Početak radnog vremena u:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+                <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">10.00</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Label Name="endTimeLb" Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
+            Završetak radnog vremena u:
+        </Label>
+        <Grid Grid.Row="2" Grid.Column="1"  DataContext="{Binding LogInUser}" Margin="19,32,-19,0" Grid.RowSpan="2"><!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False"><!--PREPRAVI OVO NA NOVI MODEL-->
+                <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">18.00</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Label Name="positionLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
+            Pozicija:
+        </Label>
+        <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+                <ComboBoxItem FontSize="14">PO</ComboBoxItem>
+                <ComboBoxItem FontSize="14">SM</ComboBoxItem>
+                <ComboBoxItem FontSize="14">CEO</ComboBoxItem>
+                <ComboBoxItem FontSize="14">SM</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Button Name="saveEmployeeBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleSaveButtonBorder}">
+                        <TextBlock Text="Sačuvaj korisnika" Style="{StaticResource StyleButtonText}" Margin="44,0,20,-20" Width="138">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </UserControl>

@@ -20,6 +20,11 @@
             <Setter Property="Background" Value="Tomato"></Setter>
         </Style>
 
+        <Style TargetType="Border" x:Key="StyleSaveButtonBorder">
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="GreenYellow"></Setter>
+        </Style>
+
         <Style TargetType="TextBlock" x:Key="StyleButtonText">
             <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -27,6 +32,7 @@
             <Setter Property="Height" Value="40"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+       
         
         <!-- Login label styles-->
         <Style TargetType="Label" x:Key="StyleLabel">

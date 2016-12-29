@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace Client.View
 {
     /// <summary>
-    /// Interaction logic for AddEmployeeView.xaml
+    /// Interaction logic for ViewProjectsView.xaml
     /// </summary>
-    public partial class AddEmployeeView : UserControl
+    public partial class ViewProjectsView : UserControl
     {
-        public AddEmployeeView()
+        public ViewProjectsView()
         {
             InitializeComponent();
-
-            //POSTAVI NOVI DATA CONTEXT
         }
     }
 }

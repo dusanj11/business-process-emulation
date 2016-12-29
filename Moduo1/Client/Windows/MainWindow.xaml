@@ -26,14 +26,14 @@
                Foreground="Red" FontSize="14" HorizontalAlignment="Center">
         </Label>
         <Label Name="usernameLb" Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleLabel}">
-            Username:
+            Korisničko ime:
         </Label>
         <Grid Grid.Row="3" Grid.Column="1"  DataContext="{Binding LogInUser}">
             <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
             </TextBox>
         </Grid>
         <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}" >
-            Password:
+            Šifra:
         </Label>
         <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
             <PasswordBox Name="passTxt" Grid.Row="5" Grid.Column="1"  PasswordChar="*" FontSize="14" >
