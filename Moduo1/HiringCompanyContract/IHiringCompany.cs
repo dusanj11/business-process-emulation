@@ -11,11 +11,24 @@ namespace HiringCompanyContract
     [ServiceContract]
     public interface IHiringCompany
     {
+        /// <summary>
+        ///     Test method
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [OperationContract]
         string GetData(int value);
 
         [OperationContract]
         List<Data.Employee> GetAllEmployees();
-        // TODO: Add your service operations here
+
+        [OperationContract]
+        Data.Employee GetEmployee(string username, string password);
+
+        [OperationContract]
+        bool AddEmployee(Data.Employee employee);
+
+        [OperationContract]
+        bool ChangeEmployeePostition(string username, Data.Employee.PositionEnum position);
     }
 }

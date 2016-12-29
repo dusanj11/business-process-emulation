@@ -1,16 +1,14 @@
-﻿using System;
+﻿using HiringCompanyContract.Data;
 using System.Collections.Generic;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiringCompanyContract;
-using HiringCompanyContract.Data;
 
 namespace HiringCompanyService.Access
 {
     public class EmployeeDB : IEmployeeDB
     {
         private static IEmployeeDB myDB;
+        public static object lockThis = new object();
 
         public static IEmployeeDB Instance
         {
@@ -27,8 +25,12 @@ namespace HiringCompanyService.Access
                     myDB = value;
             }
         }
-
-        public bool AddAction(Employee action)
+        /// <summary>
+        ///     DB insert action
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public bool AddEmployee(Employee action)
         {
             using (AccessDB access = new AccessDB())
             {
@@ -41,20 +43,59 @@ namespace HiringCompanyService.Access
             }
         }
 
+        /// <summary>
+        ///     Return list that represents registered users
+        /// </summary>
+        /// <returns></returns>
         public List<Employee> GetEmployees()
         {
             List<Employee> employees = new List<Employee>(20);
 
             using (var access = new AccessDB())
             {
-                foreach(var ca in access.Actions)
+                foreach (var em in access.Actions)
                 {
-                    //if(ca.Login)
-                        employees.Add(ca);
+                    if(em.Login)
+                        employees.Add(em);
                 }
             }
             return employees;
         }
 
+        /// <summary>
+        ///     Method returns instance of Employee only if username and password maches
+        ///     return null if it doesnt
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public Employee GetEmployee(string username, string password)
+        {
+            Employee employee = null;
+
+            using (var access = new AccessDB())
+            {
+                foreach(var em in access.Actions)
+                {
+                    if(em.Username.ToString().Equals(username) && em.Password.ToString().Equals(password))
+                    {
+                        employee = em;
+                        break;
+                    }
+                }
+            }
+            return employee;
+        }
+
+        public bool ChangeEmployeePosition(string username, Employee.PositionEnum position)
+        {
+            //using (var access = new AccessDB())
+            //{
+            //    Employee em = access.Actions.FirstOrDefault(f => f.Username == username);
+            //    em.Position = position.ToString();
+            //    access.Actions.
+            //}
+            throw new NotImplementedException();
+        }
     }
 }

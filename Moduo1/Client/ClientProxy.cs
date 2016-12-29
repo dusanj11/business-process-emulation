@@ -40,9 +40,22 @@ namespace Client
 
         public List<Employee> GetAllEmployees()
         {
-            return (List<Employee>)factory.GetAllEmployees();
+            return factory.GetAllEmployees();
         }
 
-      
+        public Employee GetEmployee(string username, string password)
+        {
+            return factory.GetEmployee(username, password);
+        }
+
+        public bool AddEmployee(Employee employee)
+        {
+            return factory.AddEmployee(employee);
+        }
+
+        public bool ChangeEmployeePostition(string username, Employee.PositionEnum position)
+        {
+            return factory.ChangeEmployeePostition(username, position);
+        }
     }
 }

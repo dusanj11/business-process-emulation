@@ -25,7 +25,7 @@ namespace HiringCompanyService
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
 
             //DB INITIAL INSERT - test
-            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
             //{
             //    Username = "Dule",
             //    Password = "Dule",

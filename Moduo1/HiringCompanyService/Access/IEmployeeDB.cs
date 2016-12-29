@@ -9,8 +9,12 @@ namespace HiringCompanyService.Access
 {
     public interface IEmployeeDB
     {
-        bool AddAction(Employee action);
+        bool AddEmployee(Employee action);
+
         List<Employee> GetEmployees();
- 
+
+        Employee GetEmployee(string username, string password);
+
+        bool ChangeEmployeePosition(string username, Employee.PositionEnum position);
     }
 }

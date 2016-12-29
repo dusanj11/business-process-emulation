@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:Client.View"
         xmlns:cloner="clr-namespace:Client.PassingConverter"
-        Title="Personal space" Height="450" Width="700" Background="DimGray" WindowStartupLocation="CenterScreen" Name="clientD">
+        Title="Personal space" Height="450" Width="1000" Background="DimGray" WindowStartupLocation="CenterScreen" Name="clientD">
     <Window.Resources>
         <cloner:PassingArguments x:Key="argumentsCloner"/>
     </Window.Resources>
@@ -134,7 +134,7 @@
             </Button.Template>
         </Button>
 
-        <DockPanel Name="MainWindowDockPanel" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7" >
+        <DockPanel Name="MainWindowDockPanel" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7" Width="Auto" Height="Auto">
             
         </DockPanel>
 
