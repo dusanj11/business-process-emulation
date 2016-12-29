@@ -31,13 +31,15 @@ namespace Client.ViewModel
         public AddEmployeeCommand AddEmployeeCommand { get; set; }
         public ChangePasswordCommand ChangePasswordCommand { get; set; }
         public EditPersonalDataCommand EditPersonalDataCommand { get; set; }
-        public SendRequestCommand SendRequestCommand { get; set; }
+        public SendRequestCompanyCommand SendRequestCompanyCommand { get; set; }
         public ViewWorkersCommand ViewWorkersCommand { get; set; }
         public WorkingHoursCommand WorkingHoursCommand { get; set; }
         public LogOutCommand LogOutCommand { get; set; }
         public SignInCommand SignInCommand { get; set; }
         public DefineUserStoriesCommand DefineUserStoriesCommand { get; set; }
         public CreateProjectCommand CreateProjectCommand { get; set; }
+        public ShowCompaniesCommand ShowCompaniesCommand { get; set; }
+        public SendRequestProjectCommand SendRequestProjectCommand { get; set; }
 
 
 
@@ -50,13 +52,15 @@ namespace Client.ViewModel
             this.AddEmployeeCommand = new AddEmployeeCommand();
             this.ChangePasswordCommand = new ChangePasswordCommand();
             this.EditPersonalDataCommand = new EditPersonalDataCommand();
-            this.SendRequestCommand = new SendRequestCommand();
+            this.SendRequestCompanyCommand = new SendRequestCompanyCommand();
             this.ViewWorkersCommand = new ViewWorkersCommand();
             this.WorkingHoursCommand = new WorkingHoursCommand();
             this.LogOutCommand = new LogOutCommand();
             this.SignInCommand = new SignInCommand();
             this.DefineUserStoriesCommand = new DefineUserStoriesCommand();
             this.CreateProjectCommand = new CreateProjectCommand();
+            this.ShowCompaniesCommand = new ShowCompaniesCommand();
+            this.SendRequestProjectCommand = new SendRequestProjectCommand();
         }
     }
 }

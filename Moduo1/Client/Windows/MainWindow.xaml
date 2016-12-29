@@ -36,14 +36,14 @@
             Password:
         </Label>
         <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <TextBox Name="passTxt" Grid.Row="5" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Password}">
-            </TextBox>
+            <PasswordBox Name="passTxt" Grid.Row="5" Grid.Column="1"  PasswordChar="*" FontSize="14" >
+            </PasswordBox>
         </Grid>
         <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource argumentsCloner}">
                     <Binding Path="Text" ElementName="userTxt"/>
-                    <Binding Path="Text" ElementName="passTxt"/>
+                    <Binding ElementName="passTxt"/>
                     <Binding ElementName="mainWin" />
                     <Binding ElementName="errorLb" />
                 </MultiBinding>
