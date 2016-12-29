@@ -56,42 +56,45 @@ namespace Client.Command
                     Employee outValue = null;
                     if(employeeDictionary.TryGetValue(parameters[0].ToString().Trim(), out outValue))
                     {
-                        if(outValue.Password.Equals(parameters[1].ToString().Trim()))
+                        if(outValue.Password.Equals(((PasswordBox)parameters[1]).Password.ToString().Trim()))
                         {
                             if(outValue.Position.ToString().Equals("PO"))
                             {
                                 ((Window)parameters[2]).Hide();
                                 ClientDialog cd = new ClientDialog();
-                                cd.addEmployBtn.Visibility = Visibility.Hidden;
-                                cd.sendReqBtn.Visibility = Visibility.Hidden;
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
                                 cd.Show();
                             }
                             else if(outValue.Position.ToString().Equals("HR"))
                             {
                                 ((Window)parameters[2]).Hide();
                                 ClientDialog cd = new ClientDialog();
-                                cd.sendReqBtn.Visibility = Visibility.Hidden;
-                                cd.defUSBtn.Visibility = Visibility.Hidden;
-                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.showProjBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
                                 cd.Show();
                             }
                             else if (outValue.Position.ToString().Equals("CEO"))
                             {
                                 ((Window)parameters[2]).Hide();
                                 ClientDialog cd = new ClientDialog();
-                                cd.sendReqBtn.Visibility = Visibility.Hidden;
-                                cd.defUSBtn.Visibility = Visibility.Hidden;
-                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
                                 cd.Show();
                             }
                             else if (outValue.Position.ToString().Equals("SM"))
                             {
                                 ((Window)parameters[2]).Hide();
                                 ClientDialog cd = new ClientDialog();
-                                cd.sendReqBtn.Visibility = Visibility.Hidden;
-                                cd.addEmployBtn.Visibility = Visibility.Hidden;
-                                cd.defUSBtn.Visibility = Visibility.Hidden;
-                                cd.createProjBtn.Visibility = Visibility.Hidden;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
                                 cd.Show();
                             }
 

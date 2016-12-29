@@ -27,11 +27,41 @@ namespace HiringCompanyService
             //DB INITIAL INSERT - test
             //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
             //{
-            //    Username = "Dule",
+            //    Username = "Miki",
             //    Password = "Dule",
             //    Name = "Dusan",
             //    Surname = "Jeftic",
-            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.CEO.ToString(),
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
+            //    StartTime = "9",
+            //    EndTime = "17",
+            //    Login = false,
+            //    HiringCompanyId = "HC1",
+            //    PasswordUpadateDate = DateTime.Now
+
+
+            //});
+            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //{
+            //    Username = "Naci",
+            //    Password = "Dule",
+            //    Name = "Dusan",
+            //    Surname = "Jeftic",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.SM.ToString(),
+            //    StartTime = "9",
+            //    EndTime = "17",
+            //    Login = false,
+            //    HiringCompanyId = "HC1",
+            //    PasswordUpadateDate = DateTime.Now
+
+
+            //});
+            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //{
+            //    Username = "Taca",
+            //    Password = "Dule",
+            //    Name = "Dusan",
+            //    Surname = "Jeftic",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.HR.ToString(),
             //    StartTime = "9",
             //    EndTime = "17",
             //    Login = false,

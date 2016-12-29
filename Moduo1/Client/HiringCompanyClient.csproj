@@ -71,6 +71,8 @@
     <Compile Include="Command\CreateProjectCommand.cs" />
     <Compile Include="Command\DefineUserStoriesCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
+    <Compile Include="Command\SendRequestProjectCommand.cs" />
+    <Compile Include="Command\ShowCompaniesCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Model\LogInUser.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
@@ -89,7 +91,7 @@
     <Compile Include="Command\AddEmployeeCommand.cs" />
     <Compile Include="Command\ChangePasswordCommand.cs" />
     <Compile Include="Command\EditPersonalDataCommand.cs" />
-    <Compile Include="Command\SendRequestCommand.cs" />
+    <Compile Include="Command\SendRequestCompanyCommand.cs" />
     <Compile Include="Command\ViewProjectsCommand.cs" />
     <Compile Include="Command\ViewWorkersCommand.cs" />
     <Compile Include="Command\WorkingHoursCommand.cs" />
