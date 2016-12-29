@@ -35,7 +35,7 @@ namespace Client.Command
                 using (ClientProxy proxy = new ClientProxy(binding, address))
                 {
 
-                    Employee outValue = proxy.GetEmployee(parameters[0].ToString().Trim(), parameters[1].ToString().Trim());
+                    Employee outValue = proxy.GetEmployee(parameters[0].ToString().Trim(), ((PasswordBox)parameters[1]).Password.ToString().Trim());
 
                     if (outValue != null)
                         {
