@@ -1,7 +1,6 @@
 # README #
 
-KULIJANA BATICE 
-NOOOO
+Mutic Milan je Dusan Jeftic :D 
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
