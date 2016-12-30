@@ -6,6 +6,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Name="startTimeLb" Grid.Row="0"  Style="{StaticResource StyleLabel}" >
+            Početak radnog vremena u:
+        </Label>
+        <Grid Grid.Row="1" DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="stratTimeTxt"  IsEditable="False" Style="{StaticResource StyleComboBox}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+                <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">8.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">9.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">10.00</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Label Name="endTimeLb" Grid.Row="2" Style="{StaticResource StyleLabel}" >
+            Završetak radnog vremena u:
+        </Label>
+        <Grid Grid.Row="3"   DataContext="{Binding LogInUser}"  Grid.RowSpan="2">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="endTimeTxt" IsEditable="False" Style="{StaticResource StyleComboBox}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+                <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">16.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.00</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.15</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.30</ComboBoxItem>
+                <ComboBoxItem FontSize="14">17.45</ComboBoxItem>
+                <ComboBoxItem FontSize="14">18.00</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Button Name="saveWorkingHoursBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,34,50,-28" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleSaveButtonBorder}">
+                        <TextBlock Text="Sačuvaj radno vreme" Style="{StaticResource StyleButtonText}" Margin="44,0,20,-20" Width="138">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </UserControl>

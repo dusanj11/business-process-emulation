@@ -64,7 +64,7 @@
         </Label>
         <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
             <!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False">
+            <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
                 <!--PREPRAVI OVO NA NOVI MODEL-->
                 <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
@@ -81,7 +81,7 @@
             Završetak radnog vremena u:
         </Label>
         <Grid Grid.Row="2" Grid.Column="1"  DataContext="{Binding LogInUser}" Margin="19,32,-19,0" Grid.RowSpan="2"><!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False"><!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False" Style="{StaticResource StyleComboBox}"><!--PREPRAVI OVO NA NOVI MODEL-->
                 <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.30</ComboBoxItem>
@@ -98,7 +98,7 @@
         </Label>
         <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
             <!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False">
+            <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
                 <!--PREPRAVI OVO NA NOVI MODEL-->
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>

@@ -6,6 +6,41 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Name="chosePartnCompanyLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Odabir partnerske kompanije:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="chosePartnCompanyTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </ComboBox>
+        </Grid>
+        <Label Name="choseProjLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Odabir projekta:
+        </Label>
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <ComboBox Name="choseProjTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </ComboBox>
+        </Grid>
+        <Button Name="sendProjReqBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleSaveButtonBorder}">
+                        <TextBlock Text="Pošalji zahtev za projekat" Style="{StaticResource StyleButtonText}" Margin="23,5,16,-15" Width="161">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </UserControl>
