@@ -39,7 +39,7 @@
             <PasswordBox Name="passTxt" Grid.Row="5" Grid.Column="1"  PasswordChar="*" FontSize="14" >
             </PasswordBox>
         </Grid>
-        <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}">
+        <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}" >
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource argumentsCloner}">
                     <Binding Path="Text" ElementName="userTxt"/>

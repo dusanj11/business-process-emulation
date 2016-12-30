@@ -28,6 +28,7 @@ namespace Client
         {
             InitializeComponent();
             DataContext = new ClientDialogViewModel();
+           
         }
 
     }

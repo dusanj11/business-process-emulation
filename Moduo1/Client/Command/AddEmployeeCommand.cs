@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.ServiceModel;
+using HiringCompanyContract.Data;
 
 namespace Client.Command
 {
@@ -23,11 +24,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            //MessageBox.Show("U izradi dodavanje zaposlenog");
-            using (ClientProxy proxy = new ClientProxy(binding, address))
-            {
-                Console.WriteLine("Poruka od servisa: " + proxy.GetData(5));
-            }
+            
         }
     }
 }

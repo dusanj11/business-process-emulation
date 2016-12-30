@@ -38,6 +38,7 @@ namespace Client.Command
         {
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
+
                 List<Employee> employees = proxy.GetAllEmployees();
 
                 foreach (Employee em in employees)
@@ -47,6 +48,16 @@ namespace Client.Command
                 _showEmployeeView = new View.ShowEmployeeView();
 
                 DockPanel docPanelClientDialog =  parameters[0] as DockPanel;
+
+                try
+                {
+                    docPanelClientDialog.Children.RemoveAt(0);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Error {0}", e.Message);
+                }
+                
 
                 _showEmployeeView.employeeDataGrid.ItemsSource = resources;
 

@@ -157,7 +157,7 @@
         </Button>
 
         <DockPanel Name="MainWindowDockPanel" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7" Width="Auto" Height="Auto">
-            
+            <ContentControl Content="{Binding CurrentView}" />
         </DockPanel>
 
     </Grid>

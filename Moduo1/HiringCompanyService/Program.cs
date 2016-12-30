@@ -71,6 +71,8 @@ namespace HiringCompanyService
 
             //});
 
+            
+
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";

@@ -89,13 +89,17 @@ namespace HiringCompanyService.Access
 
         public bool ChangeEmployeePosition(string username, Employee.PositionEnum position)
         {
-            //using (var access = new AccessDB())
-            //{
-            //    Employee em = access.Actions.FirstOrDefault(f => f.Username == username);
-            //    em.Position = position.ToString();
-            //    access.Actions.
-            //}
-            throw new NotImplementedException();
+            using (var access = new AccessDB())
+            {
+                access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
+                //em.Position = position.ToString();
+                int i = access.SaveChanges();
+
+                if (i > 0)
+                    return true;
+                return false;
+            }
+
         }
     }
 }

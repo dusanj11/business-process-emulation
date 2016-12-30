@@ -12,7 +12,7 @@ namespace Client.ViewModel
     class ClientDialogViewModel : INotifyPropertyChanged
     {
         private LogInUser logInUser;
-
+       
         public LogInUser LogInUser
         {
             get
@@ -24,6 +24,8 @@ namespace Client.ViewModel
                 logInUser = value;
             }
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
