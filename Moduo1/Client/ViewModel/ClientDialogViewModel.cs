@@ -9,8 +9,35 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    class ClientDialogViewModel : INotifyPropertyChanged
+    public class ClientDialogViewModel : INotifyPropertyChanged
     {
+        private static ClientDialogViewModel model;
+
+        public static ClientDialogViewModel Instance
+        {
+            get
+            {
+                if (model == null)
+                    model = new ClientDialogViewModel();
+
+                return model;
+            }
+        }
+        private string errorMessage;
+
+        public string ErrorMessage
+        {
+            get 
+            { 
+                return errorMessage; 
+            }
+            set 
+            { 
+                errorMessage = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+
         private LogInUser logInUser;
 
         public LogInUser LogInUser
@@ -22,6 +49,7 @@ namespace Client.ViewModel
             set
             {
                 logInUser = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("LogInUser"));
             }
         }
 
@@ -61,6 +89,16 @@ namespace Client.ViewModel
             this.CreateProjectCommand = new CreateProjectCommand();
             this.ShowCompaniesCommand = new ShowCompaniesCommand();
             this.SendRequestProjectCommand = new SendRequestProjectCommand();
+            this.ErrorMessage = "";
+            this.LogInUser = new LogInUser();
+        }
+
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, e);
+            }
         }
     }
 }

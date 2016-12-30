@@ -1,4 +1,5 @@
-﻿using HiringCompanyContract.Data;
+﻿using Client.ViewModel;
+using HiringCompanyContract.Data;
 using System;
 using System.ServiceModel;
 using System.Windows;
@@ -19,9 +20,9 @@ namespace Client.Command
         public void Execute(object parameter)
         {
             Object[] parameters = parameter as Object[];
-            if (parameters == null || parameters.Length != 4
+            if (parameters == null || parameters.Length != 2
                 || parameters[0].ToString().Trim().Equals("")
-                || parameters[1].ToString().Trim().Equals(""))
+                || ((PasswordBox)parameters[1]).Password.ToString().Trim().Equals(""))
             {
                 MessageBox.Show("Niste popunili sva polja!",
                                 "Upozorenje",
@@ -41,7 +42,8 @@ namespace Client.Command
                         {
                         if (outValue.Position.ToString().Equals("PO"))
                             {
-                                ((Window)parameters[2]).Hide();
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
                                 ClientDialog cd = new ClientDialog();
                                 cd.addEmployBtn.Visibility = Visibility.Collapsed;
                                 cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
@@ -50,7 +52,8 @@ namespace Client.Command
                             }
                         else if (outValue.Position.ToString().Equals("HR"))
                             {
-                                ((Window)parameters[2]).Hide();
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
                                 ClientDialog cd = new ClientDialog();
                                 cd.showProjBtn.Visibility = Visibility.Collapsed;
                                 cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
@@ -61,7 +64,8 @@ namespace Client.Command
                             }
                             else if (outValue.Position.ToString().Equals("CEO"))
                             {
-                                ((Window)parameters[2]).Hide();
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
                                 ClientDialog cd = new ClientDialog();
                                 cd.defUSBtn.Visibility = Visibility.Collapsed;
                                 cd.createProjBtn.Visibility = Visibility.Collapsed;
@@ -69,7 +73,8 @@ namespace Client.Command
                             }
                             else if (outValue.Position.ToString().Equals("SM"))
                             {
-                                ((Window)parameters[2]).Hide();
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
                                 ClientDialog cd = new ClientDialog();
                                 cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
                                 cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
@@ -80,12 +85,15 @@ namespace Client.Command
                             }
                         else
                         {
-                            ((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                            ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                            //((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
                         }
                     }
                     else
                     {
-                        ((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                        ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                        Console.WriteLine(ClientDialogViewModel.Instance.LogInUser.Username.ToString());
+                        //((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
                     }
                 }
             }
