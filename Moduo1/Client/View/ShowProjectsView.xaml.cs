@@ -24,5 +24,10 @@ namespace Client.View
         {
             InitializeComponent();
         }
+
+        private void projectsDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,7 +7,7 @@
              d:DesignHeight="300" Width="700">
     <Grid>
         <DataGrid  AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
-                   Name="employeeDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
+                   Name="companiesDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
                    AutoGeneratingColumn="companiesDataGrid_AutoGeneratingColumn" Grid.ColumnSpan="2">
 
         </DataGrid>
