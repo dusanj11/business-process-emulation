@@ -21,6 +21,11 @@
             <Setter Property="Background" Value="Tomato"></Setter>
         </Style>
 
+        <Style TargetType="Border" x:Key="StyleSaveButtonBorder">
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="GreenYellow"></Setter>
+        </Style>
+
         <Style TargetType="TextBlock" x:Key="StyleButtonText">
             <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -28,6 +33,7 @@
             <Setter Property="Height" Value="40"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+       
         
         <!-- Login label styles-->
         <Style TargetType="Label" x:Key="StyleLabel">
@@ -39,6 +45,18 @@
         
         <!-- Login TextBox styles-->
         <Style TargetType="TextBox" x:Key="StyleTextBox">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox" x:Key="StylePasswordBox">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="StyleComboBox">
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>

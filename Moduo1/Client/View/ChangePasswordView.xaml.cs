@@ -12,22 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ServiceModel;
-using Client.ViewModel;
 
-
-namespace Client
+namespace Client.PassingConverter
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ChangePasswordView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChangePasswordView : UserControl
     {
-
-        public MainWindow()
+        public ChangePasswordView()
         {
             InitializeComponent();
         }
-
     }
 }

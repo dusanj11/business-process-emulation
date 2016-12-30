@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Client.View.CreateProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="0,0,-150,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Name="nameProjLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Ime:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="nameProjTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="startDateProjLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Početak projekta:
+        </Label>
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <DatePicker Name="startDateProjTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </DatePicker>
+        </Grid>
+        <Label Name="endDateProjLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Krajnji rok projekta:
+        </Label>
+        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <DatePicker Name="endDateProjTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </DatePicker>
+        </Grid>
+        <Label Name="descriptProjLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="10,0,-8,1">
+            Kratak opis projekta:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="descriptProjTxt" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}" Margin="14,0,-15,-111" Height="Auto" TextWrapping="WrapWithOverflow" Width="Auto">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Button Name="saveProjBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="14,24,-15,-19" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleSaveButtonBorder}">
+                        <TextBlock Text="Sačuvaj projekat" Style="{StaticResource StyleButtonText}" Margin="44,0,20,-20" Width="138">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>

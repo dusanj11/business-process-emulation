@@ -40,7 +40,7 @@ namespace HiringCompanyService
 
 
             //});
-            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
             //{
             //    Username = "Naci",
             //    Password = "Dule",
@@ -55,13 +55,28 @@ namespace HiringCompanyService
 
 
             //});
-            //EmployeeDB.Instance.AddAction(new HiringCompanyContract.Data.Employee
+            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
             //{
             //    Username = "Taca",
             //    Password = "Dule",
             //    Name = "Dusan",
             //    Surname = "Jeftic",
             //    Position = HiringCompanyContract.Data.Employee.PositionEnum.HR.ToString(),
+            //    StartTime = "9",
+            //    EndTime = "17",
+            //    Login = false,
+            //    HiringCompanyId = "HC1",
+            //    PasswordUpadateDate = DateTime.Now
+
+
+            //});
+            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
+            //{
+            //    Username = "Zax",
+            //    Password = "Dule",
+            //    Name = "Dusan",
+            //    Surname = "Jeftic",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.CEO.ToString(),
             //    StartTime = "9",
             //    EndTime = "17",
             //    Login = false,

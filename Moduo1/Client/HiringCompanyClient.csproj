@@ -39,6 +39,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,7 +59,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\ChangePasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DefineUserStoriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditPersonalDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SendRequestCompanyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SendRequestProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowCompaniesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ShowEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowProjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WorkingHoursView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,10 +118,40 @@
     <Compile Include="Command\ShowCompaniesCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Model\LogInUser.cs" />
+    <Compile Include="View\ChangePasswordView.xaml.cs">
+      <DependentUpon>ChangePasswordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PassingConverter\PassingArguments.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
+    <Compile Include="View\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateProjectView.xaml.cs">
+      <DependentUpon>CreateProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DefineUserStoriesView.xaml.cs">
+      <DependentUpon>DefineUserStoriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditPersonalDataView.xaml.cs">
+      <DependentUpon>EditPersonalDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SendRequestCompanyView.xaml.cs">
+      <DependentUpon>SendRequestCompanyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SendRequestProjectView.xaml.cs">
+      <DependentUpon>SendRequestProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowCompaniesView.xaml.cs">
+      <DependentUpon>ShowCompaniesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ShowEmployeeView.xaml.cs">
       <DependentUpon>ShowEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowProjectsView.xaml.cs">
+      <DependentUpon>ShowProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WorkingHoursView.xaml.cs">
+      <DependentUpon>WorkingHoursView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

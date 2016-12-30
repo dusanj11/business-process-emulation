@@ -19,7 +19,7 @@ namespace Client.Command
         /// <summary>
         ///     Employee table view    
         /// </summary>
-        public View.ShowEmployeeView _showEmployeeView;
+        public View.ShowEmployeeView showEmployeeView;
 
         /// <summary>
         ///     Collection for mapping items to DataGrid
@@ -45,7 +45,7 @@ namespace Client.Command
                     resources.Add(em);
 
                 object[] parameters = parameter as object[];
-                _showEmployeeView = new View.ShowEmployeeView();
+                showEmployeeView = new View.ShowEmployeeView();
 
                 DockPanel docPanelClientDialog =  parameters[0] as DockPanel;
 
@@ -59,9 +59,9 @@ namespace Client.Command
                 }
                 
 
-                _showEmployeeView.employeeDataGrid.ItemsSource = resources;
+                showEmployeeView.employeeDataGrid.ItemsSource = resources;
 
-                docPanelClientDialog.Children.Add(_showEmployeeView);
+                docPanelClientDialog.Children.Add(showEmployeeView);
 
                 
 

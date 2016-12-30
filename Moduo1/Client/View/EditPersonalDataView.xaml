@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Client.View.EditPersonalDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Name="nameLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Ime:
+        </Label>
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="surnameLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Prezime:
+        </Label>
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Label Name="usernameLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Korisničko ime:
+        </Label>
+        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
+            <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="usernameTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+                <!--PREPRAVI OVO NA NOVI MODEL-->
+            </TextBox>
+        </Grid>
+        <Button Name="saveEditDataBtn" Grid.Row="7" Style="{StaticResource StyleButton}"  Margin="50,35,50,-29" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleSaveButtonBorder}">
+                        <TextBlock Text="Sačuvaj izmene" Style="{StaticResource StyleButtonText}" Margin="50,3,12,-13" Width="138">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>

@@ -12,22 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ServiceModel;
-using Client.ViewModel;
 
-
-namespace Client
+namespace Client.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DefineUserStoriesView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DefineUserStoriesView : UserControl
     {
-
-        public MainWindow()
+        public DefineUserStoriesView()
         {
             InitializeComponent();
         }
-
     }
 }
