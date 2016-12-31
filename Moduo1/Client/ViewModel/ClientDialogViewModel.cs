@@ -13,6 +13,22 @@ namespace Client.ViewModel
     {
         private static ClientDialogViewModel model;
 
+        private MainWindow main;
+
+        public MainWindow Main
+        {
+            get { return main; }
+            set { main = value; }
+        }
+
+        private ClientDialog cDialog;
+
+        public ClientDialog CDialog
+        {
+            get { return cDialog; }
+            set { cDialog = value; }
+        }
+
         public static ClientDialogViewModel Instance
         {
             get
@@ -101,6 +117,146 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        public void ShowAddEmployeeView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.AddEmployeeView());
+        }
+
+        public void ShowChangePasswordView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.ChangePasswordView());
+        }
+
+        public void ShowCreateProjectView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.CreateProjectView());
+        }
+
+        public void ShowDefineUserStoriesView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.DefineUserStoriesView());
+        }
+
+        public void ShowEditPersonalDataView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.EditPersonalDataView());
+        }
+
+        public void ShowSendRequestCompanyView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.SendRequestCompanyView());
+        }
+
+        public void ShowSendRequestProjectView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.SendRequestProjectView());
+        }
+
+        public void ShowShowCompaniesView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.ShowCompaniesView());
+        }
+
+        public void ShowShowProjectsView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.ShowProjectsView());
+        }
+
+        public void ShowWorkingHoursView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.WorkingHoursView());
         }
     }
 }

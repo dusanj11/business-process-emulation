@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.ServiceModel;
 using System.Windows.Controls;
+using Client.ViewModel;
 
 namespace Client.Command
 {
@@ -33,25 +34,27 @@ namespace Client.Command
         public void Execute(object parameter)
         {
             //MessageBox.Show("U izradi dodavanje zaposlenog");
-            using (ClientProxy proxy = new ClientProxy(binding, address))
+            using (ClientProxy proxy = new ClientProxy(binding, address)) //DA LI OVO TREBA OVDE UOPSTE
             {
                
 
-                object[] parameters = parameter as object[];
-                addEmployeeView = new View.AddEmployeeView();
+                //object[] parameters = parameter as object[];
+                //addEmployeeView = new View.AddEmployeeView();
 
-                DockPanel docPanelClientDialog = parameters[0] as DockPanel;
+                //DockPanel docPanelClientDialog = parameters[0] as DockPanel;
 
-                try
-                {
-                    docPanelClientDialog.Children.RemoveAt(0);
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine("Error {0}", e.Message);
-                }
+                //try
+                //{
+                //    docPanelClientDialog.Children.RemoveAt(0);
+                //}
+                //catch(Exception e)
+                //{
+                //    Console.WriteLine("Error {0}", e.Message);
+                //}
 
-                docPanelClientDialog.Children.Add(addEmployeeView);
+                //docPanelClientDialog.Children.Add(addEmployeeView);
+
+                ClientDialogViewModel.Instance.ShowAddEmployeeView();
             }
         }
     }

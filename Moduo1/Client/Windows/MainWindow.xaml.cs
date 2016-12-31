@@ -27,6 +27,8 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
+
+            ClientDialogViewModel.Instance.Main = this;
         }
 
     }

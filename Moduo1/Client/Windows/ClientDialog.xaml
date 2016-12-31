@@ -56,11 +56,6 @@
             </Button.Template>
         </Button>
         <Button Name="addEmployBtn" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,5,1" Command="{Binding AddEmployeeCommand}" >
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource argumentsCloner}">
-                    <Binding ElementName="MainWindowDockPanel" />
-                </MultiBinding>
-            </Button.CommandParameter>
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleButtonBorder}">

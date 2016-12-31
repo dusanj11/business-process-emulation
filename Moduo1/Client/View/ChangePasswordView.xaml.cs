@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client.PassingConverter
+namespace Client.View
 {
     /// <summary>
     /// Interaction logic for ChangePasswordView.xaml

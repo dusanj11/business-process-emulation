@@ -59,11 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\ChangePasswordView.xaml">
+    <Page Include="View\AddEmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddEmployeeView.xaml">
+    <Page Include="View\ChangePasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,13 +118,13 @@
     <Compile Include="Command\ShowCompaniesCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Model\LogInUser.cs" />
-    <Compile Include="View\ChangePasswordView.xaml.cs">
-      <DependentUpon>ChangePasswordView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PassingConverter\PassingArguments.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
     <Compile Include="View\AddEmployeeView.xaml.cs">
       <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangePasswordView.xaml.cs">
+      <DependentUpon>ChangePasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateProjectView.xaml.cs">
       <DependentUpon>CreateProjectView.xaml</DependentUpon>

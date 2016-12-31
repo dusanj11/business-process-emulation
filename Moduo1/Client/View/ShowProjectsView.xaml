@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="Client.View.ViewProjectsView"
+﻿<UserControl x:Class="Client.View.ShowProjectsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-            d:DesignHeight="300" Width="700">
+    d:DesignHeight="300" Width="700">
     <Grid>
         <DataGrid  AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="projectsDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 

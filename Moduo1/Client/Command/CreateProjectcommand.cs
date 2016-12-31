@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            //throw new NotImplementedException();
+            ClientDialogViewModel.Instance.ShowCreateProjectView();
         }
     }
 }

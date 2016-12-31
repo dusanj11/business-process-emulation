@@ -34,7 +34,7 @@
         </Label>
         <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
             <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="startDateUSTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+            <DatePicker Name="startDateUSTxt" Grid.Row="3" Grid.Column="0"  Text="{Binding Path=Username}">
                 <!--PREPRAVI OVO NA NOVI MODEL-->
             </DatePicker>
         </Grid>
@@ -43,7 +43,7 @@
         </Label>
         <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
             <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="endDateUSTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+            <DatePicker Name="endDateUSTxt" Grid.Row="5" Grid.Column="0"  Text="{Binding Path=Username}">
                 <!--PREPRAVI OVO NA NOVI MODEL-->
             </DatePicker>
         </Grid>
