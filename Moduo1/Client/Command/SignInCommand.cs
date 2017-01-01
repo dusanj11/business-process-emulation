@@ -37,7 +37,7 @@ namespace Client.Command
                 {
 
                     Employee outValue = proxy.GetEmployee(parameters[0].ToString().Trim(), ((PasswordBox)parameters[1]).Password.ToString().Trim());
-
+                 
                     if (outValue != null)
                         {
                         if (outValue.Position.ToString().Equals("PO"))

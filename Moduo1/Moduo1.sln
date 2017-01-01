@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1208BDC9-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HiringCompanyClientTest", "HiringCompanyClientTest", "{0B0D5E8E-AA33-4FB4-BFF7-4883DBA354A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiringCompanyClientTest", "HiringCompanyClientTest\HiringCompanyClientTest.csproj", "{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiringCompanyClientTest", "HiringCompanyClientTest\HiringCompanyClientTest.csproj", "{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,16 +33,16 @@ Global
 		{4949B216-6B3F-43D9-82A9-8993E81902EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4949B216-6B3F-43D9-82A9-8993E81902EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4949B216-6B3F-43D9-82A9-8993E81902EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0B0D5E8E-AA33-4FB4-BFF7-4883DBA354A7} = {1208BDC9-BCCE-4832-88E7-44C3D056CB17}
-		{F5C2AEA7-678F-496A-898F-B1F3D7DC1CB2} = {0B0D5E8E-AA33-4FB4-BFF7-4883DBA354A7}
+		{DBA36A40-1F65-4FF9-86A6-96EECEC1D22E} = {0B0D5E8E-AA33-4FB4-BFF7-4883DBA354A7}
 	EndGlobalSection
 EndGlobal

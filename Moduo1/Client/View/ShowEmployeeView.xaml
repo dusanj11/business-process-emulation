@@ -13,5 +13,6 @@
                    AutoGeneratingColumn="employeeDataGrid_AutoGeneratingColumn" Grid.ColumnSpan="2">
             
         </DataGrid>
+       
     </Grid>
 </UserControl>

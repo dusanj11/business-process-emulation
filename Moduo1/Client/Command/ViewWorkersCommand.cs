@@ -5,6 +5,7 @@ using HiringCompanyContract.Data;
 using System.ServiceModel;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+using Client.ViewModel;
 
 namespace Client.Command
 {
@@ -25,7 +26,8 @@ namespace Client.Command
         ///     Collection for mapping items to DataGrid
         /// </summary>
         ObservableCollection<Employee> resources = new ObservableCollection<Employee>();
-       
+
+        List<Employee> employees = new List<Employee>();
 
         public bool CanExecute(object parameter)
         {
@@ -39,32 +41,39 @@ namespace Client.Command
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
 
-                List<Employee> employees = proxy.GetAllEmployees();
+                if(resources.Count != 0)
+                {
+                    resources.Clear();
+                    
+                }
+                employees = proxy.GetAllEmployees();
 
                 foreach (Employee em in employees)
                     resources.Add(em);
 
-                object[] parameters = parameter as object[];
-                showEmployeeView = new View.ShowEmployeeView();
+                //object[] parameters = parameter as object[];
+                //showEmployeeView = new View.ShowEmployeeView();
 
-                DockPanel docPanelClientDialog =  parameters[0] as DockPanel;
+                //DockPanel docPanelClientDialog =  parameters[0] as DockPanel;
 
-                try
-                {
-                    docPanelClientDialog.Children.RemoveAt(0);
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine("Error {0}", e.Message);
-                }
+                //try
+                //{
+                //    docPanelClientDialog.Children.RemoveAt(0);
+                //}
+                //catch(Exception e)
+                //{
+                //    Console.WriteLine("Error {0}", e.Message);
+                //}
+
+
+                //showEmployeeView.employeeDataGrid.ItemsSource = resources;
+
+                //docPanelClientDialog.Children.Add(showEmployeeView);
+              
                 
-
-                showEmployeeView.employeeDataGrid.ItemsSource = resources;
-
-                docPanelClientDialog.Children.Add(showEmployeeView);
-
-                
-
+                ClientDialogViewModel.Instance.Resources = resources;
+                ClientDialogViewModel.Instance.ShowEmployeeView();
+                 
                 
             }
         }

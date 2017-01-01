@@ -1,7 +1,9 @@
 ﻿using Client.Command;
 using Client.Model;
+using HiringCompanyContract.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -69,7 +71,20 @@ namespace Client.ViewModel
             }
         }
 
-        
+        private ObservableCollection<Employee> resources;
+
+        public ObservableCollection<Employee> Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                resources = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Resources"));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -257,6 +272,25 @@ namespace Client.ViewModel
             }
 
             CDialog.MainWindowDockPanel.Children.Add(new View.WorkingHoursView());
+        }
+
+        public void ShowEmployeeView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
+
+
+            View.ShowEmployeeView showEmployeeView = new View.ShowEmployeeView();
+            showEmployeeView.employeeDataGrid.ItemsSource = Resources;
+
+            CDialog.MainWindowDockPanel.Children.Add(showEmployeeView);
+           
         }
     }
 }
