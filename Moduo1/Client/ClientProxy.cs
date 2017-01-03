@@ -11,7 +11,7 @@ namespace Client
 {
     public class ClientProxy : ChannelFactory<IHiringCompany>, IHiringCompany, IDisposable
     {
-        IHiringCompany factory;
+        private IHiringCompany factory; 
 
         public ClientProxy(NetTcpBinding binding, string address) : base(binding, address)
         {

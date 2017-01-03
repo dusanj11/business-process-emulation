@@ -24,7 +24,7 @@ namespace Client.View
         {
             InitializeComponent();
         }
-        private void employeeDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        private void EmployeeDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
         }

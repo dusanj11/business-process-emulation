@@ -11,13 +11,7 @@ namespace Client.Command
         ///     WCF binding and address for communication with service
         /// </summary>
         private NetTcpBinding binding = new NetTcpBinding();
-
         private string address = "net.tcp://localhost:9090/HiringCompanyService";
-
-        /// <summary>
-        ///     Employee table view
-        /// </summary>
-        public View.AddEmployeeView addEmployeeView;
 
         public bool CanExecute(object parameter)
         {
@@ -28,7 +22,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            ClientDialogViewModel.Instance.ShowAddEmployeeView();
+                ClientDialogViewModel.Instance.ShowAddEmployeeView();
+            }
         }
     }
-}

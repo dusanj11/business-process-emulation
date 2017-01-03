@@ -7,7 +7,7 @@ using System.Data.Entity.Migrations;
 
 namespace HiringCompanyService.Access
 {
-    class Configuration : DbMigrationsConfiguration<AccessDB>
+    public class Configuration : DbMigrationsConfiguration<AccessDB>
     {
         public Configuration()
         {

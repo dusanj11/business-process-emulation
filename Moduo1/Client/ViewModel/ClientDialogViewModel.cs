@@ -36,7 +36,9 @@ namespace Client.ViewModel
             get
             {
                 if (model == null)
+                {
                     model = new ClientDialogViewModel();
+                }
 
                 return model;
             }
@@ -280,7 +282,7 @@ namespace Client.ViewModel
             {
                 CDialog.MainWindowDockPanel.Children.RemoveAt(0);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
             }

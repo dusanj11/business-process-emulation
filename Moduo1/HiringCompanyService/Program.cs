@@ -8,9 +8,9 @@ using HiringCompanyService.Access;
 
 namespace HiringCompanyService
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             
             // set |DataDirectory| in App.config

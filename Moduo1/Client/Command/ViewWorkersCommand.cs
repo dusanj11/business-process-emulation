@@ -14,13 +14,7 @@ namespace Client.Command
         ///     WCF binding and address for communication with service
         /// </summary>
         private NetTcpBinding binding = new NetTcpBinding();
-
         private string address = "net.tcp://localhost:9090/HiringCompanyService";
-
-        /// <summary>
-        ///     Employee table view
-        /// </summary>
-        public View.ShowEmployeeView showEmployeeView;
 
         /// <summary>
         ///     Collection for mapping items to DataGrid
@@ -40,6 +34,7 @@ namespace Client.Command
         {
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
+
                 if (resources.Count != 0)
                 {
                     resources.Clear();
@@ -47,7 +42,10 @@ namespace Client.Command
                 employees = proxy.GetAllEmployees();
 
                 foreach (Employee em in employees)
+                {
                     resources.Add(em);
+                }
+                    
 
                 ClientDialogViewModel.Instance.Resources = resources;
                 ClientDialogViewModel.Instance.ShowEmployeeView();

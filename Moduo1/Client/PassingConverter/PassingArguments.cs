@@ -12,7 +12,9 @@ namespace Client.PassingConverter
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (values == null)
+            {
                 return null;
+            }
 
             return values.Clone();
         }

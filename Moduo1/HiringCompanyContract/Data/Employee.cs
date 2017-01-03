@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HiringCompanyContract.Data
 {
+
     public class Employee
     {
-
-        public enum PositionEnum : int { CEO = 0, HR = 1, PO, SM};
+        public enum PositionEnum : int { CEO = 0, HR = 1, PO, SM }
 
         private String username;
         private String password;
@@ -28,7 +28,6 @@ namespace HiringCompanyContract.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDtmp { get; set; }
 
-       
         public string Username
         {
             get
