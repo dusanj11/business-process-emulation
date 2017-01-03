@@ -1,6 +1,5 @@
 ﻿using HiringCompanyContract.Data;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 
 namespace HiringCompanyService.Access
@@ -9,8 +8,6 @@ namespace HiringCompanyService.Access
     {
         private static IEmployeeDB myDB;
         private static object lockThis = new object();
-
-       
 
         public static IEmployeeDB Instance
         {
@@ -125,7 +122,22 @@ namespace HiringCompanyService.Access
                 }
                 return false;
             }
+        }
 
+        public bool ChangeEmployeePassword(string username, string oldPassword, string newPassword)
+        {
+            using (var access = new AccessDB())
+            {
+                access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword)).Password = newPassword;
+
+                int i = access.SaveChanges();
+
+                if (i > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }

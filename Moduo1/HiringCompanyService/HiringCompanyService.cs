@@ -12,29 +12,7 @@ namespace HiringCompanyService
 {
     public class HiringCompanyService : IHiringCompany
     {
-        /// <summary>
-        ///     Test method
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public string GetData(int value)
-        {
-            Console.WriteLine("Uspesno pozvana metoda...");
-            EmployeeDB.Instance.AddEmployee(new Employee
-            {
-                Username = "Maki",
-                Password = "Maki",
-                Name = "Marko",
-                Surname = "Jelaca",
-                Position = Employee.PositionEnum.PO.ToString(),
-                StartTime = "9",
-                EndTime = "17",
-                Login = false,
-                HiringCompanyId = "HC1"
-               
-            });
-            return "OK";
-        }
+
 
         public List<Employee> GetAllEmployees()
         {

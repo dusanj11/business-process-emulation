@@ -28,15 +28,7 @@ namespace Client
             this.Close();
         }
 
-        /// <summary>
-        ///     Test method
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public string GetData(int value)
-        {
-           return factory.GetData(5);
-        }
+    
 
         public List<Employee> GetAllEmployees()
         {
