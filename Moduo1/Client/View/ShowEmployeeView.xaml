@@ -10,7 +10,7 @@
     <Grid>
         <DataGrid  AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="employeeDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
-                   AutoGeneratingColumn="employeeDataGrid_AutoGeneratingColumn" Grid.ColumnSpan="2">
+                   AutoGeneratingColumn="EmployeeDataGrid_AutoGeneratingColumn" Grid.ColumnSpan="2">
             
         </DataGrid>
        

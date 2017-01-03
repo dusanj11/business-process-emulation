@@ -14,20 +14,15 @@ namespace Client.Command
         /// <summary>
         ///     WCF binding and address for communication with service
         /// </summary>
-        NetTcpBinding binding = new NetTcpBinding();
-        string address = "net.tcp://localhost:9090/HiringCompanyService";
-
-        /// <summary>
-        ///     Employee table view    
-        /// </summary>
-        public View.ShowEmployeeView showEmployeeView;
+        private NetTcpBinding binding = new NetTcpBinding();
+        private string address = "net.tcp://localhost:9090/HiringCompanyService";
 
         /// <summary>
         ///     Collection for mapping items to DataGrid
         /// </summary>
-        ObservableCollection<Employee> resources = new ObservableCollection<Employee>();
+        private ObservableCollection<Employee> resources = new ObservableCollection<Employee>();
 
-        List<Employee> employees = new List<Employee>();
+        private List<Employee> employees = new List<Employee>();
 
         public bool CanExecute(object parameter)
         {
@@ -41,7 +36,7 @@ namespace Client.Command
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
 
-                if(resources.Count != 0)
+                if (resources.Count != 0)
                 {
                     resources.Clear();
                     
@@ -49,7 +44,10 @@ namespace Client.Command
                 employees = proxy.GetAllEmployees();
 
                 foreach (Employee em in employees)
+                {
                     resources.Add(em);
+                }
+                    
 
                 //object[] parameters = parameter as object[];
                 //showEmployeeView = new View.ShowEmployeeView();

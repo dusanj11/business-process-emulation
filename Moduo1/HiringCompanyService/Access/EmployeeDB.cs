@@ -8,21 +8,25 @@ namespace HiringCompanyService.Access
     public class EmployeeDB : IEmployeeDB
     {
         private static IEmployeeDB myDB;
-        public static object lockThis = new object();
+        public static object LockThis = new object(); // OVO MORAS RUGACIJE RESITI MARKO
 
         public static IEmployeeDB Instance
         {
             get
             {
                 if (myDB == null)
+                {
                     myDB = new EmployeeDB();
+                }
 
                 return myDB;
             }
             set
             {
                 if (myDB == null)
+                {
                     myDB = value;
+                }
             }
         }
         /// <summary>
@@ -38,7 +42,9 @@ namespace HiringCompanyService.Access
                 int i = access.SaveChanges();
 
                 if (i > 0)
+                {
                     return true;
+                }
                 return false;
             }
         }
@@ -55,8 +61,10 @@ namespace HiringCompanyService.Access
             {
                 foreach (var em in access.Actions)
                 {
-                    if(em.Login)
+                    if (em.Login)
+                    {
                         employees.Add(em);
+                    }
                 }
             }
             return employees;
@@ -75,9 +83,9 @@ namespace HiringCompanyService.Access
 
             using (var access = new AccessDB())
             {
-                foreach(var em in access.Actions)
+                foreach (var em in access.Actions)
                 {
-                    if(em.Username.ToString().Equals(username) && em.Password.ToString().Equals(password))
+                    if (em.Username.ToString().Equals(username) && em.Password.ToString().Equals(password))
                     {
                         employee = em;
                         break;
@@ -96,7 +104,9 @@ namespace HiringCompanyService.Access
                 int i = access.SaveChanges();
 
                 if (i > 0)
+                {
                     return true;
+                }
                 return false;
             }
 

@@ -15,8 +15,8 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private SignInCommand signInCommandUnderTest;
-        private string Username = "Naci";
-        private PasswordBox Password = new PasswordBox();
+        private string username = "Naci";
+        private PasswordBox password = new PasswordBox();
         
      
         private bool isCalled = false;
@@ -70,8 +70,8 @@ namespace HiringCompanyClientTest.Command
         public void ExecuteTest()
         {
             isCalled = false;
-            Password.Password = "Dule";
-            Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object[] { Username, Password}); });
+            password.Password = "Dule";
+            Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object[] { username, password }); });
 
             Assert.IsTrue(isCalled);
         }

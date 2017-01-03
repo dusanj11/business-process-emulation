@@ -16,13 +16,8 @@ namespace Client.Command
         /// <summary>
         ///     WCF binding and address for communication with service
         /// </summary>
-        NetTcpBinding binding = new NetTcpBinding();
-        string address = "net.tcp://localhost:9090/HiringCompanyService";
-
-        /// <summary>
-        ///     Employee table view    
-        /// </summary>
-        public View.AddEmployeeView addEmployeeView;
+        private NetTcpBinding binding = new NetTcpBinding();
+        private string address = "net.tcp://localhost:9090/HiringCompanyService";
 
         public bool CanExecute(object parameter)
         {
@@ -31,29 +26,11 @@ namespace Client.Command
 
         public event EventHandler CanExecuteChanged;
 
+        //DA LI OVO TREBA OVDE UOPSTE TREBA DEO SA PROKSIJEM
         public void Execute(object parameter)
         {
-            //MessageBox.Show("U izradi dodavanje zaposlenog");
-            using (ClientProxy proxy = new ClientProxy(binding, address)) //DA LI OVO TREBA OVDE UOPSTE
+            using (ClientProxy proxy = new ClientProxy(binding, address)) 
             {
-               
-
-                //object[] parameters = parameter as object[];
-                //addEmployeeView = new View.AddEmployeeView();
-
-                //DockPanel docPanelClientDialog = parameters[0] as DockPanel;
-
-                //try
-                //{
-                //    docPanelClientDialog.Children.RemoveAt(0);
-                //}
-                //catch(Exception e)
-                //{
-                //    Console.WriteLine("Error {0}", e.Message);
-                //}
-
-                //docPanelClientDialog.Children.Add(addEmployeeView);
-
                 ClientDialogViewModel.Instance.ShowAddEmployeeView();
             }
         }

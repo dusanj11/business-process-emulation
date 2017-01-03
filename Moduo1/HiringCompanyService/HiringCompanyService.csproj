@@ -83,6 +83,7 @@
     </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
