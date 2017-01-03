@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Windows;
-using System.Windows.Input;
+﻿using Client.ViewModel;
+using System;
 using System.ServiceModel;
-using System.Windows.Controls;
-using Client.ViewModel;
+using System.Windows.Input;
 
 namespace Client.Command
 {
@@ -16,11 +10,12 @@ namespace Client.Command
         /// <summary>
         ///     WCF binding and address for communication with service
         /// </summary>
-        NetTcpBinding binding = new NetTcpBinding();
-        string address = "net.tcp://localhost:9090/HiringCompanyService";
+        private NetTcpBinding binding = new NetTcpBinding();
+
+        private string address = "net.tcp://localhost:9090/HiringCompanyService";
 
         /// <summary>
-        ///     Employee table view    
+        ///     Employee table view
         /// </summary>
         public View.AddEmployeeView addEmployeeView;
 
@@ -33,29 +28,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            //MessageBox.Show("U izradi dodavanje zaposlenog");
-            using (ClientProxy proxy = new ClientProxy(binding, address)) //DA LI OVO TREBA OVDE UOPSTE
-            {
-               
-
-                //object[] parameters = parameter as object[];
-                //addEmployeeView = new View.AddEmployeeView();
-
-                //DockPanel docPanelClientDialog = parameters[0] as DockPanel;
-
-                //try
-                //{
-                //    docPanelClientDialog.Children.RemoveAt(0);
-                //}
-                //catch(Exception e)
-                //{
-                //    Console.WriteLine("Error {0}", e.Message);
-                //}
-
-                //docPanelClientDialog.Children.Add(addEmployeeView);
-
-                ClientDialogViewModel.Instance.ShowAddEmployeeView();
-            }
+            ClientDialogViewModel.Instance.ShowAddEmployeeView();
         }
     }
 }
