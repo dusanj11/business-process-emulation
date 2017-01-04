@@ -94,43 +94,60 @@ namespace HiringCompanyServiceTest
         public void GetAllEmployeesTest()
         {
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetAllEmployees(); });
-
-            Assert.IsTrue(isCalled);
         }
-
 
         [Test]
         public void AddEmployeeTest()
         {
+            isCalled = false;
+
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddEmployee(employeeTest); });
 
             Assert.IsTrue(isCalled);
         }
 
         [Test]
+        public void AddEmployeeNullParameterTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddEmployee(null); });
+        }
+
+        [Test]
         public void GetEmployeeTest()
         {
+            isCalled = false;
+
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetEmployee(UsernameTest, PasswordTest); });
 
             Assert.IsTrue(isCalled);
         }
 
         [Test]
+        public void GetEmployeeNullParametersTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetEmployee(null, null); });
+        }
+
+        [Test]
         public void ChangeEmployeePositionTest()
         {
+            isCalled = false;
+
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(UsernameTest, Employee.PositionEnum.HR); });
 
             Assert.IsTrue(isCalled);
         }
 
-
+        /// <summary>
+        /// null paramtere set only for username
+        /// </summary>
         [Test]
-        public void GetDuleTest()
+        public void ChangeEmployeePositionNullParametersTest()
         {
-            Employee employee = hirignCompanyServiceUnderTest.GetEmployee("Dule", "Dulisa");
-
-            Assert.AreEqual(employeeTest, employee);
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(null, Employee.PositionEnum.CEO); });
         }
+
+   
 
         #endregion test
     }
