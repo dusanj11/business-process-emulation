@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    public class SendRequestCompanyCommand : ICommand
+    public class SaveNewPasswordCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

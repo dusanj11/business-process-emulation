@@ -17,22 +17,20 @@
         <Label Name="chosePartnCompanyLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir partnerske kompanije:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="chosePartnCompanyTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <!--PROVERI ZA COMBOBOX BAJNDING-->
+            <ComboBox Name="chosePartnCompanyTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=PartnerCompany}">
             </ComboBox>
         </Grid>
         <Label Name="choseProjLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir projekta:
         </Label>
-        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="choseProjTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="3" Grid.Column="0">
+            <!--PROVERITI ZA COMBOBOX-->
+            <ComboBox Name="choseProjTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Project}">
             </ComboBox>
         </Grid>
-        <Button Name="sendProjReqBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+        <Button Name="sendProjReqBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding SendRequestProjectCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">

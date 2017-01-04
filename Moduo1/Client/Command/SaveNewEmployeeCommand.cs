@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    public class SendRequestCompanyCommand : ICommand
+    public class SaveNewEmployeeCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

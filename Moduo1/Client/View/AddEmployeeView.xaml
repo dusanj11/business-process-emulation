@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:model="clr-namespace:Client.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="700">
+
     <Grid Width="Auto" Height="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,46 +28,37 @@
         <Label Name="nameLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Ime:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding NewEmployee}">
+            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Name}">
             </TextBox>
         </Grid>
         <Label Name="surnameLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Prezime:
         </Label>
-        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding NewEmployee}">
+            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Surname}">
             </TextBox>
         </Grid>
         <Label Name="usernameLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Korisničko ime:
         </Label>
-        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding NewEmployee}">
             <TextBox Name="usernameTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
             </TextBox>
         </Grid>
         <Label Name="passwordLb" Grid.Row="6" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Šifra:
         </Label>
-        <Grid Grid.Row="7" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="passwordTxt" Grid.Row="7" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="7" Grid.Column="0"  DataContext="{Binding NewEmployee}">
+            <TextBox Name="passwordTxt" Grid.Row="7" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Password}">
             </TextBox>
         </Grid>
         <Label Name="startTimeLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
             Početak radnog vremena u:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding NewEmployee}">
+            <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
             <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
                 <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.30</ComboBoxItem>
@@ -80,8 +73,9 @@
         <Label Name="endTimeLb" Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
             Završetak radnog vremena u:
         </Label>
-        <Grid Grid.Row="2" Grid.Column="1"  DataContext="{Binding LogInUser}" Margin="19,32,-19,0" Grid.RowSpan="2"><!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False" Style="{StaticResource StyleComboBox}"><!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="2" Grid.Column="1"  DataContext="{Binding NewEmployee}" Margin="19,32,-19,0" Grid.RowSpan="2">
+            <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
+            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False" Style="{StaticResource StyleComboBox}">
                 <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.30</ComboBoxItem>
@@ -96,17 +90,16 @@
         <Label Name="positionLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
             Pozicija:
         </Label>
-        <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding NewEmployee}">
+            <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
             <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>
                 <ComboBoxItem FontSize="14">CEO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>
             </ComboBox>
         </Grid>
-        <Button Name="saveEmployeeBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+        <Button Name="saveEmployeeBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding SaveNewEmployeeCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">

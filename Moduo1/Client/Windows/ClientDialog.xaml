@@ -2,12 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:Client.View"
+        xmlns:model="clr-namespace:Client.ViewModel"
         xmlns:cloner="clr-namespace:Client.PassingConverter"
         Title="Personal space" Height="450" Width="1000" Background="DimGray" WindowStartupLocation="CenterScreen" Name="clientD">
     <Window.Resources>
         <cloner:PassingArguments x:Key="argumentsCloner"/>
     </Window.Resources>
-    
+    <Window.DataContext>
+        <Binding Source="{x:Static model:ClientDialogViewModel.Instance}"/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Client.Command
 {
-    public class SendRequestCompanyCommand : ICommand
+    public class SaveWorkingHoursCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

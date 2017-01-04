@@ -19,31 +19,25 @@
         <Label Name="nameLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Ime:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <TextBox Name="nameTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Name}">
             </TextBox>
         </Grid>
         <Label Name="surnameLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Prezime:
         </Label>
         <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+            <TextBox Name="surnameTxt" Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Surname}">
             </TextBox>
         </Grid>
         <Label Name="usernameLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Korisničko ime:
         </Label>
         <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
             <TextBox Name="usernameTxt" Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
             </TextBox>
         </Grid>
-        <Button Name="saveEditDataBtn" Grid.Row="7" Style="{StaticResource StyleButton}"  Margin="50,35,50,-29" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+        <Button Name="saveEditDataBtn" Grid.Row="7" Style="{StaticResource StyleButton}"  Margin="50,35,50,-29" Command="{Binding SavePersonalDataCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">

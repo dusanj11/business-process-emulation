@@ -23,40 +23,34 @@
         <Label Name="nameProjLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Ime:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="nameProjTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding NewProjectDefinition}">
+            <TextBox Name="nameProjTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Name}">
             </TextBox>
         </Grid>
         <Label Name="startDateProjLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Početak projekta:
         </Label>
-        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="startDateProjTxt" Grid.Row="3" Grid.Column="0"  Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding NewProjectDefinition}">
+            <!--POGLEDAJ KAKO BAJNDOVATI DATE PICKER-->
+            <DatePicker Name="startDateProjTxt" Grid.Row="3" Grid.Column="0"  Text="{Binding Path=StartDate}">
             </DatePicker>
         </Grid>
         <Label Name="endDateProjLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Krajnji rok projekta:
         </Label>
-        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="endDateProjTxt" Grid.Row="5" Grid.Column="0" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding NewProjectDefinition}">
+            <!--POGLEDAJ KAKO BAJNDOVATI DATE PICKER-->
+            <DatePicker Name="endDateProjTxt" Grid.Row="5" Grid.Column="0" Text="{Binding Path=EndDate}">
             </DatePicker>
         </Grid>
         <Label Name="descriptProjLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="10,0,-8,1">
             Kratak opis projekta:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="descriptProjTxt" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}" Margin="14,0,-15,-111" Height="Auto" TextWrapping="WrapWithOverflow" Width="Auto">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding NewProjectDefinition}">
+            <TextBox Name="descriptProjTxt" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Description}" Margin="14,0,-15,-111" Height="Auto" TextWrapping="WrapWithOverflow" Width="Auto">
             </TextBox>
         </Grid>
-        <Button Name="saveProjBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="14,24,-15,-19" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+        <Button Name="saveProjBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="14,24,-15,-19" Command="{Binding SaveNewProjectDefinition}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">

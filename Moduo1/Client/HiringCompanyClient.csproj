@@ -114,12 +114,28 @@
     <Compile Include="Command\CreateProjectCommand.cs" />
     <Compile Include="Command\DefineUserStoriesCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
+    <Compile Include="Command\SaveNewEmployeeCommand.cs" />
+    <Compile Include="Command\SaveNewPasswordCommand.cs" />
+    <Compile Include="Command\SaveNewProjectDefinition.cs" />
+    <Compile Include="Command\SavePersonalDataCommand.cs" />
+    <Compile Include="Command\SaveWorkingHoursCommand.cs" />
+    <Compile Include="Command\SendRequestCompanyCommand.cs" />
     <Compile Include="Command\SendRequestProjectCommand.cs" />
+    <Compile Include="Command\SendRequestProjectViewCommand.cs" />
     <Compile Include="Command\ShowCompaniesCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Model\LogInUser.cs" />
+    <Compile Include="Model\NewEmployee.cs" />
+    <Compile Include="Model\NewProjectDefinition.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
+    <Compile Include="ViewModel\AddNewEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
+    <Compile Include="ViewModel\CreateProjectViewModel.cs" />
+    <Compile Include="ViewModel\EditPersonalDataViewModel.cs" />
+    <Compile Include="ViewModel\SendRequestCompanyViewModel.cs" />
+    <Compile Include="ViewModel\SendRequestProjectViewModel.cs" />
+    <Compile Include="ViewModel\WorkingHoursViewModel.cs" />
     <Compile Include="View\AddEmployeeView.xaml.cs">
       <DependentUpon>AddEmployeeView.xaml</DependentUpon>
     </Compile>
@@ -164,7 +180,7 @@
     <Compile Include="Command\AddEmployeeCommand.cs" />
     <Compile Include="Command\ChangePasswordCommand.cs" />
     <Compile Include="Command\EditPersonalDataCommand.cs" />
-    <Compile Include="Command\SendRequestCompanyCommand.cs" />
+    <Compile Include="Command\SendRequestCompanyViewCommand.cs" />
     <Compile Include="Command\ViewProjectsCommand.cs" />
     <Compile Include="Command\ViewWorkersCommand.cs" />
     <Compile Include="Command\WorkingHoursCommand.cs" />
