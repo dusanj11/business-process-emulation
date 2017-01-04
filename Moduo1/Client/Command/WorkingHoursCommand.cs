@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using HiringCompanyContract.Data;
 
 namespace Client.Command
 {
@@ -20,7 +21,9 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+
             ClientDialogViewModel.Instance.ShowWorkingHoursView();
+            
         }
     }
 }

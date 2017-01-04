@@ -129,7 +129,16 @@ namespace HiringCompanyService.Access
         {
             using (var access = new AccessDB())
             {
-                access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword)).Password = newPassword;
+                //access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword)).Password = newPassword;
+
+                Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword));
+                if(em != null)
+                {
+                    em.Password = newPassword;
+                    em.PasswordUpadateDate = DateTime.Now;
+                }
+
+                access.Entry(em).State = System.Data.Entity.EntityState.Modified;
 
                 int i = access.SaveChanges();
 

@@ -18,9 +18,9 @@
         <Label Name="startTimeLb" Grid.Row="0"  Style="{StaticResource StyleLabel}" >
             Početak radnog vremena u:
         </Label>
-        <Grid Grid.Row="1" DataContext="{Binding LogInUser}">
-            <!--PROVERI ZA COMBO BINDING-->
-            <ComboBox Name="stratTimeTxt"  IsEditable="False" Style="{StaticResource StyleComboBox}">
+        <Grid Grid.Row="1" >
+  
+            <ComboBox Name="stratTimeTxt"  IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=StartTime}">
                 <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.30</ComboBoxItem>
@@ -35,9 +35,9 @@
         <Label Name="endTimeLb" Grid.Row="2" Style="{StaticResource StyleLabel}" >
             Završetak radnog vremena u:
         </Label>
-        <Grid Grid.Row="3"   DataContext="{Binding LogInUser}"  Grid.RowSpan="2">
-            <!--PROVERI ZA COMBO BINDING-->
-            <ComboBox Name="endTimeTxt" IsEditable="False" Style="{StaticResource StyleComboBox}">
+        <Grid Grid.Row="3" Grid.RowSpan="2">
+           
+            <ComboBox Name="endTimeTxt" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=EndTime}">
                 <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.30</ComboBoxItem>

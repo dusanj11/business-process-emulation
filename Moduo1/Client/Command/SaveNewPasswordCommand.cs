@@ -26,7 +26,12 @@ namespace Client.Command
 
             using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {
-                proxy.ChangePassword(username, oldPassword, newPassword);
+                bool ret = proxy.ChangePassword(username, oldPassword, newPassword);
+
+                if (ret)
+                {
+                    ClientDialogViewModel.Instance.LogInUser.Password = newPassword;
+                }
             }
         }
     }

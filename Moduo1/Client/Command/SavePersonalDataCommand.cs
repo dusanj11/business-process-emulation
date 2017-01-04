@@ -35,7 +35,13 @@ namespace Client.Command
                 employee.Surname = surname;
                 employee.Username = username;
 
-                proxy.UpdateEmployee(employee);
+                bool ret = proxy.UpdateEmployee(employee);
+
+                if(ret)
+                {
+                    ClientDialogViewModel.Instance.LogInUser.Username = employee.Username;
+                    ClientDialogViewModel.Instance.LogInUser.Password = employee.Password;
+                }
             }
         }
     }
