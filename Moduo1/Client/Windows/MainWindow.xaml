@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cloner="clr-namespace:Client.PassingConverter"
         xmlns:model="clr-namespace:Client.ViewModel"
+        xmlns:ff="clr-namespace:Client.Password"
         Title="Log in" Height="280" Width="400" Background="DimGray"  WindowStartupLocation="CenterScreen" Name="mainWin">
+    
     <Window.Resources>
         <cloner:PassingArguments x:Key="argumentsCloner"/>
     </Window.Resources>
@@ -41,8 +43,11 @@
             Šifra:
         </Label>
         <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <PasswordBox Name="passTxt" Grid.Row="5" Grid.Column="1"  PasswordChar="*" FontSize="14" >
-            </PasswordBox>
+         <!-- Binding Password from PasswordBox on Password property-->
+                <PasswordBox Name="passTxt" Grid.Row="5" Grid.Column="1"  PasswordChar="*" FontSize="14"
+                             ff:PasswordBoxAssistant.BindPassword="true"  ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </PasswordBox>
+      
         </Grid>
         <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}" >
             <Button.CommandParameter>

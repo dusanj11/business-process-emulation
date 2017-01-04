@@ -27,5 +27,10 @@ namespace Client.View
 
             this.DataContext = AddNewEmployeeViewModel.Instance;
         }
+
+        private void positionTxt_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

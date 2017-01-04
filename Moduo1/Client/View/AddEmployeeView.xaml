@@ -58,7 +58,7 @@
         </Label>
         <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding NewEmployee}">
             <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
-            <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
+            <ComboBox Name="stratTimeTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=StartTime}">
                 <ComboBoxItem FontSize="14">8.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">8.30</ComboBoxItem>
@@ -75,7 +75,7 @@
         </Label>
         <Grid Grid.Row="2" Grid.Column="1"  DataContext="{Binding NewEmployee}" Margin="19,32,-19,0" Grid.RowSpan="2">
             <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
-            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False" Style="{StaticResource StyleComboBox}">
+            <ComboBox Name="endTimeTxt" Margin="1,1,0,0" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=EndTime}">
                 <ComboBoxItem FontSize="14">16.00</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.15</ComboBoxItem>
                 <ComboBoxItem FontSize="14">16.30</ComboBoxItem>
@@ -92,7 +92,7 @@
         </Label>
         <Grid Grid.Row="5" Grid.Column="1"  DataContext="{Binding NewEmployee}">
             <!--PRROVERI AKO BAJNDOVATI SELEKTOVAN-->
-            <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}">
+            <ComboBox Name="positionTxt" Margin="19,0,-18,1" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=Position}">
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>
                 <ComboBoxItem FontSize="14">CEO</ComboBoxItem>

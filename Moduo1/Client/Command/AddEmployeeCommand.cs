@@ -7,11 +7,7 @@ namespace Client.Command
 {
     public class AddEmployeeCommand : ICommand
     {
-        /// <summary>
-        ///     WCF binding and address for communication with service
-        /// </summary>
-        private NetTcpBinding binding = new NetTcpBinding();
-        private string address = "net.tcp://localhost:9090/HiringCompanyService";
+        
 
         public bool CanExecute(object parameter)
         {

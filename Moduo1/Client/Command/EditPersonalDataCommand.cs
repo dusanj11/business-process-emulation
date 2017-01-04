@@ -1,11 +1,8 @@
 ﻿using Client.ViewModel;
+using HiringCompanyContract.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using WcfCommon;
 
 namespace Client.Command
 {
@@ -20,6 +17,20 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            string username = ClientDialogViewModel.Instance.LogInUser.Username;
+            string password = ClientDialogViewModel.Instance.LogInUser.Password;
+
+            Employee employeeFromDB;
+
+            using (ClientProxy proxy = new ClientProxy(WcfAttributes.binding, WcfAttributes.address))
+            {
+                employeeFromDB = proxy.GetEmployee(username, password);
+
+                EditPersonalDataViewModel.Instance.Name = employeeFromDB.Name;
+                EditPersonalDataViewModel.Instance.Surname = employeeFromDB.Surname;
+                EditPersonalDataViewModel.Instance.Username = employeeFromDB.Username;
+            }
+
             ClientDialogViewModel.Instance.ShowEditPersonalDataView();
         }
     }

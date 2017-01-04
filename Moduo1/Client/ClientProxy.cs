@@ -49,5 +49,10 @@ namespace Client
         {
             return factory.ChangeEmployeePostition(username, position);
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            return factory.UpdateEmployee(employee);
+        }
     }
 }

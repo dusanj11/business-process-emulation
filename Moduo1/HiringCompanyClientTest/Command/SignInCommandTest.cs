@@ -27,6 +27,8 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
+            password.Password = "Dule";
+
             this.signInCommandUnderTest = new SignInCommand();
             this.signInCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
@@ -66,11 +68,12 @@ namespace HiringCompanyClientTest.Command
             Assert.DoesNotThrow(() => { signInCommandUnderTest.CanExecute(null); });
         }
 
+        //[Ignore("ExecuteTest")]
         [Test]
         public void ExecuteTest()
         {
             isCalled = false;
-            password.Password = "Dule";
+            //password.Password = "Dule";
             Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object[] { username, password }); });
 
             Assert.IsTrue(isCalled);

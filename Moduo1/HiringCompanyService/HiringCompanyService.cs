@@ -38,5 +38,11 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.ChangeEmployeePosition(username, position);
 
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            Console.WriteLine("UpdateEmployee...");
+            return EmployeeDB.Instance.UpdateEmployee(employee);
+        }
     }
 }

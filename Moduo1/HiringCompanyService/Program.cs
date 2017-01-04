@@ -22,27 +22,8 @@ namespace HiringCompanyService
             AppDomain.CurrentDomain.SetData("DataDirectory", path);
             
             // update database
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
-
-            //DB INITIAL INSERT - test
-            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
-            //{
-            //    Username = "Miki",
-            //    Password = "Dule",
-            //    Name = "Dusan",
-            //    Surname = "Jeftic",
-            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.PO.ToString(),
-            //    StartTime = "9",
-            //    EndTime = "17",
-            //    Login = false,
-            //    HiringCompanyId = "HC1",
-            //    PasswordUpadateDate = DateTime.Now
-
-            EmployeeDB.Instance.ChangeEmployeePassword("Dule", "Dukica", "Dulisa");
-
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());        
             
-
-
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";
 

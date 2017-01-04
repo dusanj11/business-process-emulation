@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyContract.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -23,5 +24,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool ChangeEmployeePostition(string username, Data.Employee.PositionEnum position);
+
+        [OperationContract]
+        bool UpdateEmployee(Employee employee);
     }
 }

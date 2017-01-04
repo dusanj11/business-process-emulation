@@ -139,5 +139,23 @@ namespace HiringCompanyService.Access
                 return false;
             }
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            using (var access = new AccessDB())
+            {
+                //access.Actions.Attach(employee);
+
+                access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
+
+                int i = access.SaveChanges();
+
+                if(i>0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

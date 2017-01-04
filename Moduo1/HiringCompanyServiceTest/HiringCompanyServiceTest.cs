@@ -16,20 +16,20 @@ namespace HiringCompanyServiceTest
     public class HiringCompanyServiceTest
     {
         #region Declaration
-        public HiringCompanyService.HiringCompanyService hirignCompanyServiceUnderTest;
-        public bool isCalled = false;
-        public Employee employeeTest;
-        public string UsernameTest = "Dule";
-        public string PasswordTest = "Dukica";
+        private HiringCompanyService.HiringCompanyService HirignCompanyServiceUnderTest;
+        private bool IsCalled = false;
+        private Employee EmployeeTest;
+        private string UsernameTest = "Dule";
+        private string PasswordTest = "Dukica";
         #endregion Declaration
 
         #region setup
         [OneTimeSetUp]
         public void SetupTest()
         {
-            hirignCompanyServiceUnderTest = new HiringCompanyService.HiringCompanyService();
+            HirignCompanyServiceUnderTest = new HiringCompanyService.HiringCompanyService();
 
-            employeeTest = new Employee
+            EmployeeTest = new Employee
             {
                 Username = "Dule",
                 Password = "Dulisa",
@@ -54,7 +54,7 @@ namespace HiringCompanyServiceTest
                 .WhenForAnyArgs(p => p.AddEmployee(null))
                 .Do(p =>
                 {
-                    isCalled = true;
+                    IsCalled = true;
                 });
 
             EmployeeDB.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee());
@@ -63,13 +63,13 @@ namespace HiringCompanyServiceTest
                 .WhenForAnyArgs(p => p.GetEmployee(null, null))
                 .Do(p =>
                 {
-                    isCalled = true;
+                    IsCalled = true;
                 });
 
             //EmployeeDB.Instance.ChangeEmployeePosition(null, ).ReturnsForAnyArgs(true);
 
             //EmployeeDB.Instance
-            //    .WhenForAnyArgs(p => p.ChangeEmployeePosition(null, null))
+            //    .When(p => p.ChangeEmployeePosition())
             //    .Do(p =>
             //    {
             //        isCalled = true;
@@ -81,7 +81,7 @@ namespace HiringCompanyServiceTest
                 .When(p => p.GetEmployees())
                 .Do(p =>
                 {
-                    isCalled = true;
+                    IsCalled = true;
                 });
             
         }
@@ -93,49 +93,49 @@ namespace HiringCompanyServiceTest
         [Test]
         public void GetAllEmployeesTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetAllEmployees(); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.GetAllEmployees(); });
         }
 
         [Test]
         public void AddEmployeeTest()
         {
-            isCalled = false;
+            IsCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddEmployee(employeeTest); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.AddEmployee(EmployeeTest); });
 
-            Assert.IsTrue(isCalled);
+            Assert.IsTrue(IsCalled);
         }
 
         [Test]
         public void AddEmployeeNullParameterTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddEmployee(null); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.AddEmployee(null); });
         }
 
         [Test]
         public void GetEmployeeTest()
         {
-            isCalled = false;
+            IsCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetEmployee(UsernameTest, PasswordTest); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.GetEmployee(UsernameTest, PasswordTest); });
 
-            Assert.IsTrue(isCalled);
+            Assert.IsTrue(IsCalled);
         }
 
         [Test]
         public void GetEmployeeNullParametersTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetEmployee(null, null); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.GetEmployee(null, null); });
         }
 
         [Test]
         public void ChangeEmployeePositionTest()
         {
-            isCalled = false;
+            IsCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(UsernameTest, Employee.PositionEnum.HR); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(UsernameTest, Employee.PositionEnum.HR); });
 
-            Assert.IsTrue(isCalled);
+            Assert.IsTrue(IsCalled);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace HiringCompanyServiceTest
         [Test]
         public void ChangeEmployeePositionNullParametersTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(null, Employee.PositionEnum.CEO); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(null, Employee.PositionEnum.CEO); });
         }
 
    
