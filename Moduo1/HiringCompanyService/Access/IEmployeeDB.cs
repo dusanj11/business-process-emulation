@@ -16,5 +16,7 @@ namespace HiringCompanyService.Access
         Employee GetEmployee(string username, string password);
 
         bool ChangeEmployeePosition(string username, Employee.PositionEnum position);
+
+        bool ChangeEmployeePassword(string username, string oldPassword, string newPassword);
     }
 }
