@@ -21,6 +21,8 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            WorkingHoursViewModel.Instance.StartTime = string.Empty;
+            WorkingHoursViewModel.Instance.EndTime = string.Empty;
 
             ClientDialogViewModel.Instance.ShowWorkingHoursView();
             

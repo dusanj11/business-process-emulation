@@ -20,6 +20,9 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            ChangePasswordViewModel.Instance.OldPassword = string.Empty;
+            ChangePasswordViewModel.Instance.NewPassword = string.Empty;
+
             ClientDialogViewModel.Instance.ShowChangePasswordView();
         }
     }

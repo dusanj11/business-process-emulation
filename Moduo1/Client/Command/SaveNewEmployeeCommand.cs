@@ -43,7 +43,9 @@ namespace Client.Command
 
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
-                proxy.AddEmployee(employee);
+                bool ret = proxy.AddEmployee(employee);
+
+              
             }
         }
     }

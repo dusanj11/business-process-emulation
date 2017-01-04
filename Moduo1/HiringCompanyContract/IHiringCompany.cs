@@ -30,5 +30,11 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool ChangePassword(string username, string oldPassword, string newPassword);
+
+        [OperationContract]
+        bool EmployeeLogIn(string username);
+
+        [OperationContract]
+        bool EmployeeLogOut(string username);
     }
 }

@@ -59,5 +59,15 @@ namespace Client
         {
             return factory.ChangePassword(username, oldPassword, newPassword);
         }
+
+        public bool EmployeeLogIn(string username)
+        {
+            return factory.EmployeeLogIn(username);
+        }
+
+        public bool EmployeeLogOut(string username)
+        {
+            return factory.EmployeeLogOut(username);
+        }
     }
 }

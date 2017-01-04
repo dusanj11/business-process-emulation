@@ -21,7 +21,9 @@ namespace HiringCompanyService.Access
 
         bool UpdateEmployee(Employee employee);
 
-       
+        bool EmployeeLogIn(string username);
+
+        bool EmployeeLogOut(string username);
 
     }
 }

@@ -35,54 +35,56 @@ namespace Client.Command
 
                 using (ClientProxy proxy = new ClientProxy(binding, address))
                 {
-
                     Employee outValue = proxy.GetEmployee(parameters[0].ToString().Trim(), ((PasswordBox)parameters[1]).Password.ToString().Trim());
-                 
+
                     if (outValue != null)
-                        {
+                    {
+
+                        proxy.EmployeeLogIn(parameters[0].ToString().Trim());
+
                         if (outValue.Position.ToString().Equals("PO"))
-                            {
-                                //((Window)parameters[2]).Hide();
-                                Application.Current.MainWindow.Hide();
-                                ClientDialog cd = new ClientDialog();
-                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
-                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                                cd.Show();
-                            }
+                        {
+                            //((Window)parameters[2]).Hide();
+                            Application.Current.MainWindow.Hide();
+                            ClientDialog cd = new ClientDialog();
+                            cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                            cd.Show();
+                        }
                         else if (outValue.Position.ToString().Equals("HR"))
-                            {
-                                //((Window)parameters[2]).Hide();
-                                Application.Current.MainWindow.Hide();
-                                ClientDialog cd = new ClientDialog();
-                                cd.showProjBtn.Visibility = Visibility.Collapsed;
-                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                                cd.defUSBtn.Visibility = Visibility.Collapsed;
-                                cd.createProjBtn.Visibility = Visibility.Collapsed;
-                                cd.Show();
-                            }
-                            else if (outValue.Position.ToString().Equals("CEO"))
-                            {
-                                //((Window)parameters[2]).Hide();
-                                Application.Current.MainWindow.Hide();
-                                ClientDialog cd = new ClientDialog();
-                                cd.defUSBtn.Visibility = Visibility.Collapsed;
-                                cd.createProjBtn.Visibility = Visibility.Collapsed;
-                                cd.Show();
-                            }
-                            else if (outValue.Position.ToString().Equals("SM"))
-                            {
-                                //((Window)parameters[2]).Hide();
-                                Application.Current.MainWindow.Hide();
-                                ClientDialog cd = new ClientDialog();
-                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
-                                cd.defUSBtn.Visibility = Visibility.Collapsed;
-                                cd.createProjBtn.Visibility = Visibility.Collapsed;
-                                cd.Show();
-                            }
+                        {
+                            //((Window)parameters[2]).Hide();
+                            Application.Current.MainWindow.Hide();
+                            ClientDialog cd = new ClientDialog();
+                            cd.showProjBtn.Visibility = Visibility.Collapsed;
+                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                            cd.defUSBtn.Visibility = Visibility.Collapsed;
+                            cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.Show();
+                        }
+                        else if (outValue.Position.ToString().Equals("CEO"))
+                        {
+                            //((Window)parameters[2]).Hide();
+                            Application.Current.MainWindow.Hide();
+                            ClientDialog cd = new ClientDialog();
+                            cd.defUSBtn.Visibility = Visibility.Collapsed;
+                            cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.Show();
+                        }
+                        else if (outValue.Position.ToString().Equals("SM"))
+                        {
+                            //((Window)parameters[2]).Hide();
+                            Application.Current.MainWindow.Hide();
+                            ClientDialog cd = new ClientDialog();
+                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                            cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                            cd.defUSBtn.Visibility = Visibility.Collapsed;
+                            cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.Show();
+                        }
                         else
                         {
                             ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";

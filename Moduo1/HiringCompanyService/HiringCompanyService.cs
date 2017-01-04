@@ -50,5 +50,17 @@ namespace HiringCompanyService
             Console.WriteLine("ChangePassword...");
             return EmployeeDB.Instance.ChangeEmployeePassword(username, oldPassword, newPassword);
         }
+
+        public bool EmployeeLogIn(string username)
+        {
+            Console.WriteLine("EmployeeLogIn...");
+            return EmployeeDB.Instance.EmployeeLogIn(username);
+        }
+
+        public bool EmployeeLogOut(string username)
+        {
+            Console.WriteLine("EmployeeLogOut...");
+            return EmployeeDB.Instance.EmployeeLogOut(username);
+        }
     }
 }

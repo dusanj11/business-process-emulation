@@ -168,6 +168,36 @@ namespace HiringCompanyService.Access
             }
         }
 
-        
+        public bool EmployeeLogIn(string username)
+        {
+            using (var access = new AccessDB())
+            {
+                access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = true;
+
+                int i = access.SaveChanges();
+
+                if (i > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool EmployeeLogOut(string username)
+        {
+            using (var access = new AccessDB())
+            {
+                access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = false;
+
+                int i = access.SaveChanges();
+
+                if (i > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
