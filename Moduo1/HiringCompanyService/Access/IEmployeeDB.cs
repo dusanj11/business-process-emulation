@@ -20,5 +20,6 @@ namespace HiringCompanyService.Access
         bool ChangeEmployeePassword(string username, string oldPassword, string newPassword);
 
         bool UpdateEmployee(Employee employee);
+
     }
 }

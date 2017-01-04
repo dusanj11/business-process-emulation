@@ -1,6 +1,7 @@
 ﻿using HiringCompanyContract.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace HiringCompanyService.Access
 {
@@ -157,5 +158,7 @@ namespace HiringCompanyService.Access
                 return false;
             }
         }
+
+        
     }
 }

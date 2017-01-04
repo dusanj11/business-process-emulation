@@ -54,5 +54,10 @@ namespace Client
         {
             return factory.UpdateEmployee(employee);
         }
+
+        public bool ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            return factory.ChangePassword(username, oldPassword, newPassword);
+        }
     }
 }
