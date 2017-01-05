@@ -21,7 +21,7 @@ namespace Client.Command
             
             using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {
-                string threadId = Thread.CurrentThread.ManagedThreadId.ToString();
+                int threadId = Thread.CurrentThread.ManagedThreadId;
                 HiringCompanyContract.Data.HiringCompany company = new HiringCompanyContract.Data.HiringCompany();
                 company.Name = "HC";
                 company.Ceo = "Marko Jelaca";

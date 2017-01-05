@@ -55,8 +55,8 @@ namespace Client.Behaviors
                 return;
             }
 
-            bool wasBound = (bool)(e.OldValue);
-            bool needToBind = (bool)(e.NewValue);
+            bool wasBound = (bool)e.OldValue;
+            bool needToBind = (bool)e.NewValue;
 
             if (wasBound)
             {

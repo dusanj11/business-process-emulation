@@ -52,7 +52,11 @@ namespace HiringCompanyService.Access
         {
             using (AccessDB access = new AccessDB())
             {
+                ///In order to avoid the duplication you must attach the related entity to the context 
+                access.HcActions.Attach(action.HiringCompanyId);
+
                 access.Actions.Add(action);
+                
                 int i = access.SaveChanges();
 
                 if (i > 0)
@@ -134,7 +138,7 @@ namespace HiringCompanyService.Access
                 //access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword)).Password = newPassword;
 
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword));
-                if(em != null)
+                if (em != null)
                 {
                     em.Password = newPassword;
                     em.PasswordUpadateDate = DateTime.Now;
@@ -162,7 +166,7 @@ namespace HiringCompanyService.Access
 
                 int i = access.SaveChanges();
 
-                if(i>0)
+                if (i > 0)
                 {
                     return true;
                 }

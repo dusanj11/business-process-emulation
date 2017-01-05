@@ -12,8 +12,7 @@ namespace WcfCommon
         /// <summary>
         ///     WCF binding and address for communication with service
         /// </summary>
-        public static  NetTcpBinding binding = new NetTcpBinding();
-        public static  string address = "net.tcp://localhost:9090/HiringCompanyService";
-
+        public static NetTcpBinding binding = new NetTcpBinding();
+        public static string address = "net.tcp://localhost:9090/HiringCompanyService";
     }
 }

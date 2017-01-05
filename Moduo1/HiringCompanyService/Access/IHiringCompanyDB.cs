@@ -11,6 +11,6 @@ namespace HiringCompanyService.Access
     {
         bool AddCompany(HiringCompany company);
 
-        HiringCompany GetCompany(string id);
+        HiringCompany GetCompany(int id);
     }
 }

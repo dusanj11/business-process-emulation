@@ -45,7 +45,7 @@ namespace Client.Command
                 employee.Position = newEmp.Position;
                 employee.PasswordUpadateDate = DateTime.Now;
 
-                employee.HiringCompanyId = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId.ToString());
+                employee.HiringCompanyId = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
 
                 bool ret = proxy.AddEmployee(employee);
 

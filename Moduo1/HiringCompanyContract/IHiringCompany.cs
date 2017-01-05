@@ -41,6 +41,6 @@ namespace HiringCompanyContract
         bool AddHiringCompany(HiringCompany company);
 
         [OperationContract]
-        HiringCompany GetHiringCompany(string id);
+        HiringCompany GetHiringCompany(int id);
     }
 }

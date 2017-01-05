@@ -75,7 +75,7 @@ namespace Client
             return factory.AddHiringCompany(company);
         }
 
-        public HiringCompany GetHiringCompany(string id)
+        public HiringCompany GetHiringCompany(int id)
         {
             return factory.GetHiringCompany(id);
         }

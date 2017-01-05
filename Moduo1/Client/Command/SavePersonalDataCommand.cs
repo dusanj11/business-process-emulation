@@ -37,7 +37,7 @@ namespace Client.Command
 
                 bool ret = proxy.UpdateEmployee(employee);
 
-                if(ret)
+                if (ret)  
                 {
                     ClientDialogViewModel.Instance.LogInUser.Username = employee.Username;
                     ClientDialogViewModel.Instance.LogInUser.Password = employee.Password;

@@ -52,11 +52,11 @@ namespace HiringCompanyService.Access
             }
         }
 
-        public HiringCompany GetCompany(string id)
+        public HiringCompany GetCompany(int id)
         {
             using (var acces = new AccessDB())
             {
-                HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.CompanyIdThr.Equals(id));
+                HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.CompanyIdThr == id);
 
                 return cm;
             }

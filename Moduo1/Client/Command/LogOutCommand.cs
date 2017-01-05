@@ -23,7 +23,9 @@ namespace Client.Command
             string username = ClientDialogViewModel.Instance.LogInUser.Username;
 
             if (username.Equals("") || username.Equals(null))
+            {
                 return;
+            }
 
             using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {

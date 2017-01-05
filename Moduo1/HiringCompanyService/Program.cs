@@ -4,7 +4,7 @@ using HiringCompanyContract;
 using System.ServiceModel.Description;
 using System.Data.Entity;
 using HiringCompanyService.Access;
-
+using System.Threading;
 
 namespace HiringCompanyService
 {
@@ -22,8 +22,23 @@ namespace HiringCompanyService
             AppDomain.CurrentDomain.SetData("DataDirectory", path);
             
             // update database
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());        
-            
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
+
+            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
+            //{
+            //    Name = "Marko",
+            //    Surname = "Jelaca",
+            //    Username = "maki",
+            //    Password = "maki",
+            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.CEO.ToString(),
+            //    StartTime = "10.00",
+            //    EndTime = "17.00",
+            //    Login = false,
+            //    PasswordUpadateDate = DateTime.Now,
+            //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
+
+            //});
+
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9090/HiringCompanyService";
 

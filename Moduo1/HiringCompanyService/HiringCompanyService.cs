@@ -69,7 +69,7 @@ namespace HiringCompanyService
             return HiringCompanyDB.Instance.AddCompany(company);
         }
 
-        public HiringCompany GetHiringCompany(string id)
+        public HiringCompany GetHiringCompany(int id)
         {
             Console.WriteLine("GetHiringCompany...");
             return HiringCompanyDB.Instance.GetCompany(id);
