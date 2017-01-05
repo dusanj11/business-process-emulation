@@ -45,7 +45,7 @@ namespace Client.Command
                         if (outValue.Position.ToString().Equals("PO"))
                         {
                             //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Close();
+                            Application.Current.MainWindow.Hide();
                             ClientDialog cd = new ClientDialog();
                             cd.addEmployBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
@@ -55,7 +55,7 @@ namespace Client.Command
                         else if (outValue.Position.ToString().Equals("HR"))
                         {
                             //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Close();
+                            Application.Current.MainWindow.Hide();
                             ClientDialog cd = new ClientDialog();
                             cd.showProjBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
@@ -67,7 +67,7 @@ namespace Client.Command
                         else if (outValue.Position.ToString().Equals("CEO"))
                         {
                             //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Close();
+                            Application.Current.MainWindow.Hide();
                             ClientDialog cd = new ClientDialog();
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
@@ -76,7 +76,7 @@ namespace Client.Command
                         else if (outValue.Position.ToString().Equals("SM"))
                         {
                             //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Close();
+                            Application.Current.MainWindow.Hide();
                             ClientDialog cd = new ClientDialog();
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
