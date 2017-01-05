@@ -28,7 +28,7 @@ namespace Client.Command
 
                 ClientDialogViewModel.Instance.LogInUser.Username = "";
                 ClientDialogViewModel.Instance.LogInUser.Password = "";
-
+                Application.Current.Windows[1].Close();
                 Application.Current.MainWindow.Show();
               
             }
