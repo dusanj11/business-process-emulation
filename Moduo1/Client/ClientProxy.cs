@@ -69,5 +69,15 @@ namespace Client
         {
             return factory.EmployeeLogOut(username);
         }
+
+        public bool AddHiringCompany(HiringCompany company)
+        {
+            return factory.AddHiringCompany(company);
+        }
+
+        public HiringCompany GetHiringCompany(string id)
+        {
+            return factory.GetHiringCompany(id);
+        }
     }
 }

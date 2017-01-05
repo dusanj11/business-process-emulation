@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Employee.cs" />
+    <Compile Include="Data\HiringCompany.cs" />
     <Compile Include="IHiringCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

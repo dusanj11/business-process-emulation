@@ -62,5 +62,17 @@ namespace HiringCompanyService
             Console.WriteLine("EmployeeLogOut...");
             return EmployeeDB.Instance.EmployeeLogOut(username);
         }
+
+        public bool AddHiringCompany(HiringCompany company)
+        {
+            Console.WriteLine("AddHiringCompany...");
+            return HiringCompanyDB.Instance.AddCompany(company);
+        }
+
+        public HiringCompany GetHiringCompany(string id)
+        {
+            Console.WriteLine("GetHiringCompany...");
+            return HiringCompanyDB.Instance.GetCompany(id);
+        }
     }
 }

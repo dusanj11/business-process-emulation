@@ -92,7 +92,9 @@
     <Compile Include="Access\AccessDB.cs" />
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\EmployeeDB.cs" />
+    <Compile Include="Access\HiringCompanyDB.cs" />
     <Compile Include="Access\IEmployeeDB.cs" />
+    <Compile Include="Access\IHiringCompanyDB.cs" />
     <Compile Include="HiringCompanyService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 using Client.ViewModel;
 using HiringCompanyContract.Data;
@@ -29,20 +29,24 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee;
-
-            Employee employee = new Employee();
-            employee.Username = newEmp.Username;
-            employee.Password = newEmp.Password;
-            employee.Name = newEmp.Name;
-            employee.Surname = newEmp.Surname;
-            employee.StartTime = newEmp.StartTime;
-            employee.EndTime = newEmp.EndTime;
-            employee.Position = newEmp.Position;
-            employee.PasswordUpadateDate = DateTime.Now;
 
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
+
+                NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee;
+
+                Employee employee = new Employee();
+                employee.Username = newEmp.Username;
+                employee.Password = newEmp.Password;
+                employee.Name = newEmp.Name;
+                employee.Surname = newEmp.Surname;
+                employee.StartTime = newEmp.StartTime;
+                employee.EndTime = newEmp.EndTime;
+                employee.Position = newEmp.Position;
+                employee.PasswordUpadateDate = DateTime.Now;
+
+                employee.HiringCompanyId = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId.ToString());
+
                 bool ret = proxy.AddEmployee(employee);
 
               

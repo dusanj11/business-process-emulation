@@ -21,7 +21,7 @@ namespace HiringCompanyContract.Data
         private String startTime;
         private String endTime;
         private bool login;
-        private String hiringCompanyId;
+        private HiringCompany hiringCompanyId;
         private DateTime passwordUpadateDate;
 
         [Key]
@@ -132,18 +132,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
-        public string HiringCompanyId
-        {
-            get
-            {
-                return hiringCompanyId;
-            }
-
-            set
-            {
-                hiringCompanyId = value;
-            }
-        }
+        
 
         public DateTime PasswordUpadateDate
         {
@@ -155,6 +144,19 @@ namespace HiringCompanyContract.Data
             set
             {
                 passwordUpadateDate = value;
+            }
+        }
+
+        public HiringCompany HiringCompanyId
+        {
+            get
+            {
+                return hiringCompanyId;
+            }
+
+            set
+            {
+                hiringCompanyId = value;
             }
         }
 

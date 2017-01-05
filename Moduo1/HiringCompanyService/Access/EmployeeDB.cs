@@ -69,10 +69,11 @@ namespace HiringCompanyService.Access
         /// <returns></returns>
         public List<Employee> GetEmployees()
         {
-            List<Employee> employees = new List<Employee>(20);
 
             using (var access = new AccessDB())
             {
+                List<Employee> employees = new List<Employee>(20);
+
                 foreach (var em in access.Actions)
                 {
                     if (em.Login)
@@ -80,8 +81,9 @@ namespace HiringCompanyService.Access
                         employees.Add(em);
                     }
                 }
+                return employees;
             }
-            return employees;
+            
         }
 
         /// <summary>

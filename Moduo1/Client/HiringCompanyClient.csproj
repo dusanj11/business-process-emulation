@@ -131,8 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Behaviors\CommandAction.cs" />
     <Compile Include="Command\CreateProjectCommand.cs" />
     <Compile Include="Command\DefineUserStoriesCommand.cs" />
+    <Compile Include="Command\LoadedCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
     <Compile Include="Command\SaveNewEmployeeCommand.cs" />
     <Compile Include="Command\SaveNewPasswordCommand.cs" />
@@ -148,7 +150,7 @@
     <Compile Include="Model\NewEmployee.cs" />
     <Compile Include="Model\NewProjectDefinition.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
-    <Compile Include="Password\PasswordBoxAssistant.cs" />
+    <Compile Include="Behaviors\PasswordBoxAssistant.cs" />
     <Compile Include="ViewModel\AddNewEmployeeViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />

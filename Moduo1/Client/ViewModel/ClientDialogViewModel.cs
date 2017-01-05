@@ -104,6 +104,7 @@ namespace Client.ViewModel
         public ShowCompaniesCommand ShowCompaniesCommand { get; set; }
         public SendRequestProjectViewCommand SendRequestProjectViewCommand { get; set; }
 
+        public LoadedCommand LoadedCommand { get; set; }
 
 
         /// <summary>
@@ -124,8 +125,10 @@ namespace Client.ViewModel
             this.CreateProjectCommand = new CreateProjectCommand();
             this.ShowCompaniesCommand = new ShowCompaniesCommand();
             this.SendRequestProjectViewCommand = new SendRequestProjectViewCommand();
+            this.LoadedCommand = new LoadedCommand();
             this.ErrorMessage = "";
             this.LogInUser = new LogInUser();
+       
         }
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)

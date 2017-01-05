@@ -13,5 +13,6 @@ namespace HiringCompanyService.Access
         public AccessDB() : base("HiringCompanyDB") { }
 
         public DbSet<Employee> Actions { get; set; }
+        public DbSet<HiringCompany> HcActions { get; set; }
     }
 }

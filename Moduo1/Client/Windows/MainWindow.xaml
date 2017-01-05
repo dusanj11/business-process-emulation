@@ -3,9 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cloner="clr-namespace:Client.PassingConverter"
         xmlns:model="clr-namespace:Client.ViewModel"
-        xmlns:ff="clr-namespace:Client.Password"
+        xmlns:ff="clr-namespace:Client.Behaviors"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         Title="Log in" Height="280" Width="400" Background="DimGray"  WindowStartupLocation="CenterScreen" Name="mainWin">
-    
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Window.Resources>
         <cloner:PassingArguments x:Key="argumentsCloner"/>
     </Window.Resources>
@@ -36,7 +43,7 @@
             Korisničko ime:
         </Label>
         <Grid Grid.Row="3" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}">
+            <TextBox Name="userTxt" Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username, Mode=TwoWay}">
             </TextBox>
         </Grid>
         <Label Name="passwordLb" Grid.Row="4" Grid.Column="1" Style="{StaticResource StyleLabel}" >
@@ -50,12 +57,13 @@
       
         </Grid>
         <Button Name="signInBtn"  Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleButton}" Margin="0,32,0,-29" Width="Auto" Command="{Binding SignInCommand}" >
-            <Button.CommandParameter>
+         <!--   <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource argumentsCloner}">
                     <Binding Path="Text" ElementName="userTxt"/>
                     <Binding  ElementName="passTxt"/>
                 </MultiBinding>
-            </Button.CommandParameter>
+            </Button.CommandParameter> 
+         -->
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleButtonBorder}">

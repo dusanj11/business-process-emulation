@@ -38,8 +38,8 @@ namespace HiringCompanyServiceTest
                 Position = Employee.PositionEnum.CEO.ToString(),
                 StartTime = "9",
                 EndTime = "17",
-                Login = false,
-                HiringCompanyId = "HC1"
+                Login = false
+               // HiringCompanyId = 
 
 
             };

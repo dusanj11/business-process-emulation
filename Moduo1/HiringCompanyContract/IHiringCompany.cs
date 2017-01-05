@@ -36,5 +36,11 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool EmployeeLogOut(string username);
+
+        [OperationContract]
+        bool AddHiringCompany(HiringCompany company);
+
+        [OperationContract]
+        HiringCompany GetHiringCompany(string id);
     }
 }

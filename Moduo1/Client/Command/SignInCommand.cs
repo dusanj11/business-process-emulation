@@ -19,14 +19,24 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            Object[] parameters = parameter as Object[];
-            if (parameters == null || parameters.Length != 2
-                || parameters[0].ToString().Trim().Equals("")
-                || ((PasswordBox)parameters[1]).Password.ToString().Trim().Equals(""))
+            //object[] parameters = parameter as object[];
+            //if (parameters == null || parameters.Length != 2
+            //    || parameters[0].ToString().Trim().Equals("")
+            //    || ((PasswordBox)parameters[1]).Password.ToString().Trim().Equals(""))
+            //{
+            //    MessageBox.Show("Niste popunili sva polja!",
+            //                    "Upozorenje",
+            //                     MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+
+            string username = ClientDialogViewModel.Instance.LogInUser.Username;
+            string password = ClientDialogViewModel.Instance.LogInUser.Password;
+
+
+            if (username.Trim().Equals("") || username.Equals(null) ||
+                password.Trim().Equals("") || password.Equals(null))
             {
-                MessageBox.Show("Niste popunili sva polja!",
-                                "Upozorenje",
-                                 MessageBoxButton.OK, MessageBoxImage.Information);
+                ClientDialogViewModel.Instance.ErrorMessage = "Niste popunili sva polja!";
             }
             else
             {
@@ -35,12 +45,12 @@ namespace Client.Command
 
                 using (ClientProxy proxy = new ClientProxy(binding, address))
                 {
-                    Employee outValue = proxy.GetEmployee(parameters[0].ToString().Trim(), ((PasswordBox)parameters[1]).Password.ToString().Trim());
+                    Employee outValue = proxy.GetEmployee(username, password);
 
                     if (outValue != null)
                     {
 
-                        proxy.EmployeeLogIn(parameters[0].ToString().Trim());
+                        proxy.EmployeeLogIn(username);
 
                         if (outValue.Position.ToString().Equals("PO"))
                         {
