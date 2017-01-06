@@ -76,14 +76,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Employee.cs" />
-    <Compile Include="Data\HiringCompany.cs" />
     <Compile Include="IHiringCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiringCompanyData\HiringCompanyData.csproj">
+      <Project>{ca33008b-97fa-4eb5-8d97-5105ea35a988}</Project>
+      <Name>HiringCompanyData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

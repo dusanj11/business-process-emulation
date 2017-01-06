@@ -7,7 +7,7 @@ using System.Data.Entity;
 using NUnit.Framework;
 using NSubstitute;
 using HiringCompanyService.Access;
-using HiringCompanyContract.Data;
+using HiringCompanyData;
 using HiringCompanyService;
 
 namespace HiringCompanyServiceTest

@@ -1,6 +1,6 @@
 ﻿using Client.Command;
 using Client.Model;
-using HiringCompanyContract.Data;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

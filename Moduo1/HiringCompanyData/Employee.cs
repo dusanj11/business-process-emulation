@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace HiringCompanyContract.Data
+namespace HiringCompanyData
 {
-
+    [DataContract]
     public class Employee
     {
         public enum PositionEnum : int { CEO = 0, HR = 1, PO, SM }
@@ -24,10 +21,12 @@ namespace HiringCompanyContract.Data
         private HiringCompany hiringCompanyId;
         private DateTime passwordUpadateDate;
 
+        [DataMember]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDtmp { get; set; }
 
+        [DataMember]
         public string Username
         {
             get
@@ -41,6 +40,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public string Password
         {
             get
@@ -54,6 +54,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public string Name
         {
             get
@@ -67,6 +68,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public string Surname
         {
             get
@@ -80,6 +82,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public String Position
         {
             get
@@ -93,6 +96,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public string StartTime
         {
             get
@@ -106,6 +110,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public string EndTime
         {
             get
@@ -119,6 +124,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public bool Login
         {
             get
@@ -132,8 +138,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
-        
-
+        [DataMember]
         public DateTime PasswordUpadateDate
         {
             get
@@ -147,6 +152,7 @@ namespace HiringCompanyContract.Data
             }
         }
 
+        [DataMember]
         public HiringCompany HiringCompanyId
         {
             get

@@ -1,4 +1,4 @@
-﻿using HiringCompanyContract.Data;
+﻿using HiringCompanyData;
 using System.Linq;
 using System;
 

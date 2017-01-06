@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Input;
+using HiringCompanyData;
 
 namespace Client.Command
 {
@@ -22,7 +23,7 @@ namespace Client.Command
             using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {
                 int threadId = Thread.CurrentThread.ManagedThreadId;
-                HiringCompanyContract.Data.HiringCompany company = new HiringCompanyContract.Data.HiringCompany();
+                HiringCompany company = new HiringCompany();
                 company.Name = "HC";
                 company.Ceo = "Marko Jelaca";
                 company.CompanyIdThr = threadId;

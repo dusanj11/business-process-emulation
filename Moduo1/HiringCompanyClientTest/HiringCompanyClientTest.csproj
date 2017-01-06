@@ -86,6 +86,10 @@
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HiringCompanyData\HiringCompanyData.csproj">
+      <Project>{ca33008b-97fa-4eb5-8d97-5105ea35a988}</Project>
+      <Name>HiringCompanyData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HiringCompanyService\HiringCompanyService.csproj">
       <Project>{e06bf5bb-e141-49c6-b639-43e8bd79f8ab}</Project>
       <Name>HiringCompanyService</Name>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Input;
 using Client.ViewModel;
-using HiringCompanyContract.Data;
+using HiringCompanyData;
 using Client.Model;
 using System.ServiceModel;
 

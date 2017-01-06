@@ -112,6 +112,10 @@
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HiringCompanyData\HiringCompanyData.csproj">
+      <Project>{ca33008b-97fa-4eb5-8d97-5105ea35a988}</Project>
+      <Name>HiringCompanyData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

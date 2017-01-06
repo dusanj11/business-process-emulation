@@ -1,5 +1,5 @@
 ﻿using Client.ViewModel;
-using HiringCompanyContract.Data;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

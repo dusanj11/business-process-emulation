@@ -1,10 +1,10 @@
-﻿using HiringCompanyContract.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using HiringCompanyData;
 
 namespace HiringCompanyContract
 {
@@ -14,16 +14,16 @@ namespace HiringCompanyContract
     {
        
         [OperationContract]
-        List<Data.Employee> GetAllEmployees();
+        List<Employee> GetAllEmployees();
 
         [OperationContract]
-        Data.Employee GetEmployee(string username, string password);
+        Employee GetEmployee(string username, string password);
 
         [OperationContract]
-        bool AddEmployee(Data.Employee employee);
+        bool AddEmployee(Employee employee);
 
         [OperationContract]
-        bool ChangeEmployeePostition(string username, Data.Employee.PositionEnum position);
+        bool ChangeEmployeePostition(string username, Employee.PositionEnum position);
 
         [OperationContract]
         bool UpdateEmployee(Employee employee);

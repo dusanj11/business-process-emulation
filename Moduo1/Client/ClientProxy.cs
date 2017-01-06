@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HiringCompanyContract;
 using System.ServiceModel;
-using HiringCompanyContract.Data;
+using HiringCompanyData;
 
 namespace Client
 {
