@@ -80,5 +80,11 @@ namespace HiringCompanyService
             Console.WriteLine("AddProjectDefinition...");
             return ProjectDB.Instance.AddProject(project);
         }
+
+        public List<Project> GetProjects()
+        {
+            Console.WriteLine("GetProjects...");
+            return ProjectDB.Instance.GetProjects();
+        }
     }
 }

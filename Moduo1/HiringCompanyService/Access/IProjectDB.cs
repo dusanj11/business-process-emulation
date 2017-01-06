@@ -10,5 +10,7 @@ namespace HiringCompanyService.Access
     public interface IProjectDB
     {
         bool AddProject(Project project);
+
+        List<Project> GetProjects();
     }
 }

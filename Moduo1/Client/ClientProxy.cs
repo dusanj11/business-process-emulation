@@ -84,5 +84,10 @@ namespace Client
         {
             return factory.AddProjectDefinition(project);
         }
+
+        public List<Project> GetProjects()
+        {
+            return factory.GetProjects();
+        }
     }
 }

@@ -49,5 +49,20 @@ namespace HiringCompanyService.Access
 
             }
         }
+
+        public List<Project> GetProjects()
+        {
+            List<Project> ret = new List<Project>();
+
+            using (var access = new AccessDB())
+            {
+                foreach(var pr in access.PrActions)
+                {
+                    ret.Add(pr);
+                }
+
+                return ret;
+            }
+        }
     }
 }

@@ -88,6 +88,21 @@ namespace Client.ViewModel
             }
         }
 
+        private ObservableCollection<Project> prResources;
+
+        public ObservableCollection<Project> PrResources
+        {
+            get
+            {
+                return prResources;
+            }
+            set
+            {
+                prResources = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("PrResources"));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ViewProjectsCommand ViewProjectsCommand { get; set; }
@@ -261,8 +276,10 @@ namespace Client.ViewModel
             {
                 Console.WriteLine("Error {0}", e.Message);
             }
+            View.ShowProjectsView showProjectView = new View.ShowProjectsView();
+            showProjectView.projectsDataGrid.ItemsSource = PrResources;
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.ShowProjectsView());
+            CDialog.MainWindowDockPanel.Children.Add(showProjectView);
         }
 
         public void ShowWorkingHoursView()

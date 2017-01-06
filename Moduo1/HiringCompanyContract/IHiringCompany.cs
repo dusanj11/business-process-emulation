@@ -45,5 +45,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool AddProjectDefinition(Project project);
+
+        [OperationContract]
+        List<Project> GetProjects();
     }
 }
