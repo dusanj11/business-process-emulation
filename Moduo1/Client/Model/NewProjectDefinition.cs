@@ -9,8 +9,8 @@ namespace Client.Model
     public class NewProjectDefinition
     {
         private string name;
-        private string startDate;
-        private string endDate;
+        private DateTime startDate;
+        private DateTime endDate;
         private string description;
 
         public string Name
@@ -26,7 +26,7 @@ namespace Client.Model
             }
         }
 
-        public string StartDate
+        public DateTime StartDate
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Client.Model
             }
         }
 
-        public string EndDate
+        public DateTime EndDate
         {
             get
             {
@@ -68,12 +68,12 @@ namespace Client.Model
         public NewProjectDefinition()
         {
             this.Description = "";
-            this.EndDate = "";
-            this.StartDate = "";
+            this.EndDate = DateTime.Now;
+            this.StartDate = DateTime.Now;
             this.Name = "";
         }
 
-        public NewProjectDefinition(string name, string startDate, string endDate, string description)
+        public NewProjectDefinition(string name, DateTime startDate, DateTime endDate, string description)
         {
             this.Name = name;
             this.StartDate = startDate;

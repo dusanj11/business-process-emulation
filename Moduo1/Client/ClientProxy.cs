@@ -45,7 +45,7 @@ namespace Client
             return factory.AddEmployee(employee);
         }
 
-        public bool ChangeEmployeePostition(string username, Employee.PositionEnum position)
+        public bool ChangeEmployeePostition(string username, PositionEnum position)
         {
             return factory.ChangeEmployeePostition(username, position);
         }
@@ -78,6 +78,11 @@ namespace Client
         public HiringCompany GetHiringCompany(int id)
         {
             return factory.GetHiringCompany(id);
+        }
+
+        public bool AddProjectDefinition(Project project)
+        {
+            return factory.AddProjectDefinition(project);
         }
     }
 }

@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 
 namespace HiringCompanyData
 {
+    
     [DataContract]
     public class Employee
     {
-        public enum PositionEnum : int { CEO = 0, HR = 1, PO, SM }
 
         private String username;
         private String password;

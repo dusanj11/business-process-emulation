@@ -32,7 +32,7 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.AddEmployee(employee);
         }
 
-        public bool ChangeEmployeePostition(string username, Employee.PositionEnum position)
+        public bool ChangeEmployeePostition(string username, PositionEnum position)
         {
             Console.WriteLine("ChangeEmployeePostition...");
             return EmployeeDB.Instance.ChangeEmployeePosition(username, position);
@@ -73,6 +73,12 @@ namespace HiringCompanyService
         {
             Console.WriteLine("GetHiringCompany...");
             return HiringCompanyDB.Instance.GetCompany(id);
+        }
+
+        public bool AddProjectDefinition(Project project)
+        {
+            Console.WriteLine("AddProjectDefinition...");
+            return ProjectDB.Instance.AddProject(project);
         }
     }
 }

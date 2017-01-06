@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Client.ViewModel;
+using HiringCompanyData;
+using System;
 using System.Windows.Input;
+using System.Threading;
 
 namespace Client.Command
 {
@@ -18,7 +17,20 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            Project project = new Project();
+            project.Name = CreateProjectViewModel.Instance.NewProjectDefinition.Name;
+            project.Description = CreateProjectViewModel.Instance.NewProjectDefinition.Description;
+            project.StartDate = CreateProjectViewModel.Instance.NewProjectDefinition.StartDate;
+            project.EndDate = CreateProjectViewModel.Instance.NewProjectDefinition.EndDate;
+            
+
+            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
+            {
+
+                HiringCompany hc = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+                project.HiringCompany = hc;
+                proxy.AddProjectDefinition(project);
+            }
         }
     }
 }

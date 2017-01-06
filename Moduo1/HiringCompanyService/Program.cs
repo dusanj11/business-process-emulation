@@ -5,6 +5,7 @@ using System.ServiceModel.Description;
 using System.Data.Entity;
 using HiringCompanyService.Access;
 using System.Threading;
+using HiringCompanyData;
 
 namespace HiringCompanyService
 {
@@ -24,13 +25,13 @@ namespace HiringCompanyService
             // update database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
 
-            //EmployeeDB.Instance.AddEmployee(new HiringCompanyContract.Data.Employee
+            //EmployeeDB.Instance.AddEmployee(new Employee
             //{
             //    Name = "Marko",
             //    Surname = "Jelaca",
             //    Username = "maki",
             //    Password = "maki",
-            //    Position = HiringCompanyContract.Data.Employee.PositionEnum.CEO.ToString(),
+            //    Position = PositionEnum.CEO.ToString(),
             //    StartTime = "10.00",
             //    EndTime = "17.00",
             //    Login = false,

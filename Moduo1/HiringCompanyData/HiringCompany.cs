@@ -15,6 +15,7 @@ namespace HiringCompanyData
         private string ceo;
         private int companyIdThr;
         private List<Employee> employees;
+        private List<Project> projects;
 
         public HiringCompany()
         {
@@ -78,6 +79,19 @@ namespace HiringCompanyData
             set
             {
                 companyIdThr = value;
+            }
+        }
+        [DataMember]
+        public List<Project> Projects
+        {
+            get
+            {
+                return projects;
+            }
+
+            set
+            {
+                projects = value;
             }
         }
 

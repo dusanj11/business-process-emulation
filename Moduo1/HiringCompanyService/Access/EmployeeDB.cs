@@ -99,23 +99,18 @@ namespace HiringCompanyService.Access
         /// <returns></returns>
         public Employee GetEmployee(string username, string password)
         {
-            Employee employee = null;
+            
 
             using (var access = new AccessDB())
             {
-                foreach (var em in access.Actions)
-                {
-                    if (em.Username.ToString().Equals(username) && em.Password.ToString().Equals(password))
-                    {
-                        employee = em;
-                        break;
-                    }
-                }
+                Employee employee = access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(password));
+
+                return employee;
             }
-            return employee;
+            
         }
 
-        public bool ChangeEmployeePosition(string username, Employee.PositionEnum position)
+        public bool ChangeEmployeePosition(string username, PositionEnum position)
         {
             using (var access = new AccessDB())
             {

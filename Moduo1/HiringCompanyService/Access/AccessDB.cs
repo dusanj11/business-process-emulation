@@ -14,5 +14,7 @@ namespace HiringCompanyService.Access
 
         public DbSet<Employee> Actions { get; set; }
         public DbSet<HiringCompany> HcActions { get; set; }
+        public DbSet<Project> PrActions { get; set; }
+       
     }
 }

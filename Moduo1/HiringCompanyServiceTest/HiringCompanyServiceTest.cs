@@ -35,7 +35,7 @@ namespace HiringCompanyServiceTest
                 Password = "Dulisa",
                 Name = "Dusan",
                 Surname = "Jeftic",
-                Position = Employee.PositionEnum.CEO.ToString(),
+                Position = PositionEnum.CEO.ToString(),
                 StartTime = "9",
                 EndTime = "17",
                 Login = false
@@ -133,7 +133,7 @@ namespace HiringCompanyServiceTest
         {
             IsCalled = false;
 
-            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(UsernameTest, Employee.PositionEnum.HR); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(UsernameTest, PositionEnum.HR); });
 
             Assert.IsTrue(IsCalled);
         }
@@ -144,7 +144,7 @@ namespace HiringCompanyServiceTest
         [Test]
         public void ChangeEmployeePositionNullParametersTest()
         {
-            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(null, Employee.PositionEnum.CEO); });
+            Assert.DoesNotThrow(() => { HirignCompanyServiceUnderTest.ChangeEmployeePostition(null, PositionEnum.CEO); });
         }
 
    
