@@ -44,7 +44,8 @@ namespace HiringCompanyService
             binding.CloseTimeout = new TimeSpan(0, 10, 0);
             binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
             binding.SendTimeout = new TimeSpan(0, 10, 0);
-            string address = "net.tcp://localhost:9090/HiringCompanyService";
+           
+            string address = "net.tcp://192.168.1.24:9090/HiringCompanyService";
           
 
             ServiceHost serviceHost = new ServiceHost(typeof(HiringCompanyService));

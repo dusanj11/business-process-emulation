@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HiringCompanyData;
+using System;
+using System.ServiceModel;
 using System.Threading;
 using System.Windows.Input;
-using HiringCompanyData;
 
 namespace Client.Command
 {
@@ -19,16 +17,36 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            
-            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
+            try
             {
-                int threadId = Thread.CurrentThread.ManagedThreadId;
-                HiringCompany company = new HiringCompany();
-                company.Name = "HC";
-                company.Ceo = "Marko Jelaca";
-                company.CompanyIdThr = threadId;
+                using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
+                {
+                    int threadId = Thread.CurrentThread.ManagedThreadId;
+                    HiringCompany company = new HiringCompany();
+                    company.Name = "HC";
+                    company.Ceo = "Marko Jelaca";
+                    company.CompanyIdThr = threadId;
 
-                proxy.AddHiringCompany(company);
+                    try
+                    {
+                        proxy.AddHiringCompany(company);
+                    }
+                    catch(CommunicationException ce)
+                    {
+                        Console.WriteLine("ERROR >> LoadedCommand communication exception: {0}", ce.Message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("ERROR >> LoadedCommand inner exception: {0}", e.Message);
+                      
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Error Using: {0}", e.Message);
+                Execute(parameter);
             }
         }
     }

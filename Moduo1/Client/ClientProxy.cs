@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiringCompanyContract;
-using System.ServiceModel;
+﻿using HiringCompanyContract;
 using HiringCompanyData;
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace Client
 {
     public class ClientProxy : ChannelFactory<IHiringCompany>, IHiringCompany, IDisposable
     {
-        private IHiringCompany factory; 
+        private IHiringCompany factory;
 
         public ClientProxy(NetTcpBinding binding, string address) : base(binding, address)
         {
@@ -20,15 +17,31 @@ namespace Client
 
         public void Dispose()
         {
-            if (factory != null)
+            try
             {
-                factory = null;
+                //if (factory != null)
+                //{
+                //    factory = null;
 
+                //}
+                //this.Close();
+                if (State != CommunicationState.Faulted)
+                {
+                    Close();
+                }
             }
-            this.Close();
+            catch (Exception e)
+            {
+                Console.WriteLine("Dispose exception: {0}", e.Message);
+            }
+            finally
+            {
+                if (State != CommunicationState.Closed)
+                {
+                    Abort();
+                }
+            }
         }
-
-    
 
         public List<Employee> GetAllEmployees()
         {
@@ -36,12 +49,11 @@ namespace Client
             {
                 return factory.GetAllEmployees();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("ERROR: GetAllEmployees: \n{0}", e.Message);
                 return null;
             }
-            
         }
 
         public Employee GetEmployee(string username, string password)
@@ -52,7 +64,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: GetEmployee: \n{0}", e.Message);
                 return null;
             }
@@ -66,7 +77,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: AddEmployee: \n{0}", e.Message);
                 return false;
             }
@@ -80,7 +90,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: ChangeEmployeePosition: \n{0}", e.Message);
                 return false;
             }
@@ -107,7 +116,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: ChangePassword: \n{0}", e.Message);
                 return false;
             }
@@ -121,7 +129,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: EmployeeLogIn: \n{0}", e.Message);
                 return false;
             }
@@ -135,7 +142,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: EmployeeLogOut: \n{0}", e.Message);
                 return false;
             }
@@ -149,7 +155,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: AddHiringCompany: \n{0}", e.Message);
                 return false;
             }
@@ -163,7 +168,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: GetHiringCompany: \n{0}", e.Message);
                 return null;
             }
@@ -177,7 +181,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: AddProjectDefinition: \n{0}", e.Message);
                 return false;
             }
@@ -191,7 +194,6 @@ namespace Client
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
                 return null;
             }
