@@ -31,22 +31,19 @@ namespace Client.Command
                     {
                         proxy.AddHiringCompany(company);
                     }
-                    catch(CommunicationException ce)
+                    catch (CommunicationException ce)
                     {
                         Console.WriteLine("ERROR >> LoadedCommand communication exception: {0}", ce.Message);
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine("ERROR >> LoadedCommand inner exception: {0}", e.Message);
-                      
                     }
                 }
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("Error Using: {0}", e.Message);
-                Execute(parameter);
             }
         }
     }
