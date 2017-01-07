@@ -41,9 +41,10 @@ namespace Client.Command
                 }
             }
 
-            ClientDialogViewModel.Instance.PrResources = resources;
 
+            ClientDialogViewModel.Instance.PrResources = resources;
             ClientDialogViewModel.Instance.ShowShowProjectsView();
+          
         }
     }
 }

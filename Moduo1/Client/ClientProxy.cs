@@ -32,62 +32,169 @@ namespace Client
 
         public List<Employee> GetAllEmployees()
         {
-            return factory.GetAllEmployees();
+            try
+            {
+                return factory.GetAllEmployees();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("ERROR: GetAllEmployees: \n{0}", e.Message);
+                return null;
+            }
+            
         }
 
         public Employee GetEmployee(string username, string password)
         {
-            return factory.GetEmployee(username, password);
+            try
+            {
+                return factory.GetEmployee(username, password);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: GetEmployee: \n{0}", e.Message);
+                return null;
+            }
         }
 
         public bool AddEmployee(Employee employee)
         {
-            return factory.AddEmployee(employee);
+            try
+            {
+                return factory.AddEmployee(employee);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: AddEmployee: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool ChangeEmployeePostition(string username, PositionEnum position)
         {
-            return factory.ChangeEmployeePostition(username, position);
+            try
+            {
+                return factory.ChangeEmployeePostition(username, position);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: ChangeEmployeePosition: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool UpdateEmployee(Employee employee)
         {
-            return factory.UpdateEmployee(employee);
+            try
+            {
+                return factory.UpdateEmployee(employee);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: UpdateEmployee: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            return factory.ChangePassword(username, oldPassword, newPassword);
+            try
+            {
+                return factory.ChangePassword(username, oldPassword, newPassword);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: ChangePassword: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool EmployeeLogIn(string username)
         {
-            return factory.EmployeeLogIn(username);
+            try
+            {
+                return factory.EmployeeLogIn(username);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: EmployeeLogIn: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool EmployeeLogOut(string username)
         {
-            return factory.EmployeeLogOut(username);
+            try
+            {
+                return factory.EmployeeLogOut(username);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: EmployeeLogOut: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public bool AddHiringCompany(HiringCompany company)
         {
-            return factory.AddHiringCompany(company);
+            try
+            {
+                return factory.AddHiringCompany(company);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: AddHiringCompany: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public HiringCompany GetHiringCompany(int id)
         {
-            return factory.GetHiringCompany(id);
+            try
+            {
+                return factory.GetHiringCompany(id);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: GetHiringCompany: \n{0}", e.Message);
+                return null;
+            }
         }
 
         public bool AddProjectDefinition(Project project)
         {
-            return factory.AddProjectDefinition(project);
+            try
+            {
+                return factory.AddProjectDefinition(project);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: AddProjectDefinition: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public List<Project> GetProjects()
         {
-            return factory.GetProjects();
+            try
+            {
+                return factory.GetProjects();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
+                return null;
+            }
         }
     }
 }
