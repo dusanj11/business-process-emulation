@@ -14,12 +14,7 @@ namespace Client.Command
     public class SaveNewEmployeeCommand : ICommand
     {
 
-        /// <summary>
-        ///     WCF binding and address for communication with service
-        /// </summary>
-        private NetTcpBinding binding = new NetTcpBinding();
-        private string address = "net.tcp://localhost:9090/HiringCompanyService";
-
+   
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -30,7 +25,7 @@ namespace Client.Command
         public void Execute(object parameter)
         {
 
-            using (ClientProxy proxy = new ClientProxy(binding, address))
+            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {
 
                 NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee;

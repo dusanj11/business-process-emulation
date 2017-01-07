@@ -10,11 +10,7 @@ namespace Client.Command
 {
     public class ViewWorkersCommand : ICommand
     {
-        /// <summary>
-        ///     WCF binding and address for communication with service
-        /// </summary>
-        private NetTcpBinding binding = new NetTcpBinding();
-        private string address = "net.tcp://localhost:9090/HiringCompanyService";
+    
 
         /// <summary>
         ///     Collection for mapping items to DataGrid
@@ -32,7 +28,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            using (ClientProxy proxy = new ClientProxy(binding, address))
+            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
             {
 
                 if (resources.Count != 0)

@@ -40,10 +40,9 @@ namespace Client.Command
             }
             else
             {
-                NetTcpBinding binding = new NetTcpBinding();
-                string address = "net.tcp://localhost:9090/HiringCompanyService";
+               
 
-                using (ClientProxy proxy = new ClientProxy(binding, address))
+                using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
                 {
                     Employee outValue = proxy.GetEmployee(username, password);
 

@@ -18,7 +18,6 @@ namespace HiringCompanyService
             string path = System.Environment.CurrentDirectory;
             path = path.Substring(0, path.LastIndexOf("\\"));
             path = path.Substring(0, path.LastIndexOf("\\"));
-            //path = path.Substring(0, path.LastIndexOf("bin")) + "Calculator\\DB";
             path += "\\DB";
             AppDomain.CurrentDomain.SetData("DataDirectory", path);
             
@@ -41,8 +40,12 @@ namespace HiringCompanyService
             //});
 
             NetTcpBinding binding = new NetTcpBinding();
+            binding.OpenTimeout = new TimeSpan(0, 10, 0);
+            binding.CloseTimeout = new TimeSpan(0, 10, 0);
+            binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
+            binding.SendTimeout = new TimeSpan(0, 10, 0);
             string address = "net.tcp://localhost:9090/HiringCompanyService";
-
+          
 
             ServiceHost serviceHost = new ServiceHost(typeof(HiringCompanyService));
             serviceHost.AddServiceEndpoint(typeof(IHiringCompany), binding, address);
