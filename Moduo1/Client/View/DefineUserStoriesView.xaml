@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="0,0,-150,0">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,47 +20,27 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Label Name="choseProjLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
+        <Label Name="choseProjectLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir projekta:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <ComboBox Name="choseProjTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <!--PROVERI ZA COMBOBOX BAJNDING-->
+            <ComboBox Name="chosProjectTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Project}">
             </ComboBox>
         </Grid>
-        <Label Name="startDateUSLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
-            Početak izvršenja:
+        <Label Name="choseUSLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
+            Odabir korisničke priče:
         </Label>
-        <Grid Grid.Row="3" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="startDateUSTxt" Grid.Row="3" Grid.Column="0"  Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
-            </DatePicker>
+        <Grid Grid.Row="3" Grid.Column="0">
+            <!--PROVERITI ZA COMBOBOX-->
+            <ComboBox Name="choseUSTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=UserStories}">
+            </ComboBox>
         </Grid>
-        <Label Name="endDateUSLb" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleLabel}">
-            Krajnji rok izvršenja:
-        </Label>
-        <Grid Grid.Row="5" Grid.Column="0"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <DatePicker Name="endDateUSTxt" Grid.Row="5" Grid.Column="0"  Text="{Binding Path=Username}">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
-            </DatePicker>
-        </Grid>
-        <Label Name="accepCritLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="10,0,-8,1">
-            Kriterijum prihvatanja:
-        </Label>
-        <Grid Grid.Row="1" Grid.Column="1"  DataContext="{Binding LogInUser}">
-            <!--PREPRAVI OVO NA NOVI MODEL-->
-            <TextBox Name="accepCritTxt" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Username}" Margin="14,0,-15,-111" Height="Auto" TextWrapping="WrapWithOverflow" Width="Auto">
-                <!--PREPRAVI OVO NA NOVI MODEL-->
-            </TextBox>
-        </Grid>
-        <Button Name="saveUSBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="14,24,-15,-19" Command="{Binding ShowCompaniesCommand}" Width="Auto">
+        <Button Name="sendProjReqBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding DefineUserStoriesCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">
-                        <TextBlock Text="Sačuvaj korisničku priču" Style="{StaticResource StyleButtonText}" Margin="30,5,21,-15" Width="153">
+                        <TextBlock Text="Prihvati korisničku priču" Style="{StaticResource StyleButtonText}" Margin="23,5,16,-15" Width="161">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>

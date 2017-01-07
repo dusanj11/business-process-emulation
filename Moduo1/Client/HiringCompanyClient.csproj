@@ -119,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditPositionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SendRequestCompanyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +157,7 @@
     </Page>
     <Compile Include="Command\CreateProjectCommand.cs" />
     <Compile Include="Command\DefineUserStoriesCommand.cs" />
+    <Compile Include="Command\EditPositionCommand.cs" />
     <Compile Include="Command\LoadedCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
     <Compile Include="Command\SaveNewEmployeeCommand.cs" />
@@ -174,7 +179,9 @@
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
     <Compile Include="ViewModel\CreateProjectViewModel.cs" />
+    <Compile Include="ViewModel\DefineUserStoriesViewModel.cs" />
     <Compile Include="ViewModel\EditPersonalDataViewModel.cs" />
+    <Compile Include="ViewModel\EditPositionViewModel.cs" />
     <Compile Include="ViewModel\SendRequestCompanyViewModel.cs" />
     <Compile Include="ViewModel\SendRequestProjectViewModel.cs" />
     <Compile Include="ViewModel\WorkingHoursViewModel.cs" />
@@ -192,6 +199,9 @@
     </Compile>
     <Compile Include="View\EditPersonalDataView.xaml.cs">
       <DependentUpon>EditPersonalDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditPositionView.xaml.cs">
+      <DependentUpon>EditPositionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SendRequestCompanyView.xaml.cs">
       <DependentUpon>SendRequestCompanyView.xaml</DependentUpon>

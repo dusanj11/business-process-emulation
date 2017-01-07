@@ -23,6 +23,11 @@ namespace Client.ViewModel
             set { main = value; }
         }
 
+        internal void ShowEditPositionView()
+        {
+            throw new NotImplementedException();
+        }
+
         private ClientDialog cDialog;
 
         public ClientDialog CDialog

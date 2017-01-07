@@ -59,6 +59,7 @@ namespace Client.Command
                             cd.addEmployBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                            cd.editPosBtn.Visibility = Visibility.Collapsed;
                             cd.Show();
                         }
                         else if (outValue.Position.ToString().Equals("HR"))
@@ -92,6 +93,7 @@ namespace Client.Command
                             cd.addEmployBtn.Visibility = Visibility.Collapsed;
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.editPosBtn.Visibility = Visibility.Collapsed;
                             cd.Show();
                         }
                         else

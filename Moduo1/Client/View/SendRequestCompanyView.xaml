@@ -16,7 +16,7 @@
         </Label>
         <Grid Grid.Row="1" Grid.Column="0">
             <!--PROVERITI KKAO SE BAJNDUJE COMBO BOX-->
-            <ComboBox Name="choseCompanyTxt" Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Company}">
+            <ComboBox Name="choseCompanyTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Company}">
             </ComboBox>
         </Grid>
         <Button Name="sendPartnReqBtn" Grid.Row="7" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding SendRequestCompanyCommand}" Width="Auto">
