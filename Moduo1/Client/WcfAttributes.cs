@@ -14,6 +14,6 @@ namespace WcfCommon
         /// </summary>
         public static NetTcpBinding binding = new NetTcpBinding();
         
-        public static string address = "net.tcp://192.168.1.24:9090/HiringCompanyService";
+        public static string address = "net.tcp://localhost:9090/HiringCompanyService";
     }
 }

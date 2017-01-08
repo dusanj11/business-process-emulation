@@ -25,9 +25,9 @@ namespace HiringCompanyData
             developmentEngineers = new List<Employee>();
         }
 
-        public Team(String Name)
+        public Team(String name)
         {
-            this.Name = Name;
+            this.Name = name;
             this.projects = new List<Project>();
             this.developmentEngineers = new List<Employee>();
         }

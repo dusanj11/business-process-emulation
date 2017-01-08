@@ -9,7 +9,7 @@ namespace HiringCompanyService.Access
 {
     public class ProjectDB : IProjectDB
     {
-        public static IProjectDB myDB;
+        private static IProjectDB myDB;
         public static IProjectDB Instance
         {
             get
@@ -56,7 +56,7 @@ namespace HiringCompanyService.Access
 
             using (var access = new AccessDB())
             {
-                foreach(var pr in access.PrActions)
+                foreach (var pr in access.PrActions)
                 {
                     ret.Add(pr);
                 }

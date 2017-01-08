@@ -1,6 +1,5 @@
 ﻿using HiringCompanyData;
 using System.Linq;
-using System;
 
 namespace HiringCompanyService.Access
 {
@@ -28,12 +27,10 @@ namespace HiringCompanyService.Access
             }
         }
 
-  
         public bool AddCompany(HiringCompany company)
         {
             using (var access = new AccessDB())
             {
-
                 HiringCompany cm = access.HcActions.FirstOrDefault(f => f.CompanyIdThr.Equals(company.CompanyIdThr));
                 if (cm == null)
                 {
@@ -42,12 +39,15 @@ namespace HiringCompanyService.Access
                     int i = access.SaveChanges();
 
                     if (i > 0)
+                    {
                         return true;
-                    return
-                        false;
+                    }
+                    return false;
                 }
                 else
+                {
                     return false;
+                }
                 
             }
         }

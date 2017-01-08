@@ -39,7 +39,7 @@
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">
-                        <TextBlock Text="Pošalji zahtev za projekat" Style="{StaticResource StyleButtonText}" Margin="23,5,16,-15" Width="161">
+                        <TextBlock Text="Sačuvaj izmenu pozicije" Style="{StaticResource StyleButtonText}" Margin="23,5,16,-15" Width="161">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>

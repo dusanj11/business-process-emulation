@@ -20,7 +20,19 @@ namespace Client.Command
 
         public event EventHandler CanExecuteChanged;
 
-        public ObservableCollection<Project> resources = new ObservableCollection<Project>();
+        private ObservableCollection<Project> resources = new ObservableCollection<Project>();
+
+        public ObservableCollection<Project> Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                resources = value;
+            }
+        }
 
         public void Execute(object parameter)
         {
@@ -28,21 +40,21 @@ namespace Client.Command
             {
                 
 
-                if (resources.Count != 0)
+                if (Resources.Count != 0)
                 {
-                    resources.Clear();
+                    Resources.Clear();
                 }
 
                 List<Project> projects = proxy.GetProjects();
 
                 foreach (Project p in projects)
                 {
-                    resources.Add(p);
+                    Resources.Add(p);
                 }
             }
 
 
-            ClientDialogViewModel.Instance.PrResources = resources;
+            ClientDialogViewModel.Instance.PrResources = Resources;
             ClientDialogViewModel.Instance.ShowShowProjectsView();
           
         }

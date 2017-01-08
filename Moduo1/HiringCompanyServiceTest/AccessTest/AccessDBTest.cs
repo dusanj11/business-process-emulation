@@ -15,7 +15,7 @@ namespace HiringCompanyServiceTest.AccessTest
     public class AccessDBTest 
     {
         #region Declarations
-        public AccessDB AccessDBunderTest;
+        private AccessDB accessDBunderTest;
 
         #endregion Declarations
 
@@ -24,7 +24,7 @@ namespace HiringCompanyServiceTest.AccessTest
         [OneTimeSetUp]
         public void SetupTest()
         {
-            AccessDBunderTest = new AccessDB();
+            accessDBunderTest = new AccessDB();
         }
 
         #endregion setup

@@ -23,10 +23,7 @@ namespace Client.ViewModel
             set { main = value; }
         }
 
-        internal void ShowEditPositionView()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private ClientDialog cDialog;
 
@@ -125,6 +122,7 @@ namespace Client.ViewModel
         public SendRequestProjectViewCommand SendRequestProjectViewCommand { get; set; }
 
         public LoadedCommand LoadedCommand { get; set; }
+        public EditPositionCommand EditPositionCommand { get; set; }
 
 
         /// <summary>
@@ -148,6 +146,7 @@ namespace Client.ViewModel
             this.LoadedCommand = new LoadedCommand();
             this.ErrorMessage = "";
             this.LogInUser = new LogInUser();
+            this.EditPositionCommand = new EditPositionCommand();
        
         }
 
@@ -157,6 +156,21 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+
+        public void ShowEditPositionView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.EditPositionView());
         }
 
         public void ShowAddEmployeeView()
