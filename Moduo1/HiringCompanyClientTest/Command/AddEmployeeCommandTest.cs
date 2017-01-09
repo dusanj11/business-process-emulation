@@ -45,7 +45,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void ConstructorTest()
         {
-            Assert.DoesNotThrow(() => new SignInCommand());
+            Assert.DoesNotThrow(() => new AddEmployeeCommand());
         }
 
         [Test]
