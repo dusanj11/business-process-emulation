@@ -6,6 +6,8 @@ using System.Data.Entity;
 using HiringCompanyService.Access;
 using System.Threading;
 using HiringCompanyData;
+using System.Net.Mail;
+using System.Collections.Generic;
 
 namespace HiringCompanyService
 {
@@ -107,6 +109,9 @@ namespace HiringCompanyService
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");
 
+                if (13 <= DateTime.Now.Hour && DateTime.Now.Hour <= 14)
+                    CheckIfSomeoneIsLate();
+
                 Console.ReadLine();
             }
             catch (Exception e)
@@ -117,6 +122,61 @@ namespace HiringCompanyService
             finally
             {
                 serviceHost.Close();
+            }
+        }
+
+        public static void CheckIfSomeoneIsLate()
+        {
+            List<Employee> notSignedInWorkers = new List<Employee>(30);
+            List<Employee> workersToSendMail = EmployeeDB.Instance.GetAllNotSignedInEmployees();
+            List<Employee> alreadySent = new List<Employee>(30);
+            while ((13 <= DateTime.Now.Hour && DateTime.Now.Hour <= 14) && workersToSendMail.Count.Equals(0))
+            {
+                notSignedInWorkers = EmployeeDB.Instance.GetAllNotSignedInEmployees();
+                workersToSendMail = notSignedInWorkers;
+                foreach(Employee  lateEmp in notSignedInWorkers)
+                {
+                    if(alreadySent.Contains(lateEmp))
+                    {
+                        workersToSendMail.Remove(lateEmp);
+                    }
+                }
+
+                
+                if (!workersToSendMail.Count.Equals(0))
+                {
+                    foreach (Employee emp in workersToSendMail)
+                    {
+                        if (Double.Parse(emp.StartTime.ToString()) < Double.Parse((DateTime.Now.ToString("h.mm"))))
+                        {
+                            if (!alreadySent.Contains(emp))
+                            {
+                                String email = EmployeeDB.Instance.GetEmployeeEmail(emp.Username);
+
+                                using (SmtpClient smtpClient = new SmtpClient())
+                                {
+                                    using (MailMessage message = new MailMessage())
+                                    {
+                                        message.Subject = "KASNJENJE!";
+                                        message.Body = "Kolega " + emp.Name + " " + emp.Surname + ", KASNITE na posao. Slede penali!";
+                                        message.To.Add(new MailAddress(email));
+                                        try
+                                        {
+                                            smtpClient.Send(message);
+                                            alreadySent.Add(emp);
+                                        }
+                                        catch (Exception exc)
+                                        {
+                                            throw new FaultException(exc.Message);
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                notSignedInWorkers.Clear();
             }
         }
     }

@@ -50,7 +50,6 @@ namespace Client.Command
                     {
 
                         proxy.EmployeeLogIn(username);
-                        proxy.SendDelayingEmail(username);
 
                         if (outValue.Position.ToString().Equals("PO"))
                         {
