@@ -98,7 +98,6 @@ namespace HiringCompanyService
                     message.Subject = "KASNJENJE!";
                     message.Body = "Kolega " + username + ", KASNITE na posao. Slede penali!";
                     message.To.Add(new MailAddress(email));
-
                     try
                     {
                         smtpClient.Send(message);
