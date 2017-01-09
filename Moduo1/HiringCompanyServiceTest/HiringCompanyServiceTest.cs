@@ -39,8 +39,6 @@ namespace HiringCompanyServiceTest
                 StartTime = "9",
                 EndTime = "17",
                 Login = false
-               // HiringCompanyId = 
-
 
             };
 
@@ -79,6 +77,15 @@ namespace HiringCompanyServiceTest
 
             EmployeeDB.Instance
                 .When(p => p.GetEmployees())
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            EmployeeDB.Instance.UpdateEmployee(null).Returns(true);
+
+            EmployeeDB.Instance
+                .WhenForAnyArgs(p => p.UpdateEmployee(null))
                 .Do(p =>
                 {
                     isCalled = true;
@@ -133,7 +140,7 @@ namespace HiringCompanyServiceTest
         {
             isCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(usernameTest, PositionEnum.HR); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(usernameTest, PositionEnum.HR); });
 
             Assert.IsTrue(isCalled);
         }
@@ -144,11 +151,43 @@ namespace HiringCompanyServiceTest
         [Test]
         public void ChangeEmployeePositionNullParametersTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePostition(null, PositionEnum.CEO); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(null, PositionEnum.CEO); });
         }
 
-   
+        [Test]
+        public void UpdateEmployeeTest()
+        {
+            isCalled = false;
+            
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest); });
 
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void UpdateEmployeeNullParameterTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.UpdateEmployee(null); });
+        }
+        
+        [Test]
+        public void UpdateNotExistingEmployeeTest()
+        {
+            bool result = hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void UpdateEmployeeExistingUserTest()
+        {
+            employeeTest.Username = "marko";
+            employeeTest.Password = "marko";
+
+            bool result = hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest);
+
+            Assert.IsTrue(result);
+        }
         #endregion test
     }
 }

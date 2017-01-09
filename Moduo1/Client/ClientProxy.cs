@@ -82,11 +82,11 @@ namespace Client
             }
         }
 
-        public bool ChangeEmployeePostition(string username, PositionEnum position)
+        public bool ChangeEmployeePosition(string username, PositionEnum position)
         {
             try
             {
-                return factory.ChangeEmployeePostition(username, position);
+                return factory.ChangeEmployeePosition(username, position);
             }
             catch (Exception e)
             {

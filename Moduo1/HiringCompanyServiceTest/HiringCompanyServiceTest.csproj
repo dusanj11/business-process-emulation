@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTest\AccessDBTest.cs" />
+    <Compile Include="AccessTest\EmployeeDBTest.cs" />
     <Compile Include="HiringCompanyServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
