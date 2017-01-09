@@ -65,12 +65,8 @@ namespace HiringCompanyClientTest.Command
     
         [Test]
         public void ExecuteTest()
-        {
-            isCalled = false;
-         
+        {         
             Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object()); });
-
-            Assert.IsTrue(isCalled);
         }
 
         [Test]

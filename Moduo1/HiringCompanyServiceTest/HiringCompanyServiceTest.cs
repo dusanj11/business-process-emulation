@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using NUnit.Framework;
-using NSubstitute;
+﻿using HiringCompanyData;
 using HiringCompanyService.Access;
-using HiringCompanyData;
-using HiringCompanyService;
-using Client.ViewModel;
+using NSubstitute;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace HiringCompanyServiceTest
 {
@@ -17,14 +10,20 @@ namespace HiringCompanyServiceTest
     public class HiringCompanyServiceTest
     {
         #region Declaration
+
         private HiringCompanyService.HiringCompanyService hirignCompanyServiceUnderTest;
         private bool isCalled = false;
         private Employee employeeTest;
         private string usernameTest = "Dule";
         private string passwordTest = "Dukica";
+        private string newPasswordTest = "Dule";
+
+        private HiringCompany hiringCompanyTest;
+
         #endregion Declaration
 
         #region setup
+
         [OneTimeSetUp]
         public void SetupTest()
         {
@@ -40,10 +39,16 @@ namespace HiringCompanyServiceTest
                 StartTime = "9",
                 EndTime = "17",
                 Login = false
-
             };
 
-  
+            hiringCompanyTest = new HiringCompany
+            {
+                Name = "HC1",
+                Ceo = "Marko Jelaca",
+                CompanyIdThr = 1
+            };
+
+            #region EmployeeDB
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
@@ -91,7 +96,50 @@ namespace HiringCompanyServiceTest
                 {
                     isCalled = true;
                 });
-            
+
+            EmployeeDB.Instance.ChangeEmployeePassword(usernameTest, passwordTest, newPasswordTest).Returns(true);
+
+            EmployeeDB.Instance
+                .When(p => p.ChangeEmployeePassword(usernameTest, passwordTest, newPasswordTest))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            EmployeeDB.Instance.EmployeeLogIn(usernameTest).Returns(true);
+
+            EmployeeDB.Instance
+                .When(p => p.EmployeeLogIn(usernameTest))
+                .Do(p =>
+               {
+                   isCalled = true;
+               });
+
+            EmployeeDB.Instance.EmployeeLogOut(usernameTest).Returns(true);
+
+            EmployeeDB.Instance
+                .When(p => p.EmployeeLogOut(usernameTest))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion EmployeeDB
+
+            #region HiringCompanyDB
+
+            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
+
+            HiringCompanyDB.Instance.AddCompany(null).ReturnsForAnyArgs(true);
+
+            HiringCompanyDB.Instance
+                .When(p => p.AddCompany(hiringCompanyTest))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion HiringCompanyDB
         }
 
         #endregion setup
@@ -146,9 +194,6 @@ namespace HiringCompanyServiceTest
             Assert.IsTrue(isCalled);
         }
 
-        /// <summary>
-        /// null paramtere set only for username
-        /// </summary>
         [Test]
         public void ChangeEmployeePositionNullParametersTest()
         {
@@ -159,7 +204,7 @@ namespace HiringCompanyServiceTest
         public void UpdateEmployeeTest()
         {
             isCalled = false;
-            
+
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest); });
 
             Assert.IsTrue(isCalled);
@@ -170,7 +215,7 @@ namespace HiringCompanyServiceTest
         {
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.UpdateEmployee(null); });
         }
-        
+
         [Test]
         public void UpdateNotExistingEmployeeTest()
         {
@@ -190,6 +235,57 @@ namespace HiringCompanyServiceTest
             Assert.IsTrue(isCalled);
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void ChangePasswordTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangePassword(usernameTest, passwordTest, newPasswordTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void ChangePasswordNullParametersTest()
+        {
+            bool result = hirignCompanyServiceUnderTest.ChangePassword(null, null, null);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void EmployeeLogInTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.EmployeeLogIn(usernameTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void EmployeeLogInNullParameterTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.EmployeeLogIn(null); });
+        }
+
+        [Test]
+        public void EmployeeLogOutTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.EmployeeLogOut(usernameTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void EmployeeLogOutNullParameterTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.EmployeeLogOut(null); });
+        }
+
         #endregion test
     }
 }
