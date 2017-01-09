@@ -1,4 +1,5 @@
 ﻿using HiringCompanyData;
+using HiringCompanyService.Access;
 using System;
 using System.ServiceModel;
 using System.Threading;
@@ -63,6 +64,67 @@ namespace Client.Command
             {
                 Console.WriteLine("Error Using: {0}", e.Message);
             }
+
+
+            EmployeeDB.Instance.AddEmployee(new Employee
+            {
+                Name = "Marko",
+                Surname = "Jelaca",
+                Username = "maki",
+                Password = "maki",
+                Position = PositionEnum.HR.ToString(),
+                StartTime = "10.00",
+                EndTime = "17.00",
+                Login = false,
+                PasswordUpadateDate = DateTime.Now,
+                HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
+
+            });
+
+            EmployeeDB.Instance.AddEmployee(new Employee
+            {
+                Name = "Dusan",
+                Surname = "Jeftic",
+                Username = "dule",
+                Password = "dule",
+                Position = PositionEnum.CEO.ToString(),
+                StartTime = "09.00",
+                EndTime = "16.00",
+                Login = false,
+                PasswordUpadateDate = DateTime.Now,
+                HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
+
+            });
+
+            EmployeeDB.Instance.AddEmployee(new Employee
+            {
+                Name = "Natasa",
+                Surname = "Subic",
+                Username = "naci",
+                Password = "naci",
+                Position = PositionEnum.SM.ToString(),
+                StartTime = "10.00",
+                EndTime = "17.00",
+                Login = false,
+                PasswordUpadateDate = DateTime.Now,
+                HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
+
+            });
+
+            EmployeeDB.Instance.AddEmployee(new Employee
+            {
+                Name = "Milica",
+                Surname = "Kapetina",
+                Username = "mici",
+                Password = "mici",
+                Position = PositionEnum.PO.ToString(),
+                StartTime = "09.00",
+                EndTime = "16.00",
+                Login = false,
+                PasswordUpadateDate = DateTime.Now,
+                HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
+
+            });
         }
     }
 }

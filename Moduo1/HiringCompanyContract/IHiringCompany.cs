@@ -49,6 +49,7 @@ namespace HiringCompanyContract
         [OperationContract]
         List<Project> GetProjects();
 
-      
+        [OperationContract]
+        bool SendDelayingEmail(string username);
     }
 }

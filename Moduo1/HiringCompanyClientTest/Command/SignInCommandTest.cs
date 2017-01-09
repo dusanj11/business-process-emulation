@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace HiringCompanyClientTest.Command
 {
     [Apartment(System.Threading.ApartmentState.STA)]

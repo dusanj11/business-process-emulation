@@ -25,5 +25,7 @@ namespace HiringCompanyService.Access
 
         bool EmployeeLogOut(string username);
 
+        String GetEmployeeEmail(string username);
+
     }
 }
