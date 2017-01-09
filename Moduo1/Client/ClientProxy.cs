@@ -211,5 +211,19 @@ namespace Client
                 return false;
             }
         }
+
+
+        public List<Employee> GetAllNotSignedInEmployees()
+        {
+            try
+            {
+                return factory.GetAllNotSignedInEmployees();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

@@ -21,6 +21,12 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.GetEmployees();      
         }
 
+        public List<Employee> GetAllNotSignedInEmployees()
+        {
+            Console.WriteLine("GetAllNotSignedInEmployees...");
+            return EmployeeDB.Instance.GetAllNotSignedInEmployees();
+        }
+
         public Employee GetEmployee(string username, string password)
         {
             Console.WriteLine("GetEmployee...");

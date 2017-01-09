@@ -17,6 +17,9 @@ namespace HiringCompanyContract
         List<Employee> GetAllEmployees();
 
         [OperationContract]
+        List<Employee> GetAllNotSignedInEmployees();
+
+        [OperationContract]
         Employee GetEmployee(string username, string password);
 
         [OperationContract]

@@ -213,5 +213,23 @@ namespace HiringCompanyService.Access
                return emp.Email;
             }
         }
+
+
+        public List<Employee> GetAllNotSignedInEmployees()
+        {
+            using (var access = new AccessDB())
+            {
+                List<Employee> employees = new List<Employee>(20);
+
+                foreach (var em in access.Actions)
+                {
+                    if (!em.Login)
+                    {
+                        employees.Add(em);
+                    }
+                }
+                return employees;
+            }
+        }
     }
 }

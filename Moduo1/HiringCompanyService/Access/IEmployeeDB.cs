@@ -13,6 +13,8 @@ namespace HiringCompanyService.Access
 
         List<Employee> GetEmployees();
 
+        List<Employee> GetAllNotSignedInEmployees();
+
         Employee GetEmployee(string username, string password);
 
         bool ChangeEmployeePosition(string username, PositionEnum position);
