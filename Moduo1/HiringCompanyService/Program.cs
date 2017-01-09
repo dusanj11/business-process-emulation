@@ -116,12 +116,17 @@ namespace HiringCompanyService
             try
             {
                 serviceHost.Open();
+                Delaying del = new Delaying();
 
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");
 
-                //if (13 <= DateTime.Now.Hour && DateTime.Now.Hour <= 14)
-                //    CheckIfSomeoneIsLate();
+                if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 11)
+                {
+                    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
+                    checkThread.Start();
+                }
+                    
 
                 Console.ReadLine();
             }
@@ -135,33 +140,34 @@ namespace HiringCompanyService
                 serviceHost.Close();
             }
         }
+    }
 
-        public static void CheckIfSomeoneIsLate()
+    public class Delaying
+    {
+        public void CheckIfSomeoneIsLate()
         {
             List<Employee> notSignedInWorkers = new List<Employee>(30);
             List<Employee> workersToSendMail = EmployeeDB.Instance.GetAllNotSignedInEmployees();
             List<Employee> alreadySent = new List<Employee>(30);
-           // while ((13 <= DateTime.Now.Hour && DateTime.Now.Hour <= 14) && workersToSendMail.Count.Equals(0))
-            //{
+            while (!workersToSendMail.Count.Equals(0))
+            {
                 notSignedInWorkers = EmployeeDB.Instance.GetAllNotSignedInEmployees();
                 workersToSendMail = notSignedInWorkers;
-                foreach(Employee  lateEmp in notSignedInWorkers)
+                foreach (Employee lateEmp in notSignedInWorkers)
                 {
-                    if(alreadySent.Contains(lateEmp))
+                    if (alreadySent.Contains(lateEmp))
                     {
                         workersToSendMail.Remove(lateEmp);
                     }
                 }
 
-                
+
                 if (!workersToSendMail.Count.Equals(0))
                 {
                     foreach (Employee emp in workersToSendMail)
                     {
                         if (Double.Parse(emp.StartTime.ToString()) < Double.Parse((DateTime.Now.ToString("h.mm"))))
                         {
-                            if (!alreadySent.Contains(emp))
-                            {
                                 String email = EmployeeDB.Instance.GetEmployeeEmail(emp.Username);
 
                                 using (SmtpClient smtpClient = new SmtpClient())
@@ -183,12 +189,11 @@ namespace HiringCompanyService
 
                                     }
                                 }
-                            }
                         }
                     }
                 }
                 notSignedInWorkers.Clear();
-            //}
+            }
         }
     }
 }
