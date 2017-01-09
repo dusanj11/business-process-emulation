@@ -53,48 +53,169 @@ namespace Client.Command
 
                         if (outValue.Position.ToString().Equals("PO"))
                         {
-                            //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Hide();
-                            ClientDialog cd = new ClientDialog();
-                            cd.addEmployBtn.Visibility = Visibility.Collapsed;
-                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                            cd.editPosBtn.Visibility = Visibility.Collapsed;
-                            cd.Show();
+
+                            if (outValue.PasswordUpadateDate > outValue.PasswordUpadateDate.AddMonths(6))
+                            {
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.editPosBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = false;
+                                cd.showEmployBtn.IsEnabled = false;
+                                cd.editYDBtn.IsEnabled = false;
+                                cd.timeTableBtn.IsEnabled = false;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.createProjBtn.IsEnabled = false;
+                                cd.defUSBtn.IsEnabled = false;
+                                cd.showCompBtn.IsEnabled = false;
+                                cd.Show();
+                            }
+                            else
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.editPosBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = true;
+                                cd.showEmployBtn.IsEnabled = true;
+                                cd.editYDBtn.IsEnabled = true;
+                                cd.timeTableBtn.IsEnabled = true;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.createProjBtn.IsEnabled = true;
+                                cd.defUSBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = true;
+                                cd.Show();
+                            }
+
+                            
                         }
                         else if (outValue.Position.ToString().Equals("HR"))
                         {
-                            //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Hide();
-                            ClientDialog cd = new ClientDialog();
-                            cd.showProjBtn.Visibility = Visibility.Collapsed;
-                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                            cd.defUSBtn.Visibility = Visibility.Collapsed;
-                            cd.createProjBtn.Visibility = Visibility.Collapsed;
-                            cd.Show();
+                            if (outValue.PasswordUpadateDate > outValue.PasswordUpadateDate.AddMonths(6))
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.showProjBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.showEmployBtn.IsEnabled = false;
+                                cd.addEmployBtn.IsEnabled = false;
+                                cd.editYDBtn.IsEnabled = false;
+                                cd.timeTableBtn.IsEnabled = false;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = false;
+                                cd.editPosBtn.IsEnabled = false;
+                                cd.Show();
+                            }
+                            else
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.showProjBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.showEmployBtn.IsEnabled = true;
+                                cd.addEmployBtn.IsEnabled = true;
+                                cd.editYDBtn.IsEnabled = true;
+                                cd.timeTableBtn.IsEnabled = true;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = true;
+                                cd.editPosBtn.IsEnabled = true;
+                                cd.Show();
+                            }
                         }
                         else if (outValue.Position.ToString().Equals("CEO"))
                         {
-                            //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Hide();
-                            ClientDialog cd = new ClientDialog();
-                            cd.defUSBtn.Visibility = Visibility.Collapsed;
-                            cd.createProjBtn.Visibility = Visibility.Collapsed;
-                            cd.Show();
+                            if (outValue.PasswordUpadateDate > outValue.PasswordUpadateDate.AddMonths(6))
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = false;
+                                cd.showEmployBtn.IsEnabled = false;
+                                cd.addEmployBtn.IsEnabled = false;
+                                cd.editYDBtn.IsEnabled = false;
+                                cd.timeTableBtn.IsEnabled = false;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.sendReqCompBtn.IsEnabled = false;
+                                cd.sendReqProjBtn.IsEnabled = false;
+                                cd.showCompBtn.IsEnabled = false;
+                                cd.editPosBtn.IsEnabled = false;
+                                cd.Show();
+                            }
+                            else
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = true;
+                                cd.showEmployBtn.IsEnabled = true;
+                                cd.addEmployBtn.IsEnabled = true;
+                                cd.editYDBtn.IsEnabled = true;
+                                cd.timeTableBtn.IsEnabled = true;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.sendReqCompBtn.IsEnabled = true;
+                                cd.sendReqProjBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = true;
+                                cd.editPosBtn.IsEnabled = true;
+                                cd.Show();
+                            }
                         }
                         else if (outValue.Position.ToString().Equals("SM"))
                         {
-                            //((Window)parameters[2]).Hide();
-                            Application.Current.MainWindow.Hide();
-                            ClientDialog cd = new ClientDialog();
-                            cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
-                            cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
-                            cd.addEmployBtn.Visibility = Visibility.Collapsed;
-                            cd.defUSBtn.Visibility = Visibility.Collapsed;
-                            cd.createProjBtn.Visibility = Visibility.Collapsed;
-                            cd.editPosBtn.Visibility = Visibility.Collapsed;
-                            cd.Show();
+                            if (outValue.PasswordUpadateDate > outValue.PasswordUpadateDate.AddMonths(6))
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.editPosBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = false;
+                                cd.showEmployBtn.IsEnabled = false;
+                                cd.editYDBtn.IsEnabled = false;
+                                cd.timeTableBtn.IsEnabled = false;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = false;
+                                cd.Show();
+                            }
+                            else
+                            {
+                                //((Window)parameters[2]).Hide();
+                                Application.Current.MainWindow.Hide();
+                                ClientDialog cd = new ClientDialog();
+                                cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
+                                cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
+                                cd.addEmployBtn.Visibility = Visibility.Collapsed;
+                                cd.defUSBtn.Visibility = Visibility.Collapsed;
+                                cd.createProjBtn.Visibility = Visibility.Collapsed;
+                                cd.editPosBtn.Visibility = Visibility.Collapsed;
+                                cd.showProjBtn.IsEnabled = true;
+                                cd.showEmployBtn.IsEnabled = true;
+                                cd.editYDBtn.IsEnabled = true;
+                                cd.timeTableBtn.IsEnabled = true;
+                                cd.passChngBtn.IsEnabled = true;
+                                cd.showCompBtn.IsEnabled = true;
+                                cd.Show();
+                            }
                         }
                         else
                         {
