@@ -32,22 +32,22 @@ namespace Client.Command
                     {
                         proxy.AddHiringCompany(company);
 
-                        HiringCompany hc = proxy.GetHiringCompany(threadId);
+                        //HiringCompany hc = proxy.GetHiringCompany(threadId);
 
-                        Employee testEmp = new Employee();
-                        testEmp.Name = "Marko";
-                        testEmp.Surname = "Jelaca";
-                        testEmp.Username = "maki";
-                        testEmp.Password = "maki";
-                        testEmp.Position = PositionEnum.PO.ToString();
-                        testEmp.StartTime = "10.00";
-                        testEmp.EndTime = "17.00";
-                        testEmp.Login = false;
-                        testEmp.Email = "jelaca.marko@gmail.com";
-                        testEmp.PasswordUpadateDate = DateTime.Now;
-                        testEmp.HiringCompanyId = hc;
+                        //Employee testEmp = new Employee();
+                        //testEmp.Name = "Marko";
+                        //testEmp.Surname = "Jelaca";
+                        //testEmp.Username = "maki";
+                        //testEmp.Password = "maki";
+                        //testEmp.Position = PositionEnum.PO.ToString();
+                        //testEmp.StartTime = "10.00";
+                        //testEmp.EndTime = "17.00";
+                        //testEmp.Login = false;
+                        //testEmp.Email = "jelaca.marko@gmail.com";
+                        //testEmp.PasswordUpadateDate = DateTime.Now;
+                        //testEmp.HiringCompanyId = hc;
 
-                        proxy.AddEmployee(testEmp);
+                        //proxy.AddEmployee(testEmp);
 
 
                     }
