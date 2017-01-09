@@ -67,6 +67,8 @@ namespace HiringCompanyService.Access
             }
         }
 
+        
+
         /// <summary>
         ///     Return list that represents registered users
         /// </summary>
@@ -198,6 +200,17 @@ namespace HiringCompanyService.Access
                     return true;
                 }
                 return false;
+            }
+        }
+
+
+        public String GetEmployeeEmail(string username)
+        {
+            using (var access = new AccessDB())
+            {
+               Employee emp =  access.Actions.FirstOrDefault(f => f.Username.Equals(username));
+
+               return emp.Email;
             }
         }
     }

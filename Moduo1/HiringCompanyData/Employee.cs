@@ -17,6 +17,9 @@ namespace HiringCompanyData
         private String position;
         private String startTime;
         private String endTime;
+        private String email;
+
+
         private bool login;
         private HiringCompany hiringCompanyId;
         private DateTime passwordUpadateDate;
@@ -37,6 +40,19 @@ namespace HiringCompanyData
             set
             {
                 username = value;
+            }
+        }
+
+        [DataMember]
+        public String Email
+        {
+            get 
+            { 
+                return email; 
+            }
+            set 
+            { 
+                email = value; 
             }
         }
 

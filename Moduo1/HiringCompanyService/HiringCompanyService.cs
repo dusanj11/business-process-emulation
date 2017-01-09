@@ -7,6 +7,7 @@ using System.ServiceModel;
 using HiringCompanyContract;
 using HiringCompanyService.Access;
 using HiringCompanyData;
+using System.Net.Mail;
 
 namespace HiringCompanyService
 {
@@ -85,6 +86,32 @@ namespace HiringCompanyService
         {
             Console.WriteLine("GetProjects...");
             return ProjectDB.Instance.GetProjects();
+        }
+        public bool SendDelayingEmail(string username)
+        {
+            String email = EmployeeDB.Instance.GetEmployeeEmail(username);
+
+            using(SmtpClient smtpClient = new SmtpClient())
+            {
+                using (MailMessage message = new MailMessage())
+                {
+                    message.Subject = "KASNJENJE!";
+                    message.Body = "Kolega " + username + ", KASNITE na posao. Slede penali!";
+                    message.To.Add(new MailAddress(email));
+
+                    try
+                    {
+                        smtpClient.Send(message);
+                        return true;
+                    }
+                    catch (Exception exc)
+                    {
+                        throw new FaultException(exc.Message);
+                    }
+
+                }
+            }
+
         }
     }
 }

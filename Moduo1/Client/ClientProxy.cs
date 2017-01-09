@@ -198,5 +198,18 @@ namespace Client
                 return null;
             }
         }
+
+        public bool SendDelayingEmail(string username)
+        {
+            try
+            {
+                return factory.SendDelayingEmail(username);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
+                return false;
+            }
+        }
     }
 }
