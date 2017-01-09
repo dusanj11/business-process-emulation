@@ -104,6 +104,10 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client\HiringCompanyClient.csproj">
+      <Project>{991966e6-7be8-428a-93b1-c184f4d3ef91}</Project>
+      <Name>HiringCompanyClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>

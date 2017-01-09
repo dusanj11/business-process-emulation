@@ -16,7 +16,7 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private SignInCommand signInCommandUnderTest;
-        private string username = "Naci";
+        private string username = "naci";
         private PasswordBox password = new PasswordBox();
         
      
@@ -28,21 +28,14 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-            password.Password = "Dule";
+            password.Password = "naci";
 
             this.signInCommandUnderTest = new SignInCommand();
             this.signInCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.AddEmployee(null).ReturnsForAnyArgs(true);
-
-            EmployeeDB.Instance
-                .WhenForAnyArgs(p => p.AddEmployee(null))
-                .Do(p =>
-                {
-                    isCalled = true;
-                });
-
+           
+            
             
         }
 
@@ -69,13 +62,13 @@ namespace HiringCompanyClientTest.Command
             Assert.DoesNotThrow(() => { signInCommandUnderTest.CanExecute(null); });
         }
 
-        //[Ignore("ExecuteTest")]
+    
         [Test]
         public void ExecuteTest()
         {
             isCalled = false;
-            //password.Password = "Dule";
-            Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object[] { username, password }); });
+         
+            Assert.DoesNotThrow(() => { signInCommandUnderTest.Execute(new object()); });
 
             Assert.IsTrue(isCalled);
         }

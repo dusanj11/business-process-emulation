@@ -9,6 +9,7 @@ using NSubstitute;
 using HiringCompanyService.Access;
 using HiringCompanyData;
 using HiringCompanyService;
+using Client.ViewModel;
 
 namespace HiringCompanyServiceTest
 {
@@ -42,7 +43,7 @@ namespace HiringCompanyServiceTest
 
             };
 
-
+  
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
@@ -64,14 +65,14 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
-            //EmployeeDB.Instance.ChangeEmployeePosition(null, ).ReturnsForAnyArgs(true);
+            EmployeeDB.Instance.ChangeEmployeePosition(usernameTest, PositionEnum.CEO).ReturnsForAnyArgs(true);
 
-            //EmployeeDB.Instance
-            //    .When(p => p.ChangeEmployeePosition())
-            //    .Do(p =>
-            //    {
-            //        isCalled = true;
-            //    });
+            EmployeeDB.Instance
+                .When(p => p.ChangeEmployeePosition(usernameTest, PositionEnum.CEO))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
 
             EmployeeDB.Instance.GetEmployees().Returns(new List<Employee>());
 
@@ -82,10 +83,10 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
-            EmployeeDB.Instance.UpdateEmployee(null).Returns(true);
+            EmployeeDB.Instance.UpdateEmployee(null).ReturnsForAnyArgs(true);
 
             EmployeeDB.Instance
-                .WhenForAnyArgs(p => p.UpdateEmployee(null))
+                .When(p => p.UpdateEmployee(employeeTest))
                 .Do(p =>
                 {
                     isCalled = true;
@@ -140,7 +141,7 @@ namespace HiringCompanyServiceTest
         {
             isCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(usernameTest, PositionEnum.HR); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(usernameTest, PositionEnum.CEO); });
 
             Assert.IsTrue(isCalled);
         }
@@ -175,7 +176,7 @@ namespace HiringCompanyServiceTest
         {
             bool result = hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest);
 
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -186,6 +187,7 @@ namespace HiringCompanyServiceTest
 
             bool result = hirignCompanyServiceUnderTest.UpdateEmployee(employeeTest);
 
+            Assert.IsTrue(isCalled);
             Assert.IsTrue(result);
         }
         #endregion test

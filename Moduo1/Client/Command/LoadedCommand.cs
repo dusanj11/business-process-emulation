@@ -35,15 +35,15 @@ namespace Client.Command
                         //HiringCompany hc = proxy.GetHiringCompany(threadId);
 
                         //Employee testEmp = new Employee();
-                        //testEmp.Name = "Marko";
-                        //testEmp.Surname = "Jelaca";
-                        //testEmp.Username = "maki";
-                        //testEmp.Password = "maki";
-                        //testEmp.Position = PositionEnum.PO.ToString();
+                        //testEmp.Name = "Dusan";
+                        //testEmp.Surname = "Jeftic";
+                        //testEmp.Username = "dule";
+                        //testEmp.Password = "dule";
+                        //testEmp.Position = PositionEnum.CEO.ToString();
                         //testEmp.StartTime = "10.00";
                         //testEmp.EndTime = "17.00";
                         //testEmp.Login = false;
-                        //testEmp.Email = "jelaca.marko@gmail.com";
+                        //testEmp.Email = "dusan.jeftic11@gmail.com";
                         //testEmp.PasswordUpadateDate = DateTime.Now;
                         //testEmp.HiringCompanyId = hc;
 
