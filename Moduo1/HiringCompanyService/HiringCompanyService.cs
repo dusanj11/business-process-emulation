@@ -33,7 +33,7 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.AddEmployee(employee);
         }
 
-        public bool ChangeEmployeePostition(string username, PositionEnum position)
+        public bool ChangeEmployeePosition(string username, PositionEnum position)
         {
             Console.WriteLine("ChangeEmployeePostition...");
             return EmployeeDB.Instance.ChangeEmployeePosition(username, position);
