@@ -19,15 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            //object[] parameters = parameter as object[];
-            //if (parameters == null || parameters.Length != 2
-            //    || parameters[0].ToString().Trim().Equals("")
-            //    || ((PasswordBox)parameters[1]).Password.ToString().Trim().Equals(""))
-            //{
-            //    MessageBox.Show("Niste popunili sva polja!",
-            //                    "Upozorenje",
-            //                     MessageBoxButton.OK, MessageBoxImage.Information);
-            //}
+           
 
             string username = ClientDialogViewModel.Instance.LogInUser.Username;
             string password = ClientDialogViewModel.Instance.LogInUser.Password;
@@ -220,14 +212,14 @@ namespace Client.Command
                         else
                         {
                             ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
-                            //((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                  
                         }
                     }
                     else
                     {
                         ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
                         Console.WriteLine(ClientDialogViewModel.Instance.LogInUser.Username.ToString());
-                        //((Label)parameters[3]).Content = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+          
                     }
                 }
             }

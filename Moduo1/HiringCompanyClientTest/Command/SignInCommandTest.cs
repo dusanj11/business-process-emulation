@@ -16,11 +16,7 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private SignInCommand signInCommandUnderTest;
-        private string username = "naci";
-        private PasswordBox password = new PasswordBox();
-        
-     
-        private bool isCalled = false;
+
         #endregion Declarations
 
         #region setup
@@ -28,14 +24,14 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-            password.Password = "naci";
+   
 
             this.signInCommandUnderTest = new SignInCommand();
             this.signInCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-           
-            
+            //EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+
+            Client.View.AddEmployeeView view = Substitute.For<Client.View.AddEmployeeView>();
             
         }
 
