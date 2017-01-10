@@ -1,8 +1,8 @@
 ﻿using Client.ViewModel;
 using HiringCompanyData;
 using System;
-using System.Windows.Input;
 using System.Threading;
+using System.Windows.Input;
 
 namespace Client.Command
 {
@@ -22,15 +22,10 @@ namespace Client.Command
             project.Description = CreateProjectViewModel.Instance.NewProjectDefinition.Description;
             project.StartDate = CreateProjectViewModel.Instance.NewProjectDefinition.StartDate;
             project.EndDate = CreateProjectViewModel.Instance.NewProjectDefinition.EndDate;
-            
 
-            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
-            {
-
-                HiringCompany hc = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
-                project.HiringCompany = hc;
-                proxy.AddProjectDefinition(project);
-            }
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+            project.HiringCompany = hc;
+            ClientProxy.Instance.AddProjectDefinition(project);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModel;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -30,6 +31,8 @@ namespace HiringCompanyClientTest.Command
             this.saveNewEmployeeCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            AddNewEmployeeViewModel.Instance = Substitute.For<IAddNewEmployeeViewModel>();
+
 
            
 

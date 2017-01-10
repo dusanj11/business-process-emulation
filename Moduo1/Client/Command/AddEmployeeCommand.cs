@@ -15,13 +15,13 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            AddNewEmployeeViewModel.Instance.NewEmployee.Username = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.Password = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.Name = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.Surname = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.StartTime = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.EndTime = string.Empty;
-            AddNewEmployeeViewModel.Instance.NewEmployee.Position = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().Username = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().Password = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().Name = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().Surname = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().StartTime = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().EndTime = string.Empty;
+            AddNewEmployeeViewModel.Instance.NewEmployee().Position = string.Empty;
 
             ClientDialogViewModel.Instance.ShowAddEmployeeView();
         }

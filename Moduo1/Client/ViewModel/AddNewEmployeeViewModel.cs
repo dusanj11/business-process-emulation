@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class AddNewEmployeeViewModel : INotifyPropertyChanged
+    public class AddNewEmployeeViewModel : INotifyPropertyChanged, IAddNewEmployeeViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,19 +18,41 @@ namespace Client.ViewModel
 
         public SaveNewEmployeeCommand SaveNewEmployeeCommand { get; set; }
 
+        public static IAddNewEmployeeViewModel _addNewEmployeeModel;
 
-        public static AddNewEmployeeViewModel Instance
+        public static IAddNewEmployeeViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_addNewEmployeeModel == null)
                 {
-                    model = new AddNewEmployeeViewModel();
+                    _addNewEmployeeModel = new AddNewEmployeeViewModel();
                 }
 
-                return model;
+                return _addNewEmployeeModel;
+            }
+            set
+            {
+                if (_addNewEmployeeModel == null)
+                {
+                    _addNewEmployeeModel = value;
+                }
             }
         }
+
+        //public static AddNewEmployeeViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new AddNewEmployeeViewModel();
+        //        }
+
+        //        return model;
+        //    }
+           
+        //}
 
         public NewEmployee NewEmployee
         {
@@ -58,6 +80,11 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        NewEmployee IAddNewEmployeeViewModel.NewEmployee()
+        {
+            return NewEmployee;
         }
     }
 }

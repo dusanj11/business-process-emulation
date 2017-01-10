@@ -2,44 +2,60 @@
 using HiringCompanyData;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.ServiceModel;
 
 namespace Client
 {
-    public class ClientProxy : ChannelFactory<IHiringCompany>, IHiringCompany, IDisposable
+    public class ClientProxy : IHiringCompany, IDisposable
     {
-        private IHiringCompany factory;
+        private static IHiringCompany proxy;
 
-        public ClientProxy(NetTcpBinding binding, string address) : base(binding, address)
+        private static ChannelFactory<IHiringCompany> factory;
+
+        private static string address = ConfigurationManager.AppSettings["HiringCompanyServiceAddress"];
+
+        public static IHiringCompany Instance
         {
-            factory = this.CreateChannel();
+            get
+            {
+                if (proxy == null)
+                {
+                    factory = new ChannelFactory<IHiringCompany>(new NetTcpBinding(), new EndpointAddress(address));
+                    proxy = factory.CreateChannel();
+                }
+
+                return proxy;
+            }
+            set
+            {
+                if (proxy == null)
+                {
+                    proxy = value;
+                }
+            }
         }
+
 
         public void Dispose()
         {
             try
             {
-                //if (factory != null)
-                //{
-                //    factory = null;
-
-                //}
-                //this.Close();
-                if (State != CommunicationState.Faulted)
+                if (factory != null)
                 {
-                    Close();
+                    factory = null;
+
                 }
+                factory.Close();
+
+            }
+            catch (CommunicationException ce)
+            {
+                Console.WriteLine("Communication exception: {0}", ce.Message);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Dispose exception: {0}", e.Message);
-            }
-            finally
-            {
-                if (State != CommunicationState.Closed)
-                {
-                    Abort();
-                }
+                Console.WriteLine("Communication exception: {0}", e.Message);
             }
         }
 
@@ -47,7 +63,7 @@ namespace Client
         {
             try
             {
-                return factory.GetAllEmployees();
+                return proxy.GetAllEmployees();
             }
             catch (Exception e)
             {
@@ -60,7 +76,7 @@ namespace Client
         {
             try
             {
-                return factory.GetEmployee(username, password);
+                return proxy.GetEmployee(username, password);
             }
             catch (Exception e)
             {
@@ -73,7 +89,7 @@ namespace Client
         {
             try
             {
-                return factory.AddEmployee(employee);
+                return proxy.AddEmployee(employee);
             }
             catch (Exception e)
             {
@@ -86,7 +102,7 @@ namespace Client
         {
             try
             {
-                return factory.ChangeEmployeePosition(username, position);
+                return proxy.ChangeEmployeePosition(username, position);
             }
             catch (Exception e)
             {
@@ -99,7 +115,7 @@ namespace Client
         {
             try
             {
-                return factory.UpdateEmployee(employee);
+                return proxy.UpdateEmployee(employee);
             }
             catch (Exception e)
             {
@@ -112,7 +128,7 @@ namespace Client
         {
             try
             {
-                return factory.ChangePassword(username, oldPassword, newPassword);
+                return proxy.ChangePassword(username, oldPassword, newPassword);
             }
             catch (Exception e)
             {
@@ -125,7 +141,7 @@ namespace Client
         {
             try
             {
-                return factory.EmployeeLogIn(username);
+                return proxy.EmployeeLogIn(username);
             }
             catch (Exception e)
             {
@@ -138,7 +154,7 @@ namespace Client
         {
             try
             {
-                return factory.EmployeeLogOut(username);
+                return proxy.EmployeeLogOut(username);
             }
             catch (Exception e)
             {
@@ -151,7 +167,7 @@ namespace Client
         {
             try
             {
-                return factory.AddHiringCompany(company);
+                return proxy.AddHiringCompany(company);
             }
             catch (Exception e)
             {
@@ -164,7 +180,7 @@ namespace Client
         {
             try
             {
-                return factory.GetHiringCompany(id);
+                return proxy.GetHiringCompany(id);
             }
             catch (Exception e)
             {
@@ -177,7 +193,7 @@ namespace Client
         {
             try
             {
-                return factory.AddProjectDefinition(project);
+                return proxy.AddProjectDefinition(project);
             }
             catch (Exception e)
             {
@@ -190,7 +206,7 @@ namespace Client
         {
             try
             {
-                return factory.GetProjects();
+                return proxy.GetProjects();
             }
             catch (Exception e)
             {
@@ -203,7 +219,7 @@ namespace Client
         {
             try
             {
-                return factory.SendDelayingEmail(username);
+                return proxy.SendDelayingEmail(username);
             }
             catch (Exception e)
             {
@@ -217,7 +233,7 @@ namespace Client
         {
             try
             {
-                return factory.GetAllNotSignedInEmployees();
+                return proxy.GetAllNotSignedInEmployees();
             }
             catch (Exception e)
             {
@@ -228,7 +244,7 @@ namespace Client
 
         public bool TestService()
         {
-            return factory.TestService();
+            return proxy.TestService();
         }
     }
 }

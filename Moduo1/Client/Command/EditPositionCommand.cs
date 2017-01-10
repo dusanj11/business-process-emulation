@@ -33,28 +33,25 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
+            if (Resources.Count != 0)
             {
-                if (Resources.Count != 0)
-                {
-                    Resources.Clear();
-                }
+                Resources.Clear();
+            }
 
-                List<Employee> logInEmployees = new List<Employee>(50);
+            List<Employee> logInEmployees = new List<Employee>(50);
 
-                logInEmployees = proxy.GetAllEmployees();
+            logInEmployees = ClientProxy.Instance.GetAllEmployees();
 
-                List<Employee> noLogInEmployees = proxy.GetAllNotSignedInEmployees();
+            List<Employee> noLogInEmployees = ClientProxy.Instance.GetAllNotSignedInEmployees();
 
-                foreach (Employee em in logInEmployees)
-                {
-                    Resources.Add(em);
-                }
+            foreach (Employee em in logInEmployees)
+            {
+                Resources.Add(em);
+            }
 
-                foreach (Employee nem in noLogInEmployees)
-                {
-                    Resources.Add(nem);
-                }
+            foreach (Employee nem in noLogInEmployees)
+            {
+                Resources.Add(nem);
             }
 
             ClientDialogViewModel.Instance.EmpResource = Resources;

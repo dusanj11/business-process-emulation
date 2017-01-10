@@ -25,10 +25,11 @@ namespace Client.Command
         public void Execute(object parameter)
         {
 
-            using (ClientProxy proxy = new ClientProxy(WcfCommon.WcfAttributes.binding, WcfCommon.WcfAttributes.address))
-            {
+           
 
-                NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee;
+                NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee();
+
+
 
                 Employee employee = new Employee();
                 employee.Username = newEmp.Username;
@@ -40,13 +41,13 @@ namespace Client.Command
                 employee.Position = newEmp.Position;
                 employee.PasswordUpadateDate = DateTime.Now;
 
-                employee.HiringCompanyId = proxy.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+                employee.HiringCompanyId = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
 
-                bool ret = proxy.AddEmployee(employee);
+                bool ret = ClientProxy.Instance.AddEmployee(employee);
 
 
               
-            }
+            
         }
     }
 }

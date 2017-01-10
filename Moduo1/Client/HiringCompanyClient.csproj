@@ -187,6 +187,7 @@
     <Compile Include="ViewModel\DefineUserStoriesViewModel.cs" />
     <Compile Include="ViewModel\EditPersonalDataViewModel.cs" />
     <Compile Include="ViewModel\EditPositionViewModel.cs" />
+    <Compile Include="ViewModel\IAddNewEmployeeViewModel.cs" />
     <Compile Include="ViewModel\SendRequestCompanyViewModel.cs" />
     <Compile Include="ViewModel\SendRequestProjectViewModel.cs" />
     <Compile Include="ViewModel\WorkingHoursViewModel.cs" />

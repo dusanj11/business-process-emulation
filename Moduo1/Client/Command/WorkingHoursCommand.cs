@@ -1,12 +1,6 @@
 ﻿using Client.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using HiringCompanyData;
 
 namespace Client.Command
 {
@@ -25,7 +19,6 @@ namespace Client.Command
             WorkingHoursViewModel.Instance.EndTime = string.Empty;
 
             ClientDialogViewModel.Instance.ShowWorkingHoursView();
-            
         }
     }
 }

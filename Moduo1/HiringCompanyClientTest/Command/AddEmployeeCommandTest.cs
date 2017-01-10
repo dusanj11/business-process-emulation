@@ -32,7 +32,7 @@ namespace HiringCompanyClientTest.Command
             this.addEmployeeUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            //ClientDialogViewModel.Instance.CDialog = Substitute.For<Client.ClientDialog>();
+            AddNewEmployeeViewModel.Instance = Substitute.For<IAddNewEmployeeViewModel>();
            
             
         }
