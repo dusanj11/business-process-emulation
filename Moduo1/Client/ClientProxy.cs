@@ -246,5 +246,18 @@ namespace Client
         {
             return proxy.TestService();
         }
+
+        public List<Employee> GetReallyAllEmployees()
+        {
+            try
+            {
+                return proxy.GetReallyAllEmployees();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetReallyAllEmployees: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }
