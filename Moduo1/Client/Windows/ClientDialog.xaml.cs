@@ -23,7 +23,7 @@ namespace Client
         public ClientDialog()
         {
             InitializeComponent();
-            ClientDialogViewModel.Instance.CDialog = this;
+            ClientDialogViewModel.Instance.CDialog(this);
             DataContext = new ClientDialogViewModel();
         }
     }

@@ -25,8 +25,8 @@ namespace Client.Command
                 string surname = EditPersonalDataViewModel.Instance.Surname();
                 string username = EditPersonalDataViewModel.Instance.Username();
 
-                string loginUsername = ClientDialogViewModel.Instance.LogInUser.Username;
-                string loginPassword = ClientDialogViewModel.Instance.LogInUser.Password;
+                string loginUsername = ClientDialogViewModel.Instance.LogInUser().Username;
+                string loginPassword = ClientDialogViewModel.Instance.LogInUser().Password;
 
                 try
                 {
@@ -40,8 +40,8 @@ namespace Client.Command
 
                     if (ret)
                     {
-                        ClientDialogViewModel.Instance.LogInUser.Username = employee.Username;
-                        ClientDialogViewModel.Instance.LogInUser.Password = employee.Password;
+                        ClientDialogViewModel.Instance.LogInUser().Username = employee.Username;
+                        ClientDialogViewModel.Instance.LogInUser().Password = employee.Password;
 
                         log.Info("Successfully changed employee personal data.");
                     }

@@ -16,8 +16,8 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            string username = ClientDialogViewModel.Instance.LogInUser.Username;
-            string password = ClientDialogViewModel.Instance.LogInUser.Password;
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+            string password = ClientDialogViewModel.Instance.LogInUser().Password;
 
             string startTime = WorkingHoursViewModel.Instance.StartTime();
             string endTime = WorkingHoursViewModel.Instance.EndTime();

@@ -17,13 +17,13 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            string username = ClientDialogViewModel.Instance.LogInUser.Username;
-            string password = ClientDialogViewModel.Instance.LogInUser.Password;
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+            string password = ClientDialogViewModel.Instance.LogInUser().Password;
 
             if (username.Trim().Equals("") || username.Equals(null) ||
                 password.Trim().Equals("") || password.Equals(null))
             {
-                ClientDialogViewModel.Instance.ErrorMessage = "Niste popunili sva polja!";
+                ClientDialogViewModel.Instance.ErrorMessage("Niste popunili sva polja!");
             }
             else
             {
@@ -198,13 +198,13 @@ namespace Client.Command
                     }
                     else
                     {
-                        ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
+                        ClientDialogViewModel.Instance.ErrorMessage("Uneli ste nevalidne podatke. Pokušajte ponovo!");
                     }
                 }
                 else
                 {
-                    ClientDialogViewModel.Instance.ErrorMessage = "Uneli ste nevalidne podatke. Pokušajte ponovo!";
-                    Console.WriteLine(ClientDialogViewModel.Instance.LogInUser.Username.ToString());
+                    ClientDialogViewModel.Instance.ErrorMessage("Uneli ste nevalidne podatke. Pokušajte ponovo!");
+                    Console.WriteLine(ClientDialogViewModel.Instance.LogInUser().Username.ToString());
                 }
             }
         }

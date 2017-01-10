@@ -54,7 +54,7 @@ namespace Client.Command
                 Resources.Add(nem);
             }
 
-            ClientDialogViewModel.Instance.EmpResource = Resources;
+            ClientDialogViewModel.Instance.EmpResources(Resources);
             ClientDialogViewModel.Instance.ShowEditPositionView();
         }
     }

@@ -116,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Fakes Include="Fakes\Client.fakes" />
     <None Include="packages.config" />
     <None Include="Settings.StyleCop" />
   </ItemGroup>

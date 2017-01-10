@@ -1,5 +1,6 @@
 ﻿using Client.Command;
 using Client.Model;
+using Client.ViewModelInterfaces;
 using HiringCompanyData;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class ClientDialogViewModel : INotifyPropertyChanged
+    public class ClientDialogViewModel : INotifyPropertyChanged, IClientDialogViewModel
     {
         private static ClientDialogViewModel model;
 
@@ -33,18 +34,40 @@ namespace Client.ViewModel
             set { cDialog = value; }
         }
 
-        public static ClientDialogViewModel Instance
+        public static IClientDialogViewModel _clientDialogViewModel;
+
+        public static IClientDialogViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_clientDialogViewModel == null)
                 {
-                    model = new ClientDialogViewModel();
+                    _clientDialogViewModel = new ClientDialogViewModel();
                 }
 
-                return model;
+                return _clientDialogViewModel;
+            }
+            set
+            {
+                if (_clientDialogViewModel == null)
+                {
+                    _clientDialogViewModel = value;
+                }
             }
         }
+
+        //public static ClientDialogViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new ClientDialogViewModel();
+        //        }
+
+        //        return model;
+        //    }
+        //}
         private string errorMessage;
 
         public string ErrorMessage
@@ -353,6 +376,76 @@ namespace Client.ViewModel
 
             CDialog.MainWindowDockPanel.Children.Add(showEmployeeView);
            
+        }
+
+        MainWindow IClientDialogViewModel.Main()
+        {
+            return Main;
+        }
+
+        ClientDialog IClientDialogViewModel.CDialog()
+        {
+            return CDialog;
+        }
+
+        string IClientDialogViewModel.ErrorMessage()
+        {
+            return ErrorMessage;
+        }
+
+        void IClientDialogViewModel.ErrorMessage(string message)
+        {
+            ErrorMessage = message;
+        }
+
+        LogInUser IClientDialogViewModel.LogInUser()
+        {
+            return LogInUser;
+        }
+
+        void IClientDialogViewModel.LogInUser(LogInUser logInUser)
+        {
+            LogInUser = logInUser;
+        }
+
+        ObservableCollection<Employee> IClientDialogViewModel.Resources()
+        {
+            return Resources;
+        }
+
+        void IClientDialogViewModel.Resources(ObservableCollection<Employee> resources)
+        {
+            Resources = resources;
+        }
+
+        ObservableCollection<Project> IClientDialogViewModel.PrResources()
+        {
+            return PrResources;
+        }
+
+        void IClientDialogViewModel.PrResources(ObservableCollection<Project> prResources)
+        {
+            PrResources = prResources;
+        }
+
+         ObservableCollection<Employee> IClientDialogViewModel.EmpResources()
+        {
+            return EmpResource;
+        }
+
+        void IClientDialogViewModel.EmpResources(ObservableCollection<Employee> empResources)
+        {
+            EmpResource = empResources;
+        }
+
+        void IClientDialogViewModel.Main(MainWindow main)
+        {
+            Main = main;
+        }
+
+        void IClientDialogViewModel.CDialog(ClientDialog clientDialog)
+        {
+            CDialog = clientDialog;
         }
     }
 }

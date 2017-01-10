@@ -1,4 +1,6 @@
-﻿using Client.Command;
+﻿using Client;
+using Client.Command;
+using HiringCompanyContract;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -30,7 +32,7 @@ namespace HiringCompanyClientTest.Command
             this.loadedCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
 
 
         }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Client.Command;
 using HiringCompanyService.Access;
 using NSubstitute;
+using Client.ViewModel;
+using Client.ViewModelInterfaces;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -31,6 +33,8 @@ namespace HiringCompanyClientTest.Command
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
+             
 
 
         }

@@ -16,7 +16,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            string username = ClientDialogViewModel.Instance.LogInUser.Username;
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
             if (username.Equals("") || username.Equals(null))
             {
@@ -27,8 +27,8 @@ namespace Client.Command
 
             Application.Current.Windows[1].Close();
             Application.Current.MainWindow.Show();
-            ClientDialogViewModel.Instance.LogInUser.Username = string.Empty;
-            ClientDialogViewModel.Instance.LogInUser.Password = string.Empty;
+            ClientDialogViewModel.Instance.LogInUser().Username = string.Empty;
+            ClientDialogViewModel.Instance.LogInUser().Password = string.Empty;
         }
     }
 }

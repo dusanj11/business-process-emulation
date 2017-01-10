@@ -21,8 +21,8 @@ namespace Client.Command
         {
             try
             {
-                string username = ClientDialogViewModel.Instance.LogInUser.Username;
-                string password = ClientDialogViewModel.Instance.LogInUser.Password;
+                string username = ClientDialogViewModel.Instance.LogInUser().Username;
+                string password = ClientDialogViewModel.Instance.LogInUser().Password;
 
                 Employee employeeFromDB;
 

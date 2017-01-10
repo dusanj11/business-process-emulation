@@ -44,7 +44,7 @@ namespace Client.Command
                 Resources.Add(p);
             }
 
-            ClientDialogViewModel.Instance.PrResources = Resources;
+            ClientDialogViewModel.Instance.PrResources(Resources);
             ClientDialogViewModel.Instance.ShowShowProjectsView();
         }
     }
