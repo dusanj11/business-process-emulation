@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModel;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Client.ViewModelInterfaces;
+using Client.Model;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -31,6 +34,10 @@ namespace HiringCompanyClientTest.Command
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+
+            ClientDialogViewModel.Instance.LogInUser().Returns(new LogInUser("mica", "mica"));
+         
 
 
         }

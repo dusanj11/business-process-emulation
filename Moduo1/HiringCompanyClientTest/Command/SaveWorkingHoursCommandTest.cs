@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using Client.Command;
 using HiringCompanyService.Access;
 using NSubstitute;
+using Client.ViewModel;
+using Client.ViewModelInterfaces;
+using Client;
+using HiringCompanyContract;
+using HiringCompanyData;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -31,8 +36,16 @@ namespace HiringCompanyClientTest.Command
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new Client.Model.LogInUser()
+            {
+                Username = "naci",
+                Password = "naci"
+            });
 
 
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee());
         }
 
         #endregion setup

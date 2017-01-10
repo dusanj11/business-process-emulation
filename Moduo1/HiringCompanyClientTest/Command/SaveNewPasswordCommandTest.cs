@@ -9,9 +9,13 @@ using HiringCompanyService.Access;
 using NSubstitute;
 using Client.ViewModel;
 using Client.ViewModelInterfaces;
+using Client;
+using HiringCompanyContract;
+using HiringCompanyData;
 
 namespace HiringCompanyClientTest.Command
 {
+    [Apartment(System.Threading.ApartmentState.STA)]
     [TestFixture]
     public class SaveNewPasswordCommandTest
     {
@@ -34,9 +38,20 @@ namespace HiringCompanyClientTest.Command
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
             ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
-             
+
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position="PO"});
+
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser("mici", "mici"));
+            //ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog());
+
+            ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
+            ChangePasswordViewModel.Instance.OldPassword().Returns("mici");
+            ChangePasswordViewModel.Instance.NewPassword().Returns("milica");
 
 
+        
         }
 
         #endregion setup
@@ -64,8 +79,32 @@ namespace HiringCompanyClientTest.Command
 
 
         [Test]
-        public void ExecuteTest()
+        public void ExecuteTestPO()
         {
+            Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.Execute(new object()); });
+        }
+
+        [Test]
+        public void ExecuteTestHR()
+        {
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position = "HR" });
+
+            Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.Execute(new object()); });
+        }
+
+        [Test]
+        public void ExecuteTestCEO()
+        {
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position = "CEO" });
+
+            Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.Execute(new object()); });
+        }
+
+        [Test]
+        public void ExecuteTestSM()
+        {
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position = "SM" });
+
             Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.Execute(new object()); });
         }
 

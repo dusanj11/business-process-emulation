@@ -1,12 +1,13 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Client;
 using Client.Command;
+using Client.Model;
+using Client.ViewModel;
+using Client.ViewModelInterfaces;
+using HiringCompanyContract;
 using HiringCompanyService.Access;
 using NSubstitute;
+using NUnit.Framework;
+using System;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -24,19 +25,31 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-
-
             this.saveNewProjectDefinitionCommandUnderTest = new SaveNewProjectDefinition();
             this.saveNewProjectDefinitionCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            CreateProjectViewModel.Instance = Substitute.For<ICreateProjectViewModel>();
+            CreateProjectViewModel.Instance.NewProjectDefinition().ReturnsForAnyArgs(new NewProjectDefinition()
+            {
+                Name = "Project1",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                Description = "Project1 Description"
+            });
 
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetHiringCompany(1).ReturnsForAnyArgs(new HiringCompanyData.HiringCompany()
+            {
+                Name = "HC1",
+                Ceo = "MJ",
+                CompanyIdThr = 1
+            });
 
         }
 
         #endregion setup
-
 
         #region Tests
 
@@ -58,7 +71,6 @@ namespace HiringCompanyClientTest.Command
             Assert.DoesNotThrow(() => { saveNewProjectDefinitionCommandUnderTest.CanExecute(null); });
         }
 
-
         [Test]
         public void ExecuteTest()
         {
@@ -70,6 +82,7 @@ namespace HiringCompanyClientTest.Command
         {
             Assert.DoesNotThrow(() => { saveNewProjectDefinitionCommandUnderTest.Execute(null); });
         }
+
         #endregion Tests
     }
 }

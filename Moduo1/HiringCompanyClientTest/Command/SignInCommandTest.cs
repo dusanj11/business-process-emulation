@@ -1,4 +1,7 @@
-﻿using Client.Command;
+﻿using Client;
+using Client.Command;
+using Client.ViewModel;
+using HiringCompanyContract;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -32,7 +35,14 @@ namespace HiringCompanyClientTest.Command
             //EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
             Client.View.AddEmployeeView view = Substitute.For<Client.View.AddEmployeeView>();
-            
+
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+
+            ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser()
+            {
+                Username = "naci",
+                Password = "naci"
+            });
         }
 
         #endregion setup
