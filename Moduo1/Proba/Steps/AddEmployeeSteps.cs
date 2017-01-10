@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using TechTalk.SpecFlow;
 
 namespace Proba
@@ -6,10 +7,24 @@ namespace Proba
     [Binding]
     public class AddEmployeeSteps
     {
+        private static Employee nevalidni = new Employee();
+        private static Employee validni = new Employee();
+
         [Given(@"I can write in database")]
         public void GivenICanWriteInDatabase()
         {
-            ScenarioContext.Current.Pending();
+            Employee nevalidni = new Employee();
+            nevalidni.Name = "Milica";
+            nevalidni.Surname = "Kapetina";
+            nevalidni.Username = "mica";
+            nevalidni.Password = "mica";
+            nevalidni.Position = PositionEnum.CEO.ToString();
+            nevalidni.StartTime = "10.00";
+            nevalidni.EndTime = "17.00";
+            nevalidni.Login = false;
+            nevalidni.Email = "marko.jelaca@gmail.com";
+            nevalidni.PasswordUpadateDate = DateTime.Now;
+
         }
         
         [Given(@"I have entered employee with existing username")]
