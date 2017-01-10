@@ -33,6 +33,9 @@
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -52,23 +55,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Proba.feature.cs">
+    <Compile Include="Features\ShowProject.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Proba.feature</DependentUpon>
+      <DependentUpon>ShowProject.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\SignIn.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignIn.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\ShowProjectSteps.cs" />
+    <Compile Include="Steps\SignInSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="Proba.feature">
+    <None Include="Features\ShowProject.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Proba.feature.cs</LastGenOutput>
+      <LastGenOutput>ShowProject.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Features\SignIn.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignIn.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiringCompanyData\HiringCompanyData.csproj">
+      <Project>{ca33008b-97fa-4eb5-8d97-5105ea35a988}</Project>
+      <Name>HiringCompanyData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiringCompanyService\HiringCompanyService.csproj">
+      <Project>{e06bf5bb-e141-49c6-b639-43e8bd79f8ab}</Project>
+      <Name>HiringCompanyService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
