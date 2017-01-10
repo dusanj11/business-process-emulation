@@ -121,7 +121,7 @@ namespace HiringCompanyService
             try
             {
                 serviceHost.Open();
-                
+
 
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");

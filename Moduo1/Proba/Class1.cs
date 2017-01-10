@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proba
+namespace TestBDD
 {
     public class Class1
     {
