@@ -33,6 +33,13 @@
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
@@ -40,6 +47,7 @@
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,24 +84,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GetEmployee.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\ShowCompanies.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShowCompanies.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\ShowEmployees.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShowEmployees.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\SignIn.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SignIn.feature</DependentUpon>
-    </Compile>
     <Compile Include="Steps\GetAllNotLoggedEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllEmployeesSteps.cs" />
-    <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs" />
+    <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\GetAllNotLoggedEmployees.feature.cs">
       <AutoGen>True</AutoGen>
@@ -101,9 +96,6 @@
       <DependentUpon>GetAllNotLoggedEmployees.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\GetEmployeeSteps.cs" />
-    <Compile Include="Steps\ShowCompaniesSteps.cs" />
-    <Compile Include="Steps\ShowEmployeesSteps.cs" />
-    <Compile Include="Steps\SignInSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -123,19 +115,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetEmployee.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\ShowCompanies.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ShowCompanies.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\ShowEmployees.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ShowEmployees.feature.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
-    <None Include="Features\SignIn.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SignIn.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\GetAllNotLoggedEmployees.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetAllNotLoggedEmployees.feature.cs</LastGenOutput>
@@ -145,6 +125,14 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client\HiringCompanyClient.csproj">
+      <Project>{991966e6-7be8-428a-93b1-c184f4d3ef91}</Project>
+      <Name>HiringCompanyClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
+      <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
+      <Name>HiringCompanyContract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HiringCompanyData\HiringCompanyData.csproj">
       <Project>{ca33008b-97fa-4eb5-8d97-5105ea35a988}</Project>
       <Name>HiringCompanyData</Name>

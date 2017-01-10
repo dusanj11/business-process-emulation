@@ -4,19 +4,31 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
+using TestStack.White;
 
 namespace Proba.Steps
 {
     [Binding]
     public class GetEmployeeSteps
     {
-        private static Employee emp;
+        private static Employee emp = new Employee();
+        private static Application app;
         private static string us1;
         private static string us2;
         private static string us3;
         private static string ps1;
         private static string ps2;
         private static string ps3;
+        [BeforeTestRun]
+        public static  void BeforeTestRun()
+        {
+           app = Application.Launch(@"C:\Users\ftn\Desktop\dukica\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
+        }
+        [AfterTestRun]
+        public static void AftertestRun()
+        {
+            app.Close();
+        }
 
         [Given(@"I can use database")]
         public void GivenICanUseDatabase()
@@ -27,8 +39,8 @@ namespace Proba.Steps
         [Given(@"I have entered valid username and password")]
         public void GivenIHaveEnteredValidUsernameAndPassword()
         {
-            us1 = "Dule";
-            ps1 = "Dule";
+            us1 = "dule";
+            ps1 = "dule";
         }
         
         [Given(@"I have the power work on datbase")]
@@ -41,7 +53,7 @@ namespace Proba.Steps
         public void GivenIHaveEnteredValidUsernameAndInvalidPassword()
         {
             //EmployeeDB.Instance.GetEmployee(null, null).Returns(new Employee());
-            us2 = "Dule";
+            us2 = "dule";
             ps2 = "reoifrnfrno";
         }
         

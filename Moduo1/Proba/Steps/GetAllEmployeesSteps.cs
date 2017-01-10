@@ -11,7 +11,7 @@ namespace Proba.Steps
     [Binding]
     public class GetAllEmployeesSteps
     {
-        private static List<Employee> allEmployees;
+        private static List<Employee> allEmployees = new List<Employee>();
         
         [Given(@"I have acces to database")]
         public void GivenIHaveAccesToDatabase()

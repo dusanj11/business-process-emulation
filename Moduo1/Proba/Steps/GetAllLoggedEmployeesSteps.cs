@@ -11,8 +11,8 @@ namespace Proba
     [Binding]
     public class GetAllLoggedEmployeesSteps
     {
-        private static List<Employee> loggedIn;
-        private static List<Employee> allEmployees;
+        private static List<Employee> loggedIn = new List<Employee>();
+        private static List<Employee> allEmployees = new List<Employee>();
 
         [Given(@"I have access to database")]
         public void GivenIHaveAccessToDatabase()
@@ -31,7 +31,8 @@ namespace Proba
         {
             int numberOfLogged = 0;
             allEmployees = EmployeeDB.Instance.GetReallyEmployees();
-            Assert.IsNotEmpty(allEmployees);
+            //Assert.IsNotEmpty(allEmployees);
+            Assert.That(allEmployees.Count > 0, Is.True);
             foreach (Employee emp in allEmployees)
             {
                 if (emp.Login)
@@ -43,7 +44,8 @@ namespace Proba
         [Then(@"the result should be list of Employees")]
         public void ThenTheResultShouldBeListOfEmployees()
         {
-            Assert.IsNotEmpty(loggedIn);
+            //Assert.IsNotEmpty(loggedIn);
+            Assert.Greater(loggedIn.Count, 0);
         }
     }
 }

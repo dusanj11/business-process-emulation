@@ -16,20 +16,20 @@ namespace Proba
         private static TextBox tbUsername;
         private static TextBox tbPassword;
 
-        [BeforeTestRun]
-        public static void BeforeTestRun()
-        {
-            //appServ = Application.Launch(@"C:\Users\ftn\Desktop\dukiii\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
-            appClient = Application.Launch(@"C:\Users\ftn\Desktop\dukiii\Moduo1\Client\bin\Debug\Client.exe");
-            window = appClient.GetWindow("Log in");
-        }
-        [AfterTestRun]
-        public static void AfterTestRun()
-        {
-            window.Close();
-            appClient.Close();
-            // appServ.Close();
-        }
+        //[BeforeTestRun]
+        //public static void BeforeTestRun()
+        //{
+        //    //appServ = Application.Launch(@"C:\Users\ftn\Desktop\dukiii\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
+        //    appClient = Application.Launch(@"C:\Users\ftn\Desktop\dukiii\Moduo1\Client\bin\Debug\Client.exe");
+        //    window = appClient.GetWindow("Log in");
+        //}
+        //[AfterTestRun]
+        //public static void AfterTestRun()
+        //{
+        //    window.Close();
+        //    appClient.Close();
+        //    // appServ.Close();
+        //}
         [Given(@"I have started the application sucessfully")]
         public void GivenIHaveStartedTheApplicationSucessfully()
         {

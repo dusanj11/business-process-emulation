@@ -65,11 +65,11 @@ namespace Proba.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
+        [NUnit.Framework.DescriptionAttribute("Show Companies")]
         [NUnit.Framework.CategoryAttribute("DusanBDD")]
-        public virtual void AddTwoNumbers()
+        public virtual void ShowCompanies()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show Companies", new string[] {
                         "DusanBDD"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
