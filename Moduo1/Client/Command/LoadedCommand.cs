@@ -32,22 +32,22 @@ namespace Client.Command
                     log.Debug("proxy poziv - AddHiringCompany");
                     ClientProxy.Instance.AddHiringCompany(company);
 
-                    //HiringCompany hc = ClientProxy.Instance.GetHiringCompany(threadId);
+                    HiringCompany hc = ClientProxy.Instance.GetHiringCompany(threadId);
 
-                    //Employee testEmp = new Employee();
-                    //testEmp.Name = "Milica";
-                    //testEmp.Surname = "Kapetina";
-                    //testEmp.Username = "mica";
-                    //testEmp.Password = "mica";
-                    //testEmp.Position = PositionEnum.CEO.ToString();
-                    //testEmp.StartTime = "10.00";
-                    //testEmp.EndTime = "17.00";
-                    //testEmp.Login = false;
-                    //testEmp.Email = "marko.jelaca@gmail.com";
-                    //testEmp.PasswordUpadateDate = DateTime.Now;
-                    //testEmp.HiringCompanyId = hc;
+                    Employee testEmp = new Employee();
+                    testEmp.Name = "Milica";
+                    testEmp.Surname = "Kapetina";
+                    testEmp.Username = "mica";
+                    testEmp.Password = "mica";
+                    testEmp.Position = PositionEnum.CEO.ToString();
+                    testEmp.StartTime = "10.00";
+                    testEmp.EndTime = "17.00";
+                    testEmp.Login = false;
+                    testEmp.Email = "marko.jelaca@gmail.com";
+                    testEmp.PasswordUpadateDate = DateTime.Now;
+                    testEmp.HiringCompanyId = hc;
 
-                    //ClientProxy.Instance.AddEmployee(testEmp);
+                    ClientProxy.Instance.AddEmployee(testEmp);
                 }
                 catch (CommunicationException ce)
                 {
