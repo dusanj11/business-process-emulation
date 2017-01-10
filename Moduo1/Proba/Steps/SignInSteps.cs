@@ -15,6 +15,7 @@ namespace Proba
         private static Window window;
         private static TextBox tbUsername;
         private static TextBox tbPassword;
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
