@@ -1,4 +1,6 @@
-﻿using HiringCompanyData;
+﻿using Client;
+using HiringCompanyData;
+using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
 
@@ -9,9 +11,17 @@ namespace Proba
     {
         private static Employee nevalidni = new Employee();
         private static Employee validni = new Employee();
+        private static bool statusNevalidni;
+        private static bool statusValidni;
 
         [Given(@"I can write in database")]
         public void GivenICanWriteInDatabase()
+        {
+            
+        }
+        
+        [Given(@"I have entered employee with existing username")]
+        public void GivenIHaveEnteredEmployeeWithExistingUsername()
         {
             Employee nevalidni = new Employee();
             nevalidni.Name = "Milica";
@@ -24,49 +34,54 @@ namespace Proba
             nevalidni.Login = false;
             nevalidni.Email = "marko.jelaca@gmail.com";
             nevalidni.PasswordUpadateDate = DateTime.Now;
-
-        }
-        
-        [Given(@"I have entered employee with existing username")]
-        public void GivenIHaveEnteredEmployeeWithExistingUsername()
-        {
-            ScenarioContext.Current.Pending();
+            
         }
         
         [Given(@"I have power to write on database")]
         public void GivenIHavePowerToWriteOnDatabase()
         {
-            ScenarioContext.Current.Pending();
+            
         }
         
         [Given(@"I have entered non existing username for employee")]
         public void GivenIHaveEnteredNonExistingUsernameForEmployee()
         {
-            ScenarioContext.Current.Pending();
+            Employee validni = new Employee();
+            validni.Name = "Zana";
+            validni.Surname = "Bilbija";
+            validni.Username = "zax";
+            validni.Password = "zax";
+            validni.Position = PositionEnum.SM.ToString();
+            validni.StartTime = "10.00";
+            validni.EndTime = "17.00";
+            validni.Login = false;
+            validni.Email = "marko.jelaca@gmail.com";
+            validni.PasswordUpadateDate = DateTime.Now;
+            
         }
         
         [When(@"I request to add him/her")]
         public void WhenIRequestToAddHimHer()
         {
-            ScenarioContext.Current.Pending();
+            statusNevalidni = ClientProxy.Instance.AddEmployee(nevalidni);
         }
         
         [When(@"I request to put them in database")]
         public void WhenIRequestToPutThemInDatabase()
         {
-            ScenarioContext.Current.Pending();
+            statusValidni = ClientProxy.Instance.AddEmployee(validni);
         }
         
         [Then(@"the result should be false")]
         public void ThenTheResultShouldBeFalse()
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(statusNevalidni, false);
         }
         
         [Then(@"the result should be true")]
         public void ThenTheResultShouldBeTrue()
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(statusValidni, true);
         }
     }
 }
