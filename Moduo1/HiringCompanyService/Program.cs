@@ -166,7 +166,7 @@ namespace HiringCompanyService
                 {
                     foreach (Employee emp in workersToSendMail)
                     {
-                        if (Double.Parse(emp.StartTime.ToString()) < Double.Parse((DateTime.Now.ToString("h.mm"))))
+                        if ((Double.Parse((DateTime.Now.ToString("h.mm"))) - Double.Parse(emp.StartTime.ToString())) > 0.15)
                         {
                                 String email = EmployeeDB.Instance.GetEmployeeEmail(emp.Username);
 
