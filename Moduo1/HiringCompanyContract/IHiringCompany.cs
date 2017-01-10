@@ -54,5 +54,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool SendDelayingEmail(string username);
+
+        [OperationContract]
+        bool TestService();
     }
 }

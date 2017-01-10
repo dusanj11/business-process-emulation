@@ -11,6 +11,7 @@ namespace Client.Command
     {
         public event EventHandler CanExecuteChanged;
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool CanExecute(object parameter)
         {
             return true;
@@ -30,6 +31,7 @@ namespace Client.Command
 
                     try
                     {
+                        log.Debug("proxy poziv - AddHiringCompany"); 
                         proxy.AddHiringCompany(company);
 
                         //HiringCompany hc = proxy.GetHiringCompany(threadId);

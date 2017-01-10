@@ -20,7 +20,7 @@
         </Label>
         <Grid Grid.Row="1" Grid.Column="0">
             <!--PROVERI ZA COMBOBOX BAJNDING-->
-            <ComboBox Name="chosEmployeeCompanyTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Employee}">
+            <ComboBox Name="chosEmployeeCompanyTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" >
             </ComboBox>
         </Grid>
         <Label Name="chosePosLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
