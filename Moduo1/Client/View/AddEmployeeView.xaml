@@ -96,7 +96,7 @@
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>
                 <ComboBoxItem FontSize="14">CEO</ComboBoxItem>
-                <ComboBoxItem FontSize="14">SM</ComboBoxItem>
+                <ComboBoxItem FontSize="14">HR</ComboBoxItem>
             </ComboBox>
         </Grid>
         <Button Name="saveEmployeeBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding SaveNewEmployeeCommand}" Width="Auto">

@@ -9,6 +9,8 @@ namespace HiringCompanyServiceTest
     [TestFixture]
     public class HiringCompanyServiceTest
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         #region Declaration
 
         private HiringCompanyService.HiringCompanyService hirignCompanyServiceUnderTest;

@@ -13,7 +13,7 @@ namespace HiringCompanyService
 {
     public class HiringCompanyService : IHiringCompany
     {
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public List<Employee> GetAllEmployees()
         {
@@ -72,24 +72,28 @@ namespace HiringCompanyService
 
         public bool AddHiringCompany(HiringCompany company)
         {
+            log.Debug("AddHiringCompany Servisni poziv");
             Console.WriteLine("AddHiringCompany...");
             return HiringCompanyDB.Instance.AddCompany(company);
         }
 
         public HiringCompany GetHiringCompany(int id)
         {
+            log.Debug("GetHiringCompany Servisni poziv");
             Console.WriteLine("GetHiringCompany...");
             return HiringCompanyDB.Instance.GetCompany(id);
         }
 
         public bool AddProjectDefinition(Project project)
         {
+            log.Debug("AddProjectDefinition Servisni poziv");
             Console.WriteLine("AddProjectDefinition...");
             return ProjectDB.Instance.AddProject(project);
         }
 
         public List<Project> GetProjects()
         {
+            log.Debug("GetProjects Servisni poziv");
             Console.WriteLine("GetProjects...");
             return ProjectDB.Instance.GetProjects();
         }
@@ -117,6 +121,19 @@ namespace HiringCompanyService
                 }
             }
 
+        }
+
+        public bool TestService()
+        {
+            NetTcpBinding binding = new NetTcpBinding();
+            string address = "";
+
+            using (ServiceProxy serviceProxy = new ServiceProxy(binding, address))
+            {
+                string test = serviceProxy.GetData(1);
+                Console.WriteLine(test);
+            }
+            return true;
         }
     }
 }

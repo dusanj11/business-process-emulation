@@ -184,7 +184,7 @@ namespace HiringCompanyData
 
         public override string ToString()
         {
-            return "Name " + Name + " Surname " + Surname;
+            return  Name + " " + Surname;
         }
     }
 }

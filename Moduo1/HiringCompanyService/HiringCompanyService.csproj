@@ -106,6 +106,7 @@
     <Compile Include="HiringCompanyService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -115,6 +116,10 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EppContract\EppContract.csproj">
+      <Project>{5fecb40c-fb03-49a0-97d7-bc37efbdd29d}</Project>
+      <Name>EppContract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>
@@ -141,6 +146,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\HiringCompanyDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

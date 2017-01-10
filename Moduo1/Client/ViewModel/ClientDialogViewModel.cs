@@ -101,7 +101,23 @@ namespace Client.ViewModel
             set
             {
                 prResources = value;
-                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("PrResources"));
+                OnPropertyChanged(new PropertyChangedEventArgs("PrResources"));
+            }
+        }
+
+        private ObservableCollection<Employee> empResource = new ObservableCollection<Employee>();
+
+        public ObservableCollection<Employee> EmpResource
+        {
+            get
+            {
+                return empResource;
+            }
+
+            set
+            {
+                empResource = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("EmpResources"));
             }
         }
 
@@ -123,6 +139,8 @@ namespace Client.ViewModel
 
         public LoadedCommand LoadedCommand { get; set; }
         public EditPositionCommand EditPositionCommand { get; set; }
+
+      
 
 
         /// <summary>
@@ -170,7 +188,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.EditPositionView());
+            View.EditPositionView editPositionView = new View.EditPositionView();
+            editPositionView.chosEmployeeCompanyTxt.ItemsSource = EmpResource;
+
+            CDialog.MainWindowDockPanel.Children.Add(editPositionView);
         }
 
         public void ShowAddEmployeeView()

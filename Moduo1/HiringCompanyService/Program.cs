@@ -20,6 +20,9 @@ namespace HiringCompanyService
 
         public static void Main(string[] args)
         {
+
+            log.Debug("Start Program.cs HiringCompanyService.");
+
             // set |DataDirectory| in App.config
             string path = System.Environment.CurrentDirectory;
             path = path.Substring(0, path.LastIndexOf("\\"));
@@ -46,6 +49,7 @@ namespace HiringCompanyService
             //    Position = PositionEnum.HR.ToString(),
             //    StartTime = "10.00",
             //    EndTime = "17.00",
+            //    Email = "jelaca.marko@gmail.com",
             //    Login = false,
             //    PasswordUpadateDate = DateTime.Now,
             //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
@@ -61,6 +65,7 @@ namespace HiringCompanyService
             //    Position = PositionEnum.CEO.ToString(),
             //    StartTime = "09.00",
             //    EndTime = "16.00",
+            //    Email = "dusan.jeftic11@gmail.com",
             //    Login = false,
             //    PasswordUpadateDate = DateTime.Now,
             //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
@@ -116,19 +121,20 @@ namespace HiringCompanyService
             try
             {
                 serviceHost.Open();
-                Delaying del = new Delaying();
+                
 
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");
-
-                if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
-                {
-                    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
-                    checkThread.Start();
-                }
+                //Delaying del = new Delaying();
+                //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
+                //{
+                //    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
+                //    checkThread.Start();
+                //}
                     
 
                 Console.ReadLine();
+
             }
             catch (Exception e)
             {

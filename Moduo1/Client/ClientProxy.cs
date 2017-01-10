@@ -225,5 +225,10 @@ namespace Client
                 return null;
             }
         }
+
+        public bool TestService()
+        {
+            return factory.TestService();
+        }
     }
 }
