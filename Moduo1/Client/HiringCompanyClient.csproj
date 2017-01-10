@@ -164,6 +164,7 @@
     <Compile Include="Command\EditPositionCommand.cs" />
     <Compile Include="Command\LoadedCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
+    <Compile Include="Command\SaveEditPositionCommand.cs" />
     <Compile Include="Command\SaveNewEmployeeCommand.cs" />
     <Compile Include="Command\SaveNewPasswordCommand.cs" />
     <Compile Include="Command\SaveNewProjectDefinition.cs" />
