@@ -1,13 +1,14 @@
-﻿using Client.Command;
+﻿using Client;
+using Client.Command;
+using Client.Model;
 using Client.ViewModel;
+using Client.ViewModelInterfaces;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -19,7 +20,6 @@ namespace HiringCompanyClientTest.Command
 
         private AddEmployeeCommand addEmployeeUnderTest;
 
-
         #endregion Declarations
 
         #region setup
@@ -27,18 +27,20 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-
             this.addEmployeeUnderTest = new AddEmployeeCommand();
             this.addEmployeeUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             AddNewEmployeeViewModel.Instance = Substitute.For<IAddNewEmployeeViewModel>();
-           
-            
+
+            AddNewEmployeeViewModel.Instance.NewEmployee().Returns(new NewEmployee());
+
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+
+    
         }
 
         #endregion setup
-
 
         #region Tests
 
@@ -60,19 +62,19 @@ namespace HiringCompanyClientTest.Command
             Assert.DoesNotThrow(() => { addEmployeeUnderTest.CanExecute(null); });
         }
 
-        [Ignore("UI")]    
         [Test]
         public void ExecuteTest()
         {
+           
             Assert.DoesNotThrow(() => { addEmployeeUnderTest.Execute(new object()); });
         }
 
-        [Ignore("UI")]
         [Test]
         public void ExecuteNullParametersTest()
         {
             Assert.DoesNotThrow(() => { addEmployeeUnderTest.Execute(null); });
         }
+
         #endregion Tests
     }
 }

@@ -22,7 +22,7 @@ namespace Proba.Steps
         [BeforeTestRun]
         public static  void BeforeTestRun()
         {
-           app = Application.Launch(@"C:\Users\ftn\Desktop\dukica\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
+           app = Application.Launch(@"C:\Users\jelac\OneDrive\PSI\EPPRepo\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
         }
         [AfterTestRun]
         public static void AftertestRun()

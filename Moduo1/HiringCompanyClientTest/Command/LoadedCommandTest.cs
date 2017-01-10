@@ -34,6 +34,8 @@ namespace HiringCompanyClientTest.Command
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
 
+            ClientProxy.Instance.AddHiringCompany(null).ReturnsForAnyArgs(true);
+
 
         }
 
@@ -71,6 +73,13 @@ namespace HiringCompanyClientTest.Command
         public void ExecuteNullParametersTest()
         {
             Assert.DoesNotThrow(() => { loadedCommandUnderTest.Execute(null); });
+        }
+
+        [Test]
+        public void ClientProxyNullTest()
+        {
+            
+            Assert.DoesNotThrow(() => { loadedCommandUnderTest.Execute(new object()); });
         }
         #endregion Tests
     }

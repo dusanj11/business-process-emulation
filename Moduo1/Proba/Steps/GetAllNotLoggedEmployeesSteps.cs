@@ -38,8 +38,8 @@ namespace Proba
         {
            // EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             int numberOfNotLogged = 0;
-           // allEmployees = EmployeeDB.Instance.GetReallyEmployees();
-           allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
+            //allEmployees = EmployeeDB.Instance.GetReallyEmployees();
+            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
             Assert.That(allEmployees.Count > 0, Is.True);
             foreach (Employee emp in allEmployees)
             {
