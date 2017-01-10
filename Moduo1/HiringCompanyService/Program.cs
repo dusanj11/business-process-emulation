@@ -121,7 +121,7 @@ namespace HiringCompanyService
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");
 
-                if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 11)
+                if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
                 {
                     Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
                     checkThread.Start();

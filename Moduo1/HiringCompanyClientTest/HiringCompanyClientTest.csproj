@@ -106,6 +106,9 @@
     <Compile Include="Command\SignInCommandTest.cs" />
     <Compile Include="Command\ViewProjectsCommandTest.cs" />
     <Compile Include="Command\ViewWorkersCommandTest.cs" />
+    <Compile Include="Model\LogInUserTest.cs" />
+    <Compile Include="Model\NewEmployeeTest.cs" />
+    <Compile Include="Model\NewProjectDefinitionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
