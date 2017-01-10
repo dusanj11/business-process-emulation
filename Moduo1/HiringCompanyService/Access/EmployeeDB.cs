@@ -55,20 +55,29 @@ namespace HiringCompanyService.Access
             log.Debug("Enter AddEmployee method.");
             using (AccessDB access = new AccessDB())
             {
-                ///In order to avoid the duplication you must attach the related entity to the context
-                access.HcActions.Attach(action.HiringCompanyId);
-
-                access.Actions.Add(action);
-
-                int i = access.SaveChanges();
-
-                if (i > 0)
+                Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
+                if (em != null)
                 {
-                    log.Info("SaveChanges to DB success.");
-                    return true;
+                    ///In order to avoid the duplication you must attach the related entity to the context
+                    access.HcActions.Attach(action.HiringCompanyId);
+
+                    access.Actions.Add(action);
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("SaveChanges to DB success.");
+                        return true;
+                    }
+                    log.Warn("SaveChanges return 0");
+                    return false;
                 }
-                log.Warn("SaveChanges return 0");
-                return false;
+                else
+                {
+                    log.Warn("User  with username you are trying to add to the database, already exists!");
+                    return false;
+                }
             }
         }
 
@@ -247,6 +256,22 @@ namespace HiringCompanyService.Access
                     }
                 }
                 log.Info("Successfully returned not signedIn employees");
+                return employees;
+            }
+        }
+
+        public List<Employee> GetReallyEmployees()
+        {
+            log.Debug("Enter GetReallyEmployees method.");
+            using (var access = new AccessDB())
+            {
+                List<Employee> employees = new List<Employee>(20);
+
+                foreach (var em in access.Actions)
+                {
+                        employees.Add(em);
+                }
+                log.Info("Successfully returned list of employees");
                 return employees;
             }
         }

@@ -54,7 +54,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Steps\AddEmployeeSteps.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Features\AddEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddEmployee.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GetAllEmployees.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetAllEmployees.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GetAllLoggedEmployees.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetAllLoggedEmployees.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GetEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetEmployee.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ShowCompanies.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,24 +86,43 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShowEmployees.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\ShowProject.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShowProject.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\SignIn.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SignIn.feature</DependentUpon>
     </Compile>
+    <Compile Include="Steps\GetAllNotLoggedEmployeesSteps.cs" />
+    <Compile Include="Steps\GetAllEmployeesSteps.cs" />
+    <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Features\GetAllNotLoggedEmployees.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetAllNotLoggedEmployees.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\GetEmployeeSteps.cs" />
     <Compile Include="Steps\ShowCompaniesSteps.cs" />
     <Compile Include="Steps\ShowEmployeesSteps.cs" />
-    <Compile Include="Steps\ShowProjectSteps.cs" />
     <Compile Include="Steps\SignInSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\AddEmployee.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddEmployee.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetAllEmployees.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetAllEmployees.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetAllLoggedEmployees.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetAllLoggedEmployees.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetEmployee.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetEmployee.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\ShowCompanies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShowCompanies.feature.cs</LastGenOutput>
@@ -91,14 +131,14 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShowEmployees.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\ShowProject.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ShowProject.feature.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Features\SignIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SignIn.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetAllNotLoggedEmployees.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetAllNotLoggedEmployees.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

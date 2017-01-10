@@ -13,6 +13,8 @@ namespace HiringCompanyService.Access
 
         List<Employee> GetEmployees();
 
+        List<Employee> GetReallyEmployees();
+
         List<Employee> GetAllNotSignedInEmployees();
 
         Employee GetEmployee(string username, string password);

@@ -135,5 +135,11 @@ namespace HiringCompanyService
             }
             return true;
         }
+
+        public List<Employee> GetReallyAllEmployees()
+        {
+            Console.WriteLine("GetReallyAllEmployees...");
+            return EmployeeDB.Instance.GetReallyEmployees();
+        }
     }
 }
