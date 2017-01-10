@@ -58,8 +58,8 @@ namespace Proba
         {
             tbUsername = window.Get<TextBox>("userTxt");
             tbPassword = window.Get<TextBox>("passTxt");
-            tbUsername.Enter("maki");
-            tbPassword.Enter("maki");
+            tbUsername.Enter("maki"); //izmeniti na validne podatke
+            tbPassword.Enter("maki"); //izmeniti na validne podatke
         }
         
         [When(@"I push button ""(.*)""")]
