@@ -56,7 +56,7 @@ namespace HiringCompanyService.Access
             using (AccessDB access = new AccessDB())
             {
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
-                if (em != null)
+                if (em == null)
                 {
                     ///In order to avoid the duplication you must attach the related entity to the context
                     access.HcActions.Attach(action.HiringCompanyId);
