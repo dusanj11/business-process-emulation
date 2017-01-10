@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class EditPersonalDataViewModel : INotifyPropertyChanged
+    public class EditPersonalDataViewModel : INotifyPropertyChanged, IEditPersonalDataViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +19,29 @@ namespace Client.ViewModel
         private string username;
 
         public SavePersonalDataCommand SavePersonalDataCommand { get; set; }
+
+
+        public static IEditPersonalDataViewModel _editPersonalDataViewModel;
+
+        public static IEditPersonalDataViewModel Instance
+        {
+            get
+            {
+                if (_editPersonalDataViewModel == null)
+                {
+                    _editPersonalDataViewModel = new EditPersonalDataViewModel();
+                }
+
+                return _editPersonalDataViewModel;
+            }
+            set
+            {
+                if (_editPersonalDataViewModel == null)
+                {
+                    _editPersonalDataViewModel = value;
+                }
+            }
+        }
 
         public string Name
         {
@@ -61,18 +85,18 @@ namespace Client.ViewModel
             }
         }
 
-        public static EditPersonalDataViewModel Instance
-        {
-            get
-            {
-                if (model == null)
-                {
-                    model = new EditPersonalDataViewModel();
-                }
+        //public static EditPersonalDataViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new EditPersonalDataViewModel();
+        //        }
 
-                return model;
-            }
-        }
+        //        return model;
+        //    }
+        //}
 
         public EditPersonalDataViewModel()
         {
@@ -88,6 +112,36 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string IEditPersonalDataViewModel.Name()
+        {
+            return Name;
+        }
+
+        string IEditPersonalDataViewModel.Surname()
+        {
+            return Surname;
+        }
+
+        string IEditPersonalDataViewModel.Username()
+        {
+            return Username;
+        }
+
+        void IEditPersonalDataViewModel.Name(string name)
+        {
+            Name = name;
+        }
+
+        void IEditPersonalDataViewModel.Surname(string surname)
+        {
+            Surname = surname;
+        }
+
+        void IEditPersonalDataViewModel.Username(string username)
+        {
+            Username = username;
         }
     }
 }

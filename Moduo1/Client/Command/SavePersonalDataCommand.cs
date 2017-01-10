@@ -21,9 +21,9 @@ namespace Client.Command
         {
             try
             {
-                string name = EditPersonalDataViewModel.Instance.Name;
-                string surname = EditPersonalDataViewModel.Instance.Surname;
-                string username = EditPersonalDataViewModel.Instance.Username;
+                string name = EditPersonalDataViewModel.Instance.Name();
+                string surname = EditPersonalDataViewModel.Instance.Surname();
+                string username = EditPersonalDataViewModel.Instance.Username();
 
                 string loginUsername = ClientDialogViewModel.Instance.LogInUser.Username;
                 string loginPassword = ClientDialogViewModel.Instance.LogInUser.Password;

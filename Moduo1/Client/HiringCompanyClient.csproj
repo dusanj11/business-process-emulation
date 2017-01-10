@@ -180,6 +180,15 @@
     <Compile Include="Model\NewProjectDefinition.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
     <Compile Include="Behaviors\PasswordBoxAssistant.cs" />
+    <Compile Include="ViewModelInterfaces\IChangePasswordViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IClientDialogViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\ICreateProjectViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IDefineUserStoriesViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IEditPersonalDataViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IEditPositionViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\ISendRequestCompanyViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\ISendRequestProjectViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IWorkingHoursViewModel.cs" />
     <Compile Include="ViewModel\AddNewEmployeeViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ClientDialogViewModel.cs" />
@@ -187,7 +196,7 @@
     <Compile Include="ViewModel\DefineUserStoriesViewModel.cs" />
     <Compile Include="ViewModel\EditPersonalDataViewModel.cs" />
     <Compile Include="ViewModel\EditPositionViewModel.cs" />
-    <Compile Include="ViewModel\IAddNewEmployeeViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IAddNewEmployeeViewModel.cs" />
     <Compile Include="ViewModel\SendRequestCompanyViewModel.cs" />
     <Compile Include="ViewModel\SendRequestProjectViewModel.cs" />
     <Compile Include="ViewModel\WorkingHoursViewModel.cs" />

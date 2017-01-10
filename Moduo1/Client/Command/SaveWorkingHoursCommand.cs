@@ -19,8 +19,8 @@ namespace Client.Command
             string username = ClientDialogViewModel.Instance.LogInUser.Username;
             string password = ClientDialogViewModel.Instance.LogInUser.Password;
 
-            string startTime = WorkingHoursViewModel.Instance.StartTime;
-            string endTime = WorkingHoursViewModel.Instance.EndTime;
+            string startTime = WorkingHoursViewModel.Instance.StartTime();
+            string endTime = WorkingHoursViewModel.Instance.EndTime();
 
             Employee em = ClientProxy.Instance.GetEmployee(username, password);
             if (em != null)

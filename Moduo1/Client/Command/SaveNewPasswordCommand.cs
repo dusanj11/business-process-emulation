@@ -17,8 +17,8 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            string oldPassword = ChangePasswordViewModel.Instance.OldPassword;
-            string newPassword = ChangePasswordViewModel.Instance.NewPassword;
+            string oldPassword = ChangePasswordViewModel.Instance.OldPassword();
+            string newPassword = ChangePasswordViewModel.Instance.NewPassword();
 
             string username = ClientDialogViewModel.Instance.LogInUser.Username;
 

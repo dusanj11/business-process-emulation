@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class ChangePasswordViewModel : INotifyPropertyChanged
+    public class ChangePasswordViewModel : INotifyPropertyChanged, IChangePasswordViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,18 +19,41 @@ namespace Client.ViewModel
 
         public SaveNewPasswordCommand SaveNewPasswordCommand { get; set; }
 
-        public static ChangePasswordViewModel Instance
+        public static IChangePasswordViewModel _changePasswordViewModel;
+
+        public static IChangePasswordViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_changePasswordViewModel == null)
                 {
-                    model = new ChangePasswordViewModel();
+                    _changePasswordViewModel = new ChangePasswordViewModel();
                 }
 
-                return model;
+                return _changePasswordViewModel;
+            }
+            set
+            {
+                if (_changePasswordViewModel == null)
+                {
+                    _changePasswordViewModel = value;
+                }
             }
         }
+
+
+        //public static ChangePasswordViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new ChangePasswordViewModel();
+        //        }
+
+        //        return model;
+        //    }
+        //}
 
         public string OldPassword
         {
@@ -72,6 +96,16 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string IChangePasswordViewModel.OldPassword()
+        {
+            return OldPassword;
+        }
+
+        string IChangePasswordViewModel.NewPassword()
+        {
+            return NewPassword;
         }
     }
 }

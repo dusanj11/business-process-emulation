@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class SendRequestCompanyViewModel : INotifyPropertyChanged
+    public class SendRequestCompanyViewModel : INotifyPropertyChanged, ISendRequestCompanyViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,18 +18,40 @@ namespace Client.ViewModel
 
         public SendRequestCompanyCommand SendRequestCompanyCommand { get; set; }
 
-        public static SendRequestCompanyViewModel Instance
+        public static ISendRequestCompanyViewModel _sendRequestCompanyViewModel;
+
+        public static ISendRequestCompanyViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_sendRequestCompanyViewModel == null)
                 {
-                    model = new SendRequestCompanyViewModel();
+                    _sendRequestCompanyViewModel = new SendRequestCompanyViewModel();
                 }
 
-                return model;
+                return _sendRequestCompanyViewModel;
+            }
+            set
+            {
+                if (_sendRequestCompanyViewModel == null)
+                {
+                    _sendRequestCompanyViewModel = value;
+                }
             }
         }
+
+        //public static SendRequestCompanyViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new SendRequestCompanyViewModel();
+        //        }
+
+        //        return model;
+        //    }
+        //}
 
         public string Company
         {
@@ -56,6 +79,11 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string ISendRequestCompanyViewModel.Company()
+        {
+            return Company;
         }
     }
 }

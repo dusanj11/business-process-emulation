@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class SendRequestProjectViewModel : INotifyPropertyChanged
+    public class SendRequestProjectViewModel : INotifyPropertyChanged, ISendRequestProjectViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,18 +19,41 @@ namespace Client.ViewModel
 
         public SendRequestProjectCommand SendRequestProjectCommand { get; set; }
 
-        public static SendRequestProjectViewModel Instance
+        public static ISendRequestProjectViewModel _sendRequestProjectViewModel;
+
+        public static ISendRequestProjectViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_sendRequestProjectViewModel == null)
                 {
-                    model = new SendRequestProjectViewModel();
+                    _sendRequestProjectViewModel = new SendRequestProjectViewModel();
                 }
 
-                return model;
+                return _sendRequestProjectViewModel;
+            }
+            set
+            {
+                if (_sendRequestProjectViewModel == null)
+                {
+                    _sendRequestProjectViewModel = value;
+                }
             }
         }
+
+
+        //public static SendRequestProjectViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new SendRequestProjectViewModel();
+        //        }
+
+        //        return model;
+        //    }
+        //}
 
         public string PartnerCompany
         {
@@ -72,6 +96,16 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string ISendRequestProjectViewModel.PartnerCompany()
+        {
+            return PartnerCompany;
+        }
+
+        string ISendRequestProjectViewModel.Project()
+        {
+            return Project;
         }
     }
 }

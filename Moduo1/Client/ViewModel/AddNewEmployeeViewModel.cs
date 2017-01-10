@@ -18,24 +18,24 @@ namespace Client.ViewModel
 
         public SaveNewEmployeeCommand SaveNewEmployeeCommand { get; set; }
 
-        public static IAddNewEmployeeViewModel _addNewEmployeeModel;
+        public static IAddNewEmployeeViewModel _addNewEmployeeViewModel;
 
         public static IAddNewEmployeeViewModel Instance
         {
             get
             {
-                if (_addNewEmployeeModel == null)
+                if (_addNewEmployeeViewModel == null)
                 {
-                    _addNewEmployeeModel = new AddNewEmployeeViewModel();
+                    _addNewEmployeeViewModel = new AddNewEmployeeViewModel();
                 }
 
-                return _addNewEmployeeModel;
+                return _addNewEmployeeViewModel;
             }
             set
             {
-                if (_addNewEmployeeModel == null)
+                if (_addNewEmployeeViewModel == null)
                 {
-                    _addNewEmployeeModel = value;
+                    _addNewEmployeeViewModel = value;
                 }
             }
         }

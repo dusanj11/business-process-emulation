@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class WorkingHoursViewModel : INotifyPropertyChanged
+    public class WorkingHoursViewModel : INotifyPropertyChanged, IWorkingHoursViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,18 +47,40 @@ namespace Client.ViewModel
             }
         }
 
-        public static WorkingHoursViewModel Instance
+        public static IWorkingHoursViewModel _workingHoursViewModel;
+
+        public static IWorkingHoursViewModel Instance
         {
             get
             {
-                if (model == null)
+                if (_workingHoursViewModel == null)
                 {
-                    model = new WorkingHoursViewModel();
+                    _workingHoursViewModel = new WorkingHoursViewModel();
                 }
 
-                return model;
+                return _workingHoursViewModel;
+            }
+            set
+            {
+                if (_workingHoursViewModel == null)
+                {
+                    _workingHoursViewModel = value;
+                }
             }
         }
+
+        //public static WorkingHoursViewModel Instance
+        //{
+        //    get
+        //    {
+        //        if (model == null)
+        //        {
+        //            model = new WorkingHoursViewModel();
+        //        }
+
+        //        return model;
+        //    }
+        //}
 
         public WorkingHoursViewModel()
         {
@@ -72,6 +95,16 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string IWorkingHoursViewModel.StartTime()
+        {
+            return StartTime;
+        }
+
+        string IWorkingHoursViewModel.EndTime()
+        {
+            return EndTime;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class DefineUserStoriesViewModel : INotifyPropertyChanged
+    public class DefineUserStoriesViewModel : INotifyPropertyChanged, IDefineUserStoriesViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,18 +19,40 @@ namespace Client.ViewModel
 
         public DefineUserStoriesCommand DefineUserStoriesCommand { get; set; }
 
-        public static DefineUserStoriesViewModel Instance
+        public static IDefineUserStoriesViewModel _defineUserStoriesViewModel;
+
+        public static IDefineUserStoriesViewModel Instance
         {
             get
             {
-                return model;
-            }
+                if (_defineUserStoriesViewModel == null)
+                {
+                    _defineUserStoriesViewModel = new DefineUserStoriesViewModel();
+                }
 
+                return _defineUserStoriesViewModel;
+            }
             set
             {
-                model = value;
+                if (_defineUserStoriesViewModel == null)
+                {
+                    _defineUserStoriesViewModel = value;
+                }
             }
         }
+
+        //public static DefineUserStoriesViewModel Instance
+        //{
+        //    get
+        //    {
+        //        return model;
+        //    }
+
+        //    set
+        //    {
+        //        model = value;
+        //    }
+        //}
 
         public string Project
         {
@@ -72,6 +95,16 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string IDefineUserStoriesViewModel.Project()
+        {
+            return Project;
+        }
+
+        string IDefineUserStoriesViewModel.UserStories()
+        {
+            return UserStories;
         }
     }
 }

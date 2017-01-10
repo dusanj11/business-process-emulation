@@ -30,9 +30,9 @@ namespace Client.Command
                 {
                     employeeFromDB = ClientProxy.Instance.GetEmployee(username, password);
 
-                    EditPersonalDataViewModel.Instance.Name = employeeFromDB.Name;
-                    EditPersonalDataViewModel.Instance.Surname = employeeFromDB.Surname;
-                    EditPersonalDataViewModel.Instance.Username = employeeFromDB.Username;
+                    EditPersonalDataViewModel.Instance.Name(employeeFromDB.Name) ;
+                    EditPersonalDataViewModel.Instance.Surname(employeeFromDB.Surname);
+                    EditPersonalDataViewModel.Instance.Username(employeeFromDB.Username);
 
                     log.Info("Successfully returned employee personal data.");
                 }

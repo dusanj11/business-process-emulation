@@ -1,4 +1,5 @@
 ﻿using Client.Command;
+using Client.ViewModelInterfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
-    public class EditPositionViewModel : INotifyPropertyChanged
+    public class EditPositionViewModel : INotifyPropertyChanged, IEditPositionViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,18 +19,41 @@ namespace Client.ViewModel
 
         public EditPositionCommand EditPositionCommand { get; set; }
 
-        public static EditPositionViewModel Instance
+
+        public static IEditPositionViewModel _editPositionViewModel;
+
+        public static IEditPositionViewModel Instance
         {
             get
             {
-                return model;
-            }
+                if (_editPositionViewModel == null)
+                {
+                    _editPositionViewModel = new EditPositionViewModel();
+                }
 
+                return _editPositionViewModel;
+            }
             set
             {
-                model = value;
+                if (_editPositionViewModel == null)
+                {
+                    _editPositionViewModel = value;
+                }
             }
         }
+
+        //public static EditPositionViewModel Instance
+        //{
+        //    get
+        //    {
+        //        return model;
+        //    }
+
+        //    set
+        //    {
+        //        model = value;
+        //    }
+        //}
 
         public string Employee
         {
@@ -72,6 +96,16 @@ namespace Client.ViewModel
             {
                 PropertyChanged(this, e);
             }
+        }
+
+        string IEditPositionViewModel.Employee()
+        {
+            return Employee;
+        }
+
+        string IEditPositionViewModel.Position()
+        {
+            return Position;
         }
     }
 }
