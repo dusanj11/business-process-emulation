@@ -43,13 +43,13 @@ namespace Proba.Steps
         [Then(@"the result should be returning a false value")]
         public void ThenTheResultShouldBeReturningAFalseValue()
         {
-            Assert.That(hc1.CompanyIdThr.ToString() == null, Is.True);
+            Assert.That(hc1 == null, Is.True);
         }
 
         [Then(@"the result should be  hiring company")]
         public void ThenTheResultShouldBeAListOfAllHiringCompanies()
         {
-            Assert.That(hc2.CompanyIdThr.ToString() != null, Is.True);
+            Assert.That(hc2 != null, Is.True);
         }
     }
 }

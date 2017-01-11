@@ -19,6 +19,7 @@ namespace Proba.Steps
         [When(@"I try to update employee with wrong username")]
         public void WhenITryToUpdateEmployeeWithWrongUsername()
         {
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             nevalidni.Name = "Zana";
             nevalidni.Surname = "Bilbija";
             nevalidni.Username = "afefqfegegg";
@@ -27,6 +28,7 @@ namespace Proba.Steps
             nevalidni.StartTime = "10.00";
             nevalidni.EndTime = "17.00";
             nevalidni.Login = false;
+            validni.HiringCompanyId = hc;
             nevalidni.Email = "marko.jelaca@gmail.com";
             nevalidni.PasswordUpadateDate = DateTime.Now;
         }
@@ -40,6 +42,7 @@ namespace Proba.Steps
         [When(@"I try to update employee with correct username")]
         public void WhenITryToUpdateEmployeeWithCorrectUsername()
         {
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             validni.Name = "Milca";
             validni.Surname = "Kapetna";
             validni.Username = "mica";
@@ -48,6 +51,7 @@ namespace Proba.Steps
             validni.StartTime = "10.00";
             validni.EndTime = "17.00";
             validni.Login = false;
+            validni.HiringCompanyId = hc;
             validni.Email = "dusan.jeftic11@gmail.com";
             validni.PasswordUpadateDate = DateTime.Now;
         }
