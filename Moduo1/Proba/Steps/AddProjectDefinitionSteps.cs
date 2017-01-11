@@ -17,7 +17,11 @@ namespace Proba.Steps
         [When(@"I have created a definition data for a project")]
         public void WhenIHaveCreatedADefinitionDataForAProject()
         {
+            
             np.Name = "moj projekat";
+            np.Company = new Company("proba kompanija");
+            np.Description = "lalala";
+            np.HiringCompany =  ClientProxy.Instance.GetHiringCompany(7);
         }
 
         [When(@"I have requested to add it")]

@@ -37,7 +37,9 @@ namespace Proba
             foreach (Employee emp in allEmployees)
             {
                 if (emp.Login)
+                {
                     numberOfLogged++;
+                }
             }
             Assert.Greater(numberOfLogged, 0);
         }

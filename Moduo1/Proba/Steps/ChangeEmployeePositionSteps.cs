@@ -24,7 +24,8 @@ namespace Proba.Steps
         [When(@"I request to change title of thet employee")]
         public void WhenIRequestToChangeTitleOfThetEmployee()
         {
-            val1 = ClientProxy.Instance.ChangeEmployeePosition(us1, HiringCompanyData.PositionEnum.PO.ToString());
+            val1 = ClientProxy.Instance.ChangeEmployeePosition(us1, "PO");
+            Console.WriteLine();
         }
 
         [When(@"I have entered correct username and wanted title")]
@@ -36,7 +37,7 @@ namespace Proba.Steps
         [When(@"I request to make a change on his/hers title")]
         public void WhenIRequestToMakeAChangeOnHisHersTitle()
         {
-            val2 = ClientProxy.Instance.ChangeEmployeePosition(us2, HiringCompanyData.PositionEnum.SM.ToString());
+            val2 = ClientProxy.Instance.ChangeEmployeePosition(us2, "SM");
         }
 
         [Then(@"the process should be incomplete")]

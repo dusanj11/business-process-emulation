@@ -21,16 +21,6 @@ namespace Proba.Steps
         private static string ps1;
         private static string ps2;
         private static string ps3;
-        [BeforeTestRun]
-        public static void BeforeTestRun()
-        {
-            app = Application.Launch(@"C:\Users\jelac\OneDrive\PSI\EPPRepo\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
-        }
-        [AfterTestRun]
-        public static void AftertestRun()
-        {
-            app.Close();
-        }
 
         [Given(@"I can use database")]
         public void GivenICanUseDatabase()
@@ -42,7 +32,7 @@ namespace Proba.Steps
         public void GivenIHaveEnteredValidUsernameAndPassword()
         {
             us1 = "dule";
-            ps1 = "dule";
+            ps1 = "dukica";
         }
 
         [Given(@"I have the power work on datbase")]
@@ -93,7 +83,7 @@ namespace Proba.Steps
         [Then(@"the result should be an instance of employee")]
         public void ThenTheResultShouldBeAnInstanceOfEmployee()
         {
-            Assert.Equals(us1, emp.Username);
+            Assert.That(emp != null, Is.True);
         }
 
         [Then(@"the result should be a null value or empty object")]

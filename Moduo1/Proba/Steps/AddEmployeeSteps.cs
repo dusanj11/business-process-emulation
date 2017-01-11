@@ -25,7 +25,7 @@ namespace Proba
         [Given(@"I have entered employee with existing username")]
         public void GivenIHaveEnteredEmployeeWithExistingUsername()
         {
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             nevalidni = new Employee();
             nevalidni.Name = "Milica";
             nevalidni.Surname = "Kapetina";
@@ -53,7 +53,7 @@ namespace Proba
         [Given(@"I have entered non existing username for employee")]
         public void GivenIHaveEnteredNonExistingUsernameForEmployee()
         {
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             validni = new Employee();
             validni.Name = "Zana";
             validni.Surname = "Bilbija";
