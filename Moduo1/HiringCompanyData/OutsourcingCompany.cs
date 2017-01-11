@@ -9,29 +9,34 @@ using System.Threading.Tasks;
 
 namespace HiringCompanyData
 {
-
     [DataContract]
-    public class Company
+    public class OutsourcingCompany
     {
         private int id;
         private String name;
         private List<Project> projects;
+        private CompanyState companyState;
 
-        public Company()
+        public OutsourcingCompany()
         {
             projects = new List<Project>();
+            companyState = CompanyState.Requested;
         }
 
-        public Company(String name)
+        public OutsourcingCompany(String name)
         {
             this.name = name;
             this.projects = new List<Project>();
+            companyState = CompanyState.Requested;
+
         }
 
-        public Company(String name, List<Project> projects)
+        public OutsourcingCompany(String name, List<Project> projects)
         {
             this.name = name;
             this.projects = projects;
+            companyState = CompanyState.Requested;
+
         }
 
         [DataMember]
@@ -55,6 +60,13 @@ namespace HiringCompanyData
         {
             get { return this.projects; }
             set { this.projects = value; }
+        }
+
+        [DataMember]
+        public CompanyState CompanyState
+        {
+            get { return this.companyState; }
+            set { this.companyState = value; }
         }
 
         public override string ToString()

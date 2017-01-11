@@ -185,9 +185,9 @@ namespace HiringCompanyService.Access
             using (var access = new AccessDB())
             {
                 //access.Actions.Attach(employee);
-                //Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
-                //if (em != null)
-                //{
+                Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(employee.Username));
+                if (em != null)
+                {
 
                     access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
 
@@ -200,12 +200,12 @@ namespace HiringCompanyService.Access
                     }
                     log.Warn("Failed to update DB");
                     return false;
-                //}
-                //else
-                //{
-                //    log.Warn("Employee with that username does not exist. Failed updating employee.");
-                //    return false;
-                //}
+                }
+                else
+                {
+                    log.Warn("Employee with that username does not exist. Failed updating employee.");
+                    return false;
+                }
             }
         }
 

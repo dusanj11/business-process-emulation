@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEppContract.cs" />
+    <Compile Include="IHcContract.cs" />
+    <Compile Include="IOcContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

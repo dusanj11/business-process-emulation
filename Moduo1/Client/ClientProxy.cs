@@ -242,19 +242,6 @@ namespace Client
             }
         }
 
-        public bool TestService()
-        {
-            try
-            {
-                return proxy.TestService();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("ERROR: TestService: \n{0}", e.Message);
-                return false;
-            }
-        }
-
         public List<Employee> GetReallyAllEmployees()
         {
             try

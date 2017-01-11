@@ -61,4 +61,15 @@ namespace HiringCompanyData
         Closed = 3
     }
 
+    [DataContract]
+    public enum CompanyState
+    {
+        [EnumMember]
+        Requested = 0,
+        [EnumMember]
+        Accepted = 1,
+        [EnumMember]
+        Rejected = 2
+    }
+
 }

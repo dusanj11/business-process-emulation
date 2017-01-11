@@ -23,7 +23,7 @@ namespace HiringCompanyData
         private float progress;
         private List<UserStory> userStories;
         private ProjectState projectState;
-        private Company company;
+        private OutsourcingCompany company;
         private HiringCompany hiringCompany;
         private Employee productOwner;
 
@@ -76,7 +76,7 @@ namespace HiringCompanyData
         }
 
         [DataMember]
-        public Company Company
+        public OutsourcingCompany Company
         {
             get { return this.company; }
             set { this.company = value; }

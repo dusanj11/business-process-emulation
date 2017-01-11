@@ -44,10 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Company.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="HiringCompany.cs" />
+    <Compile Include="OutsourcingCompany.cs" />
+    <Compile Include="Partnership.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />

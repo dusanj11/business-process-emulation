@@ -1,4 +1,5 @@
-﻿using HiringCompanyContract;
+﻿using EppContract;
+using HiringCompanyContract;
 using HiringCompanyData;
 using HiringCompanyService.Access;
 using System;
@@ -8,7 +9,7 @@ using System.ServiceModel;
 
 namespace HiringCompanyService
 {
-    public class HiringCompanyService : IHiringCompany
+    public class HiringCompanyService : IHiringCompany, IHcContract
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -130,7 +131,31 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.GetReallyEmployees();
         }
 
-        public bool TestService()
+       
+
+        public bool RegisterOutsourcingCompany(OutsourcingCompany oc)
+        {
+            
+            bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc);
+            
+            if (ret)
+            {
+                log.Info("Successfully added Outsourcing company to DB");
+            }
+            else
+            {
+                log.Warn("Failed to add Outsourcing company to DB");   
+            }
+
+            return ret;
+        }
+
+        public bool AcceptPartnership(OutsourcingCompany oc)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserStory> GetUserStoryes(string projectName)
         {
             throw new NotImplementedException();
         }
