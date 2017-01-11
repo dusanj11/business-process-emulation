@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Client.ViewModelInterfaces
 {
     public interface IEditPositionViewModel
     {
-        string Employee();
+        Employee Employee();
 
         string Position();
     }

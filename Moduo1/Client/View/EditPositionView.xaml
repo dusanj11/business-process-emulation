@@ -18,16 +18,16 @@
         <Label Name="choseEmployeeCompanyLb" Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir radnika:
         </Label>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <!--PROVERI ZA COMBOBOX BAJNDING-->
-            <ComboBox Name="chosEmployeeCompanyTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" >
+        <Grid Grid.Row="1" Grid.Column="0" >
+     
+            <ComboBox Name="chosEmployeeCompanyTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=Employee}" >
             </ComboBox>
         </Grid>
         <Label Name="chosePosLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir pozicije:
         </Label>
         <Grid Grid.Row="3" Grid.Column="0">
-            <!--PROVERITI ZA COMBOBOX-->
+        
             <ComboBox Name="positionTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=Position}">
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>

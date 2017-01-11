@@ -123,7 +123,7 @@ namespace HiringCompanyService.Access
             }
         }
 
-        public bool ChangeEmployeePosition(string username, PositionEnum position)
+        public bool ChangeEmployeePosition(string username, string position)
         {
             log.Debug("Enter ChangeEmployeePosition method.");
             using (var access = new AccessDB())

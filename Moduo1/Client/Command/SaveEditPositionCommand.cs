@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Client.ViewModel;
+using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,11 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+
+            Employee emp = EditPositionViewModel.Instance.Employee();
+            string position = EditPositionViewModel.Instance.Position();
+
+            ClientProxy.Instance.ChangeEmployeePosition(emp.Username, position);
         }
     }
 }

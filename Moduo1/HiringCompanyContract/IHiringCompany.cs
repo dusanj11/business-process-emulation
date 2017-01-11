@@ -29,7 +29,7 @@ namespace HiringCompanyContract
         bool AddEmployee(Employee employee);
 
         [OperationContract]
-        bool ChangeEmployeePosition(string username, PositionEnum position);
+        bool ChangeEmployeePosition(string username, string position);
 
         [OperationContract]
         bool UpdateEmployee(Employee employee);

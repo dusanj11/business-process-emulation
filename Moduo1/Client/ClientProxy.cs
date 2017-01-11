@@ -98,7 +98,7 @@ namespace Client
             }
         }
 
-        public bool ChangeEmployeePosition(string username, PositionEnum position)
+        public bool ChangeEmployeePosition(string username, string position)
         {
             try
             {
@@ -244,7 +244,15 @@ namespace Client
 
         public bool TestService()
         {
-            return proxy.TestService();
+            try
+            {
+                return proxy.TestService();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: TestService: \n{0}", e.Message);
+                return false;
+            }
         }
 
         public List<Employee> GetReallyAllEmployees()
