@@ -12,7 +12,9 @@ namespace EppContract
     public interface IEppContract
     {
         [OperationContract]
-        string GetData(int value);     
+        string GetData(int value);
+
+           
     }
 
 }

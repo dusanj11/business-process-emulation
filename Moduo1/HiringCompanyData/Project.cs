@@ -25,6 +25,7 @@ namespace HiringCompanyData
         private ProjectState projectState;
         private Company company;
         private HiringCompany hiringCompany;
+        private Employee productOwner;
 
         public Project()
         {
@@ -127,6 +128,20 @@ namespace HiringCompanyData
             set
             {
                 hiringCompany = value;
+            }
+        }
+
+        [DataMember]
+        public Employee ProductOwner
+        {
+            get
+            {
+                return productOwner;
+            }
+
+            set
+            {
+                productOwner = value;
             }
         }
 

@@ -41,10 +41,13 @@ namespace HiringCompanyClientTest.Command
 
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
             ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position="PO"});
+            ClientProxy.Instance.ChangePassword(null, null, null).ReturnsForAnyArgs(true);
 
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
             ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser("mici", "mici"));
-            //ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog());
+            //ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog() {
+                  
+            //});
 
             ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
             ChangePasswordViewModel.Instance.OldPassword().Returns("mici");
