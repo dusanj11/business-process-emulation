@@ -1,4 +1,6 @@
 ﻿using Client;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -20,6 +22,7 @@ namespace Proba.Steps
         [When(@"I request to notify him by email")]
         public void WhenIRequestToNotifyHimByEmail()
         {
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             val = ClientProxy.Instance.SendDelayingEmail(us);
         }
         

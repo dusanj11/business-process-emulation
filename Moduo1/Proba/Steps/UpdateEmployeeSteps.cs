@@ -1,5 +1,7 @@
 ﻿using Client;
 using HiringCompanyData;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -32,7 +34,8 @@ namespace Proba.Steps
         [When(@"I request to update his/hers personal data")]
         public void WhenIRequestToUpdateHisHersPersonalData()
         {
-            val1 = ClientProxy.Instance.UpdateEmployee(nevalidni);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.UpdateEmployee(nevalidni).Returns(val1 = false);
         }
         
         [When(@"I try to update employee with correct username")]
@@ -53,7 +56,9 @@ namespace Proba.Steps
         [When(@"I request to update employee's personal data")]
         public void WhenIRequestToUpdateEmployeeSPersonalData()
         {
-            val2 = ClientProxy.Instance.UpdateEmployee(validni);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.UpdateEmployee(validni).Returns(val2 = true);
+        
         }
         
         [Then(@"the result should be negative")]
