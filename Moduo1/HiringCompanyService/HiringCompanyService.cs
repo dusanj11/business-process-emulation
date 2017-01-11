@@ -157,7 +157,8 @@ namespace HiringCompanyService
 
         public List<UserStory> GetUserStoryes(string projectName)
         {
-            throw new NotImplementedException();
+            log.Info("Successfully returned User storyes for defined project name");
+            return UserStoryDB.Instance.GetUserStory(projectName);
         }
     }
 }
