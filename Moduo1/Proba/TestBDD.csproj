@@ -99,6 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GetHiringCompanies.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\GetProjects.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetProjects.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateEmployee.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +150,7 @@
     </Compile>
     <Compile Include="Steps\GetEmployeeSteps.cs" />
     <Compile Include="Steps\GetHiringCompaniesSteps.cs" />
+    <Compile Include="Steps\GetProjectsSteps.cs" />
     <Compile Include="Steps\UpdateEmployeeSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +198,10 @@
     <None Include="Features\GetHiringCompanies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetHiringCompanies.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetProjects.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetProjects.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UpdateEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
