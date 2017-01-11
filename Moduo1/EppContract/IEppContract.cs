@@ -12,14 +12,30 @@ namespace EppContract
     [ServiceContract]
     public interface IEppContract
     {
+        // HC
+        // OC poziva metodu da se registruje na servisu HC-a
         [OperationContract]
-        string RegisterOutsourcingCompany(int value);
+        bool RegisterOutsourcingCompany(int value);
 
+        
+        [OperationContract]
+        List<Project> GetOutsourcingCompanyProjects(string outsourcingCompany);
+
+        // OC poziva metodu automatski kada stigne zahtev za izradu projekta ukoliko 
+        // oc prihvati projekat
+        [OperationContract]
+        Project GetProject(string outsourcingCompany, string project);
+
+
+        // OC
+        // HC poziva metodu da posalje zahtev za partnerstvo
         [OperationContract]
         bool SendOcRequest(string outsourcingCompany);
 
+
         [OperationContract]
-        List<Project> GetOutsourcingCompanyProjects(string outsourcingCompany);
+        bool SendProject(Project project);
+
 
         //[OperationContract]
         //List<OutsourcingCompany> GetOutsourcingCompany();

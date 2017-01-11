@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EppContract;
 using System.ServiceModel;
 using System.Configuration;
+using HiringCompanyData;
 
 namespace HiringCompanyService
 {
@@ -65,7 +66,7 @@ namespace HiringCompanyService
             }
         }
 
-        public string RegisterOutsourcingCompany(int value)
+        public bool RegisterOutsourcingCompany(int value)
         {
             try
             {
@@ -74,8 +75,33 @@ namespace HiringCompanyService
             catch (Exception e)
             {
                 Console.WriteLine("ERROR: GetData: \n{0}", e.Message);
-                return null;
+                return false;
             }
+        }
+
+        public List<Project> GetOutsourcingCompanyProjects(string outsourcingCompany)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserStory> GetUserStoryes(string outsourcingCompany, string project)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IEppContract.RegisterOutsourcingCompany(int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project GetProject(string outsourcingCompany, string project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SendProject(Project project)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -125,13 +125,13 @@ namespace HiringCompanyService
 
                 Console.WriteLine("HiringCompany service started.");
                 Console.WriteLine("Press <enter> to stop service...");
-                //Delaying del = new Delaying();
+                Delaying del = new Delaying();
                 //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
                 //{
                 //    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
                 //    checkThread.Start();
                 //}
-                    
+
 
                 Console.ReadLine();
 

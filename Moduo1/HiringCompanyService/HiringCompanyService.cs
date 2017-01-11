@@ -120,20 +120,17 @@ namespace HiringCompanyService
             }
         }
 
-        public bool TestService()
-        {
-            NetTcpBinding binding = new NetTcpBinding();
-            string address = "";
-
-            string test = ServiceProxy.Instance.GetData(1);
-            Console.WriteLine(test);
-            return true;
-        }
+      
 
         public List<Employee> GetReallyAllEmployees()
         {
             Console.WriteLine("GetReallyAllEmployees...");
             return EmployeeDB.Instance.GetReallyEmployees();
+        }
+
+        public bool TestService()
+        {
+            throw new NotImplementedException();
         }
     }
 }
