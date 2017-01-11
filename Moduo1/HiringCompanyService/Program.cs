@@ -25,6 +25,7 @@ namespace HiringCompanyService
 
             // set |DataDirectory| in App.config
             string path = System.Environment.CurrentDirectory;
+            Console.WriteLine(path);
             path = path.Substring(0, path.LastIndexOf("\\"));
             path = path.Substring(0, path.LastIndexOf("\\"));
 
@@ -123,8 +124,8 @@ namespace HiringCompanyService
                 serviceHost.Open();
 
 
-                Console.WriteLine("HiringCompany service started.");
-                Console.WriteLine("Press <enter> to stop service...");
+                log.Info("HiringCompany service started.");
+                log.Info("Press <enter> to stop service...");
                 //Delaying del = new Delaying();
                 //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
                 //{
@@ -150,6 +151,19 @@ namespace HiringCompanyService
 
     public class Delaying
     {
+        public void CheckIfProjectAlmostLate()
+        {
+            List<Project> currentProjects = new List<Project>(30);
+
+            while(currentProjects.Count != 0)
+            {
+                foreach(Project proj in currentProjects)
+                {
+
+                }
+            }
+        }
+
         public void CheckIfSomeoneIsLate()
         {
             List<Employee> notSignedInWorkers = new List<Employee>(30);

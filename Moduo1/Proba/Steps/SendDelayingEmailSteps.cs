@@ -23,8 +23,10 @@ namespace Proba.Steps
         [When(@"I request to notify him by email")]
         public void WhenIRequestToNotifyHimByEmail()
         {
-            ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientProxy.Instance.SendDelayingEmail(us).Returns(val = true);
+            
+            //ClientProxy.Instance.SendDelayingEmail(us).Returns(val = true);
+            val = ClientProxy.Instance.SendDelayingEmail(us);
+            Console.WriteLine(ClientProxy.Instance.ToString());
         }
         
         [Then(@"the email should be sent successfully")]
