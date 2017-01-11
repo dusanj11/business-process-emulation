@@ -21,36 +21,31 @@ namespace Proba.Steps
         {
             id1 = 86758;
         }
-        
+
         [When(@"I have requested to get that company")]
         public void WhenIHaveRequestedToGetThatCompany()
         {
-            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
-            HiringCompanyDB.Instance.GetCompany(id1).Returns(hc1 = null);
+            hc1 = ClientProxy.Instance.GetHiringCompany(id1);
         }
-        
+
         [When(@"I filled data with existing id")]
         public void WhenIFilledDataWithExistingId()
         {
             id2 = 7;
         }
-        
+
         [When(@"I have requested to have that company detailes")]
         public void WhenIHaveRequestedToHaveThatCompanyDetailes()
         {
-            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
-            HiringCompanyDB.Instance.GetCompany(id2).Returns(hc2 = new HiringCompany()
-            {
-                CompanyIdThr = 7
-            });
+            hc2 = ClientProxy.Instance.GetHiringCompany(id2);
         }
-        
+
         [Then(@"the result should be returning a false value")]
         public void ThenTheResultShouldBeReturningAFalseValue()
         {
-            Assert.That(hc1 == null, Is.True);
+            Assert.That(hc1.CompanyIdThr.ToString() == null, Is.True);
         }
-        
+
         [Then(@"the result should be  hiring company")]
         public void ThenTheResultShouldBeAListOfAllHiringCompanies()
         {

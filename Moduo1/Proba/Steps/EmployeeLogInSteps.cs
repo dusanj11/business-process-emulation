@@ -20,33 +20,31 @@ namespace Proba.Steps
         {
             us1 = "dule";
         }
-        
+
         [When(@"I request to change my log status")]
         public void WhenIRequestToChangeMyLogStatus()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.EmployeeLogIn(us1).Returns(val1 = true);
+            val1 = ClientProxy.Instance.EmployeeLogIn(us1);
         }
-        
+
         [When(@"I have entered invalid username")]
         public void WhenIHaveEnteredInvalidUsername()
         {
             us2 = "ufieuer";
         }
-        
+
         [When(@"I have requested to update my log status")]
         public void WhenIHaveRequestedToUpdateMyLogStatus()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.EmployeeLogIn(us2).Returns(val2 = false);
+            val2 = ClientProxy.Instance.EmployeeLogIn(us2);
         }
-        
+
         [Then(@"the result should be returning true")]
         public void ThenTheResultShouldBeReturningTrue()
         {
             Assert.AreEqual(val1, true);
         }
-        
+
         [Then(@"the result should not be returning true")]
         public void ThenTheResultShouldNotBeReturningTrue()
         {

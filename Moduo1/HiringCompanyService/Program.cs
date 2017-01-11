@@ -25,6 +25,7 @@ namespace HiringCompanyService
 
             // set |DataDirectory| in App.config
             string path = System.Environment.CurrentDirectory;
+            Console.WriteLine(path);
             path = path.Substring(0, path.LastIndexOf("\\"));
             path = path.Substring(0, path.LastIndexOf("\\"));
 
@@ -123,16 +124,17 @@ namespace HiringCompanyService
                 serviceHost.Open();
 
 
-                Console.WriteLine("HiringCompany service started.");
-                Console.WriteLine("Press <enter> to stop service...");
-                Delaying del = new Delaying();
+                log.Info("HiringCompany service started.");
+                log.Info("Press <enter> to stop service...");
+                //Delaying del = new Delaying();
                 //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
                 //{
                 //    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
                 //    checkThread.Start();
                 //}
-
-
+                //Thread alarmPo = new Thread(new ThreadStart(del.CheckIfProjectAlmostLate));
+                //alarmPo.Start();
+                    
                 Console.ReadLine();
 
             }
@@ -150,6 +152,41 @@ namespace HiringCompanyService
 
     public class Delaying
     {
+        public void CheckIfProjectAlmostLate()
+        {
+            List<Project> currentProjects = new List<Project>(30);
+            Employee po = new Employee();
+            while(currentProjects.Count != 0)
+            {
+                foreach(Project proj in currentProjects)
+                {
+                    if ((proj.Progress <= 8.00) && ((proj.EndDate.Month == DateTime.Now.Month) && ((proj.EndDate.Day - DateTime.Now.Day) <= 10)))
+                    {
+                        po = proj.ProductOwner;
+
+                        using (SmtpClient smtpClient = new SmtpClient())
+                        {
+                            using (MailMessage message = new MailMessage())
+                            {
+                                message.Subject = "ALARMNO STANJE PROJEKAT NIJE GOTOV!";
+                                message.Body = "Kolega " + po.Name + " " + po.Surname + ", vasi zaposleni NE RADE dobro posao. Slede penali!";
+                                message.To.Add(new MailAddress(po.Email));
+                                try
+                                {
+                                    smtpClient.Send(message);
+                                }
+                                catch (Exception exc)
+                                {
+                                    throw new FaultException(exc.Message);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public void CheckIfSomeoneIsLate()
         {
             List<Employee> notSignedInWorkers = new List<Employee>(30);

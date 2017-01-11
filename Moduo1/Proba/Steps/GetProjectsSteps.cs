@@ -17,33 +17,25 @@ namespace Proba.Steps
         [When(@"I have requested to see current projects")]
         public void WhenIHaveRequestedToSeeCurrentProjects()
         {
-            ProjectDB.Instance = Substitute.For<IProjectDB>();
-            ProjectDB.Instance.GetProjects().Returns(lp = new List<Project>()
-                {
-                    new Project()
-                    {
-                        Name = "AGMS projekat"
-                    }
-                });
+            lp = ClientProxy.Instance.GetProjects();
         }
-        
+
         [When(@"I have requested current projects data")]
         public void WhenIHaveRequestedCurrentProjectsData()
         {
-            ProjectDB.Instance = Substitute.For<IProjectDB>();
-            ProjectDB.Instance.GetProjects().Returns(lp = null);
+            lp = ClientProxy.Instance.GetProjects();
         }
-        
+
         [Then(@"the result should be a list of projects")]
         public void ThenTheResultShouldBeAListOfProjects()
         {
             Assert.That(lp.Count > 0, Is.True);
         }
-        
+
         [Then(@"the result should be null or empty list")]
         public void ThenTheResultShouldBeNullOrEmptyList()
         {
-            Assert.That(lp == null, Is.True);
+            Assert.That(lp.Count == 0, Is.True);
         }
     }
 }

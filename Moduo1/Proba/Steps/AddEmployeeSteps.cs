@@ -11,21 +11,22 @@ namespace Proba
     [Binding]
     public class AddEmployeeSteps
     {
-        private static Employee nevalidni = new Employee();
-        private static Employee validni = new Employee();
+        private static Employee nevalidni;
+        private static Employee validni;
         private static bool statusNevalidni;
         private static bool statusValidni;
 
         [Given(@"I can write in database")]
         public void GivenICanWriteInDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+
         }
-        
+
         [Given(@"I have entered employee with existing username")]
         public void GivenIHaveEnteredEmployeeWithExistingUsername()
         {
-            Employee nevalidni = new Employee();
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
+            nevalidni = new Employee();
             nevalidni.Name = "Milica";
             nevalidni.Surname = "Kapetina";
             nevalidni.Username = "mica";
@@ -36,19 +37,24 @@ namespace Proba
             nevalidni.Login = false;
             nevalidni.Email = "marko.jelaca@gmail.com";
             nevalidni.PasswordUpadateDate = DateTime.Now;
-            
+            nevalidni.HiringCompanyId = hc;
+
+            ScenarioContext.Current.Add("nevalidni", nevalidni);
+
+
         }
-        
+
         [Given(@"I have power to write on database")]
         public void GivenIHavePowerToWriteOnDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+
         }
-        
+
         [Given(@"I have entered non existing username for employee")]
         public void GivenIHaveEnteredNonExistingUsernameForEmployee()
         {
-            Employee validni = new Employee();
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
+            validni = new Employee();
             validni.Name = "Zana";
             validni.Surname = "Bilbija";
             validni.Username = "zax";
@@ -57,29 +63,34 @@ namespace Proba
             validni.StartTime = "10.00";
             validni.EndTime = "17.00";
             validni.Login = false;
+            validni.HiringCompanyId = hc;
             validni.Email = "marko.jelaca@gmail.com";
             validni.PasswordUpadateDate = DateTime.Now;
-            
+            validni.HiringCompanyId = hc;
+
+            ScenarioContext.Current.Add("validni", validni);
         }
-        
+
         [When(@"I request to add him/her")]
         public void WhenIRequestToAddHimHer()
         {
-            EmployeeDB.Instance.AddEmployee(nevalidni).Returns(statusNevalidni = false);
+            Employee emp = ScenarioContext.Current.Get<Employee>("nevalidni");
+            statusNevalidni = ClientProxy.Instance.AddEmployee(emp);
         }
-        
+
         [When(@"I request to put them in database")]
         public void WhenIRequestToPutThemInDatabase()
         {
-            EmployeeDB.Instance.AddEmployee(validni).Returns(statusValidni = true);
+            Employee emp = ScenarioContext.Current.Get<Employee>("validni");
+            statusValidni = ClientProxy.Instance.AddEmployee(emp);
         }
-        
+
         [Then(@"the result should be false")]
         public void ThenTheResultShouldBeFalse()
         {
             Assert.AreEqual(statusNevalidni, false);
         }
-        
+
         [Then(@"the result should be true")]
         public void ThenTheResultShouldBeTrue()
         {

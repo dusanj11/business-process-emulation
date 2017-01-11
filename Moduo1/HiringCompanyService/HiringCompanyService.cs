@@ -34,7 +34,7 @@ namespace HiringCompanyService
 
         public bool AddEmployee(Employee employee)
         {
-            Console.WriteLine("AddEmployee...");
+            log.Info("AddEmployee...");
             return EmployeeDB.Instance.AddEmployee(employee);
         }
 
@@ -98,10 +98,12 @@ namespace HiringCompanyService
 
         public bool SendDelayingEmail(string username)
         {
+            Console.WriteLine("SendEmailsEmployees...");
             String email = EmployeeDB.Instance.GetEmployeeEmail(username);
 
             using (SmtpClient smtpClient = new SmtpClient())
             {
+
                 using (MailMessage message = new MailMessage())
                 {
                     message.Subject = "KASNJENJE!";

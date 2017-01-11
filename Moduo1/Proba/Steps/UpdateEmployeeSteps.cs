@@ -30,14 +30,13 @@ namespace Proba.Steps
             nevalidni.Email = "marko.jelaca@gmail.com";
             nevalidni.PasswordUpadateDate = DateTime.Now;
         }
-        
+
         [When(@"I request to update his/hers personal data")]
         public void WhenIRequestToUpdateHisHersPersonalData()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.UpdateEmployee(nevalidni).Returns(val1 = false);
+            val1 = ClientProxy.Instance.UpdateEmployee(nevalidni);
         }
-        
+
         [When(@"I try to update employee with correct username")]
         public void WhenITryToUpdateEmployeeWithCorrectUsername()
         {
@@ -52,21 +51,19 @@ namespace Proba.Steps
             validni.Email = "dusan.jeftic11@gmail.com";
             validni.PasswordUpadateDate = DateTime.Now;
         }
-        
+
         [When(@"I request to update employee's personal data")]
         public void WhenIRequestToUpdateEmployeeSPersonalData()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.UpdateEmployee(validni).Returns(val2 = true);
-        
+            val2 = ClientProxy.Instance.UpdateEmployee(validni);
         }
-        
+
         [Then(@"the result should be negative")]
         public void ThenTheResultShouldBeNegative()
         {
             Assert.AreEqual(val1, false);
         }
-        
+
         [Then(@"the result should be positive")]
         public void ThenTheResultShouldBePositive()
         {
