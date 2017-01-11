@@ -1,5 +1,7 @@
 ﻿using Client;
 using HiringCompanyData;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -16,14 +18,15 @@ namespace Proba.Steps
 
         [When(@"I have entered a company with existing id")]
         public void WhenIHaveEnteredACompanyWithExistingId()
-        {
+        {       
             hc1.CompanyIdThr = 7;
         }
         
         [When(@"I have tryed to put it in database")]
         public void WhenIHaveTryedToPutItInDatabase()
         {
-            val1 = ClientProxy.Instance.AddHiringCompany(hc1);
+            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
+            HiringCompanyDB.Instance.AddCompany(hc1).Returns(val1 = false);
         }
         
         [When(@"I have entered a company with  new id")]
@@ -35,7 +38,8 @@ namespace Proba.Steps
         [When(@"I have requested to put it in database")]
         public void WhenIHaveRequestedToPutItInDatabase()
         {
-            val2 = ClientProxy.Instance.AddHiringCompany(hc2);
+            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
+            HiringCompanyDB.Instance.AddCompany(hc2).Returns(val1 = true);
         }
         
         [Then(@"the result should be failing")]

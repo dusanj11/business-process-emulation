@@ -4,6 +4,7 @@ using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.IO;
 using TechTalk.SpecFlow;
 using TestStack.White;
 
@@ -20,21 +21,22 @@ namespace Proba.Steps
         private static string ps1;
         private static string ps2;
         private static string ps3;
-        [BeforeTestRun]
-        public static  void BeforeTestRun()
-        {
-           app = Application.Launch(@"C:\Users\jelac\OneDrive\PSI\EPPRepo\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe");
-        }
-        [AfterTestRun]
-        public static void AftertestRun()
-        {
-            app.Close();
-        }
+        //[BeforeTestRun]
+        //public static  void BeforeTestRun()
+        //{
+        //    //AppDomain.CurrentDomain.SetData("DataDirectory", Directory.GetCurrentDirectory());
+        //    app = Application.Launch(@"C:\Users\ftn\Desktop\duki\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe"); 
+        //}
+        //[AfterTestRun]
+        //public static void AftertestRun()
+        //{
+        //    app.Close();
+        //}
 
         [Given(@"I can use database")]
         public void GivenICanUseDatabase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
         }
         
         [Given(@"I have entered valid username and password")]
@@ -47,7 +49,7 @@ namespace Proba.Steps
         [Given(@"I have the power work on datbase")]
         public void GivenIHaveThePowerWorkOnDatbase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
         }
         
         [Given(@"I have entered valid username and invalid password")]
@@ -61,7 +63,7 @@ namespace Proba.Steps
         [Given(@"I have a way to read from database")]
         public void GivenIHaveAWayToReadFromDatabase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
         }
         
         [Given(@"I have entered invalid data")]
@@ -74,37 +76,56 @@ namespace Proba.Steps
         [When(@"I request to get wanted data")]
         public void WhenIRequestToGetWantedData()
         {
-            emp = ClientProxy.Instance.GetEmployee(us1, ps1);
+           
+            EmployeeDB.Instance.GetEmployee(us1, ps1).Returns(emp = new Employee() 
+            { 
+                Name = "Dusan",
+                Surname = "Jeftic",
+                Username = "dule",
+                Password = "dule",
+                Position = PositionEnum.HR.ToString(),
+                StartTime = "10.15",
+                EndTime = "17.15",
+                Email = "dusan.jeftic11@gmail.com",
+
+            });
+            //emp = ClientProxy.Instance.GetEmployee(us1, ps1);
         }
         
         [When(@"I request the possesion of that data")]
         public void WhenIRequestThePossesionOfThatData()
         {
-            emp = ClientProxy.Instance.GetEmployee(us2, ps2);
+
+            EmployeeDB.Instance.GetEmployee(us1, ps1).Returns(emp = null);
+            //emp = ClientProxy.Instance.GetEmployee(us2, ps2);
         }
         
         [When(@"I request the certain data")]
         public void WhenIRequestTheCertainData()
         {
-            emp = ClientProxy.Instance.GetEmployee(us3, ps3);
+
+            EmployeeDB.Instance.GetEmployee(us1, ps1).Returns(emp = null);
+           // emp = ClientProxy.Instance.GetEmployee(us3, ps3);
         }
         
         [Then(@"the result should be an instance of employee")]
         public void ThenTheResultShouldBeAnInstanceOfEmployee()
         {
-            Assert.Equals(us1, emp.Username);
+            Assert.AreEqual(us1, emp.Username);
         }
         
         [Then(@"the result should be a null value or empty object")]
         public void ThenTheResultShouldBeANullValueOrEmptyObject()
         {
-            Assert.That(emp == null, Is.True);
+            //Assert.AreEqual(emp.Username.ToString(), null);
+            Assert.AreEqual(emp, null);
         }
         
         [Then(@"the result should be an empty object or null")]
         public void ThenTheResultShouldBeAnEmptyObjectOrNull()
         {
-            Assert.That(emp == null, Is.True);
+            //Assert.That(emp == null, Is.True);
+            Assert.AreEqual(emp, null);
         }
     }
 }
