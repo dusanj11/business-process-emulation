@@ -1,5 +1,7 @@
 ﻿using Client;
 using HiringCompanyData;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -21,7 +23,8 @@ namespace Proba.Steps
         [When(@"I have requested to add it")]
         public void WhenIHaveRequestedToAddIt()
         {
-            val = ClientProxy.Instance.AddProjectDefinition(np);
+            ProjectDB.Instance = Substitute.For<IProjectDB>();
+            ProjectDB.Instance.AddProject(np).Returns(val = true);
         }
         
         [Then(@"the result should be afirmative")]

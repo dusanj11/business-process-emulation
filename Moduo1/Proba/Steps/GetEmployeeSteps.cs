@@ -21,17 +21,17 @@ namespace Proba.Steps
         private static string ps1;
         private static string ps2;
         private static string ps3;
-        [BeforeTestRun]
-        public static  void BeforeTestRun()
-        {
-            //AppDomain.CurrentDomain.SetData("DataDirectory", Directory.GetCurrentDirectory());
-            app = Application.Launch(@"C:\Users\ftn\Desktop\duki\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe"); 
-        }
-        [AfterTestRun]
-        public static void AftertestRun()
-        {
-            app.Close();
-        }
+        //[BeforeTestRun]
+        //public static  void BeforeTestRun()
+        //{
+        //    //AppDomain.CurrentDomain.SetData("DataDirectory", Directory.GetCurrentDirectory());
+        //    app = Application.Launch(@"C:\Users\ftn\Desktop\duki\Moduo1\HiringCompanyService\bin\Debug\HiringCompanyService.exe"); 
+        //}
+        //[AfterTestRun]
+        //public static void AftertestRun()
+        //{
+        //    app.Close();
+        //}
 
         [Given(@"I can use database")]
         public void GivenICanUseDatabase()

@@ -1,4 +1,6 @@
 ﻿using Client;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -22,7 +24,8 @@ namespace Proba.Steps
         [When(@"I request to change my log status")]
         public void WhenIRequestToChangeMyLogStatus()
         {
-            val1 = ClientProxy.Instance.EmployeeLogIn(us1);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.EmployeeLogIn(us1).Returns(val1 = true);
         }
         
         [When(@"I have entered invalid username")]
@@ -34,7 +37,8 @@ namespace Proba.Steps
         [When(@"I have requested to update my log status")]
         public void WhenIHaveRequestedToUpdateMyLogStatus()
         {
-            val2 = ClientProxy.Instance.EmployeeLogIn(us2);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.EmployeeLogIn(us2).Returns(val2 = false);
         }
         
         [Then(@"the result should be returning true")]

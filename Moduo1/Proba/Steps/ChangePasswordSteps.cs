@@ -1,4 +1,6 @@
 ﻿using Client;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -32,7 +34,8 @@ namespace Proba.Steps
         [When(@"I request to change it")]
         public void WhenIRequestToChangeIt()
         {
-            val1 = ClientProxy.Instance.ChangePassword(us1, opas1, npas1);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.ChangeEmployeePassword(us1, opas1, npas1).Returns(val1 = false);
         }
         
         [When(@"I have entered invalid username, and new paswword")]
@@ -46,7 +49,8 @@ namespace Proba.Steps
         [When(@"I request to change old password")]
         public void WhenIRequestToChangeOldPassword()
         {
-            val2 = ClientProxy.Instance.ChangePassword(us2, opas2, npas2);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.ChangeEmployeePassword(us2, opas2, npas2).Returns(val2 = false);
         }
         
         [When(@"I have both username and password valid, and new paswword")]
@@ -60,7 +64,8 @@ namespace Proba.Steps
         [When(@"I request to make a change on my password")]
         public void WhenIRequestToMakeAChangeOnMyPassword()
         {
-            val3 = ClientProxy.Instance.ChangePassword(us3, opas3, npas3);
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            EmployeeDB.Instance.ChangeEmployeePassword(us3, opas3, npas3).Returns(val3 = true);
         }
         
         [Then(@"the result should be ended without a change")]
