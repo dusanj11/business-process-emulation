@@ -6,6 +6,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using TechTalk.SpecFlow;
 
 namespace Proba
@@ -15,7 +16,7 @@ namespace Proba
     {
         private static List<Employee> notLoggedIn = new List<Employee>();
         private static List<Employee> allEmployees = new List<Employee>();
-   
+       
 
         [Given(@"I have a way of accesing database")]
         public void GivenIHaveAWayOfAccesingDatabase()
@@ -28,6 +29,7 @@ namespace Proba
         [When(@"I request the data about late employees")]
         public void WhenIRequestTheDataAboutLateEmployees()
         {
+            
             //EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             //notLoggedIn = EmployeeDB.Instance.GetAllNotSignedInEmployees();
             notLoggedIn = ClientProxy.Instance.GetAllNotSignedInEmployees();

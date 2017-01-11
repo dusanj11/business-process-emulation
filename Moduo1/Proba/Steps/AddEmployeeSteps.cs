@@ -1,5 +1,7 @@
 ﻿using Client;
 using HiringCompanyData;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -17,7 +19,7 @@ namespace Proba
         [Given(@"I can write in database")]
         public void GivenICanWriteInDatabase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
         }
         
         [Given(@"I have entered employee with existing username")]
@@ -40,7 +42,7 @@ namespace Proba
         [Given(@"I have power to write on database")]
         public void GivenIHavePowerToWriteOnDatabase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
         }
         
         [Given(@"I have entered non existing username for employee")]
@@ -63,13 +65,13 @@ namespace Proba
         [When(@"I request to add him/her")]
         public void WhenIRequestToAddHimHer()
         {
-            statusNevalidni = ClientProxy.Instance.AddEmployee(nevalidni);
+            EmployeeDB.Instance.AddEmployee(nevalidni).Returns(statusNevalidni = false);
         }
         
         [When(@"I request to put them in database")]
         public void WhenIRequestToPutThemInDatabase()
         {
-            statusValidni = ClientProxy.Instance.AddEmployee(validni);
+            EmployeeDB.Instance.AddEmployee(validni).Returns(statusValidni = true);
         }
         
         [Then(@"the result should be false")]
