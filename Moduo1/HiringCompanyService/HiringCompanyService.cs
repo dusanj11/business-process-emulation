@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
-using HiringCompanyContract;
-using HiringCompanyService.Access;
+﻿using HiringCompanyContract;
 using HiringCompanyData;
+using HiringCompanyService.Access;
+using System;
+using System.Collections.Generic;
 using System.Net.Mail;
+using System.ServiceModel;
 
 namespace HiringCompanyService
 {
@@ -15,10 +12,12 @@ namespace HiringCompanyService
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+   
+
         public List<Employee> GetAllEmployees()
         {
             Console.WriteLine("GetAllEmployees...");
-            return EmployeeDB.Instance.GetEmployees();      
+            return EmployeeDB.Instance.GetEmployees();
         }
 
         public List<Employee> GetAllNotSignedInEmployees()
@@ -39,11 +38,10 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.AddEmployee(employee);
         }
 
-        public bool ChangeEmployeePosition(string username, PositionEnum position)
+        public bool ChangeEmployeePosition(string username, string position)
         {
             Console.WriteLine("ChangeEmployeePostition...");
             return EmployeeDB.Instance.ChangeEmployeePosition(username, position);
-
         }
 
         public bool UpdateEmployee(Employee employee)
@@ -97,11 +95,12 @@ namespace HiringCompanyService
             Console.WriteLine("GetProjects...");
             return ProjectDB.Instance.GetProjects();
         }
+
         public bool SendDelayingEmail(string username)
         {
             String email = EmployeeDB.Instance.GetEmployeeEmail(username);
 
-            using(SmtpClient smtpClient = new SmtpClient())
+            using (SmtpClient smtpClient = new SmtpClient())
             {
                 using (MailMessage message = new MailMessage())
                 {
@@ -117,10 +116,8 @@ namespace HiringCompanyService
                     {
                         throw new FaultException(exc.Message);
                     }
-
                 }
             }
-
         }
 
         public bool TestService()
@@ -128,11 +125,8 @@ namespace HiringCompanyService
             NetTcpBinding binding = new NetTcpBinding();
             string address = "";
 
-            using (ServiceProxy serviceProxy = new ServiceProxy(binding, address))
-            {
-                string test = serviceProxy.GetData(1);
-                Console.WriteLine(test);
-            }
+            string test = ServiceProxy.Instance.GetData(1);
+            Console.WriteLine(test);
             return true;
         }
 

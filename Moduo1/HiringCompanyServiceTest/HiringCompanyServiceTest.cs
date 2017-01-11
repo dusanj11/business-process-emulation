@@ -72,10 +72,10 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
-            EmployeeDB.Instance.ChangeEmployeePosition(usernameTest, PositionEnum.CEO).ReturnsForAnyArgs(true);
+            EmployeeDB.Instance.ChangeEmployeePosition(usernameTest, null).ReturnsForAnyArgs(true);
 
             EmployeeDB.Instance
-                .When(p => p.ChangeEmployeePosition(usernameTest, PositionEnum.CEO))
+                .When(p => p.ChangeEmployeePosition(usernameTest,null))
                 .Do(p =>
                 {
                     isCalled = true;
@@ -191,7 +191,7 @@ namespace HiringCompanyServiceTest
         {
             isCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(usernameTest, PositionEnum.CEO); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(usernameTest, "CEO"); });
 
             Assert.IsTrue(isCalled);
         }
@@ -199,7 +199,7 @@ namespace HiringCompanyServiceTest
         [Test]
         public void ChangeEmployeePositionNullParametersTest()
         {
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(null, PositionEnum.CEO); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeEmployeePosition(null, "CEO"); });
         }
 
         [Test]

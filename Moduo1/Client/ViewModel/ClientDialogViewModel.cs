@@ -162,8 +162,8 @@ namespace Client.ViewModel
 
         public LoadedCommand LoadedCommand { get; set; }
         public EditPositionCommand EditPositionCommand { get; set; }
-
-      
+       
+        
 
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using Client.Command;
 using Client.ViewModelInterfaces;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,10 @@ namespace Client.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private static EditPositionViewModel model;
-        private string employee;
+        private Employee employee;
         private string position;
 
-        public EditPositionCommand EditPositionCommand { get; set; }
+        public SaveEditPositionCommand SaveEditPositionCommand { get; set; }
 
 
         public static IEditPositionViewModel _editPositionViewModel;
@@ -55,7 +56,7 @@ namespace Client.ViewModel
         //    }
         //}
 
-        public string Employee
+        public Employee Employee
         {
             get
             {
@@ -85,8 +86,8 @@ namespace Client.ViewModel
 
         public EditPositionViewModel()
         {
-            this.EditPositionCommand = new EditPositionCommand();
-            this.Employee = "";
+            this.SaveEditPositionCommand = new SaveEditPositionCommand();
+            this.Employee = new Employee();
             this.Position = "";
         }
 
@@ -98,7 +99,7 @@ namespace Client.ViewModel
             }
         }
 
-        string IEditPositionViewModel.Employee()
+        Employee IEditPositionViewModel.Employee()
         {
             return Employee;
         }

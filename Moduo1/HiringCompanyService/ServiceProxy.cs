@@ -5,19 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using EppContract;
 using System.ServiceModel;
+using System.Configuration;
 
 namespace HiringCompanyService
 {
-    public class ServiceProxy : ChannelFactory<IEppContract>, IEppContract, IDisposable
+    public class ServiceProxy : IEppContract, IDisposable
     {
 
-        private IEppContract factory;
+        private static IEppContract proxy;
 
-        public ServiceProxy(NetTcpBinding binding, string address) : base(binding, address)
+        private static ChannelFactory<IEppContract> factory;
+
+        private static string address = ConfigurationManager.AppSettings["OutsourcingCompanyServiceAddress"];
+
+        public static IEppContract Instance
         {
-            factory = this.CreateChannel();
-        }
+            get
+            {
+                if (proxy == null)
+                {
+                    factory = new ChannelFactory<IEppContract>(new NetTcpBinding(), new EndpointAddress(address));
+                    proxy = factory.CreateChannel();
+                }
 
+                return proxy;
+            }
+            set
+            {
+                if (proxy == null)
+                {
+                    proxy = value;
+                }
+            }
+        }
 
 
         public void Dispose()
@@ -27,12 +47,20 @@ namespace HiringCompanyService
                 factory = null;
 
             }
-            this.Close();
+            factory.Close();
         }
 
         public string GetData(int value)
         {
-            return factory.GetData(value);
+            try
+            {
+                return proxy.GetData(value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetData: \n{0}", e.Message);
+                return null;
+            }
         }
     }
 }
