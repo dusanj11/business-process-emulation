@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Client.Command;
 using HiringCompanyService.Access;
 using NSubstitute;
+using Client;
+using HiringCompanyContract;
+using HiringCompanyData;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -16,6 +19,8 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private ViewWorkersCommand viewWorkersCommandUnderTest;
+
+        public object CLient { get; private set; }
 
         #endregion Declarations
 
@@ -31,6 +36,14 @@ namespace HiringCompanyClientTest.Command
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetAllEmployees().Returns(new List<Employee>()
+            {
+                new Employee()
+                {
+                    
+                }
+            });
 
 
         }

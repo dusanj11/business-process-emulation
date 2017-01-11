@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using Client.Command;
 using HiringCompanyService.Access;
 using NSubstitute;
+using Client;
+using HiringCompanyContract;
+using HiringCompanyData;
+using Client.ViewModel;
+using Client.ViewModelInterfaces;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -31,7 +36,12 @@ namespace HiringCompanyClientTest.Command
 
             EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
 
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee());
+            ClientProxy.Instance.UpdateEmployee(null).ReturnsForAnyArgs(true);
 
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser());
 
         }
 

@@ -101,6 +101,7 @@
     <Compile Include="Command\AddEmployeeCommandTest.cs" />
     <Compile Include="Command\LoadedCommandTest.cs" />
     <Compile Include="Command\LogOutCommandTest.cs" />
+    <Compile Include="Command\SaveEditPositionCommandTest.cs" />
     <Compile Include="Command\SaveNewEmployeeCommandTest.cs" />
     <Compile Include="Command\SaveNewPasswordCommandTest.cs" />
     <Compile Include="Command\SaveNewProjectDefinitionTest.cs" />

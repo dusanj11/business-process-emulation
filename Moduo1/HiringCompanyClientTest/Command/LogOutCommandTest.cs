@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Client.ViewModelInterfaces;
 using Client.Model;
+using Client;
+using HiringCompanyContract;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -37,8 +39,9 @@ namespace HiringCompanyClientTest.Command
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
 
             ClientDialogViewModel.Instance.LogInUser().Returns(new LogInUser("mica", "mica"));
-         
 
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.EmployeeLogOut("mica").ReturnsForAnyArgs(true);
 
         }
 
@@ -62,6 +65,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteNullParametersTest()
         {
+            
             Assert.DoesNotThrow(() => { logOutCommandUnderTest.CanExecute(null); });
         }
 
@@ -75,6 +79,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void ExecuteNullParametersTest()
         {
+            ClientDialogViewModel.Instance.LogInUser().Returns(new LogInUser("", ""));
             Assert.DoesNotThrow(() => { logOutCommandUnderTest.Execute(null); });
         }
         #endregion Tests

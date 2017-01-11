@@ -236,7 +236,6 @@
     <Compile Include="View\WorkingHoursView.xaml.cs">
       <DependentUpon>WorkingHoursView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WcfAttributes.cs" />
     <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

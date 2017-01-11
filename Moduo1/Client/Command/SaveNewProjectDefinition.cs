@@ -1,4 +1,5 @@
-﻿using Client.ViewModel;
+﻿using Client.Model;
+using Client.ViewModel;
 using HiringCompanyData;
 using System;
 using System.Threading;
@@ -22,6 +23,12 @@ namespace Client.Command
             project.Description = CreateProjectViewModel.Instance.NewProjectDefinition().Description;
             project.StartDate = CreateProjectViewModel.Instance.NewProjectDefinition().StartDate;
             project.EndDate = CreateProjectViewModel.Instance.NewProjectDefinition().EndDate;
+
+            LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
+
+            Employee productOwner = ClientProxy.Instance.GetEmployee(logInUser.Username, logInUser.Password);
+
+            project.ProductOwner = productOwner;
 
             HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
             project.HiringCompany = hc;
