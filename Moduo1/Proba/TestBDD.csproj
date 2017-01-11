@@ -44,8 +44,9 @@
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -63,6 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\ChangeEmployeePosition.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeEmployeePosition.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\AddEmployeeSteps.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Features\AddEmployee.feature.cs">
@@ -103,6 +109,10 @@
     <None Include="Features\AddEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddEmployee.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ChangeEmployeePosition.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChangeEmployeePosition.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\GetAllEmployees.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

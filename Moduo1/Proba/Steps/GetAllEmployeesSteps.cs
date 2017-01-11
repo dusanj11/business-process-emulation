@@ -1,4 +1,5 @@
-﻿using HiringCompanyData;
+﻿using Client;
+using HiringCompanyData;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -16,37 +17,37 @@ namespace Proba.Steps
         [Given(@"I have acces to database")]
         public void GivenIHaveAccesToDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [Given(@"I am able to access database")]
         public void GivenIAmAbleToAccessDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [When(@"I request to have data about all employees")]
         public void WhenIRequestToHaveDataAboutAllEmployees()
         {
-            allEmployees = EmployeeDB.Instance.GetReallyEmployees();
+            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
         }
         
         [When(@"I want to have the requested data")]
         public void WhenIWantToHaveTheRequestedData()
         {
-            allEmployees = EmployeeDB.Instance.GetReallyEmployees();
+            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
         }
         
         [Then(@"the result should be a list of employees")]
         public void ThenTheResultShouldBeAListOfEmployees()
         {
-            Assert.IsNotEmpty(allEmployees);
+            Assert.That(allEmployees.Count > 0, Is.True);
         }
         
         [Then(@"the result should be an empty list")]
         public void ThenTheResultShouldBeAnEmptyList()
         {
-            Assert.IsEmpty(allEmployees);
+            Assert.That(allEmployees.Count == 0, Is.True);
         }
     }
 }
