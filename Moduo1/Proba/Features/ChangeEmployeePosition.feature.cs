@@ -66,11 +66,11 @@ namespace Proba.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Certain employee does not exist in database")]
-        [NUnit.Framework.CategoryAttribute("DusnBDD")]
+        [NUnit.Framework.CategoryAttribute("DusanBDD")]
         public virtual void CertainEmployeeDoesNotExistInDatabase()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Certain employee does not exist in database", new string[] {
-                        "DusnBDD"});
+                        "DusanBDD"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -85,16 +85,18 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Certain employee exists in database")]
+        [NUnit.Framework.CategoryAttribute("DusanBDD")]
         public virtual void CertainEmployeeExistsInDatabase()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Certain employee exists in database", ((string[])(null)));
-#line 12
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Certain employee exists in database", new string[] {
+                        "DusanBDD"});
 #line 13
- testRunner.When("I have entered correct username and wanted title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 14
- testRunner.And("I request to make a change on his/hers title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I have entered correct username and wanted title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
+ testRunner.And("I request to make a change on his/hers title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
  testRunner.Then("the process should be complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

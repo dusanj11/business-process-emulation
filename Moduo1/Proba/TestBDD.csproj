@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangeEmployeePosition.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\UpdateEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateEmployee.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\AddEmployeeSteps.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Features\AddEmployee.feature.cs">
@@ -104,6 +109,7 @@
       <DependentUpon>GetAllNotLoggedEmployees.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\GetEmployeeSteps.cs" />
+    <Compile Include="Steps\UpdateEmployeeSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -126,6 +132,10 @@
     <None Include="Features\GetEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetEmployee.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UpdateEmployee.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UpdateEmployee.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Features\GetAllNotLoggedEmployees.feature">
