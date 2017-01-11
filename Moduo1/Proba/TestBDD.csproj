@@ -89,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeLogOut.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\GetHiringCompanies.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetHiringCompanies.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateEmployee.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +138,7 @@
       <DependentUpon>GetAllNotLoggedEmployees.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\GetEmployeeSteps.cs" />
+    <Compile Include="Steps\GetHiringCompaniesSteps.cs" />
     <Compile Include="Steps\UpdateEmployeeSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +178,10 @@
     <None Include="Features\GetEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetEmployee.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetHiringCompanies.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetHiringCompanies.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UpdateEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
