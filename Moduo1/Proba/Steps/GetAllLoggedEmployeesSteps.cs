@@ -1,4 +1,5 @@
-﻿using HiringCompanyData;
+﻿using Client;
+using HiringCompanyData;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -17,20 +18,20 @@ namespace Proba
         [Given(@"I have access to database")]
         public void GivenIHaveAccessToDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [When(@"I request the data about logged employees")]
         public void WhenIRequestTheDataAboutLoggedEmployees()
         {
-            loggedIn = EmployeeDB.Instance.GetEmployees();
+            loggedIn = ClientProxy.Instance.GetAllEmployees();
         }
         
         [When(@"if there is at least one logged employye")]
         public void WhenIfThereIsAtLeastOneLoggedEmployye()
         {
             int numberOfLogged = 0;
-            allEmployees = EmployeeDB.Instance.GetReallyEmployees();
+            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
             //Assert.IsNotEmpty(allEmployees);
             Assert.That(allEmployees.Count > 0, Is.True);
             foreach (Employee emp in allEmployees)
@@ -45,7 +46,7 @@ namespace Proba
         public void ThenTheResultShouldBeListOfEmployees()
         {
             //Assert.IsNotEmpty(loggedIn);
-            Assert.Greater(loggedIn.Count, 0);
+            Assert.That(loggedIn.Count > 0, Is.True);
         }
     }
 }

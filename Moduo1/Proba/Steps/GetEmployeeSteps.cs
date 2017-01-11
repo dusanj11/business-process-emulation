@@ -1,4 +1,5 @@
-﻿using HiringCompanyData;
+﻿using Client;
+using HiringCompanyData;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -33,7 +34,7 @@ namespace Proba.Steps
         [Given(@"I can use database")]
         public void GivenICanUseDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [Given(@"I have entered valid username and password")]
@@ -46,7 +47,7 @@ namespace Proba.Steps
         [Given(@"I have the power work on datbase")]
         public void GivenIHaveThePowerWorkOnDatbase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [Given(@"I have entered valid username and invalid password")]
@@ -60,7 +61,7 @@ namespace Proba.Steps
         [Given(@"I have a way to read from database")]
         public void GivenIHaveAWayToReadFromDatabase()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            
         }
         
         [Given(@"I have entered invalid data")]
@@ -73,19 +74,19 @@ namespace Proba.Steps
         [When(@"I request to get wanted data")]
         public void WhenIRequestToGetWantedData()
         {
-            emp = EmployeeDB.Instance.GetEmployee(us1, ps1);
+            emp = ClientProxy.Instance.GetEmployee(us1, ps1);
         }
         
         [When(@"I request the possesion of that data")]
         public void WhenIRequestThePossesionOfThatData()
         {
-            emp = EmployeeDB.Instance.GetEmployee(us2, ps2);
+            emp = ClientProxy.Instance.GetEmployee(us2, ps2);
         }
         
         [When(@"I request the certain data")]
         public void WhenIRequestTheCertainData()
         {
-            emp = EmployeeDB.Instance.GetEmployee(us3, ps3);
+            emp = ClientProxy.Instance.GetEmployee(us3, ps3);
         }
         
         [Then(@"the result should be an instance of employee")]
@@ -97,13 +98,13 @@ namespace Proba.Steps
         [Then(@"the result should be a null value or empty object")]
         public void ThenTheResultShouldBeANullValueOrEmptyObject()
         {
-            Assert.IsNull(emp);
+            Assert.That(emp == null, Is.True);
         }
         
         [Then(@"the result should be an empty object or null")]
         public void ThenTheResultShouldBeAnEmptyObjectOrNull()
         {
-            Assert.IsNull(emp);
+            Assert.That(emp == null, Is.True);
         }
     }
 }

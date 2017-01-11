@@ -128,17 +128,26 @@ namespace HiringCompanyService.Access
             log.Debug("Enter ChangeEmployeePosition method.");
             using (var access = new AccessDB())
             {
-                access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
-                //em.Position = position.ToString();
-                int i = access.SaveChanges();
+                //Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
+                //if (em != null)
+                //{
+                    access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
+                    //em.Position = position.ToString();
+                    int i = access.SaveChanges();
 
-                if (i > 0)
-                {
-                    log.Info("Successfully updated DB");
-                    return true;
-                }
-                log.Warn("Failed to update DB");
-                return false;
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB");
+                    return false;
+                //}
+                //else
+                //{
+                //    log.Warn("Employee with that username does not exist. Failed chainging position.");
+                //    return false;
+                //}
             }
         }
 
@@ -176,18 +185,27 @@ namespace HiringCompanyService.Access
             using (var access = new AccessDB())
             {
                 //access.Actions.Attach(employee);
+                //Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
+                //if (em != null)
+                //{
 
-                access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
+                    access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
 
-                int i = access.SaveChanges();
+                    int i = access.SaveChanges();
 
-                if (i > 0)
-                {
-                    log.Info("Successfully updated DB");
-                    return true;
-                }
-                log.Warn("Failed to update DB");
-                return false;
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB");
+                    return false;
+                //}
+                //else
+                //{
+                //    log.Warn("Employee with that username does not exist. Failed updating employee.");
+                //    return false;
+                //}
             }
         }
 
