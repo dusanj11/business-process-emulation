@@ -104,6 +104,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GetProjects.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SendDelayingEmail.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendDelayingEmail.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateEmployee.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +156,7 @@
     <Compile Include="Steps\GetEmployeeSteps.cs" />
     <Compile Include="Steps\GetHiringCompaniesSteps.cs" />
     <Compile Include="Steps\GetProjectsSteps.cs" />
+    <Compile Include="Steps\SendDelayingEmailSteps.cs" />
     <Compile Include="Steps\UpdateEmployeeSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +208,10 @@
     <None Include="Features\GetProjects.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetProjects.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SendDelayingEmail.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SendDelayingEmail.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UpdateEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
