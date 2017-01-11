@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangeEmployeePosition.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangePassword.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangePassword.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateEmployee.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +102,7 @@
       <DependentUpon>GetEmployee.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\ChangeEmployeePositionSteps.cs" />
+    <Compile Include="Steps\ChangePasswordSteps.cs" />
     <Compile Include="Steps\GetAllNotLoggedEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs">
@@ -120,6 +126,10 @@
     <None Include="Features\ChangeEmployeePosition.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChangeEmployeePosition.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ChangePassword.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChangePassword.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\GetAllEmployees.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
