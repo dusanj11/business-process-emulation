@@ -1,11 +1,15 @@
 ﻿Feature: ChangeEmployeePosition
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	In order to upgrade/downgrade someone's position
+	As an CEO/HR
+	I want to be able to change their position
 
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+@DusnBDD
+Scenario: Certain employee does not exist in database
+	When I have entered wrong username with crroect title
+	And I request to change title of thet employee
+	Then the process should be incomplete
+
+Scenario: Certain employee exists in database
+	When I have entered correct username and wanted title
+	And I request to make a change on his/hers title
+	Then the process should be complete

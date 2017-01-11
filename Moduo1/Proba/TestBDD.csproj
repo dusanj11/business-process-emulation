@@ -91,6 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GetEmployee.feature</DependentUpon>
     </Compile>
+    <Compile Include="Steps\ChangeEmployeePositionSteps.cs" />
     <Compile Include="Steps\GetAllNotLoggedEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs">
