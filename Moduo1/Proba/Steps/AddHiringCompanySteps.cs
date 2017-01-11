@@ -39,7 +39,7 @@ namespace Proba.Steps
         public void WhenIHaveRequestedToPutItInDatabase()
         {
             HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
-            HiringCompanyDB.Instance.AddCompany(hc2).Returns(val1 = true);
+            HiringCompanyDB.Instance.AddCompany(hc2).Returns(val2 = true);
         }
         
         [Then(@"the result should be failing")]

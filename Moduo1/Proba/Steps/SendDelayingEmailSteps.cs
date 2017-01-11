@@ -1,4 +1,7 @@
 ﻿using Client;
+using HiringCompanyContract;
+using HiringCompanyService.Access;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
@@ -20,7 +23,8 @@ namespace Proba.Steps
         [When(@"I request to notify him by email")]
         public void WhenIRequestToNotifyHimByEmail()
         {
-            val = ClientProxy.Instance.SendDelayingEmail(us);
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.SendDelayingEmail(us).Returns(val = true);
         }
         
         [Then(@"the email should be sent successfully")]
