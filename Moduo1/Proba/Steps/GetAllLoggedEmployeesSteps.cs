@@ -18,20 +18,50 @@ namespace Proba
         [Given(@"I have access to database")]
         public void GivenIHaveAccessToDatabase()
         {
-            
+            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();    
         }
         
         [When(@"I request the data about logged employees")]
         public void WhenIRequestTheDataAboutLoggedEmployees()
         {
-            loggedIn = ClientProxy.Instance.GetAllEmployees();
+            EmployeeDB.Instance.GetEmployees().Returns(loggedIn = new List<Employee>()
+                {
+                new Employee()
+                {
+                    Name = "Dusan",
+                    Surname = "Jeftic",
+                    Username = "dule",
+                    Password = "dule",
+                    Position = PositionEnum.HR.ToString(),
+                    Login = true,
+                    StartTime = "10.15",
+                    EndTime = "17.15",
+                    Email = "dusan.jeftic11@gmail.com",
+
+                }
+            });
         }
         
         [When(@"if there is at least one logged employye")]
         public void WhenIfThereIsAtLeastOneLoggedEmployye()
         {
             int numberOfLogged = 0;
-            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
+            EmployeeDB.Instance.GetReallyEmployees().Returns(allEmployees = new List<Employee>()
+                {
+                new Employee()
+                {
+                    Name = "Dusan",
+                    Surname = "Jeftic",
+                    Username = "dule",
+                    Password = "dule",
+                    Position = PositionEnum.HR.ToString(),
+                    Login = true,
+                    StartTime = "10.15",
+                    EndTime = "17.15",
+                    Email = "dusan.jeftic11@gmail.com",
+
+                }
+            });
             //Assert.IsNotEmpty(allEmployees);
             Assert.That(allEmployees.Count > 0, Is.True);
             foreach (Employee emp in allEmployees)
