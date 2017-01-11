@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,9 +13,19 @@ namespace EppContract
     public interface IEppContract
     {
         [OperationContract]
-        string GetData(int value);
+        string RegisterOutsourcingCompany(int value);
 
-           
+        [OperationContract]
+        bool SendOcRequest(string outsourcingCompany);
+
+        [OperationContract]
+        List<Project> GetOutsourcingCompanyProjects(string outsourcingCompany);
+
+        //[OperationContract]
+        //List<OutsourcingCompany> GetOutsourcingCompany();
+
+        [OperationContract]
+        List<UserStory> GetUserStoryes(string outsourcingCompany, string project);
     }
 
 }

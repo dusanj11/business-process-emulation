@@ -50,11 +50,26 @@ namespace HiringCompanyService
             factory.Close();
         }
 
-        public string GetData(int value)
+      
+
+        public bool SendOcRequest(string outsourcingCompany)
         {
             try
             {
-                return proxy.GetData(value);
+                return proxy.SendOcRequest(outsourcingCompany);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetData: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public string RegisterOutsourcingCompany(int value)
+        {
+            try
+            {
+                return proxy.RegisterOutsourcingCompany(value);
             }
             catch (Exception e)
             {
