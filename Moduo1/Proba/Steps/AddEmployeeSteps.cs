@@ -25,7 +25,7 @@ namespace Proba
         [Given(@"I have entered employee with existing username")]
         public void GivenIHaveEnteredEmployeeWithExistingUsername()
         {
-
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
             nevalidni = new Employee();
             nevalidni.Name = "Milica";
             nevalidni.Surname = "Kapetina";
@@ -37,8 +37,10 @@ namespace Proba
             nevalidni.Login = false;
             nevalidni.Email = "marko.jelaca@gmail.com";
             nevalidni.PasswordUpadateDate = DateTime.Now;
+            nevalidni.HiringCompanyId = hc;
 
-            ScenarioContext.Current.Add("nevalidni", nevalidni);
+            ScenarioContext.Current.Add("nevalidni", nevalidni);
+
 
         }
 
@@ -51,11 +53,7 @@ namespace Proba
         [Given(@"I have entered non existing username for employee")]
         public void GivenIHaveEnteredNonExistingUsernameForEmployee()
         {
-            HiringCompany hc = new HiringCompany();
-            hc.CompanyIdThr = 1;
-            hc.Name = " lol";
-            hc.Ceo = " lololee";
-
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(1);
             validni = new Employee();
             validni.Name = "Zana";
             validni.Surname = "Bilbija";
@@ -68,6 +66,7 @@ namespace Proba
             validni.HiringCompanyId = hc;
             validni.Email = "marko.jelaca@gmail.com";
             validni.PasswordUpadateDate = DateTime.Now;
+            validni.HiringCompanyId = hc;
 
             ScenarioContext.Current.Add("validni", validni);
         }

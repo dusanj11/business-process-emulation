@@ -16,57 +16,31 @@ namespace Proba
     {
         private static List<Employee> notLoggedIn = new List<Employee>();
         private static List<Employee> allEmployees = new List<Employee>();
-       
+
 
         [Given(@"I have a way of accesing database")]
         public void GivenIHaveAWayOfAccesingDatabase()
         {
-           EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-        
+            //EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            // ClientProxy.Instance = Substitute.For<IHiringCompany>();
+
         }
-        
+
         [When(@"I request the data about late employees")]
         public void WhenIRequestTheDataAboutLateEmployees()
         {
-
-            EmployeeDB.Instance.GetAllNotSignedInEmployees().Returns(notLoggedIn = new List<Employee>()
-                {
-                new Employee()
-                {
-                    Name = "Dusan",
-                    Surname = "Jeftic",
-                    Username = "dule",
-                    Password = "dule",
-                    Position = PositionEnum.HR.ToString(),
-                    Login = false,
-                    StartTime = "10.15",
-                    EndTime = "17.15",
-                    Email = "dusan.jeftic11@gmail.com",
-
-                }
-            });
+            //EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
+            //notLoggedIn = EmployeeDB.Instance.GetAllNotSignedInEmployees();
+            notLoggedIn = ClientProxy.Instance.GetAllNotSignedInEmployees();
         }
-        
+
         [When(@"if there is at least one who is late")]
         public void WhenIfThereIsAtLeastOneWhoIsLate()
         {
+            // EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
             int numberOfNotLogged = 0;
-            EmployeeDB.Instance.GetReallyEmployees().Returns(allEmployees = new List<Employee>()
-                {
-                new Employee()
-                {
-                    Name = "Dusan",
-                    Surname = "Jeftic",
-                    Username = "dule",
-                    Password = "dule",
-                    Position = PositionEnum.HR.ToString(),
-                    Login = false,
-                    StartTime = "10.15",
-                    EndTime = "17.15",
-                    Email = "dusan.jeftic11@gmail.com",
-
-                }
-            });
+            //allEmployees = EmployeeDB.Instance.GetReallyEmployees();
+            allEmployees = ClientProxy.Instance.GetReallyAllEmployees();
             Assert.That(allEmployees.Count > 0, Is.True);
             foreach (Employee emp in allEmployees)
             {
@@ -75,7 +49,7 @@ namespace Proba
             }
             Assert.Greater(numberOfNotLogged, 0);
         }
-        
+
         [Then(@"the result should be a list of  employees who are late")]
         public void ThenTheResultShouldBeAListOfEmployeesWhoAreLate()
         {

@@ -19,14 +19,13 @@ namespace Proba.Steps
         {
             np.Name = "moj projekat";
         }
-        
+
         [When(@"I have requested to add it")]
         public void WhenIHaveRequestedToAddIt()
         {
-            ProjectDB.Instance = Substitute.For<IProjectDB>();
-            ProjectDB.Instance.AddProject(np).Returns(val = true);
+            val = ClientProxy.Instance.AddProjectDefinition(np);
         }
-        
+
         [Then(@"the result should be afirmative")]
         public void ThenTheResultShouldBeAfirmative()
         {

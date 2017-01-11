@@ -30,14 +30,13 @@ namespace Proba.Steps
             opas1 = "rgerg";
             npas1 = "dewfefe";
         }
-        
+
         [When(@"I request to change it")]
         public void WhenIRequestToChangeIt()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.ChangeEmployeePassword(us1, opas1, npas1).Returns(val1 = false);
+            val1 = ClientProxy.Instance.ChangePassword(us1, opas1, npas1);
         }
-        
+
         [When(@"I have entered invalid username, and new paswword")]
         public void WhenIHaveEnteredInvalidUsernameAndNewPaswword()
         {
@@ -45,14 +44,13 @@ namespace Proba.Steps
             opas2 = "rgerg";
             npas2 = "dewfefe";
         }
-        
+
         [When(@"I request to change old password")]
         public void WhenIRequestToChangeOldPassword()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.ChangeEmployeePassword(us2, opas2, npas2).Returns(val2 = false);
+            val2 = ClientProxy.Instance.ChangePassword(us2, opas2, npas2);
         }
-        
+
         [When(@"I have both username and password valid, and new paswword")]
         public void WhenIHaveBothUsernameAndPasswordValidAndNewPaswword()
         {
@@ -60,26 +58,25 @@ namespace Proba.Steps
             opas3 = "dule";
             npas3 = "dukica";
         }
-        
+
         [When(@"I request to make a change on my password")]
         public void WhenIRequestToMakeAChangeOnMyPassword()
         {
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-            EmployeeDB.Instance.ChangeEmployeePassword(us3, opas3, npas3).Returns(val3 = true);
+            val3 = ClientProxy.Instance.ChangePassword(us3, opas3, npas3);
         }
-        
+
         [Then(@"the result should be ended without a change")]
         public void ThenTheResultShouldBeEndedWithoutAChange()
         {
             Assert.AreEqual(val1, false);
         }
-        
+
         [Then(@"the result should be non-positive")]
         public void ThenTheResultShouldBeNon_Positive()
         {
             Assert.AreEqual(val2, false);
         }
-        
+
         [Then(@"the result should have a positive outcome")]
         public void ThenTheResultShouldHaveAPositiveOutcome()
         {

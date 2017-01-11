@@ -18,36 +18,34 @@ namespace Proba.Steps
 
         [When(@"I have entered a company with existing id")]
         public void WhenIHaveEnteredACompanyWithExistingId()
-        {       
+        {
             hc1.CompanyIdThr = 7;
         }
-        
+
         [When(@"I have tryed to put it in database")]
         public void WhenIHaveTryedToPutItInDatabase()
         {
-            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
-            HiringCompanyDB.Instance.AddCompany(hc1).Returns(val1 = false);
+            val1 = ClientProxy.Instance.AddHiringCompany(hc1);
         }
-        
+
         [When(@"I have entered a company with  new id")]
         public void WhenIHaveEnteredACompanyWithNewId()
         {
             hc2.CompanyIdThr = 777;
         }
-        
+
         [When(@"I have requested to put it in database")]
         public void WhenIHaveRequestedToPutItInDatabase()
         {
-            HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
-            HiringCompanyDB.Instance.AddCompany(hc2).Returns(val2 = true);
+            val2 = ClientProxy.Instance.AddHiringCompany(hc2);
         }
-        
+
         [Then(@"the result should be failing")]
         public void ThenTheResultShouldBeFailing()
         {
             Assert.AreEqual(val1, false);
         }
-        
+
         [Then(@"the result should be sucessful")]
         public void ThenTheResultShouldBeSucessful()
         {
