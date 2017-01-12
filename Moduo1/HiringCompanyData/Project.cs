@@ -26,6 +26,8 @@ namespace HiringCompanyData
         private OutsourcingCompany company;
         private HiringCompany hiringCompany;
         private Employee productOwner;
+        private bool approved;
+        private bool ended;
 
         public Project()
         {
@@ -142,6 +144,34 @@ namespace HiringCompanyData
             set
             {
                 productOwner = value;
+            }
+        }
+
+        [DataMember]
+        public bool Approved
+        {
+            get
+            {
+                return approved;
+            }
+
+            set
+            {
+                approved = value;
+            }
+        }
+
+        [DataMember]
+        public bool Ended
+        {
+            get
+            {
+                return ended;
+            }
+
+            set
+            {
+                ended = value;
             }
         }
 

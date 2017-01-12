@@ -58,6 +58,16 @@ namespace HiringCompanyContract
         [OperationContract]
         bool SendDelayingEmail(string username);
 
-      
+
+        /// ************************************** TEST ************************************** 
+       
+        [OperationContract]
+        bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc);
+
+        [OperationContract]
+        List<OutsourcingCompany> GetPartnershipOc(int hiringCompany);
+
+        [OperationContract]
+        bool AddOutsourcingCompany(OutsourcingCompany oc);
     }
 }

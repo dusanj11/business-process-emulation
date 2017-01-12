@@ -59,8 +59,22 @@ namespace HiringCompanyService
 
         public bool EmployeeLogIn(string username)
         {
+            IContextChannel cc = OperationContext.Current.Channel;
+            cc.Faulted += Cc_Faulted;
+            cc.Opened += Cc_Opened;
+
             Console.WriteLine("EmployeeLogIn...");
             return EmployeeDB.Instance.EmployeeLogIn(username);
+        }
+
+        private void Cc_Opened(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Cc_Faulted(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public bool EmployeeLogOut(string username)
@@ -159,6 +173,25 @@ namespace HiringCompanyService
         {
             log.Info("Successfully returned User storyes for defined project name");
             return UserStoryDB.Instance.GetUserStory(projectName);
+        }
+
+        public bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc)
+        {
+            log.Info("AddPartnershipToDB...");
+            return PartnershipDB.Instance.AddPartnership(hc, oc);
+            
+        }
+
+        public List<OutsourcingCompany> GetPartnershipOc(int hiringCompany)
+        {
+            log.Info("GetPartnershipOc..");
+            return PartnershipDB.Instance.GetPartnerOc(hiringCompany);
+        }
+
+        public bool AddOutsourcingCompany(OutsourcingCompany oc)
+        {
+            log.Info("AddOutsourcingCompany...");
+            return OCompanyDB.Instance.AddOutsourcingCompany(oc);
         }
     }
 }

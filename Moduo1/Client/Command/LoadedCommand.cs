@@ -93,6 +93,15 @@ namespace Client.Command
                     testEmp4.HiringCompanyId = hc;
 
                     ClientProxy.Instance.AddEmployee(testEmp4);
+
+                    //OutsourcingCompany oc = new OutsourcingCompany();
+                    //oc.Name = "OC1";
+                    //oc.CompanyState = CompanyState.Requested;
+
+                    //bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
+
+                    //ClientProxy.Instance.AddPartnershipToDB(company, oc);
+
                 }
                 catch (CommunicationException ce)
                 {

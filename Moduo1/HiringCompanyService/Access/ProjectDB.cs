@@ -45,6 +45,7 @@ namespace HiringCompanyService.Access
                 {
                     access.HcActions.Attach(project.HiringCompany);
                     access.Actions.Attach(project.ProductOwner);
+
                     access.PrActions.Add(project);
 
                     int i = access.SaveChanges();

@@ -102,9 +102,11 @@
     <Compile Include="Access\IEmployeeDB.cs" />
     <Compile Include="Access\IHiringCompanyDB.cs" />
     <Compile Include="Access\IOCompanyDB.cs" />
+    <Compile Include="Access\IPartnershipDB.cs" />
     <Compile Include="Access\IProjectDB.cs" />
     <Compile Include="Access\IUserStoryDB.cs" />
     <Compile Include="Access\OCompanyDB.cs" />
+    <Compile Include="Access\PartnershipDB.cs" />
     <Compile Include="Access\ProjectDB.cs" />
     <Compile Include="Access\UserStoryDB.cs" />
     <Compile Include="HiringCompanyService.cs" />

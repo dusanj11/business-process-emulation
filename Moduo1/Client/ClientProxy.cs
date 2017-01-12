@@ -29,6 +29,12 @@ namespace Client
                     //ICommunicationObject co = proxy as ICommunicationObject;
                     ////co.Opening += Co_Opening;
                     //CommunicationState sto = co.State;
+
+                    IContextChannel cc = proxy as IContextChannel;
+                    Console.WriteLine(cc.State);
+
+
+
                 }
 
                 return proxy;
@@ -41,7 +47,12 @@ namespace Client
                 }
             }
         }
-        
+
+        private void Cc_Faulted(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
             try
@@ -257,6 +268,45 @@ namespace Client
             {
                 Console.WriteLine("ERROR: GetReallyAllEmployees: \n{0}", e.Message);
                 return null;
+            }
+        }
+
+        public bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc)
+        {
+            try
+            {
+                return proxy.AddPartnershipToDB(hc,oc);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: AddPartnershipToDB: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public List<OutsourcingCompany> GetPartnershipOc(int hiringCompany)
+        {
+            try
+            {
+                return proxy.GetPartnershipOc(hiringCompany);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetPartnershipOc: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public bool AddOutsourcingCompany(OutsourcingCompany oc)
+        {
+            try
+            {
+                return proxy.AddOutsourcingCompany(oc);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: AddOutsourcingCompany: \n{0}", e.Message);
+                return false;
             }
         }
     }

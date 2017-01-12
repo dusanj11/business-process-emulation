@@ -16,6 +16,8 @@ namespace HiringCompanyData
         private String name;
         private List<Project> projects;
         private CompanyState companyState;
+        private List<Partnership> partnerships;
+
 
         public OutsourcingCompany()
         {
@@ -67,6 +69,20 @@ namespace HiringCompanyData
         {
             get { return this.companyState; }
             set { this.companyState = value; }
+        }
+
+        [DataMember]
+        public List<Partnership> Partnerships
+        {
+            get
+            {
+                return partnerships;
+            }
+
+            set
+            {
+                partnerships = value;
+            }
         }
 
         public override string ToString()
