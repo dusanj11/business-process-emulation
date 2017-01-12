@@ -10,22 +10,22 @@ using HiringCompanyData;
 
 namespace HiringCompanyService
 {
-    public class ServiceProxy : IHcContract, IDisposable
+    public class ServiceProxy : IOcContract, IDisposable
     {
 
-        private static IHcContract proxy;
+        private static IOcContract proxy;
 
-        private static ChannelFactory<IHcContract> factory;
+        private static ChannelFactory<IOcContract> factory;
 
         private static string address = ConfigurationManager.AppSettings["OutsourcingCompanyServiceAddress"];
 
-        public static IHcContract Instance
+        public static IOcContract Instance
         {
             get
             {
                 if (proxy == null)
                 {
-                    factory = new ChannelFactory<IHcContract>(new NetTcpBinding(), new EndpointAddress(address));
+                    factory = new ChannelFactory<IOcContract>(new NetTcpBinding(), new EndpointAddress(address));
                     proxy = factory.CreateChannel();
                 }
 
@@ -51,39 +51,50 @@ namespace HiringCompanyService
             factory.Close();
         }
 
-     
-
-        public bool RegisterOutsourcingCompany(OutsourcingCompany oc)
+        public bool SendOcRequest(string outsourcingCompany)
         {
             try
             {
-                return proxy.RegisterOutsourcingCompany(oc);
+                return proxy.SendOcRequest(outsourcingCompany);
             }
             catch (Exception e)
             {
-                Console.WriteLine("ERROR: RegisterOutsourcingCompany: \n{0}", e.Message);
+                Console.WriteLine("ERROR: SendOcRequest: \n{0}", e.Message);
                 return false;
             }
         }
 
-        public bool AcceptPartnership(OutsourcingCompany oc)
+        public bool SendProject(Project project)
         {
             try
             {
-                return proxy.AcceptPartnership(oc);
+                return proxy.SendProject(project);
             }
             catch (Exception e)
             {
-                Console.WriteLine("ERROR: AcceptPartnership: \n{0}", e.Message);
+                Console.WriteLine("ERROR: SendProject: \n{0}", e.Message);
                 return false;
             }
         }
 
-        public List<UserStory> GetUserStoryes(string projectName)
+        public List<Project> GetProjects()
         {
             try
             {
-                return proxy.GetUserStoryes(projectName);
+                return proxy.GetProjects();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public List<UserStory> GetUserStoryes(string outsourcingCompany, string project)
+        {
+            try
+            {
+                return proxy.GetUserStoryes(outsourcingCompany, project);
             }
             catch (Exception e)
             {
@@ -91,5 +102,46 @@ namespace HiringCompanyService
                 return null;
             }
         }
+
+
+
+        //public bool RegisterOutsourcingCompany(OutsourcingCompany oc)
+        //{
+        //    try
+        //    {
+        //        return proxy.RegisterOutsourcingCompany(oc);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine("ERROR: RegisterOutsourcingCompany: \n{0}", e.Message);
+        //        return false;
+        //    }
+        //}
+
+        //public bool AcceptPartnership(OutsourcingCompany oc)
+        //{
+        //    try
+        //    {
+        //        return proxy.AcceptPartnership(oc);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine("ERROR: AcceptPartnership: \n{0}", e.Message);
+        //        return false;
+        //    }
+        //}
+
+        //public List<UserStory> GetUserStoryes(string projectName)
+        //{
+        //    try
+        //    {
+        //        return proxy.GetUserStoryes(projectName);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine("ERROR: GetUserStoryes: \n{0}", e.Message);
+        //        return null;
+        //    }
+        //}
     }
 }
