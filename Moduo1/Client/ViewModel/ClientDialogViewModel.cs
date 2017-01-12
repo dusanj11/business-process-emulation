@@ -159,6 +159,7 @@ namespace Client.ViewModel
         public CreateProjectCommand CreateProjectCommand { get; set; }
         public ShowCompaniesCommand ShowCompaniesCommand { get; set; }
         public SendRequestProjectViewCommand SendRequestProjectViewCommand { get; set; }
+        public MarkProjectFinishedCommand MarkProjectFinishedCommand { get; set; }
 
         public LoadedCommand LoadedCommand { get; set; }
         public EditPositionCommand EditPositionCommand { get; set; }
@@ -188,6 +189,7 @@ namespace Client.ViewModel
             this.ErrorMessage = "";
             this.LogInUser = new LogInUser();
             this.EditPositionCommand = new EditPositionCommand();
+            this.MarkProjectFinishedCommand = new MarkProjectFinishedCommand();
        
         }
 
@@ -229,6 +231,20 @@ namespace Client.ViewModel
             }
 
             CDialog.MainWindowDockPanel.Children.Add(new View.AddEmployeeView());
+        }
+
+        public void ShowEndProjectView()
+        {
+            try
+            {
+                CDialog.MainWindowDockPanel.Children.RemoveAt(0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error {0}", e.Message);
+            }
+
+            CDialog.MainWindowDockPanel.Children.Add(new View.EndProjectView());
         }
 
         public void ShowChangePasswordView()

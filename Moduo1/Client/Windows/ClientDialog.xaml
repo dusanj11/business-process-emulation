@@ -4,7 +4,7 @@
         xmlns:view="clr-namespace:Client.View"
         xmlns:model="clr-namespace:Client.ViewModel"
         xmlns:cloner="clr-namespace:Client.PassingConverter"
-        Title="Personal space" Height="450" Width="1000" Background="DimGray" WindowStartupLocation="CenterScreen" Name="clientD">
+        Title="Personal space" Height="500" Width="1000" Background="DimGray" WindowStartupLocation="CenterScreen" Name="clientD">
     <Window.Resources>
         <cloner:PassingArguments x:Key="argumentsCloner"/>
     </Window.Resources>
@@ -13,6 +13,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -158,7 +159,17 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="logOutBtn" Grid.Row="13" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="6,1,8,-13" Command="{Binding LogOutCommand}">
+        <Button Name="markProjBtn" Grid.Row="13" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="2,0,5,1" Command="{Binding MarkProjectFinishedCommand}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Style="{StaticResource StyleButtonBorder}">
+                        <TextBlock Text="Označi projekte završenim" Style="{StaticResource StyleButtonText}" Margin="19,4,1,-14" Width="180">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Name="logOutBtn" Grid.Row="14" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="6,1,8,-13" Command="{Binding LogOutCommand}">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleLogOutButtonBorder}" >

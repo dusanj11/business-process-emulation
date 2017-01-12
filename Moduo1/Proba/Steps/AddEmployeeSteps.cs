@@ -55,10 +55,10 @@ namespace Proba
         {
             HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             validni = new Employee();
-            validni.Name = "Zana";
-            validni.Surname = "Bilbija";
-            validni.Username = "zax";
-            validni.Password = "zax";
+            validni.Name = "Vlada";
+            validni.Surname = "Bogunovic";
+            validni.Username = "dovla";
+            validni.Password = "dovla";
             validni.Position = PositionEnum.SM.ToString();
             validni.StartTime = "10.00";
             validni.EndTime = "17.00";
