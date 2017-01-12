@@ -144,6 +144,22 @@ namespace Client.ViewModel
             }
         }
 
+        private ObservableCollection<OutsourcingCompany> ocResources = new ObservableCollection<OutsourcingCompany>();
+
+        public ObservableCollection<OutsourcingCompany> OcResources
+        {
+            get
+            {
+                return ocResources;
+            }
+
+            set
+            {
+                ocResources = value;
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ViewProjectsCommand ViewProjectsCommand { get; set; }
@@ -163,8 +179,10 @@ namespace Client.ViewModel
 
         public LoadedCommand LoadedCommand { get; set; }
         public EditPositionCommand EditPositionCommand { get; set; }
+
        
-        
+
+
 
 
         /// <summary>
@@ -342,7 +360,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.ShowCompaniesView());
+            View.ShowCompaniesView showCompaniesView = new View.ShowCompaniesView();
+            showCompaniesView.companiesDataGrid.ItemsSource = OcResources;
+
+            CDialog.MainWindowDockPanel.Children.Add(showCompaniesView);
         }
 
         public void ShowShowProjectsView()
@@ -462,6 +483,16 @@ namespace Client.ViewModel
         void IClientDialogViewModel.CDialog(ClientDialog clientDialog)
         {
             CDialog = clientDialog;
+        }
+
+        ObservableCollection<OutsourcingCompany> IClientDialogViewModel.OcResources()
+        {
+            return OcResources;
+        }
+
+        void IClientDialogViewModel.OcResources(ObservableCollection<OutsourcingCompany> ocResources)
+        {
+            OcResources = ocResources;
         }
     }
 }

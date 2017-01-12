@@ -38,6 +38,10 @@ namespace Client.ViewModelInterfaces
 
         void EmpResources(ObservableCollection<Employee> empResources);
 
+        ObservableCollection<OutsourcingCompany> OcResources();
+
+        void OcResources(ObservableCollection<OutsourcingCompany> ocResources);
+
         void ShowEditPositionView();
 
         void ShowAddEmployeeView();

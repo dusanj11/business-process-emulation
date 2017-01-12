@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HiringCompanyData;
+using System.Data.Entity;
 
 namespace HiringCompanyService.Access
 {
@@ -43,7 +44,7 @@ namespace HiringCompanyService.Access
                 {
                     Partnership partnership = new Partnership();
                     partnership.HiringCompany = hc;
-                    oc.CompanyState = CompanyState.Accepted;
+                    oc.CompanyState = CompanyState.Accepted.ToString();
                     partnership.OutsourcingCompany = oc;
 
                     access.HcActions.Attach(partnership.HiringCompany);
@@ -76,12 +77,18 @@ namespace HiringCompanyService.Access
             using (var access = new AccessDB())
             {
                 List<OutsourcingCompany> ret = new List<OutsourcingCompany>();
-
-                foreach (Partnership pr in access.PrartnershipAction)
+         
+                //var part = access.PrartnershipAction.Include("HiringCompany").Include("OutsourcingCompany");
+                var partnership = access.PrartnershipAction.Include(x => x.HiringCompany).Include(x => x.OutsourcingCompany);
+                
+                foreach (var pr in partnership)
                 {
                     if (pr.HiringCompany.CompanyIdThr.Equals(hiringCompany))
                     {
-                        ret.Add(pr.OutsourcingCompany);
+                        OutsourcingCompany oc = pr.OutsourcingCompany;
+                        oc.Partnerships = null;
+                        ret.Add(oc);
+                       
                     }
                 }
                 if (ret.Count == 0)

@@ -33,11 +33,11 @@ namespace Client.Command
                 if (outValue != null)
                 {
                     ClientProxy.Instance.EmployeeLogIn(username);
-                    IContextChannel cc = ClientProxy.Instance as IContextChannel;
-                    Console.WriteLine(cc.State);
-                    cc.Faulted += Cc_Faulted;
-                    cc.Closing += Cc_Closing;
-                    cc.Closed += Cc_Closed;
+                    //IContextChannel cc = ClientProxy.Instance as IContextChannel;
+                    //Console.WriteLine(cc.State);
+                    //cc.Faulted += Cc_Faulted;
+                    //cc.Closing += Cc_Closing;
+                    //cc.Closed += Cc_Closed;
 
                     if (outValue.Position.ToString().Equals("PO"))
                     {
@@ -223,19 +223,19 @@ namespace Client.Command
             }
         }
 
-        private void Cc_Closed(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        //private void Cc_Closed(object sender, EventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        private void Cc_Closing(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        //private void Cc_Closing(object sender, EventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        private void Cc_Faulted(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        //private void Cc_Faulted(object sender, EventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
