@@ -227,7 +227,9 @@ namespace HiringCompanyService.Access
 
                 if (emp != null)
                 {
-                    access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = true;
+                    //access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = true;
+                    emp.Login = true;
+                    access.Entry(emp).State = System.Data.Entity.EntityState.Modified;
 
                     int i = access.SaveChanges();
 
@@ -253,17 +255,31 @@ namespace HiringCompanyService.Access
             log.Debug("Enter EmployeeLogOut method.");
             using (var access = new AccessDB())
             {
-                access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = false;
 
-                int i = access.SaveChanges();
+                Employee emp = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
 
-                if (i > 0)
+                if (emp != null)
                 {
-                    log.Info("Successfully updated DB");
-                    return true;
+                    //access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = false;
+                    emp.Login = false;
+                    access.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB");
+                    return false;
                 }
-                log.Warn("Failed to update DB");
-                return false;
+                else
+                {
+                    log.Warn("Employee with that username does not exist. Failed to logout.");
+                    return false;
+                }
+
             }
         }
 
