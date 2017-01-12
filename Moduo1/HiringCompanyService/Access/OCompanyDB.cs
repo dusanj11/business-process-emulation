@@ -9,6 +9,7 @@ namespace HiringCompanyService.Access
 {
     public class OCompanyDB : IOCompanyDB
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static IOCompanyDB myDB;
 
@@ -45,12 +46,14 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
+                        log.Info("Successfully added outsourcing company into DB");
                         return true;
                     }
                     return false;
                 }
                 else
                 {
+                    log.Warn("Outsourcing company already exists in DB");
                     return false;
                 }
             }

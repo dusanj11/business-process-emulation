@@ -38,19 +38,31 @@ namespace HiringCompanyService.Access
             log.Debug("Enter AddProject method.");
             using (var access = new AccessDB())
             {
-                access.HcActions.Attach(project.HiringCompany);
-                access.Actions.Attach(project.ProductOwner);
-                access.PrActions.Add(project);
 
-                int i = access.SaveChanges();
-
-                if (i > 0)
+                Project proj = access.PrActions.FirstOrDefault(f => f.Name.Equals(project.Name));
+                
+                if (proj == null)
                 {
-                    log.Info("Successfully updated DB.");
-                    return true;
+                    access.HcActions.Attach(project.HiringCompany);
+                    access.Actions.Attach(project.ProductOwner);
+                    access.PrActions.Add(project);
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB.");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB.");
+                    return false;
                 }
-                log.Warn("Failed to update DB.");
-                return false;
+                else
+                {
+                    log.Warn("Project with specified name already exists in DB");
+                    return false;
+                }
+               
 
             }
         }

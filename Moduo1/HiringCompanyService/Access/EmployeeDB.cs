@@ -128,9 +128,9 @@ namespace HiringCompanyService.Access
             log.Debug("Enter ChangeEmployeePosition method.");
             using (var access = new AccessDB())
             {
-                //Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
-                //if (em != null)
-                //{
+                Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
+                if (em != null)
+                {
                     access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
                     //em.Position = position.ToString();
                     int i = access.SaveChanges();
@@ -142,12 +142,12 @@ namespace HiringCompanyService.Access
                     }
                     log.Warn("Failed to update DB");
                     return false;
-                //}
-                //else
-                //{
-                //    log.Warn("Employee with that username does not exist. Failed chainging position.");
-                //    return false;
-                //}
+                }
+                else
+                {
+                    log.Warn("Employee with that username does not exist. Failed chainging position.");
+                    return false;
+                }
             }
         }
 
@@ -163,19 +163,25 @@ namespace HiringCompanyService.Access
                 {
                     em.Password = newPassword;
                     em.PasswordUpadateDate = DateTime.Now;
+
+                    access.Entry(em).State = System.Data.Entity.EntityState.Modified;
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB");
+                    return false;
                 }
-
-                access.Entry(em).State = System.Data.Entity.EntityState.Modified;
-
-                int i = access.SaveChanges();
-
-                if (i > 0)
+                else
                 {
-                    log.Info("Successfully updated DB");
-                    return true;
+                    log.Warn("Employee with that username does not exist. Failed chainging password.");
+                    return false;
                 }
-                log.Warn("Failed to update DB");
-                return false;
+               
             }
         }
 
@@ -214,17 +220,29 @@ namespace HiringCompanyService.Access
             log.Debug("Enter EmployeeLogIn method.");
             using (var access = new AccessDB())
             {
-                access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = true;
 
-                int i = access.SaveChanges();
+                Employee emp = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
 
-                if (i > 0)
+                if (emp != null)
                 {
-                    log.Info("Successfully updated DB");
-                    return true;
+                    access.Actions.FirstOrDefault(f => f.Username.Equals(username)).Login = true;
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("Successfully updated DB");
+                        return true;
+                    }
+                    log.Warn("Failed to update DB");
+                    return false;
                 }
-                log.Warn("Failed to update DB");
-                return false;
+                else
+                {
+                    log.Warn("Employee with that username does not exist. Failed to login.");
+                    return false;
+                }
+           
             }
         }
 
@@ -254,8 +272,17 @@ namespace HiringCompanyService.Access
             {
                 Employee emp = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
 
-                log.Info("Successfully returned employee email");
-                return emp.Email;
+                if (emp != null)
+                {
+                    log.Info("Successfully returned employee email");
+                    return emp.Email;
+                }
+                else
+                {
+                    log.Warn("Employee with that username does not exist. Failed to retrieve email.");
+                    return string.Empty;
+                }
+                
             }
         }
 

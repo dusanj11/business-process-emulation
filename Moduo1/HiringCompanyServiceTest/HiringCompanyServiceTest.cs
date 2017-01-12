@@ -2,6 +2,7 @@
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace HiringCompanyServiceTest
@@ -21,6 +22,14 @@ namespace HiringCompanyServiceTest
         private string newPasswordTest = "Dule";
 
         private HiringCompany hiringCompanyTest;
+
+        private Project projectTest;
+
+        private OutsourcingCompany ocTest;
+
+        private bool AddOcTrue;
+
+        private bool AddOcFalse;
 
         #endregion Declaration
 
@@ -45,9 +54,23 @@ namespace HiringCompanyServiceTest
 
             hiringCompanyTest = new HiringCompany
             {
-                Name = "HC1",
-                Ceo = "Marko Jelaca",
+                Name = "HC-D",
+                Ceo = "Dusan Jeftic",
                 CompanyIdThr = 1
+            };
+
+            projectTest = new Project()
+            {
+                Name = "Project1",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                Description = "Project1 desc"
+            };
+
+            ocTest = new OutsourcingCompany()
+            {
+                Name = "OC1",
+                CompanyState = CompanyState.Accepted
             };
 
             #region EmployeeDB
@@ -75,7 +98,7 @@ namespace HiringCompanyServiceTest
             EmployeeDB.Instance.ChangeEmployeePosition(usernameTest, null).ReturnsForAnyArgs(true);
 
             EmployeeDB.Instance
-                .When(p => p.ChangeEmployeePosition(usernameTest,null))
+                .WhenForAnyArgs(p => p.ChangeEmployeePosition(usernameTest, null))
                 .Do(p =>
                 {
                     isCalled = true;
@@ -126,6 +149,33 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
+            EmployeeDB.Instance.GetEmployeeEmail(usernameTest).Returns("jelaca.marko@gmail.com");
+
+            EmployeeDB.Instance
+                .When(p => p.GetEmployeeEmail(usernameTest))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            EmployeeDB.Instance.GetReallyEmployees().Returns(new List<Employee>());
+
+            EmployeeDB.Instance
+               .When(p => p.GetReallyEmployees())
+               .Do(p =>
+               {
+                   isCalled = true;
+               });
+
+            EmployeeDB.Instance.GetAllNotSignedInEmployees().Returns(new List<Employee>());
+
+            EmployeeDB.Instance
+                .When(p => p.GetAllNotSignedInEmployees())
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
             #endregion EmployeeDB
 
             #region HiringCompanyDB
@@ -141,7 +191,72 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
+            HiringCompanyDB.Instance.GetCompany(1).Returns(hiringCompanyTest);
+
+            HiringCompanyDB.Instance
+                .When(p => p.GetCompany(1))
+                .Do(p =>
+               {
+                   isCalled = true;
+               });
+
             #endregion HiringCompanyDB
+
+            #region ProjectDB
+
+            ProjectDB.Instance = Substitute.For<IProjectDB>();
+
+            ProjectDB.Instance.AddProject(null).ReturnsForAnyArgs(true);
+
+            ProjectDB.Instance
+                .WhenForAnyArgs(p => p.AddProject(null))
+                .Do(p =>
+               {
+                   isCalled = true;
+               });
+
+            ProjectDB.Instance.GetProjects().Returns(new List<Project>());
+
+            ProjectDB.Instance
+                .When(p => p.GetProjects())
+                .Do(p =>
+               {
+                   isCalled = true;
+               });
+
+            #endregion ProjectDB
+
+            #region OcCompanyDB
+
+            OCompanyDB.Instance = Substitute.For<IOCompanyDB>();
+
+            OCompanyDB.Instance.AddOutsourcingCompany(ocTest).Returns(true);
+
+            OCompanyDB.Instance.AddOutsourcingCompany(null).Returns(false);
+
+            OCompanyDB.Instance
+                .WhenForAnyArgs(p => p.AddOutsourcingCompany(null))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion OcCompanyDB
+
+            #region UserStoryDB
+
+            UserStoryDB.Instance = Substitute.For<IUserStoryDB>();
+
+            UserStoryDB.Instance.GetUserStory(null).ReturnsForAnyArgs(new List<UserStory>());
+
+            UserStoryDB.Instance
+                .WhenForAnyArgs(p => p.GetUserStory(null))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion UserStoryDB
         }
 
         #endregion setup
@@ -286,6 +401,123 @@ namespace HiringCompanyServiceTest
         public void EmployeeLogOutNullParameterTest()
         {
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.EmployeeLogOut(null); });
+        }
+
+        [Test]
+        public void GetAllNotSignedInEmployeesTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetAllNotSignedInEmployees(); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+
+        [Test]
+        public void AddHiringCompanyTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddHiringCompany(hiringCompanyTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void AddHiringCompanyNullParameterTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddHiringCompany(null); });
+        }
+
+        [Test]
+        public void GetHiringCompanyTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetHiringCompany(1); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void AddProjectDefinition()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddProjectDefinition(projectTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetProjectsTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjects(); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void SendDelayingEmailTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendDelayingEmail(usernameTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetReallyAllEmployeesTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetReallyAllEmployees(); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void RegisterOutsourcingCompanyTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.RegisterOutsourcingCompany(ocTest); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void RegisterOutsourcingCompanyNullParameterTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.RegisterOutsourcingCompany(null); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetUserStoryesTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetUserStoryes(projectTest.Name); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetUserStoryesNullParameterTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetUserStoryes(null); });
+
+            Assert.IsTrue(isCalled);
         }
 
         #endregion test

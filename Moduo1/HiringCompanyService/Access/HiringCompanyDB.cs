@@ -51,6 +51,7 @@ namespace HiringCompanyService.Access
                 }
                 else
                 {
+                    log.Warn("Company already exists in DB");
                     return false;
                 }
                 
@@ -64,7 +65,14 @@ namespace HiringCompanyService.Access
             {
                 HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.CompanyIdThr == id);
 
-                log.Info("Successfully returned hiring company data.");
+                if (cm != null)
+                {
+                    log.Info("Successfully returned hiring company data.");
+                }
+                else
+                {
+                    log.Warn("Company with thad id doesn't exists in DB");
+                }
                 return cm;
             }
         }

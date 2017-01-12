@@ -19,7 +19,7 @@ namespace Proba.Steps
         {
             
             np.Name = "moj projekat";
-            np.Company = new Company("proba kompanija");
+            np.Company = new OutsourcingCompany("proba kompanija");
             np.Description = "lalala";
             np.HiringCompany =  ClientProxy.Instance.GetHiringCompany(7);
         }
