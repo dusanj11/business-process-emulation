@@ -196,7 +196,7 @@ namespace HiringCompanyService.Access
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(employee.Username));
                 if (em != null)
                 {
-
+                    log.Debug("Employee exists");
                     access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
 
                     int i = access.SaveChanges();

@@ -23,6 +23,12 @@ namespace Client
                 {
                     factory = new ChannelFactory<IHiringCompany>(new NetTcpBinding(), new EndpointAddress(address));
                     proxy = factory.CreateChannel();
+                    ////System.ServiceModel.ClientBase<IHiringCompany> cb = proxy as System.ServiceModel.ClientBase<IHiringCompany>;
+                    ////CommunicationState st = cb.State;
+                    //CommunicationState st = factory.State;
+                    //ICommunicationObject co = proxy as ICommunicationObject;
+                    ////co.Opening += Co_Opening;
+                    //CommunicationState sto = co.State;
                 }
 
                 return proxy;
@@ -35,8 +41,7 @@ namespace Client
                 }
             }
         }
-
-
+        
         public void Dispose()
         {
             try
