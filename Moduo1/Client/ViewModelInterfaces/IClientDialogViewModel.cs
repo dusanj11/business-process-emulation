@@ -62,6 +62,8 @@ namespace Client.ViewModelInterfaces
 
         void ShowEmployeeView();
 
+        void ShowEndProjectView();
+
 
     }
 }

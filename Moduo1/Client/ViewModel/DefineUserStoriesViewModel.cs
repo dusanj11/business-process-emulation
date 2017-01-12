@@ -16,8 +16,12 @@ namespace Client.ViewModel
         private static DefineUserStoriesViewModel model;
         private string project;
         private string userStories;
+        private string description;
+
+
 
         public DefineUserStoriesCommand DefineUserStoriesCommand { get; set; }
+        public RejectUserStoryCommand RejectUserStoryCommand { get; set; }
 
         public static IDefineUserStoriesViewModel _defineUserStoriesViewModel;
 
@@ -38,6 +42,19 @@ namespace Client.ViewModel
                 {
                     _defineUserStoriesViewModel = value;
                 }
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Description"));
             }
         }
 
@@ -85,6 +102,7 @@ namespace Client.ViewModel
         public DefineUserStoriesViewModel()
         {
             this.DefineUserStoriesCommand = new DefineUserStoriesCommand();
+            this.RejectUserStoryCommand = new RejectUserStoryCommand();
             this.Project = "";
             this.UserStories = "";
         }
@@ -105,6 +123,17 @@ namespace Client.ViewModel
         string IDefineUserStoriesViewModel.UserStories()
         {
             return UserStories;
+        }
+
+
+        string IDefineUserStoriesViewModel.Description()
+        {
+            return Description;
+        }
+
+        void IDefineUserStoriesViewModel.Description(string tekst)
+        {
+            Description = tekst;
         }
     }
 }

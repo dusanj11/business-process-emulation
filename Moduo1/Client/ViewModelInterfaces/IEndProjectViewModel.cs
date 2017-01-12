@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Client.ViewModelInterfaces
 {
-    public interface IDefineUserStoriesViewModel
+    public interface IEndProjectViewModel
     {
         string Project();
-        string UserStories();
-        string Description();
-        void Description(string tekst);
     }
 }

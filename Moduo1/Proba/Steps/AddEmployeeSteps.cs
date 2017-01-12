@@ -4,6 +4,7 @@ using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace Proba
@@ -15,6 +16,16 @@ namespace Proba
         private static Employee validni;
         private static bool statusNevalidni;
         private static bool statusValidni;
+        //[BeforeScenario]
+        //public static void BeforeScenario()
+        //{
+        //    List<Employee> postojeci = ClientProxy.Instance.GetReallyAllEmployees();
+        //}
+        //[AfterScenario]
+        //public static void AfterScenario()
+        //{
+
+        //}
 
         [Given(@"I can write in database")]
         public void GivenICanWriteInDatabase()
@@ -55,10 +66,10 @@ namespace Proba
         {
             HiringCompany hc = ClientProxy.Instance.GetHiringCompany(7);
             validni = new Employee();
-            validni.Name = "Zana";
-            validni.Surname = "Bilbija";
-            validni.Username = "zax";
-            validni.Password = "zax";
+            validni.Name = "Vlada";
+            validni.Surname = "Bogunovic";
+            validni.Username = "dovla";
+            validni.Password = "dovla";
             validni.Position = PositionEnum.SM.ToString();
             validni.StartTime = "10.00";
             validni.EndTime = "17.00";

@@ -49,7 +49,7 @@ namespace Proba.Steps
         [Then(@"the process should be complete")]
         public void ThenTheProcessShouldBeComplete()
         {
-            Assert.AreEqual(val2, true);
+            Assert.IsTrue(val2);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Client.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,13 @@ using System.Windows.Shapes;
 namespace Client.View
 {
     /// <summary>
-    /// Interaction logic for DefineUserStoriesView.xaml
+    /// Interaction logic for EndProjectView.xaml
     /// </summary>
-    public partial class DefineUserStoriesView : UserControl
+    public partial class EndProjectView : UserControl
     {
-        public DefineUserStoriesView()
+        public EndProjectView()
         {
             InitializeComponent();
-            this.DataContext = DefineUserStoriesViewModel.Instance;
         }
     }
 }

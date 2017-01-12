@@ -31,7 +31,7 @@ namespace Proba.Steps
         [When(@"I have entered a company with  new id")]
         public void WhenIHaveEnteredACompanyWithNewId()
         {
-            hc2.CompanyIdThr = 777;
+            hc2.CompanyIdThr = 7757;
         }
 
         [When(@"I have requested to put it in database")]

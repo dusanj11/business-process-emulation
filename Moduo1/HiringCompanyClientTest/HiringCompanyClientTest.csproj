@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AddEmployeeCommandTest.cs" />
+    <Compile Include="Command\EditPositionCommandTest.cs" />
     <Compile Include="Command\LoadedCommandTest.cs" />
     <Compile Include="Command\LogOutCommandTest.cs" />
     <Compile Include="Command\SaveEditPositionCommandTest.cs" />

@@ -55,7 +55,7 @@ namespace Proba.Steps
         public void WhenIHaveBothUsernameAndPasswordValidAndNewPaswword()
         {
             us3 = "dule";
-            opas3 = "dule";
+            opas3 = "dukica";
             npas3 = "dukica";
         }
 
