@@ -43,6 +43,7 @@ namespace Client.Command
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
                             cd.editPosBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.IsEnabled = false;
                             cd.showProjBtn.IsEnabled = false;
                             cd.showEmployBtn.IsEnabled = false;
                             cd.editYDBtn.IsEnabled = false;
@@ -62,6 +63,7 @@ namespace Client.Command
                             cd.sendReqCompBtn.Visibility = Visibility.Collapsed;
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
                             cd.editPosBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.IsEnabled = true;
                             cd.showProjBtn.IsEnabled = true;
                             cd.showEmployBtn.IsEnabled = true;
                             cd.editYDBtn.IsEnabled = true;
@@ -85,6 +87,7 @@ namespace Client.Command
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showEmployBtn.IsEnabled = false;
                             cd.addEmployBtn.IsEnabled = false;
                             cd.editYDBtn.IsEnabled = false;
@@ -104,6 +107,7 @@ namespace Client.Command
                             cd.sendReqProjBtn.Visibility = Visibility.Collapsed;
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showEmployBtn.IsEnabled = true;
                             cd.addEmployBtn.IsEnabled = true;
                             cd.editYDBtn.IsEnabled = true;
@@ -123,6 +127,7 @@ namespace Client.Command
                             ClientDialog cd = new ClientDialog();
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showProjBtn.IsEnabled = false;
                             cd.showEmployBtn.IsEnabled = false;
                             cd.addEmployBtn.IsEnabled = false;
@@ -142,6 +147,7 @@ namespace Client.Command
                             ClientDialog cd = new ClientDialog();
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showProjBtn.IsEnabled = true;
                             cd.showEmployBtn.IsEnabled = true;
                             cd.addEmployBtn.IsEnabled = true;
@@ -168,6 +174,7 @@ namespace Client.Command
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
                             cd.editPosBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showProjBtn.IsEnabled = false;
                             cd.showEmployBtn.IsEnabled = false;
                             cd.editYDBtn.IsEnabled = false;
@@ -187,6 +194,7 @@ namespace Client.Command
                             cd.defUSBtn.Visibility = Visibility.Collapsed;
                             cd.createProjBtn.Visibility = Visibility.Collapsed;
                             cd.editPosBtn.Visibility = Visibility.Collapsed;
+                            cd.markProjBtn.Visibility = Visibility.Collapsed;
                             cd.showProjBtn.IsEnabled = true;
                             cd.showEmployBtn.IsEnabled = true;
                             cd.editYDBtn.IsEnabled = true;
