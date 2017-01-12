@@ -9,7 +9,8 @@ namespace Client.ViewModelInterfaces
     public interface IDefineUserStoriesViewModel
     {
         string Project();
-
         string UserStories();
+        string Description();
+        void Description(string tekst);
     }
 }

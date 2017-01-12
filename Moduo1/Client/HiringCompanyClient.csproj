@@ -170,6 +170,7 @@
     <Compile Include="Command\LoadedCommand.cs" />
     <Compile Include="Command\LogOutCommand.cs" />
     <Compile Include="Command\MarkProjectFinishedCommand.cs" />
+    <Compile Include="Command\RejectUserStoryCommand.cs" />
     <Compile Include="Command\SaveEditPositionCommand.cs" />
     <Compile Include="Command\SaveNewEmployeeCommand.cs" />
     <Compile Include="Command\SaveNewPasswordCommand.cs" />
