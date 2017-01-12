@@ -131,8 +131,10 @@ namespace HiringCompanyService.Access
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
                 if (em != null)
                 {
-                    access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
-                    //em.Position = position.ToString();
+                    //access.Actions.FirstOrDefault(f => f.Username == username).Position = position.ToString();
+                    em.Position = position.ToString();
+                    access.Entry(em).State = System.Data.Entity.EntityState.Modified;
+
                     int i = access.SaveChanges();
 
                     if (i > 0)
