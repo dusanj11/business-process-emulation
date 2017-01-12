@@ -197,7 +197,19 @@ namespace HiringCompanyService.Access
                 if (em != null)
                 {
                     log.Debug("Employee exists");
-                    access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
+                    em.Email = employee.Email;
+                    em.EndTime = employee.EndTime;
+                    em.HiringCompanyId = employee.HiringCompanyId;
+                    em.Login = employee.Login;
+                    em.Name = employee.Name;
+                    em.Password = employee.Password;
+                    em.PasswordUpadateDate = employee.PasswordUpadateDate;
+                    em.Position = employee.Position;
+                    em.StartTime = employee.StartTime;
+                    em.Surname = employee.Surname;
+                    em.Username = employee.Username;
+                   
+                    //access.Entry(employee).State = System.Data.Entity.EntityState.Modified;
 
                     int i = access.SaveChanges();
 
