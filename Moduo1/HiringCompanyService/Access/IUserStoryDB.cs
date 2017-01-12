@@ -10,5 +10,9 @@ namespace HiringCompanyService.Access
     public interface IUserStoryDB
     {
         List<UserStory> GetUserStory(string projectName);
+
+        bool AddUserStory(UserStory us);
+
+        bool ChangeUserStoryState(int id, UserStoryState state);
     }
 }

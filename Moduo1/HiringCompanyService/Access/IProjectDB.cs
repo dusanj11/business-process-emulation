@@ -12,5 +12,7 @@ namespace HiringCompanyService.Access
         bool AddProject(Project project);
 
         List<Project> GetProjects();
+
+        Project GetProject(string name);
     }
 }

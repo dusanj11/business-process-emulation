@@ -13,5 +13,6 @@ namespace HiringCompanyService.Access
 
         bool AddPartnership(HiringCompany hc, OutsourcingCompany oc);
 
+        List<Project> GetPartnershipProjects(int hiringCompanyTr);
     }
 }

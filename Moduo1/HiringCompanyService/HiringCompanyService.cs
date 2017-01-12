@@ -200,6 +200,28 @@ namespace HiringCompanyService
             return OCompanyDB.Instance.GetOutsourcingCompany(name);
         }
 
-       
+        public Project GetProject(string projectName)
+        {
+            log.Info("GetProject...");
+            return ProjectDB.Instance.GetProject(projectName);
+        }
+
+        public bool AddUserStory(UserStory us)
+        {
+            log.Info("AddUserStory...");
+            return UserStoryDB.Instance.AddUserStory(us);
+        }
+
+        public List<Project> GetPartnershipProjects(int hiringCompanyTr)
+        {
+            log.Info("GetPartnershipProjects...");
+            return PartnershipDB.Instance.GetPartnershipProjects(hiringCompanyTr);
+        }
+
+        public bool ChangeUserStoryState(int id, UserStoryState state)
+        {
+            log.Info("ChangeUserStoryState...");
+            return UserStoryDB.Instance.ChangeUserStoryState(id, state);
+        }
     }
 }

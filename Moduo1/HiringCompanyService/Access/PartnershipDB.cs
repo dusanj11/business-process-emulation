@@ -103,5 +103,43 @@ namespace HiringCompanyService.Access
                 return ret;
             }
         }
+
+        public List<Project> GetPartnershipProjects(int hiringCompanyTr)
+        {
+            using (var access = new AccessDB())
+            {
+                List<Project> ret = new List<Project>();
+
+                List<OutsourcingCompany> oc = new List<OutsourcingCompany>();
+                oc = GetPartnerOc(hiringCompanyTr);
+                var allProjectList = access.PrActions.Include(x => x.Company);
+
+                foreach (var ocItem in oc)
+                {
+                    var project = access.PrActions.Include(x => x.Company).FirstOrDefault(f => f.Company.Id.Equals(ocItem.Id));
+                    Project p = new Project();
+                    p.Name = project.Name;
+                    p.Id = project.Id;
+                    p.ProjectState = p.ProjectState;
+                    p.Description = p.Description;
+
+
+                    ret.Add(p);
+
+                }
+
+                if (ret.Count == 0)
+                {
+                    log.Warn("No project to return");
+                    
+                }
+                else
+                {
+                    log.Info("Successfully returned project");
+                }
+
+                return ret;
+            }
+        }
     }
 }

@@ -43,6 +43,10 @@ namespace HiringCompanyService.Access
                 
                 if (proj == null)
                 {
+                    if(project.Company != null)
+                    {
+                        access.OcActions.Attach(project.Company);
+                    }
                     access.HcActions.Attach(project.HiringCompany);
                     access.Actions.Attach(project.ProductOwner);
 
@@ -65,6 +69,25 @@ namespace HiringCompanyService.Access
                 }
                
 
+            }
+        }
+
+        public Project GetProject(string name)
+        {
+            using (var access = new AccessDB())
+            {
+                Project p = access.PrActions.FirstOrDefault(f => f.Name.Equals(name));
+
+                if ( p == null)
+                {
+                    log.Warn("Project with specified name doesn't exist in DB.");
+                }
+                else
+                {
+                    log.Info("Successfully returned project from DB.");
+                }
+
+                return p;
             }
         }
 

@@ -133,7 +133,7 @@
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleButtonBorder}">
-                        <TextBlock Text="Definiši korisničke priče" Style="{StaticResource StyleButtonText}" Margin="26,4,19,-14" Width="155">
+                        <TextBlock Text="Korisničke priče" TextAlignment="Center" Style="{StaticResource StyleButtonText}" Margin="26,4,19,-14" Width="155">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>

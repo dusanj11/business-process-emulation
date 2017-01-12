@@ -177,13 +177,9 @@ namespace HiringCompanyData
 
         public override string ToString()
         {
-            return "ID: " + this.id +
-                   " Name: " + this.name +
-                   " Description: " + this.description +
-                   " StartDate: " + this.startDate.ToString() +
-                   " EndDate: " + this.endDate.ToString() +
-                   " Progress: " + this.progress.ToString() +
-                   " State: " + this.projectState;
+            return  this.id +
+                   " " + this.name;
+                   
         }
     }
     

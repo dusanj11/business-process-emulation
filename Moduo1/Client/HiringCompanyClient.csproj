@@ -163,6 +163,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Command\AcceptUserStoryCommand.cs" />
     <Compile Include="Command\CreateProjectCommand.cs" />
     <Compile Include="Command\DefineUserStoriesCommand.cs" />
     <Compile Include="Command\EditPositionCommand.cs" />

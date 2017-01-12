@@ -21,7 +21,13 @@ namespace Client
             {
                 if (proxy == null)
                 {
-                    factory = new ChannelFactory<IHiringCompany>(new NetTcpBinding(), new EndpointAddress(address));
+                    NetTcpBinding binding = new NetTcpBinding();
+                    binding.OpenTimeout = new TimeSpan(0, 10, 0);
+                    binding.CloseTimeout = new TimeSpan(0, 10, 0);
+                    binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
+                    binding.SendTimeout = new TimeSpan(0, 10, 0);
+
+                    factory = new ChannelFactory<IHiringCompany>(binding, new EndpointAddress(address));
                     proxy = factory.CreateChannel();
                     ////System.ServiceModel.ClientBase<IHiringCompany> cb = proxy as System.ServiceModel.ClientBase<IHiringCompany>;
                     ////CommunicationState st = cb.State;
@@ -323,6 +329,57 @@ namespace Client
             }
         }
 
-      
+        public Project GetProject(string projectName)
+        {
+            try
+            {
+                return proxy.GetProject(projectName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProject: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public bool AddUserStory(UserStory us)
+        {
+
+            try
+            {
+                return proxy.AddUserStory(us);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: AddUserStory: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public List<Project> GetPartnershipProjects(int hiringCompanyTr)
+        {
+            try
+            {
+                return proxy.GetPartnershipProjects(hiringCompanyTr);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetPartnershipProjects: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public bool ChangeUserStoryState(int id, UserStoryState state)
+        {
+            try
+            {
+                return proxy.ChangeUserStoryState(id, state);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: ChangeUserStoryState: \n{0}", e.Message);
+                return false;
+            }
+        }
     }
 }

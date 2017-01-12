@@ -29,17 +29,17 @@
                 <ColumnDefinition Width="17*"/>
             </Grid.ColumnDefinitions>
             <!--PROVERI ZA COMBOBOX BAJNDING-->
-            <ComboBox Name="chosProjectTxt" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Project}" Grid.ColumnSpan="2" Margin="50,0,50,1"/>
+            <ComboBox Name="chosProjectTxt" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=Project}"  Grid.ColumnSpan="2" Margin="50,0,50,1"/>
         </Grid>
         <Label Name="choseUSLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir korisničke priče:
         </Label>
         <Grid Grid.Row="3" Grid.Column="0">
             <!--PROVERITI ZA COMBOBOX-->
-            <ComboBox Name="choseUSTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedValue="{Binding Path=UserStories}">
+            <ComboBox Name="choseUSTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=UserStory}">
             </ComboBox>
         </Grid>
-        <Button Name="approveUSBtn" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding DefineUserStoriesCommand}" Width="Auto">
+        <Button Name="approveUSBtn" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding AcceptUserStoryCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">

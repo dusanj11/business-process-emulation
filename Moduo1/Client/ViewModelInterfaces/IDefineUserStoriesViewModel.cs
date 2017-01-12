@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +10,9 @@ namespace Client.ViewModelInterfaces
 {
     public interface IDefineUserStoriesViewModel
     {
-        string Project();
-        string UserStories();
+        Project Project();
+
+        UserStory UserStory();
         string Description();
         void Description(string tekst);
     }

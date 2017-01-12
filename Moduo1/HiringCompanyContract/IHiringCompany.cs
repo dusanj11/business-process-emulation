@@ -58,9 +58,20 @@ namespace HiringCompanyContract
         [OperationContract]
         bool SendDelayingEmail(string username);
 
+        [OperationContract]
+        Project GetProject(string projectName);
+
+        [OperationContract]
+        bool AddUserStory(UserStory us);
+
+        [OperationContract]
+        List<Project> GetPartnershipProjects(int hiringCompanyTr);
+
+        [OperationContract]
+        bool ChangeUserStoryState(int id, UserStoryState state);
 
         /// ************************************** TEST ************************************** 
-       
+
         [OperationContract]
         bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc);
 

@@ -58,7 +58,13 @@ namespace HiringCompanyData
         [EnumMember]
         Finished = 2,
         [EnumMember]
-        Closed = 3
+        Closed = 3,
+        [EnumMember]
+        Rejected = 4,
+        [EnumMember]
+        Approved = 5,
+        [EnumMember]
+        Pending = 6
     }
 
     [DataContract]

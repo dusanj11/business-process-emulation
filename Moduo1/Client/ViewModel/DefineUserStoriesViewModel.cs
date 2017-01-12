@@ -1,5 +1,6 @@
 ﻿using Client.Command;
 using Client.ViewModelInterfaces;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +15,13 @@ namespace Client.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private static DefineUserStoriesViewModel model;
-        private string project;
-        private string userStories;
+        private Project project;
+        private UserStory userStory;
         private string description;
 
 
 
-        public DefineUserStoriesCommand DefineUserStoriesCommand { get; set; }
+        public AcceptUserStoryCommand AcceptUserStoryCommand { get; set; }
         public RejectUserStoryCommand RejectUserStoryCommand { get; set; }
 
         public static IDefineUserStoriesViewModel _defineUserStoriesViewModel;
@@ -71,7 +72,7 @@ namespace Client.ViewModel
         //    }
         //}
 
-        public string Project
+        public Project Project
         {
             get
             {
@@ -85,26 +86,26 @@ namespace Client.ViewModel
             }
         }
 
-        public string UserStories
+        public UserStory UserStory
         {
             get
             {
-                return userStories;
+                return userStory;
             }
 
             set
             {
-                userStories = value;
-                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("UserStories"));
+                userStory = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("UserStory"));
             }
         }
 
         public DefineUserStoriesViewModel()
         {
-            this.DefineUserStoriesCommand = new DefineUserStoriesCommand();
+            this.AcceptUserStoryCommand = new AcceptUserStoryCommand();
             this.RejectUserStoryCommand = new RejectUserStoryCommand();
-            this.Project = "";
-            this.UserStories = "";
+            this.Project = new Project();
+            this.UserStory = new UserStory();
         }
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -115,15 +116,7 @@ namespace Client.ViewModel
             }
         }
 
-        string IDefineUserStoriesViewModel.Project()
-        {
-            return Project;
-        }
-
-        string IDefineUserStoriesViewModel.UserStories()
-        {
-            return UserStories;
-        }
+      
 
 
         string IDefineUserStoriesViewModel.Description()
@@ -134,6 +127,16 @@ namespace Client.ViewModel
         void IDefineUserStoriesViewModel.Description(string tekst)
         {
             Description = tekst;
+        }
+
+        Project IDefineUserStoriesViewModel.Project()
+        {
+            return Project;
+        }
+
+        UserStory IDefineUserStoriesViewModel.UserStory()
+        {
+            return UserStory;
         }
     }
 }

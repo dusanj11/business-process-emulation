@@ -304,7 +304,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.DefineUserStoriesView());
+            View.DefineUserStoriesView defineUserStoryView = new View.DefineUserStoriesView();
+            defineUserStoryView.chosProjectTxt.ItemsSource = PrResources;
+
+            CDialog.MainWindowDockPanel.Children.Add(defineUserStoryView);
         }
 
         public void ShowEditPersonalDataView()
