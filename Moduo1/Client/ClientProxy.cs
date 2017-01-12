@@ -309,5 +309,18 @@ namespace Client
                 return false;
             }
         }
+
+        public OutsourcingCompany GetOutsourcingCompany(string name)
+        {
+            try
+            {
+                return proxy.GetOutsourcingCompany(name);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompany: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

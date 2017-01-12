@@ -69,5 +69,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool AddOutsourcingCompany(OutsourcingCompany oc);
+
+        [OperationContract]
+        OutsourcingCompany GetOutsourcingCompany(string name);
     }
 }

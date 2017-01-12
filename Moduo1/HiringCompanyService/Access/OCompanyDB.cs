@@ -58,5 +58,24 @@ namespace HiringCompanyService.Access
                 }
             }
         }
+
+        public OutsourcingCompany GetOutsourcingCompany(string name)
+        {
+            using (var access = new AccessDB())
+            {
+                OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Name.Equals(name));
+
+                if(oc == null)
+                {
+                    log.Warn("Requestet Outsourcing company doesn't exists in DB.");
+                }
+                else
+                {
+                    log.Info("Successfully returned Outsourcing company with specified name.");
+                }
+
+                return oc;
+            }
+        }
     }
 }

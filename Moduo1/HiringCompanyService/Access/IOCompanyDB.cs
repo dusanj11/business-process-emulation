@@ -10,5 +10,7 @@ namespace HiringCompanyService.Access
     public interface IOCompanyDB
     {
         bool AddOutsourcingCompany(OutsourcingCompany oCompany);
+
+        OutsourcingCompany GetOutsourcingCompany(string name);
     }
 }

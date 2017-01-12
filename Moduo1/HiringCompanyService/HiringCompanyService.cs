@@ -193,5 +193,11 @@ namespace HiringCompanyService
             log.Info("AddOutsourcingCompany...");
             return OCompanyDB.Instance.AddOutsourcingCompany(oc);
         }
+
+        public OutsourcingCompany GetOutsourcingCompany(string name)
+        {
+            log.Info("GetOutsourcingCompany...");
+            return OCompanyDB.Instance.GetOutsourcingCompany(name);
+        }
     }
 }
