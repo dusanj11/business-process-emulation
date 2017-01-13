@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>   
         <DataGrid  Grid.Row="0" AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="projectsDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
-                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn"
+                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn" SelectedValue="{Binding Path=SelectedProject, Mode=TwoWay}"
                    ItemsSource="{Binding Path=PrResources, Mode=TwoWay}">
 
         </DataGrid>
@@ -20,7 +20,7 @@
         <DataGrid  Grid.Row="1" AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="userStoriesProjectsDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
                    AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn"
-                   ItemsSource="{Binding Path=PrResources, Mode=TwoWay}">
+                   ItemsSource="{Binding Path=UsResources, Mode=TwoWay}">
 
         </DataGrid>
     </Grid>
