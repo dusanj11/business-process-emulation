@@ -119,14 +119,14 @@ namespace Client.Command
 
             ClientProxy.Instance.AddEmployee(testEmp4);
 
-            OutsourcingCompany oc = new OutsourcingCompany();
+            HiringCompanyData.OutsourcingCompany oc = new HiringCompanyData.OutsourcingCompany();
             oc.Name = "OC1";
 
 
             bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
 
             HiringCompany hCompany = ClientProxy.Instance.GetHiringCompany(threadId);
-            OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany("OC1");
+            HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany((string)"OC1");
 
 
             ClientProxy.Instance.AddPartnershipToDB(hCompany, oCompany);

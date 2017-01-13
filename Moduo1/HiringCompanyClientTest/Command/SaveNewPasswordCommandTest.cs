@@ -71,7 +71,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteTest()
         {
-            Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.CanExecute(new Object()); });
+            Assert.DoesNotThrow(() => { saveNewPasswordCommandUnderTest.CanExecute(new System.Object()); });
         }
 
         [Test]

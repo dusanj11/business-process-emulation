@@ -62,7 +62,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteTest()
         {
-            Assert.DoesNotThrow(() => { viewWorkersCommandUnderTest.CanExecute(new Object()); });
+            Assert.DoesNotThrow(() => { viewWorkersCommandUnderTest.CanExecute(new System.Object()); });
         }
 
         [Test]

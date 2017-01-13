@@ -18,7 +18,7 @@ namespace HiringCompanyService.Access
 
         public DbSet<Project> PrActions { get; set; }
 
-        public DbSet<OutsourcingCompany> OcActions { get; set; }
+        public DbSet<HiringCompanyData.OutsourcingCompany> OcActions { get; set; }
 
         public DbSet<UserStory> UsAction { get; set; }
 

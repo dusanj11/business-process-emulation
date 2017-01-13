@@ -147,7 +147,7 @@ namespace HiringCompanyService
 
        
 
-        public bool RegisterOutsourcingCompany(OutsourcingCompany oc)
+        public bool RegisterOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc)
         {
             
             bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc);
@@ -164,7 +164,7 @@ namespace HiringCompanyService
             return ret;
         }
 
-        public bool AcceptPartnership(OutsourcingCompany oc)
+        public bool AcceptPartnership(HiringCompanyData.OutsourcingCompany oc)
         {
             throw new NotImplementedException();
         }
@@ -175,26 +175,26 @@ namespace HiringCompanyService
             return UserStoryDB.Instance.GetUserStory(projectName);
         }
 
-        public bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc)
+        public bool AddPartnershipToDB(HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
         {
             log.Info("AddPartnershipToDB...");
             return PartnershipDB.Instance.AddPartnership(hc, oc);
             
         }
 
-        public List<OutsourcingCompany> GetPartnershipOc(int hiringCompany)
+        public List<HiringCompanyData.OutsourcingCompany> GetPartnershipOc(int hiringCompany)
         {
             log.Info("GetPartnershipOc..");
             return PartnershipDB.Instance.GetPartnerOc(hiringCompany);
         }
 
-        public bool AddOutsourcingCompany(OutsourcingCompany oc)
+        public bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc)
         {
             log.Info("AddOutsourcingCompany...");
             return OCompanyDB.Instance.AddOutsourcingCompany(oc);
         }
 
-        public OutsourcingCompany GetOutsourcingCompany(string name)
+        public Object GetOutsourcingCompany(string name)
         {
             log.Info("GetOutsourcingCompany...");
             return OCompanyDB.Instance.GetOutsourcingCompany(name);

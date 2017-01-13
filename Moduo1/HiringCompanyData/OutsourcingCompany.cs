@@ -16,7 +16,15 @@ namespace HiringCompanyData
         private String name;
         private List<Project> projects;
         private List<Partnership> partnerships;
-        
+
+
+        private int idFromOutSourcingDB;
+
+     
+        private List<Employee> employees;
+        private List<Team> teams;
+     
+
 
         public OutsourcingCompany()
         {
@@ -79,7 +87,48 @@ namespace HiringCompanyData
             }
         }
 
-      
+        [DataMember]
+        public int IdFromOutSourcingDB
+        {
+            get
+            {
+                return idFromOutSourcingDB;
+            }
+
+            set
+            {
+                idFromOutSourcingDB = value;
+            }
+        }
+
+        [DataMember]
+        public List<Employee> Employees
+        {
+            get
+            {
+                return employees;
+            }
+
+            set
+            {
+                employees = value;
+            }
+        }
+
+        [DataMember]
+        public List<Team> Teams
+        {
+            get
+            {
+                return teams;
+            }
+
+            set
+            {
+                teams = value;
+            }
+        }
+
         public override string ToString()
         {
             return "ID: " + this.id +

@@ -38,9 +38,9 @@ namespace Client.ViewModelInterfaces
 
         void EmpResources(ObservableCollection<Employee> empResources);
 
-        ObservableCollection<OutsourcingCompany> OcResources();
+        ObservableCollection<HiringCompanyData.OutsourcingCompany> OcResources();
 
-        void OcResources(ObservableCollection<OutsourcingCompany> ocResources);
+        void OcResources(ObservableCollection<HiringCompanyData.OutsourcingCompany> ocResources);
 
         void ShowEditPositionView();
 

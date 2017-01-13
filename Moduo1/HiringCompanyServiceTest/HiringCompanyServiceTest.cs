@@ -25,7 +25,7 @@ namespace HiringCompanyServiceTest
 
         private Project projectTest;
 
-        private OutsourcingCompany ocTest;
+        private HiringCompanyData.OutsourcingCompany ocTest;
 
         private bool AddOcTrue;
 
@@ -67,7 +67,7 @@ namespace HiringCompanyServiceTest
                 Description = "Project1 desc"
             };
 
-            ocTest = new OutsourcingCompany()
+            ocTest = new HiringCompanyData.OutsourcingCompany()
             {
                 Name = "OC1",
    

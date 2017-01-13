@@ -61,7 +61,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteTest()
         {
-            Assert.DoesNotThrow(() => { editPositionCommandUnderTest.CanExecute(new Object()); });
+            Assert.DoesNotThrow(() => { editPositionCommandUnderTest.CanExecute(new System.Object()); });
         }
 
         [Test]

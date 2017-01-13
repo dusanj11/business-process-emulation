@@ -144,9 +144,9 @@ namespace Client.ViewModel
             }
         }
 
-        private ObservableCollection<OutsourcingCompany> ocResources = new ObservableCollection<OutsourcingCompany>();
+        private ObservableCollection<HiringCompanyData.OutsourcingCompany> ocResources = new ObservableCollection<HiringCompanyData.OutsourcingCompany>();
 
-        public ObservableCollection<OutsourcingCompany> OcResources
+        public ObservableCollection<HiringCompanyData.OutsourcingCompany> OcResources
         {
             get
             {
@@ -525,12 +525,12 @@ namespace Client.ViewModel
             CDialog = clientDialog;
         }
 
-        ObservableCollection<OutsourcingCompany> IClientDialogViewModel.OcResources()
+        ObservableCollection<HiringCompanyData.OutsourcingCompany> IClientDialogViewModel.OcResources()
         {
             return OcResources;
         }
 
-        void IClientDialogViewModel.OcResources(ObservableCollection<OutsourcingCompany> ocResources)
+        void IClientDialogViewModel.OcResources(ObservableCollection<HiringCompanyData.OutsourcingCompany> ocResources)
         {
             OcResources = ocResources;
         }

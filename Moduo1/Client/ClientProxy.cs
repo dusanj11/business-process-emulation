@@ -277,7 +277,7 @@ namespace Client
             }
         }
 
-        public bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc)
+        public bool AddPartnershipToDB(HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
         {
             try
             {
@@ -290,7 +290,7 @@ namespace Client
             }
         }
 
-        public List<OutsourcingCompany> GetPartnershipOc(int hiringCompany)
+        public List<HiringCompanyData.OutsourcingCompany> GetPartnershipOc(int hiringCompany)
         {
             try
             {
@@ -303,7 +303,7 @@ namespace Client
             }
         }
 
-        public bool AddOutsourcingCompany(OutsourcingCompany oc)
+        public bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc)
         {
             try
             {
@@ -316,7 +316,7 @@ namespace Client
             }
         }
 
-        public OutsourcingCompany GetOutsourcingCompany(string name)
+        public Object GetOutsourcingCompany(string name)
         {
             try
             {
