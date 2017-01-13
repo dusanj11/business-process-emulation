@@ -17,6 +17,9 @@ namespace Client.ViewModel
         private static DefineUserStoriesViewModel model;
         private Project project;
         private UserStory userStory;
+        private List<UserStory> userStories;
+
+        
         private string description;
 
 
@@ -59,18 +62,18 @@ namespace Client.ViewModel
             }
         }
 
-        //public static DefineUserStoriesViewModel Instance
-        //{
-        //    get
-        //    {
-        //        return model;
-        //    }
-
-        //    set
-        //    {
-        //        model = value;
-        //    }
-        //}
+        public List<UserStory> UserStories
+        {
+            get
+            {
+                return userStories;
+            }
+            set
+            {
+                userStories = value;
+                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("UserStories"));
+            }
+        }
 
         public Project Project
         {
@@ -82,6 +85,7 @@ namespace Client.ViewModel
             set
             {
                 project = value;
+                UserStories = ClientProxy.Instance.GetProjectUserStory(Project.Name);
                 OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Project"));
             }
         }
@@ -96,6 +100,7 @@ namespace Client.ViewModel
             set
             {
                 userStory = value;
+                Description = UserStory.Description;
                 OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("UserStory"));
             }
         }
@@ -137,6 +142,17 @@ namespace Client.ViewModel
         UserStory IDefineUserStoriesViewModel.UserStory()
         {
             return UserStory;
+        }
+
+
+        List<UserStory> IDefineUserStoriesViewModel.UserStories()
+        {
+            return UserStories;
+        }
+
+        void IDefineUserStoriesViewModel.UserStories(List<UserStory> stories)
+        {
+            UserStories = stories;
         }
     }
 }

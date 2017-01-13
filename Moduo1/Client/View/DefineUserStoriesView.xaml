@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid >
@@ -29,7 +30,8 @@
                 <ColumnDefinition Width="17*"/>
             </Grid.ColumnDefinitions>
             <!--PROVERI ZA COMBOBOX BAJNDING-->
-            <ComboBox Name="chosProjectTxt" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=Project}"  Grid.ColumnSpan="2" Margin="50,0,50,1"/>
+            <ComboBox Name="chosProjectTxt" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=Project}"  Grid.ColumnSpan="2" Margin="50,0,50,1">
+            </ComboBox>
         </Grid>
         <Label Name="choseUSLb" Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleLabel}">
             Odabir korisničke priče:

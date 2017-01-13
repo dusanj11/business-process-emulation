@@ -13,6 +13,8 @@ namespace Client.ViewModelInterfaces
         Project Project();
 
         UserStory UserStory();
+        List<UserStory> UserStories();
+        void UserStories(List<UserStory> stories);
         string Description();
         void Description(string tekst);
     }
