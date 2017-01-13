@@ -12,5 +12,7 @@ namespace HiringCompanyService.Access
         bool AddOutsourcingCompany(OutsourcingCompany oCompany);
 
         OutsourcingCompany GetOutsourcingCompany(string name);
+
+        List<OutsourcingCompany> GetOutsourcingCompanies();
     }
 }

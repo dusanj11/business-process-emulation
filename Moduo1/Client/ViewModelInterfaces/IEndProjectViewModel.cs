@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Client.ViewModelInterfaces
 {
     public interface IEndProjectViewModel
     {
-        string Project();
+        Project Project();
     }
 }

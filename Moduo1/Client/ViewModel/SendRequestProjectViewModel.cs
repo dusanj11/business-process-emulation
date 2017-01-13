@@ -1,5 +1,6 @@
 ﻿using Client.Command;
 using Client.ViewModelInterfaces;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,8 @@ namespace Client.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private static SendRequestProjectViewModel model;
-        private string partnerCompany;
-        private string project;
+        private OutsourcingCompany partnerCompany;
+        private Project project;
 
         public SendRequestProjectCommand SendRequestProjectCommand { get; set; }
 
@@ -55,7 +56,7 @@ namespace Client.ViewModel
         //    }
         //}
 
-        public string PartnerCompany
+        public OutsourcingCompany PartnerCompany
         {
             get
             {
@@ -69,7 +70,7 @@ namespace Client.ViewModel
             }
         }
 
-        public string Project
+        public Project Project
         {
             get
             {
@@ -86,8 +87,8 @@ namespace Client.ViewModel
         public SendRequestProjectViewModel()
         {
             this.SendRequestProjectCommand = new SendRequestProjectCommand();
-            this.PartnerCompany = "";
-            this.Project = "";
+            this.PartnerCompany = new OutsourcingCompany();
+            this.Project = new Project();
         }
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -98,12 +99,12 @@ namespace Client.ViewModel
             }
         }
 
-        string ISendRequestProjectViewModel.PartnerCompany()
+        OutsourcingCompany ISendRequestProjectViewModel.PartnerCompany()
         {
             return PartnerCompany;
         }
 
-        string ISendRequestProjectViewModel.Project()
+        Project ISendRequestProjectViewModel.Project()
         {
             return Project;
         }

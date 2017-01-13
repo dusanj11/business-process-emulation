@@ -76,6 +76,21 @@ namespace HiringCompanyContract
         [OperationContract]
         List<UserStory> GetProjectPendingUserStory(string projectName);
 
+        [OperationContract]
+        List<OutsourcingCompany> GetOutsourcingCompanies();
+
+        [OperationContract]
+        bool SendPartnershipRequest(int outsourcingCompanyId, HiringCompany hiringCompany);
+
+        [OperationContract]
+        bool SendProjectRequest(int hiringCompanyID, int outsourcingCompanyId, Project project);
+
+        [OperationContract]
+        List<Project> GetProjectsForHc(int hiringCompanyId);
+
+        [OperationContract]
+        bool MarkProjectEnded(Project p);
+
         /// ************************************** TEST ************************************** 
 
         [OperationContract]

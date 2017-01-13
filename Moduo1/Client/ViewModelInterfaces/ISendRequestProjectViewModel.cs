@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Client.ViewModelInterfaces
 {
     public interface ISendRequestProjectViewModel
     {
-        string PartnerCompany();
+        OutsourcingCompany PartnerCompany();
 
-        string Project();
+        Project Project();
     }
 }

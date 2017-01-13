@@ -13,10 +13,14 @@ namespace HiringCompanyService.Access
 
         List<Project> GetProjects();
 
+        List<Project> GetProjects(int hiringCompanyId);
+
         Project GetProject(string name);
 
         List<UserStory> GetProjectUserStory(string projectName);
 
         List<UserStory> GetProjectPendingUserStory(string projectName);
+
+        bool MarkProjectEnded(Project p);
     }
 }

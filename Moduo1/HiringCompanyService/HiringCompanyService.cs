@@ -225,8 +225,22 @@ namespace HiringCompanyService
             return OCompanyDB.Instance.GetOutsourcingCompany(name);
         }
 
+        public List<HiringCompanyData.OutsourcingCompany> GetOutsourcingCompanies()
+        {
+            log.Info("GetOutsourcingCompanies...");
+            return OCompanyDB.Instance.GetOutsourcingCompanies();
+        }
+
+        public List<HiringCompanyData.Project> GetProjectsForHc(int hiringCompanyId)
+        {
+            log.Info("GetProject for specified hiring company...");
+            return ProjectDB.Instance.GetProjects(hiringCompanyId);
+        }
+
+
+
         /// <summary>
-        ///     INTERFACE IOcContract
+        ///     INTERFACE IHcContract
         /// </summary>
         public bool RegisterOutsourcingCompany(WcfCommon.Data.OutsourcingCompany oc)
         {
@@ -250,16 +264,100 @@ namespace HiringCompanyService
             return ret;
         }
 
-        public bool AcceptPartnership(WcfCommon.Data.OutsourcingCompany oc)
+        public bool AcceptPartnership(WcfCommon.Data.HiringCompany hc, WcfCommon.Data.OutsourcingCompany oc)
         {
-            throw new NotImplementedException();
+            log.Info("AddPartnershipToDB...");
+            HiringCompanyData.HiringCompany hc_data = new HiringCompanyData.HiringCompany();
+            HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
+
+            hc_data = HiringCompanyDB.Instance.GetCompany(hc.IdFromHiringCompanyDB);
+            oc_data = OCompanyDB.Instance.GetOutsourcingCompany(oc.Name);
+        
+            return PartnershipDB.Instance.AddPartnership(hc_data, oc_data);
         }
 
         List<WcfCommon.Data.UserStory> IHcContract.GetUserStoryes(string projectName)
         {
-            throw new NotImplementedException();
+            log.Info("Successfully returned User storyes for defined project name");
+            List<HiringCompanyData.UserStory> userStories =  UserStoryDB.Instance.GetUserStory(projectName);
+
+            List<WcfCommon.Data.UserStory> retval = new List<WcfCommon.Data.UserStory>();
+
+           
+
+            foreach (HiringCompanyData.UserStory us in userStories)
+            {
+                WcfCommon.Data.UserStory us_common = new WcfCommon.Data.UserStory();
+                us_common.Name = us.Name;
+                us_common.Progress = us.Progress;
+                //us_common.Project = us.Project;
+                us_common.UserStoryState = (WcfCommon.Enums.UserStoryState)us.UserStoryState;
+                us_common.WeightOfUserStory = us.WeightOfUserStory;
+
+                retval.Add(us_common);
+            }
+
+            return retval;
         }
 
-        
+
+        /// <summary>
+        ///     Method that call ServiceProxy to outsourcing company service
+        /// </summary>
+
+        public bool SendPartnershipRequest(int outsourcingCompanyId, HiringCompanyData.HiringCompany hiringCompany)
+        {
+            WcfCommon.Data.HiringCompany hc_data = new WcfCommon.Data.HiringCompany();
+
+            hc_data.Ceo = hiringCompany.Ceo;
+            hc_data.IdFromHiringCompanyDB = hiringCompany.IDHc;
+            hc_data.Name = hiringCompany.Name;
+           
+
+            bool ret =  ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
+
+            if (ret)
+            {
+                log.Info("SUCCESSFULLY SENT PARTNERSHIP REQUEST!");
+            }
+            else
+            {
+                log.Warn("Failed to sent partnership request.") ;
+            }
+
+            return ret;
+        }
+
+        public bool SendProjectRequest(int hiringCompanyID, int outsourcingCompanyId, HiringCompanyData.Project project)
+        {
+            WcfCommon.Data.Project pr_data = new WcfCommon.Data.Project();
+
+            pr_data.Approved = project.Approved;
+            pr_data.Description = project.Description;
+            pr_data.EndDate = project.EndDate;
+            pr_data.Ended = project.Ended;
+            pr_data.Name = project.Name;
+            pr_data.Progress = project.Progress;
+            pr_data.StartDate = project.StartDate;
+
+            bool ret = ServiceProxy.Instance.SendProject(hiringCompanyID, outsourcingCompanyId, pr_data);
+
+            if (ret)
+            {
+                log.Info("SUCCESSFULLY SENT PROJECT REQUEST!");
+            }
+            else
+            {
+                log.Warn("Failed to sent project request.");
+            }
+
+            return ret;
+        }
+
+        public bool MarkProjectEnded(HiringCompanyData.Project p)
+        {
+            log.Info("MarkProjectEnded");
+            return ProjectDB.Instance.MarkProjectEnded(p);
+        }
     }
 }

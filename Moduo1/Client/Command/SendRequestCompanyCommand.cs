@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Client.ViewModel;
+using HiringCompanyData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 
 namespace Client.Command
@@ -18,7 +20,12 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            OutsourcingCompany oc = SendRequestCompanyViewModel.Instance.Company();
+
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+
+            ClientProxy.Instance.SendPartnershipRequest(oc.IdFromOutSourcingDB, hc);
+
         }
     }
 }

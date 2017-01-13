@@ -1,5 +1,6 @@
 ﻿using Client.Command;
 using Client.ViewModelInterfaces;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string project;
+        private Project project;
         private static IEndProjectViewModel model;
 
         public EndProjectCommand EndProjectCommand { get; set; }
@@ -38,7 +39,7 @@ namespace Client.ViewModel
             }
         }
 
-        public string Project
+        public Project Project
         {
             get 
             { 
@@ -54,7 +55,7 @@ namespace Client.ViewModel
         public EndProjectViewModel()
         {
             this.EndProjectCommand = new EndProjectCommand();
-            this.Project = "";
+            this.Project = new Project();
         }
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -65,7 +66,7 @@ namespace Client.ViewModel
             }
         }
 
-        string IEndProjectViewModel.Project()
+        Project IEndProjectViewModel.Project()
         {
             return Project;
         }

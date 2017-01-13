@@ -79,8 +79,11 @@ namespace HiringCompanyService.Access
                 {
                     if (pr.HiringCompany.CompanyIdThr.Equals(hiringCompany))
                     {
-                        OutsourcingCompany oc = pr.OutsourcingCompany;
-                        oc.Partnerships = null;
+                        OutsourcingCompany oc = new OutsourcingCompany();
+                        oc.Id = pr.OutsourcingCompany.Id;
+                        oc.IdFromOutSourcingDB = pr.OutsourcingCompany.IdFromOutSourcingDB;
+                        oc.Name = pr.OutsourcingCompany.Name;
+                                               
                         ret.Add(oc);
                     }
                 }

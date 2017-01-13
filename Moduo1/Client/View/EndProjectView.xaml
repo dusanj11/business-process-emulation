@@ -18,8 +18,8 @@
             Odabir završenog projekta:
         </Label>
         <Grid Grid.Row="1" Grid.Column="0">
-            <!--PROVERITI ZA COMBOBOX-->
-            <ComboBox Name="choseProjTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" Text="{Binding Path=Project}">
+            
+            <ComboBox Name="choseProjTxt" Grid.Row="1" Grid.Column="0" IsTextSearchEnabled="True" IsEditable="True" IsTextSearchCaseSensitive="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=Project}">
             </ComboBox>
         </Grid>
         <Button Name="endProjReqBtn" Grid.Row="3" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding EndProjectCommand}" Width="Auto">

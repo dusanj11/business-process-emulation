@@ -37,7 +37,7 @@ namespace HiringCompanyService.Access
         {
             using (var access = new AccessDB())
             {
-                HiringCompanyData.OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Id.Equals(oCompany.Id));
+                HiringCompanyData.OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Name.Equals(oCompany.Name));
                 if (oc == null)
                 {
                     access.OcActions.Add(oCompany);
@@ -56,6 +56,31 @@ namespace HiringCompanyService.Access
                     log.Warn("Outsourcing company already exists in DB");
                     return false;
                 }
+            }
+        }
+
+        public List<OutsourcingCompany> GetOutsourcingCompanies()
+        {
+            using (var access = new AccessDB())
+            {
+                List<OutsourcingCompany> ret = new List<OutsourcingCompany>();
+
+                foreach (var oc in access.OcActions)
+                {
+                    ret.Add(oc);
+                }
+
+                if (ret != null)
+                {
+                    log.Info("Successfully returned list of outsourcing companies.");
+                }
+                else
+                {
+                    log.Warn("No outsourcing company to show.");
+                }
+                
+
+                return ret;
             }
         }
 

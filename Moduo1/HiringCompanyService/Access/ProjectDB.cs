@@ -166,5 +166,64 @@ namespace HiringCompanyService.Access
                 return ret;
             }
         }
+
+        public List<Project> GetProjects(int hiringCompanyId)
+        {
+            log.Debug("Enter GetProjects for specified hiring company method.");
+            using (var access = new AccessDB())
+            {
+                List<Project> ret = new List<Project>();
+                foreach (var pr in access.PrActions.Include(x => x.HiringCompany))
+                {
+                    if (pr.HiringCompany.IDHc == hiringCompanyId)
+                    {
+                        Project p = new Project();
+                        p.Approved = pr.Approved;
+                        p.Description = pr.Description;
+                        p.EndDate = pr.EndDate;
+                        p.Ended = pr.Ended;
+                        p.Id = pr.Id;
+                        p.Name = pr.Name;
+                        p.Progress = pr.Progress;
+                        p.ProjectState = pr.ProjectState;
+                        p.StartDate = pr.StartDate;
+                       
+                        ret.Add(p);
+                    }
+                    
+                }
+
+                log.Info("Successfully returned list of projects.");
+                return ret;
+            }
+        }
+
+        public bool MarkProjectEnded(Project p)
+        {
+            using (var access = new AccessDB())
+            {
+                Project project = access.PrActions.FirstOrDefault(f => f.Id == p.Id);
+
+                if(project != null)
+                {
+                    project.Ended = true;
+
+                    int i = access.SaveChanges();
+                    if (i > 0)
+                    {
+                        log.Info("Successfully marked project as ended.");
+                        return true;
+                    }
+
+                    log.Warn("Failed to mark project as ended.");
+                    return false;
+                }
+                else
+                {
+                    log.Warn("Project with specified id doesn't exists. ");
+                    return false;
+                }
+            }
+        }
     }
 }

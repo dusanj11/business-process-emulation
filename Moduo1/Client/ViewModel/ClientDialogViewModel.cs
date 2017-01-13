@@ -299,7 +299,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.EndProjectView());
+            View.EndProjectView endProjectView = new View.EndProjectView();
+            endProjectView.choseProjTxt.ItemsSource = PrResources;
+
+            CDialog.MainWindowDockPanel.Children.Add(endProjectView);
         }
 
         public void ShowChangePasswordView()
@@ -372,7 +375,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.SendRequestCompanyView());
+            View.SendRequestCompanyView sendRequestCompanyView = new View.SendRequestCompanyView();
+            sendRequestCompanyView.choseCompanyTxt.ItemsSource = OcResources;
+
+            CDialog.MainWindowDockPanel.Children.Add(sendRequestCompanyView);
         }
 
         public void ShowSendRequestProjectView()
@@ -386,7 +392,10 @@ namespace Client.ViewModel
                 Console.WriteLine("Error {0}", e.Message);
             }
 
-            CDialog.MainWindowDockPanel.Children.Add(new View.SendRequestProjectView());
+            View.SendRequestProjectView sendRequestProjectView = new View.SendRequestProjectView();
+            sendRequestProjectView.chosePartnCompanyTxt.ItemsSource = OcResources;
+            sendRequestProjectView.choseProjTxt.ItemsSource = PrResources;
+            CDialog.MainWindowDockPanel.Children.Add(sendRequestProjectView);
         }
 
         public void ShowShowCompaniesView()

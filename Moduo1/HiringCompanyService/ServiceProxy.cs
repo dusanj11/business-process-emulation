@@ -57,11 +57,11 @@ namespace HiringCompanyService
             }
         }
 
-        public bool SendProject(WcfCommon.Data.Project project)
+        public bool SendProject(int hiringCompanyId, int outsourcingCompanyId, WcfCommon.Data.Project project)
         {
             try
             {
-                return proxy.SendProject(project);
+                return proxy.SendProject(hiringCompanyId, outsourcingCompanyId, project);
             }
             catch (Exception e)
             {
@@ -70,11 +70,11 @@ namespace HiringCompanyService
             }
         }
 
-        List<WcfCommon.Data.Project> IOcContract.GetProjects()
+        List<WcfCommon.Data.Project> IOcContract.GetProjects(int hiringCompanyId)
         {
             try
             {
-                return proxy.GetProjects();
+                return proxy.GetProjects(hiringCompanyId);
             }
             catch (Exception e)
             {

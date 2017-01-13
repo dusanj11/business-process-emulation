@@ -408,5 +408,70 @@ namespace Client
                 return null;
             }
         }
+
+        public List<OutsourcingCompany> GetOutsourcingCompanies()
+        {
+            try
+            {
+                return proxy.GetOutsourcingCompanies();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompanies: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public bool SendPartnershipRequest(int outsourcingCompanyId, HiringCompany hiringCompany)
+        {
+            try
+            {
+                return proxy.SendPartnershipRequest(outsourcingCompanyId, hiringCompany);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompanies: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public bool SendProjectRequest(int hiringCompanyID, int outsourcingCompanyId, Project project)
+        {
+            try
+            {
+                return proxy.SendProjectRequest(hiringCompanyID, outsourcingCompanyId, project);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompanies: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public List<Project> GetProjectsForHc(int hiringCompanyId)
+        {
+            try
+            {
+                return proxy.GetProjectsForHc(hiringCompanyId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProjects: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        public bool MarkProjectEnded(Project p)
+        {
+            try
+            {
+                return proxy.MarkProjectEnded(p);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: MarkProjectEnded: \n{0}", e.Message);
+                return false;
+            }
+        }
     }
 }

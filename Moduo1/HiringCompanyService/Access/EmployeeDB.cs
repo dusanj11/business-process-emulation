@@ -193,7 +193,7 @@ namespace HiringCompanyService.Access
             using (var access = new AccessDB())
             {
                 //access.Actions.Attach(employee);
-                Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(employee.Username));
+                Employee em = access.Actions.FirstOrDefault(f => f.Email.Equals(employee.Email));
                 if (em != null)
                 {
                     log.Debug("Employee exists");
