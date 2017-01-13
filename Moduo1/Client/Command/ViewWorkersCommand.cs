@@ -36,7 +36,7 @@ namespace Client.Command
                 resources.Add(em);
             }
 
-            ClientDialogViewModel.Instance.OcResources();
+            ClientDialogViewModel.Instance.Resources(resources);
             ClientDialogViewModel.Instance.ShowEmployeeView();
         }
     }

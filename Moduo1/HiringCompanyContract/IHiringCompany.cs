@@ -88,6 +88,6 @@ namespace HiringCompanyContract
         bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc);
 
         [OperationContract]
-        Object GetOutsourcingCompany(string name);
+        OutsourcingCompany GetOutsourcingCompany(string name);
     }
 }

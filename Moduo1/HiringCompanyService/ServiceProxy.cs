@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EppContract;
-using System.ServiceModel;
 using System.Configuration;
-using HiringCompanyData;
+using System.ServiceModel;
+using WcfCommon;
 
 namespace HiringCompanyService
 {
     public class ServiceProxy : IOcContract, IDisposable
     {
-
         private static IOcContract proxy;
 
         private static ChannelFactory<IOcContract> factory;
@@ -40,22 +35,20 @@ namespace HiringCompanyService
             }
         }
 
-
         public void Dispose()
         {
             if (factory != null)
             {
                 factory = null;
-
             }
             factory.Close();
         }
 
-        public bool SendOcRequest(int outsourcingCompanyIdFromDB, HiringCompany hiringCompany)
+        public bool SendOcRequest(int outsourcingCompanyId, WcfCommon.Data.HiringCompany hiringCompany)
         {
             try
             {
-                return proxy.SendOcRequest( outsourcingCompanyIdFromDB,  hiringCompany);
+                return proxy.SendOcRequest(outsourcingCompanyId, hiringCompany);
             }
             catch (Exception e)
             {
@@ -64,7 +57,7 @@ namespace HiringCompanyService
             }
         }
 
-        public bool SendProject(Project project)
+        public bool SendProject(WcfCommon.Data.Project project)
         {
             try
             {
@@ -77,7 +70,7 @@ namespace HiringCompanyService
             }
         }
 
-        public List<Project> GetProjects()
+        List<WcfCommon.Data.Project> IOcContract.GetProjects()
         {
             try
             {
@@ -90,11 +83,11 @@ namespace HiringCompanyService
             }
         }
 
-        public List<UserStory> GetUserStoryes(int outsourcingCompanyIdFromDB, string projectName)
+        List<WcfCommon.Data.UserStory> IOcContract.GetUserStoryes(int outsourcingCompanyIdFromDB, string projectName)
         {
             try
             {
-                return proxy.GetUserStoryes( outsourcingCompanyIdFromDB,  projectName);
+                return proxy.GetUserStoryes(outsourcingCompanyIdFromDB, projectName);
             }
             catch (Exception e)
             {
@@ -102,46 +95,5 @@ namespace HiringCompanyService
                 return null;
             }
         }
-
-
-
-        //public bool RegisterOutsourcingCompany(OutsourcingCompany oc)
-        //{
-        //    try
-        //    {
-        //        return proxy.RegisterOutsourcingCompany(oc);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine("ERROR: RegisterOutsourcingCompany: \n{0}", e.Message);
-        //        return false;
-        //    }
-        //}
-
-        //public bool AcceptPartnership(OutsourcingCompany oc)
-        //{
-        //    try
-        //    {
-        //        return proxy.AcceptPartnership(oc);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine("ERROR: AcceptPartnership: \n{0}", e.Message);
-        //        return false;
-        //    }
-        //}
-
-        //public List<UserStory> GetUserStoryes(string projectName)
-        //{
-        //    try
-        //    {
-        //        return proxy.GetUserStoryes(projectName);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine("ERROR: GetUserStoryes: \n{0}", e.Message);
-        //        return null;
-        //    }
-        //}
     }
 }

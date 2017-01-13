@@ -1,11 +1,12 @@
-﻿using EppContract;
-using HiringCompanyContract;
+﻿using HiringCompanyContract;
 using HiringCompanyData;
 using HiringCompanyService.Access;
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.ServiceModel;
+using WcfCommon;
+using WcfCommon.Data;
 
 namespace HiringCompanyService
 {
@@ -83,28 +84,28 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.EmployeeLogOut(username);
         }
 
-        public bool AddHiringCompany(HiringCompany company)
+        public bool AddHiringCompany(HiringCompanyData.HiringCompany company)
         {
             log.Debug("AddHiringCompany Servisni poziv");
             Console.WriteLine("AddHiringCompany...");
             return HiringCompanyDB.Instance.AddCompany(company);
         }
 
-        public HiringCompany GetHiringCompany(int id)
+        public HiringCompanyData.HiringCompany GetHiringCompany(int id)
         {
             log.Debug("GetHiringCompany Servisni poziv");
             Console.WriteLine("GetHiringCompany...");
             return HiringCompanyDB.Instance.GetCompany(id);
         }
 
-        public bool AddProjectDefinition(Project project)
+        public bool AddProjectDefinition(HiringCompanyData.Project project)
         {
             log.Debug("AddProjectDefinition Servisni poziv");
             Console.WriteLine("AddProjectDefinition...");
             return ProjectDB.Instance.AddProject(project);
         }
 
-        public List<Project> GetProjects()
+        public List<HiringCompanyData.Project> GetProjects()
         {
             log.Debug("GetProjects Servisni poziv");
             Console.WriteLine("GetProjects...");
@@ -145,37 +146,19 @@ namespace HiringCompanyService
             return EmployeeDB.Instance.GetReallyEmployees();
         }
 
-       
-
-        public bool RegisterOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc)
-        {
-            
-            bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc);
-            
-            if (ret)
-            {
-                log.Info("Successfully added Outsourcing company to DB");
-            }
-            else
-            {
-                log.Warn("Failed to add Outsourcing company to DB");   
-            }
-
-            return ret;
-        }
 
         public bool AcceptPartnership(HiringCompanyData.OutsourcingCompany oc)
         {
             throw new NotImplementedException();
         }
 
-        public List<UserStory> GetUserStoryes(string projectName)
+        public List<HiringCompanyData.UserStory> GetUserStoryes(string projectName)
         {
             log.Info("Successfully returned User storyes for defined project name");
             return UserStoryDB.Instance.GetUserStory(projectName);
         }
 
-        public bool AddPartnershipToDB(HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
+        public bool AddPartnershipToDB(HiringCompanyData.HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
         {
             log.Info("AddPartnershipToDB...");
             return PartnershipDB.Instance.AddPartnership(hc, oc);
@@ -200,19 +183,19 @@ namespace HiringCompanyService
             return OCompanyDB.Instance.GetOutsourcingCompany(name);
         }
 
-        public Project GetProject(string projectName)
+        public HiringCompanyData.Project GetProject(string projectName)
         {
             log.Info("GetProject...");
             return ProjectDB.Instance.GetProject(projectName);
         }
 
-        public bool AddUserStory(UserStory us)
+        public bool AddUserStory(HiringCompanyData.UserStory us)
         {
             log.Info("AddUserStory...");
             return UserStoryDB.Instance.AddUserStory(us);
         }
 
-        public List<Project> GetPartnershipProjects(int hiringCompanyTr)
+        public List<HiringCompanyData.Project> GetPartnershipProjects(int hiringCompanyTr)
         {
             log.Info("GetPartnershipProjects...");
             return PartnershipDB.Instance.GetPartnershipProjects(hiringCompanyTr);
@@ -224,16 +207,59 @@ namespace HiringCompanyService
             return UserStoryDB.Instance.ChangeUserStoryState(id, state);
         }
 
-        public List<UserStory> GetProjectUserStory(string projectName)
+        public List<HiringCompanyData.UserStory> GetProjectUserStory(string projectName)
         {
             log.Info("GetProjectUserStory...");
             return ProjectDB.Instance.GetProjectUserStory(projectName);
         }
 
-        public List<UserStory> GetProjectPendingUserStory(string projectName)
+        public List<HiringCompanyData.UserStory> GetProjectPendingUserStory(string projectName)
         {
             log.Info("GetProjectPendingUserStory...");
             return ProjectDB.Instance.GetProjectPendingUserStory(projectName);
         }
+
+        HiringCompanyData.OutsourcingCompany IHiringCompany.GetOutsourcingCompany(string name)
+        {
+            log.Info("GetOutsourcingCompany...");
+            return OCompanyDB.Instance.GetOutsourcingCompany(name);
+        }
+
+        /// <summary>
+        ///     INTERFACE IOcContract
+        /// </summary>
+        public bool RegisterOutsourcingCompany(WcfCommon.Data.OutsourcingCompany oc)
+        {
+
+            HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
+            oc_data.IdFromOutSourcingDB = oc.Id;
+            oc_data.Name = oc.Name;
+           
+
+            bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc_data);
+
+            if (ret)
+            {
+                log.Info("Successfully added Outsourcing company to DB");
+            }
+            else
+            {
+                log.Warn("Failed to add Outsourcing company to DB");
+            }
+
+            return ret;
+        }
+
+        public bool AcceptPartnership(WcfCommon.Data.OutsourcingCompany oc)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<WcfCommon.Data.UserStory> IHcContract.GetUserStoryes(string projectName)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

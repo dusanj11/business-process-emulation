@@ -316,19 +316,7 @@ namespace Client
             }
         }
 
-        public Object GetOutsourcingCompany(string name)
-        {
-            try
-            {
-                return proxy.GetOutsourcingCompany(name);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("ERROR: GetOutsourcingCompany: \n{0}", e.Message);
-                return null;
-            }
-        }
-
+      
         public Project GetProject(string projectName)
         {
             try
@@ -404,6 +392,19 @@ namespace Client
             catch (Exception e)
             {
                 Console.WriteLine("ERROR: GetProjectPendingUserStory: \n{0}", e.Message);
+                return null;
+            }
+        }
+
+        OutsourcingCompany IHiringCompany.GetOutsourcingCompany(string name)
+        {
+            try
+            {
+                return proxy.GetOutsourcingCompany(name);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompany: \n{0}", e.Message);
                 return null;
             }
         }

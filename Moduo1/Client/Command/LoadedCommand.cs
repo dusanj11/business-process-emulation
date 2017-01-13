@@ -126,7 +126,7 @@ namespace Client.Command
             bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
 
             HiringCompany hCompany = ClientProxy.Instance.GetHiringCompany(threadId);
-            HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany((string)"OC1");
+            HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany("OC1");
 
 
             ClientProxy.Instance.AddPartnershipToDB(hCompany, oCompany);

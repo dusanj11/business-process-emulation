@@ -8,6 +8,7 @@ using System.Threading;
 using HiringCompanyData;
 using System.Net.Mail;
 using System.Collections.Generic;
+using WcfCommon;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -114,6 +115,7 @@ namespace HiringCompanyService
 
             ServiceHost serviceHost = new ServiceHost(typeof(HiringCompanyService));
             serviceHost.AddServiceEndpoint(typeof(IHiringCompany), binding, address);
+            serviceHost.AddServiceEndpoint(typeof(IHcContract), binding, address);
 
             serviceHost.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             serviceHost.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });

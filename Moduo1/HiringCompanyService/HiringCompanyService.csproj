@@ -93,6 +93,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WcfCommon">
+      <HintPath>..\WcfCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access\AccessDB.cs" />
@@ -122,10 +125,6 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EppContract\EppContract.csproj">
-      <Project>{5fecb40c-fb03-49a0-97d7-bc37efbdd29d}</Project>
-      <Name>EppContract</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HiringCompanyContract\HiringCompanyContract.csproj">
       <Project>{4949b216-6b3f-43d9-82a9-8993e81902ef}</Project>
       <Name>HiringCompanyContract</Name>

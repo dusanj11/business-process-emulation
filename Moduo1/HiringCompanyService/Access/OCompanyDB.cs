@@ -59,7 +59,7 @@ namespace HiringCompanyService.Access
             }
         }
 
-        public Object GetOutsourcingCompany(string name)
+        public OutsourcingCompany GetOutsourcingCompany(string name)
         {
             using (var access = new AccessDB())
             {

@@ -4,6 +4,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using WcfCommon;
 
 namespace HiringCompanyServiceTest
 {
@@ -25,7 +26,9 @@ namespace HiringCompanyServiceTest
 
         private Project projectTest;
 
-        private HiringCompanyData.OutsourcingCompany ocTest;
+        private WcfCommon.Data.OutsourcingCompany ocTest;
+
+        private OutsourcingCompany ocTestH;
 
         private bool AddOcTrue;
 
@@ -67,10 +70,16 @@ namespace HiringCompanyServiceTest
                 Description = "Project1 desc"
             };
 
-            ocTest = new HiringCompanyData.OutsourcingCompany()
+            ocTest = new WcfCommon.Data.OutsourcingCompany()
             {
                 Name = "OC1",
    
+            };
+
+            ocTestH = new OutsourcingCompany()
+            {
+                Name = "OC1",
+
             };
 
             #region EmployeeDB
@@ -230,7 +239,7 @@ namespace HiringCompanyServiceTest
 
             OCompanyDB.Instance = Substitute.For<IOCompanyDB>();
 
-            OCompanyDB.Instance.AddOutsourcingCompany(ocTest).Returns(true);
+            OCompanyDB.Instance.AddOutsourcingCompany(ocTestH).Returns(true);
 
             OCompanyDB.Instance.AddOutsourcingCompany(null).Returns(false);
 
