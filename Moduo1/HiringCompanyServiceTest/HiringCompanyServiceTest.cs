@@ -70,7 +70,7 @@ namespace HiringCompanyServiceTest
             ocTest = new OutsourcingCompany()
             {
                 Name = "OC1",
-                CompanyState = CompanyState.Accepted.ToString()
+   
             };
 
             #region EmployeeDB

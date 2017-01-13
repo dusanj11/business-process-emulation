@@ -15,21 +15,20 @@ namespace HiringCompanyData
         private int id;
         private String name;
         private List<Project> projects;
-        private string companyState;
         private List<Partnership> partnerships;
-
+        
 
         public OutsourcingCompany()
         {
             projects = new List<Project>();
-            CompanyState = HiringCompanyData.CompanyState.Requested.ToString();
+     
         }
 
         public OutsourcingCompany(String name)
         {
             this.name = name;
             this.projects = new List<Project>();
-            CompanyState = HiringCompanyData.CompanyState.Requested.ToString();
+
 
         }
 
@@ -37,7 +36,7 @@ namespace HiringCompanyData
         {
             this.name = name;
             this.projects = projects;
-            CompanyState = HiringCompanyData.CompanyState.Requested.ToString();
+    
 
         }
 
@@ -80,20 +79,7 @@ namespace HiringCompanyData
             }
         }
 
-        [DataMember]
-        public string CompanyState
-        {
-            get
-            {
-                return companyState;
-            }
-
-            set
-            {
-                companyState = value;
-            }
-        }
-
+      
         public override string ToString()
         {
             return "ID: " + this.id +

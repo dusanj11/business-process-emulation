@@ -40,7 +40,6 @@ namespace HiringCompanyService.Access
                 {
                     Partnership partnership = new Partnership();
                     partnership.HiringCompany = hc;
-                    oc.CompanyState = CompanyState.Accepted.ToString();
                     partnership.OutsourcingCompany = oc;
 
                     access.HcActions.Attach(partnership.HiringCompany);

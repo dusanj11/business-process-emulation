@@ -121,7 +121,7 @@ namespace Client.Command
 
             OutsourcingCompany oc = new OutsourcingCompany();
             oc.Name = "OC1";
-            oc.CompanyState = CompanyState.Requested.ToString();
+
 
             bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
 
