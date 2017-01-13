@@ -4,9 +4,6 @@ using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Client.ViewModel
 {
@@ -19,10 +16,7 @@ namespace Client.ViewModel
         private UserStory userStory;
         private List<UserStory> userStories;
 
-        
         private string description;
-
-
 
         public AcceptUserStoryCommand AcceptUserStoryCommand { get; set; }
         public RejectUserStoryCommand RejectUserStoryCommand { get; set; }
@@ -85,7 +79,16 @@ namespace Client.ViewModel
             set
             {
                 project = value;
-                UserStories = ClientProxy.Instance.GetProjectUserStory(Project.Name);
+
+                try
+                {
+                    UserStories = ClientProxy.Instance.GetProjectPendingUserStory(Project.Name);
+                }
+                catch (Exception e)
+                {
+                    UserStories = null;
+                }
+
                 OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Project"));
             }
         }
@@ -100,7 +103,16 @@ namespace Client.ViewModel
             set
             {
                 userStory = value;
-                Description = UserStory.Description;
+                try
+                {
+                    Description = UserStory.Description;
+
+                }
+                catch (Exception e)
+                {
+                    Description = "";
+                }
+
                 OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("UserStory"));
             }
         }
@@ -121,9 +133,6 @@ namespace Client.ViewModel
             }
         }
 
-      
-
-
         string IDefineUserStoriesViewModel.Description()
         {
             return Description;
@@ -143,7 +152,6 @@ namespace Client.ViewModel
         {
             return UserStory;
         }
-
 
         List<UserStory> IDefineUserStoriesViewModel.UserStories()
         {

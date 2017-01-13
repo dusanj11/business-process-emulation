@@ -229,5 +229,11 @@ namespace HiringCompanyService
             log.Info("GetProjectUserStory...");
             return ProjectDB.Instance.GetProjectUserStory(projectName);
         }
+
+        public List<UserStory> GetProjectPendingUserStory(string projectName)
+        {
+            log.Info("GetProjectPendingUserStory...");
+            return ProjectDB.Instance.GetProjectPendingUserStory(projectName);
+        }
     }
 }

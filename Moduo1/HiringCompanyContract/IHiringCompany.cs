@@ -73,6 +73,9 @@ namespace HiringCompanyContract
         [OperationContract]
         List<UserStory> GetProjectUserStory(string projectName);
 
+        [OperationContract]
+        List<UserStory> GetProjectPendingUserStory(string projectName);
+
         /// ************************************** TEST ************************************** 
 
         [OperationContract]

@@ -394,5 +394,18 @@ namespace Client
                 return null;
             }
         }
+
+        public List<UserStory> GetProjectPendingUserStory(string projectName)
+        {
+            try
+            {
+                return proxy.GetProjectPendingUserStory(projectName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetProjectPendingUserStory: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

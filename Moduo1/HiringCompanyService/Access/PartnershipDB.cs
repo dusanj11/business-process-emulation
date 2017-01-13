@@ -1,16 +1,12 @@
-﻿using System;
+﻿using HiringCompanyData;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiringCompanyData;
 using System.Data.Entity;
+using System.Linq;
 
 namespace HiringCompanyService.Access
 {
     public class PartnershipDB : IPartnershipDB
     {
-
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static IPartnershipDB myDB;
@@ -72,15 +68,14 @@ namespace HiringCompanyService.Access
 
         public List<OutsourcingCompany> GetPartnerOc(int hiringCompany)
         {
-
             log.Debug("Enter GetPartnerOc method.");
             using (var access = new AccessDB())
             {
                 List<OutsourcingCompany> ret = new List<OutsourcingCompany>();
-         
+
                 //var part = access.PrartnershipAction.Include("HiringCompany").Include("OutsourcingCompany");
                 var partnership = access.PrartnershipAction.Include(x => x.HiringCompany).Include(x => x.OutsourcingCompany);
-                
+
                 foreach (var pr in partnership)
                 {
                     if (pr.HiringCompany.CompanyIdThr.Equals(hiringCompany))
@@ -88,7 +83,6 @@ namespace HiringCompanyService.Access
                         OutsourcingCompany oc = pr.OutsourcingCompany;
                         oc.Partnerships = null;
                         ret.Add(oc);
-                       
                     }
                 }
                 if (ret.Count == 0)
@@ -99,7 +93,7 @@ namespace HiringCompanyService.Access
                 {
                     log.Info("Successfully returned list of outsourcing companyes.");
                 }
-               
+
                 return ret;
             }
         }
@@ -114,24 +108,32 @@ namespace HiringCompanyService.Access
                 oc = GetPartnerOc(hiringCompanyTr);
                 var allProjectList = access.PrActions.Include(x => x.Company);
 
-                foreach (var ocItem in oc)
+                //List<Project> projects = allProjectList as List<Project>;
+
+                //foreach (var ocItem in allProjectList)
+                //{
+                foreach (var o in oc)
                 {
-                    var project = access.PrActions.Include(x => x.Company).FirstOrDefault(f => f.Company.Id.Equals(ocItem.Id));
-                    Project p = new Project();
-                    p.Name = project.Name;
-                    p.Id = project.Id;
-                    p.ProjectState = p.ProjectState;
-                    p.Description = p.Description;
+                    //var project = access.PrActions.Include(x => x.Company).FirstOrDefault(f => f.Company.Id.Equals(o.Id));
+                    foreach (Project pr in allProjectList)
+                    {
+                        if(pr.Company.Id.Equals(o.Id))
+                        {
+                            Project p = new Project();
+                            p.Name = pr.Name;
+                            p.Id = pr.Id;
+                            p.ProjectState = pr.ProjectState;
+                            p.Description = pr.Description;
 
-
-                    ret.Add(p);
-
+                            ret.Add(p);
+                        }
+                    }
+                    
                 }
 
                 if (ret.Count == 0)
                 {
                     log.Warn("No project to return");
-                    
                 }
                 else
                 {
