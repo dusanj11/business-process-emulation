@@ -98,7 +98,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\AcceptUserStoryCommandTest.cs" />
     <Compile Include="Command\AddEmployeeCommandTest.cs" />
+    <Compile Include="Command\ChangePasswordCommandTest.cs" />
+    <Compile Include="Command\CreateProjectCommandTest.cs" />
+    <Compile Include="Command\DefineUserStoriesCommandTest.cs" />
+    <Compile Include="Command\EditPersonalDataCommandTest.cs" />
     <Compile Include="Command\EditPositionCommandTest.cs" />
     <Compile Include="Command\LoadedCommandTest.cs" />
     <Compile Include="Command\LogOutCommandTest.cs" />
