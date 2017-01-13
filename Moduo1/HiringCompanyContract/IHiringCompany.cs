@@ -70,6 +70,9 @@ namespace HiringCompanyContract
         [OperationContract]
         bool ChangeUserStoryState(int id, UserStoryState state);
 
+        [OperationContract]
+        List<UserStory> GetProjectUserStory(string projectName);
+
         /// ************************************** TEST ************************************** 
 
         [OperationContract]

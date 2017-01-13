@@ -223,5 +223,11 @@ namespace HiringCompanyService
             log.Info("ChangeUserStoryState...");
             return UserStoryDB.Instance.ChangeUserStoryState(id, state);
         }
+
+        public List<UserStory> GetProjectUserStory(string projectName)
+        {
+            log.Info("GetProjectUserStory...");
+            return ProjectDB.Instance.GetProjectUserStory(projectName);
+        }
     }
 }

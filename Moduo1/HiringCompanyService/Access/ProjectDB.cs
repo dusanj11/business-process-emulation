@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HiringCompanyData;
+using System.Data.Entity;
 
 namespace HiringCompanyService.Access
 {
@@ -95,10 +96,9 @@ namespace HiringCompanyService.Access
         {
 
             log.Debug("Enter GetProjects method.");
-            List<Project> ret = new List<Project>();
-
             using (var access = new AccessDB())
             {
+                List<Project> ret = new List<Project>();
                 foreach (var pr in access.PrActions)
                 {
                     ret.Add(pr);
@@ -106,6 +106,35 @@ namespace HiringCompanyService.Access
 
                 log.Info("Successfully returned list of projects.");
                 return ret;
+            }
+        }
+
+        public List<UserStory> GetProjectUserStory(string projectName)
+        {
+            using (var access = new AccessDB())
+            {
+                List<UserStory> ret = new List<UserStory>();
+
+                var userStories = access.UsAction.Include(x => x.Project);
+
+                foreach (var us in userStories)
+                {
+                    if (us.Project.Name.Equals(projectName))
+                    {
+                        UserStory userStory = new UserStory();
+                        userStory.Description = us.Description;
+                        userStory.Id = us.Id;
+                        userStory.Name = us.Name;
+                        userStory.Progress = us.Progress;
+                        userStory.UserStoryState = us.UserStoryState;
+                        userStory.WeightOfUserStory = us.WeightOfUserStory;
+
+                        ret.Add(userStory);
+                    }
+                }
+
+                log.Info("Successfully returned user stories for given project.");
+                return ret; 
             }
         }
     }

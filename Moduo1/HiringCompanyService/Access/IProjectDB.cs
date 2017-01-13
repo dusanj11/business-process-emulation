@@ -14,5 +14,7 @@ namespace HiringCompanyService.Access
         List<Project> GetProjects();
 
         Project GetProject(string name);
+
+        List<UserStory> GetProjectUserStory(string projectName);
     }
 }

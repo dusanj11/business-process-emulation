@@ -381,5 +381,18 @@ namespace Client
                 return false;
             }
         }
+
+        public List<UserStory> GetProjectUserStory(string projectName)
+        {
+            try
+            {
+                return proxy.GetProjectUserStory(projectName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: ChangeUserStoryState: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

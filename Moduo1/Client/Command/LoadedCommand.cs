@@ -32,7 +32,7 @@ namespace Client.Command
                     log.Debug("proxy poziv - AddHiringCompany");
                     ClientProxy.Instance.AddHiringCompany(company);
 
-
+                    
                     //LoadDB(threadId);
                     
 
