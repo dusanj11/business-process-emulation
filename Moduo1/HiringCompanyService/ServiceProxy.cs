@@ -51,11 +51,11 @@ namespace HiringCompanyService
             factory.Close();
         }
 
-        public bool SendOcRequest(string outsourcingCompany)
+        public bool SendOcRequest(int outsourcingCompanyIdFromDB, HiringCompany hiringCompany)
         {
             try
             {
-                return proxy.SendOcRequest(outsourcingCompany);
+                return proxy.SendOcRequest( outsourcingCompanyIdFromDB,  hiringCompany);
             }
             catch (Exception e)
             {
@@ -90,11 +90,11 @@ namespace HiringCompanyService
             }
         }
 
-        public List<UserStory> GetUserStoryes(string outsourcingCompany, string project)
+        public List<UserStory> GetUserStoryes(int outsourcingCompanyIdFromDB, string projectName)
         {
             try
             {
-                return proxy.GetUserStoryes(outsourcingCompany, project);
+                return proxy.GetUserStoryes( outsourcingCompanyIdFromDB,  projectName);
             }
             catch (Exception e)
             {

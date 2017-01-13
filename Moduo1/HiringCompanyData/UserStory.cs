@@ -96,12 +96,10 @@ namespace HiringCompanyData
 
         public override string ToString()
         {
-            return "ID: " + this.id +
+            return
                    " Name: " + this.name +
-                   " Progress: " + this.progress.ToString() +
-                   " Description: " + this.description +
-                   " Weight: " + this.weightOfUserStory.ToString() +
-                   " State: " + this.userStoryState.ToString();
+                   " Weight: " + this.weightOfUserStory.ToString();
+            
         }
     }
 }

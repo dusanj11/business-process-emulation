@@ -9,9 +9,9 @@ namespace HiringCompanyService.Access
 {
     public interface IPartnershipDB
     {
-        List<OutsourcingCompany> GetPartnerOc(int hiringCompany);
+        List<HiringCompanyData.OutsourcingCompany> GetPartnerOc(int hiringCompany);
 
-        bool AddPartnership(HiringCompany hc, OutsourcingCompany oc);
+        bool AddPartnership(HiringCompany hc, HiringCompanyData.OutsourcingCompany oc);
 
         List<Project> GetPartnershipProjects(int hiringCompanyTr);
     }

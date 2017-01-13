@@ -144,9 +144,9 @@ namespace Client.ViewModel
             }
         }
 
-        private ObservableCollection<OutsourcingCompany> ocResources = new ObservableCollection<OutsourcingCompany>();
+        private ObservableCollection<HiringCompanyData.OutsourcingCompany> ocResources = new ObservableCollection<HiringCompanyData.OutsourcingCompany>();
 
-        public ObservableCollection<OutsourcingCompany> OcResources
+        public ObservableCollection<HiringCompanyData.OutsourcingCompany> OcResources
         {
             get
             {
@@ -156,8 +156,48 @@ namespace Client.ViewModel
             set
             {
                 ocResources = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("OcResources"));
             }
         }
+
+        private ObservableCollection<UserStory> usResources = new ObservableCollection<UserStory>();
+
+        public ObservableCollection<UserStory> UsResources
+        {
+            get
+            {
+                return usResources;
+            }
+
+            set
+            {
+                usResources = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("UsResources"));
+            }
+        }
+
+        private Project selectedProject;
+
+        public Project SelectedProject
+        {
+            get
+            {
+                return selectedProject;
+            }
+
+            set
+            {
+                selectedProject = value;
+                List<UserStory> list = ClientProxy.Instance.GetProjectUserStory(SelectedProject.Name);
+                foreach (UserStory l in list)
+                {
+                    UsResources.Add(l);
+                }
+                //UsResources = new ObservableCollection<UserStory>(list);
+                OnPropertyChanged(new PropertyChangedEventArgs("SelectedProject"));
+            }
+        }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -181,9 +221,6 @@ namespace Client.ViewModel
         public EditPositionCommand EditPositionCommand { get; set; }
 
        
-
-
-
 
         /// <summary>
         /// private constructor
@@ -381,7 +418,7 @@ namespace Client.ViewModel
             }
             View.ShowProjectsView showProjectView = new View.ShowProjectsView();
             showProjectView.projectsDataGrid.ItemsSource = PrResources;
-
+            showProjectView.userStoriesProjectsDataGrid.ItemsSource = UsResources;
             CDialog.MainWindowDockPanel.Children.Add(showProjectView);
         }
 
@@ -488,12 +525,12 @@ namespace Client.ViewModel
             CDialog = clientDialog;
         }
 
-        ObservableCollection<OutsourcingCompany> IClientDialogViewModel.OcResources()
+        ObservableCollection<HiringCompanyData.OutsourcingCompany> IClientDialogViewModel.OcResources()
         {
             return OcResources;
         }
 
-        void IClientDialogViewModel.OcResources(ObservableCollection<OutsourcingCompany> ocResources)
+        void IClientDialogViewModel.OcResources(ObservableCollection<HiringCompanyData.OutsourcingCompany> ocResources)
         {
             OcResources = ocResources;
         }

@@ -62,7 +62,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteTest()
         {
-            Assert.DoesNotThrow(() => { saveWorkingHoursCommandUnderTest.CanExecute(new Object()); });
+            Assert.DoesNotThrow(() => { saveWorkingHoursCommandUnderTest.CanExecute(new System.Object()); });
         }
 
         [Test]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,13 @@ namespace Client.View
         public ShowProjectsView()
         {
             InitializeComponent();
+            this.DataContext = ClientDialogViewModel.Instance;
         }
 
         private void ProjectsDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
         }
+
     }
 }

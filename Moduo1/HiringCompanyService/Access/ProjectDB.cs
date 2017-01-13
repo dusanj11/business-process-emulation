@@ -137,5 +137,34 @@ namespace HiringCompanyService.Access
                 return ret; 
             }
         }
+
+        public List<UserStory> GetProjectPendingUserStory(string projectName)
+        {
+            using (var access = new AccessDB())
+            {
+                List<UserStory> ret = new List<UserStory>();
+
+                var userStories = access.UsAction.Include(x => x.Project);
+
+                foreach (var us in userStories)
+                {
+                    if (us.Project.Name.Equals(projectName) && us.UserStoryState.Equals(UserStoryState.Pending))
+                    {
+                        UserStory userStory = new UserStory();
+                        userStory.Description = us.Description;
+                        userStory.Id = us.Id;
+                        userStory.Name = us.Name;
+                        userStory.Progress = us.Progress;
+                        userStory.UserStoryState = us.UserStoryState;
+                        userStory.WeightOfUserStory = us.WeightOfUserStory;
+
+                        ret.Add(userStory);
+                    }
+                }
+
+                log.Info("Successfully returned user stories for given project.");
+                return ret;
+            }
+        }
     }
 }

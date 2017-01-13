@@ -38,7 +38,7 @@
         </Label>
         <Grid Grid.Row="3" Grid.Column="0">
             <!--PROVERITI ZA COMBOBOX-->
-            <ComboBox Name="choseUSTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" SelectedItem="{Binding Path=UserStory}">
+            <ComboBox Name="choseUSTxt" Margin="50,0,50,2" IsEditable="False" Style="{StaticResource StyleComboBox}" ItemsSource="{Binding UserStories}"  SelectedItem="{Binding Path=UserStory}">
             </ComboBox>
         </Grid>
         <Button Name="approveUSBtn" Grid.Row="4" Grid.Column="0" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding AcceptUserStoryCommand}" Width="Auto">
@@ -62,9 +62,7 @@
             </Button.Template>
         </Button>
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
-            <TextBox Name="descriptionUS" Grid.Row="1" Grid.Column="1" IsEnabled="False"  Grid.RowSpan="3" Text="{Binding Path=Description}">
-
-            </TextBox>
+            <TextBox Name="descriptionUS" IsEnabled="False" Text="{Binding Path=Description}"/>
         </Grid>
     </Grid>
 </UserControl>

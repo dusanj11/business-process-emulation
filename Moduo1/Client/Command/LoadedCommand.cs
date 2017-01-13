@@ -33,7 +33,7 @@ namespace Client.Command
                     ClientProxy.Instance.AddHiringCompany(company);
 
                     
-                    //LoadDB(threadId);
+                    LoadDB(threadId);
                     
 
                 }
@@ -119,14 +119,14 @@ namespace Client.Command
 
             ClientProxy.Instance.AddEmployee(testEmp4);
 
-            OutsourcingCompany oc = new OutsourcingCompany();
+            HiringCompanyData.OutsourcingCompany oc = new HiringCompanyData.OutsourcingCompany();
             oc.Name = "OC1";
-            oc.CompanyState = CompanyState.Requested.ToString();
+
 
             bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
 
             HiringCompany hCompany = ClientProxy.Instance.GetHiringCompany(threadId);
-            OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany("OC1");
+            HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany((string)"OC1");
 
 
             ClientProxy.Instance.AddPartnershipToDB(hCompany, oCompany);
@@ -146,6 +146,21 @@ namespace Client.Command
 
             ClientProxy.Instance.AddProjectDefinition(p);
 
+            Project p2 = new Project();
+            p2.Name = "P2";
+            p2.Description = "Opis projekta 2";
+            p2.Company = oCompany;
+            p2.EndDate = DateTime.Now;
+            p2.Ended = false;
+            p2.HiringCompany = hCompany;
+            p2.ProductOwner = ClientProxy.Instance.GetEmployee("naci", "naci");
+            p2.Progress = 40;
+            p2.ProjectState = ProjectState.Accepted;
+            p2.StartDate = DateTime.Now;
+            p2.Team = null;
+
+            ClientProxy.Instance.AddProjectDefinition(p2);
+
             UserStory us1 = new UserStory();
             us1.Description = "Opis Us1";
             us1.Name = "US1";
@@ -155,8 +170,25 @@ namespace Client.Command
 
             ClientProxy.Instance.AddUserStory(us1);
 
-            
-            
+            UserStory us2_1 = new UserStory();
+            us2_1.Description = "Opis Us2_1";
+            us2_1.Name = "US2_1";
+            us2_1.Progress = 50;
+            us2_1.Project = ClientProxy.Instance.GetProject("P2");
+            us2_1.UserStoryState = UserStoryState.Pending;
+
+            ClientProxy.Instance.AddUserStory(us2_1);
+
+            UserStory us2_2 = new UserStory();
+            us2_2.Description = "Opis Us2_2";
+            us2_2.Name = "US2_2";
+            us2_2.Progress = 50;
+            us2_2.Project = ClientProxy.Instance.GetProject("P2");
+            us2_2.UserStoryState = UserStoryState.Pending;
+
+            ClientProxy.Instance.AddUserStory(us2_2);
+
+
         }
     }
 }

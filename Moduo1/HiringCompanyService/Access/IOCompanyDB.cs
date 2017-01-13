@@ -9,8 +9,8 @@ namespace HiringCompanyService.Access
 {
     public interface IOCompanyDB
     {
-        bool AddOutsourcingCompany(OutsourcingCompany oCompany);
+        bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oCompany);
 
-        OutsourcingCompany GetOutsourcingCompany(string name);
+        Object GetOutsourcingCompany(string name);
     }
 }

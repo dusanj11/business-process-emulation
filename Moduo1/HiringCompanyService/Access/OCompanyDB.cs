@@ -33,11 +33,11 @@ namespace HiringCompanyService.Access
             }
         }
 
-        public bool AddOutsourcingCompany(OutsourcingCompany oCompany)
+        public bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oCompany)
         {
             using (var access = new AccessDB())
             {
-                OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Id.Equals(oCompany.Id));
+                HiringCompanyData.OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Id.Equals(oCompany.Id));
                 if (oc == null)
                 {
                     access.OcActions.Add(oCompany);
@@ -59,11 +59,11 @@ namespace HiringCompanyService.Access
             }
         }
 
-        public OutsourcingCompany GetOutsourcingCompany(string name)
+        public Object GetOutsourcingCompany(string name)
         {
             using (var access = new AccessDB())
             {
-                OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Name.Equals(name));
+                HiringCompanyData.OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Name.Equals(name));
 
                 if(oc == null)
                 {

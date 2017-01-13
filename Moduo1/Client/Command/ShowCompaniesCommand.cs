@@ -13,9 +13,9 @@ namespace Client.Command
 {
     public class ShowCompaniesCommand : ICommand
     {
-        private ObservableCollection<OutsourcingCompany> resources = new ObservableCollection<OutsourcingCompany>();
+        private ObservableCollection<HiringCompanyData.OutsourcingCompany> resources = new ObservableCollection<HiringCompanyData.OutsourcingCompany>();
 
-        public ObservableCollection<OutsourcingCompany> Resources
+        public ObservableCollection<HiringCompanyData.OutsourcingCompany> Resources
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            List<OutsourcingCompany> OCResources = new List<OutsourcingCompany>();
+            List<HiringCompanyData.OutsourcingCompany> OCResources = new List<HiringCompanyData.OutsourcingCompany>();
 
             if (resources.Count != 0)
             {
@@ -47,7 +47,7 @@ namespace Client.Command
             }
             OCResources = ClientProxy.Instance.GetPartnershipOc(Thread.CurrentThread.ManagedThreadId);
 
-            foreach (OutsourcingCompany oc in OCResources)
+            foreach (HiringCompanyData.OutsourcingCompany oc in OCResources)
             {
                 Resources.Add(oc);
             }

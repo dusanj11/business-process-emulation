@@ -59,7 +59,7 @@ namespace HiringCompanyClientTest.Command
         [Test]
         public void CanExecuteTest()
         {
-            Assert.DoesNotThrow(() => { savePersonalDataCommandUnderTest.CanExecute(new Object()); });
+            Assert.DoesNotThrow(() => { savePersonalDataCommandUnderTest.CanExecute(new System.Object()); });
         }
 
         [Test]

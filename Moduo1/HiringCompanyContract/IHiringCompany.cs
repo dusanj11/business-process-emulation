@@ -73,18 +73,21 @@ namespace HiringCompanyContract
         [OperationContract]
         List<UserStory> GetProjectUserStory(string projectName);
 
+        [OperationContract]
+        List<UserStory> GetProjectPendingUserStory(string projectName);
+
         /// ************************************** TEST ************************************** 
 
         [OperationContract]
-        bool AddPartnershipToDB(HiringCompany hc, OutsourcingCompany oc);
+        bool AddPartnershipToDB(HiringCompany hc, HiringCompanyData.OutsourcingCompany oc);
 
         [OperationContract]
-        List<OutsourcingCompany> GetPartnershipOc(int hiringCompany);
+        List<HiringCompanyData.OutsourcingCompany> GetPartnershipOc(int hiringCompany);
 
         [OperationContract]
-        bool AddOutsourcingCompany(OutsourcingCompany oc);
+        bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc);
 
         [OperationContract]
-        OutsourcingCompany GetOutsourcingCompany(string name);
+        Object GetOutsourcingCompany(string name);
     }
 }

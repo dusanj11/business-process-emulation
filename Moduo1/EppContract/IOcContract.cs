@@ -13,7 +13,7 @@ namespace EppContract
     {
         // HC poziva metodu da posalje zahtev za partnerstvo
         [OperationContract]
-        bool SendOcRequest(string outsourcingCompany);
+        bool SendOcRequest(int outsourcingCompanyIdFromDB, HiringCompany hiringCompany);
 
         // HC poziva metodu da posalje projekat 
         [OperationContract]
@@ -25,6 +25,6 @@ namespace EppContract
 
         // HC poziva metodu da dobije US odgovarajuce OC i projekta koji realizuje 
         [OperationContract]
-        List<UserStory> GetUserStoryes(string outsourcingCompany, string project);
+        List<UserStory> GetUserStoryes(int outsourcingCompanyIdFromDB, string projectName);
     }
 }
