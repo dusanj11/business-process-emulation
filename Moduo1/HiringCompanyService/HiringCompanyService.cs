@@ -4,6 +4,7 @@ using HiringCompanyService.Access;
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Net.Sockets;
 using System.ServiceModel;
 using WcfCommon;
 
@@ -301,6 +302,16 @@ namespace HiringCompanyService
             hc_data.IdFromHiringCompanyDB = hiringCompany.IDHc;
             hc_data.Name = hiringCompany.Name;
 
+            TcpClient tc = null;
+            try
+            {
+                tc = new TcpClient("10.1.212.109", 9091);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
             bool ret = ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
 
             if (ret)
@@ -326,6 +337,16 @@ namespace HiringCompanyService
             pr_data.Name = project.Name;
             pr_data.Progress = project.Progress;
             pr_data.StartDate = project.StartDate;
+
+            TcpClient tc = null;
+            try
+            {
+                tc = new TcpClient("10.1.212.109", 9091);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
             bool ret = ServiceProxy.Instance.SendProject(hiringCompanyID, outsourcingCompanyId, pr_data);
 
@@ -372,6 +393,18 @@ namespace HiringCompanyService
         {
             List<WcfCommon.Data.Project> projects = new List<WcfCommon.Data.Project>();
 
+            TcpClient tc = null;
+            try
+            {
+                tc = new TcpClient("10.1.212.109", 9091);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+
             try
             {
                 projects = ServiceProxy.Instance.GetProjects(hiringCompanyId);
@@ -407,6 +440,17 @@ namespace HiringCompanyService
         public bool GetUserStories(string projectName)
         {
             List<WcfCommon.Data.UserStory> userStories_common = new List<WcfCommon.Data.UserStory>();
+
+            TcpClient tc = null;
+            try
+            {
+                tc = new TcpClient("10.1.212.109", 9091);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
 
             try
             {
@@ -538,6 +582,16 @@ namespace HiringCompanyService
             }
 
             us_common.WeightOfUserStory = userStory.WeightOfUserStory;
+
+            TcpClient tc = null;
+            try
+            {
+                tc = new TcpClient("10.1.212.109", 9091);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
             bool ret = ServiceProxy.Instance.SendUserStory(us_common);
 
