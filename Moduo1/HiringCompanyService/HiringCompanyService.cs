@@ -494,6 +494,7 @@ namespace HiringCompanyService
             us_common.Id = userStory.IdFromOcDB;
             us_common.Name = userStory.Name;
             us_common.Progress = userStory.Progress;
+            us_common.Description = userStory.Description;
 
             switch (userStory.UserStoryState)
             {
