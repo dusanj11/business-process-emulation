@@ -494,6 +494,7 @@ namespace HiringCompanyService
             us_common.Id = userStory.IdFromOcDB;
             us_common.Name = userStory.Name;
             us_common.Progress = userStory.Progress;
+            us_common.Description = userStory.Description;
 
             switch (userStory.UserStoryState)
             {
@@ -550,6 +551,12 @@ namespace HiringCompanyService
             }
 
             return ret;
+        }
+
+        public UserStory GetUserStoryFromId(int id)
+        {
+            log.Info("Successfully get user story from DB.");
+            return UserStoryDB.Instance.GetUserStoryFromId(id);
         }
     }
 }

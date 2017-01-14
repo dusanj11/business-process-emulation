@@ -122,5 +122,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool SendUserStoryToOc(UserStory userStory);
+
+        [OperationContract]
+        UserStory GetUserStoryFromId(int id);
     }
 }

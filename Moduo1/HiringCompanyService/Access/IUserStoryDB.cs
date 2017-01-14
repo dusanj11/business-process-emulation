@@ -14,5 +14,7 @@ namespace HiringCompanyService.Access
         bool AddUserStory(UserStory us);
 
         bool ChangeUserStoryState(int id, UserStoryState state);
+
+        UserStory GetUserStoryFromId(int id);
     }
 }
