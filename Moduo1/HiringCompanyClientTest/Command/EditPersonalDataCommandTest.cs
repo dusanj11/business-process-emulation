@@ -1,4 +1,8 @@
 ﻿using Client.Command;
+using Client.ViewModel;
+using Client.ViewModelInterfaces;
+using HiringCompanyContract;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -25,7 +29,9 @@ namespace HiringCompanyClientTest.Command
             this.editPersonalDataCommandUnderTest = new EditPersonalDataCommand();
             this.editPersonalDataCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
-
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ClientDialogViewModel.Instance.LogInUser().Username.Returns("dule");
+            ClientDialogViewModel.Instance.LogInUser().Password.Returns("dule");
 
         }
 

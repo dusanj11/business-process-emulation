@@ -22,7 +22,7 @@ namespace Client.Command
             AddNewEmployeeViewModel.Instance.NewEmployee().StartTime = string.Empty;
             AddNewEmployeeViewModel.Instance.NewEmployee().EndTime = string.Empty;
             AddNewEmployeeViewModel.Instance.NewEmployee().Position = string.Empty;
-
+            AddNewEmployeeViewModel.Instance.NewEmployee().Email = string.Empty;
             ClientDialogViewModel.Instance.ShowAddEmployeeView();
         }
     }

@@ -53,6 +53,12 @@
             <TextBox Name="passwordTxt" Grid.Row="7" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Password}">
             </TextBox>
         </Grid>
+        <Label Name="emailLb" Grid.Row="6" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="23,1,-13,0">
+            Email:
+        </Label>
+        <Grid Grid.Row="7" Grid.Column="1"  DataContext="{Binding NewEmployee}">
+            <TextBox Name="emailTxt" Grid.Column="0" Style="{StaticResource StyleTextBox}" Text="{Binding Path=Email}" Margin="21,0,-12,1"/>
+        </Grid>
         <Label Name="startTimeLb" Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleLabel}" Margin="19,0,-16,2">
             Početak radnog vremena u:
         </Label>
@@ -99,7 +105,7 @@
                 <ComboBoxItem FontSize="14">HR</ComboBoxItem>
             </ComboBox>
         </Grid>
-        <Button Name="saveEmployeeBtn" Grid.Row="7" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding SaveNewEmployeeCommand}" Width="Auto">
+        <Button Name="saveEmployeeBtn" Grid.Row="8" Grid.Column="1" Style="{StaticResource StyleButton}"  Margin="19,1,-13,2" Command="{Binding SaveNewEmployeeCommand}" Width="Auto">
             <Button.Template>
                 <ControlTemplate>
                     <Border Style="{StaticResource StyleSaveButtonBorder}">
