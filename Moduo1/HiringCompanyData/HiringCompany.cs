@@ -28,6 +28,7 @@ namespace HiringCompanyData
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDHc { get; set; }
 
+        [DataMember]
         public string Name
         {
             get
