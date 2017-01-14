@@ -45,7 +45,12 @@ namespace Client.Command
             {
                 resources.Clear();
             }
-            OCResources = ClientProxy.Instance.GetPartnershipOc(Thread.CurrentThread.ManagedThreadId);
+
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+            OCResources = ClientProxy.Instance.GetPartnershipOc(hiringCompanyId);
 
             foreach (HiringCompanyData.OutsourcingCompany oc in OCResources)
             {
