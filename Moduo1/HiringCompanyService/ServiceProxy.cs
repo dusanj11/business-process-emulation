@@ -20,7 +20,13 @@ namespace HiringCompanyService
             {
                 if (proxy == null)
                 {
-                    factory = new ChannelFactory<IOcContract>(new NetTcpBinding(), new EndpointAddress(address));
+                    NetTcpBinding binding = new NetTcpBinding();
+                    binding.OpenTimeout = new TimeSpan(0, 10, 0);
+                    binding.CloseTimeout = new TimeSpan(0, 10, 0);
+                    binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
+                    binding.SendTimeout = new TimeSpan(0, 10, 0);
+
+                    factory = new ChannelFactory<IOcContract>(binding, new EndpointAddress(address));
                     proxy = factory.CreateChannel();
                 }
 
