@@ -551,5 +551,11 @@ namespace HiringCompanyService
 
             return ret;
         }
+
+        public UserStory GetUserStoryFromId(int id)
+        {
+            log.Info("Successfully get user story from DB.");
+            return UserStoryDB.Instance.GetUserStoryFromId(id);
+        }
     }
 }

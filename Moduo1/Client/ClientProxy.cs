@@ -538,5 +538,18 @@ namespace Client
                 return false;
             }
         }
+
+        public UserStory GetUserStoryFromId(int id)
+        {
+            try
+            {
+                return proxy.GetUserStoryFromId(id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetHcIdForUser: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

@@ -102,5 +102,15 @@ namespace HiringCompanyService.Access
                 return ret;
             }
         }
+
+        public UserStory GetUserStoryFromId(int id)
+        {
+            using (var access = new AccessDB())
+            {
+                UserStory us = access.UsAction.FirstOrDefault(f => f.Id == id);
+
+                return us;
+            }
+        }
     }
 }

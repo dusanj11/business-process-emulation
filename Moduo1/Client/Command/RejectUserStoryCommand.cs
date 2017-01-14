@@ -28,7 +28,9 @@ namespace Client.Command
             //PROXY POZIV KA UPDATE USER STORY - verovatno na osnovu samo id-a. 
             ClientProxy.Instance.ChangeUserStoryState(userStory.Id, userStory.UserStoryState);
 
-            ClientProxy.Instance.SendUserStoryToOc(userStory);
+            UserStory us = ClientProxy.Instance.GetUserStoryFromId(userStory.Id);
+
+            ClientProxy.Instance.SendUserStoryToOc(us);
         }
     }
 }
