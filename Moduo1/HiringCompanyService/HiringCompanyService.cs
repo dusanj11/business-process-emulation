@@ -147,16 +147,11 @@ namespace HiringCompanyService
         }
 
 
-        public bool AcceptPartnership(HiringCompanyData.OutsourcingCompany oc)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HiringCompanyData.UserStory> GetUserStoryes(string projectName)
-        {
-            log.Info("Successfully returned User storyes for defined project name");
-            return UserStoryDB.Instance.GetUserStory(projectName);
-        }
+        //public List<HiringCompanyData.UserStory> GetUserStoryes(string projectName)
+        //{
+        //    log.Info("Successfully returned User storyes for defined project name");
+        //    return UserStoryDB.Instance.GetUserStory(projectName);
+        //}
 
         public bool AddPartnershipToDB(HiringCompanyData.HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
         {
@@ -246,8 +241,16 @@ namespace HiringCompanyService
         {
 
             HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
-            oc_data.IdFromOutSourcingDB = oc.Id;
-            oc_data.Name = oc.Name;
+            try
+            {
+                oc_data.IdFromOutSourcingDB = oc.Id;
+                oc_data.Name = oc.Name;
+            }
+            catch (Exception e)
+            {
+                log.Error("Attempt to register outsourcing company that doesn't have Id or Name.");
+                return false;
+            }
            
 
             bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc_data);
@@ -276,14 +279,14 @@ namespace HiringCompanyService
             return PartnershipDB.Instance.AddPartnership(hc_data, oc_data);
         }
 
-        List<WcfCommon.Data.UserStory> IHcContract.GetUserStoryes(string projectName)
+        public List<WcfCommon.Data.UserStory> GetUserStoryes(string projectName)
         {
             log.Info("Successfully returned User storyes for defined project name");
-            List<HiringCompanyData.UserStory> userStories =  UserStoryDB.Instance.GetUserStory(projectName);
+            List<HiringCompanyData.UserStory> userStories = UserStoryDB.Instance.GetUserStory(projectName);
 
             List<WcfCommon.Data.UserStory> retval = new List<WcfCommon.Data.UserStory>();
 
-           
+
 
             foreach (HiringCompanyData.UserStory us in userStories)
             {
@@ -328,6 +331,8 @@ namespace HiringCompanyService
             return ret;
         }
 
+
+
         public bool SendProjectRequest(int hiringCompanyID, int outsourcingCompanyId, HiringCompanyData.Project project)
         {
             WcfCommon.Data.Project pr_data = new WcfCommon.Data.Project();
@@ -358,6 +363,16 @@ namespace HiringCompanyService
         {
             log.Info("MarkProjectEnded");
             return ProjectDB.Instance.MarkProjectEnded(p);
+        }
+
+        public bool AcceptProject(string projectName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RejectProject(string projectName)
+        {
+            throw new NotImplementedException();
         }
     }
 }
