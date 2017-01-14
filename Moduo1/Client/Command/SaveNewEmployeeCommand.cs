@@ -30,7 +30,13 @@ namespace Client.Command
             employee.Position = newEmp.Position;
             employee.PasswordUpadateDate = DateTime.Now;
 
-            employee.HiringCompanyId = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+
+            employee.HiringCompanyId = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
 
             bool ret = ClientProxy.Instance.AddEmployee(employee);
 

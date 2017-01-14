@@ -25,7 +25,12 @@ namespace Client.Command
 
             Project pr = SendRequestProjectViewModel.Instance.Project();
 
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
 
 
             ClientProxy.Instance.SendProjectRequest(hc.IDHc, oc.IdFromOutSourcingDB, pr);

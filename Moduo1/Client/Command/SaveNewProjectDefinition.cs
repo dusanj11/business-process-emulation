@@ -30,7 +30,11 @@ namespace Client.Command
 
             project.ProductOwner = productOwner;
 
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
             project.HiringCompany = hc;
             ClientProxy.Instance.AddProjectDefinition(project);
         }

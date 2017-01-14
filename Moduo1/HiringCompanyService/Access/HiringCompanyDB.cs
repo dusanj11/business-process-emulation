@@ -63,7 +63,7 @@ namespace HiringCompanyService.Access
             log.Debug("Enter GetCompany method.");
             using (var acces = new AccessDB())
             {
-                HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.CompanyIdThr == id);
+                HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.IDHc == id);
 
                 if (cm != null)
                 {

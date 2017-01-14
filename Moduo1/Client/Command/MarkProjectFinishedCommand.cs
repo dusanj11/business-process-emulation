@@ -43,8 +43,13 @@ namespace Client.Command
                 Resources.Clear();
             }
 
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
-            int hiringCompanyId = hc.IDHc;
+
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
+            //int hiringCompanyId = hc.IDHc;
             List<Project> list = ClientProxy.Instance.GetProjectsForHc(hiringCompanyId);
 
             foreach (Project p in list)

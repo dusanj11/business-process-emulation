@@ -22,7 +22,11 @@ namespace Client.Command
         {
             OutsourcingCompany oc = SendRequestCompanyViewModel.Instance.Company();
 
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(Thread.CurrentThread.ManagedThreadId);
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
 
             ClientProxy.Instance.SendPartnershipRequest(oc.IdFromOutSourcingDB, hc);
 
