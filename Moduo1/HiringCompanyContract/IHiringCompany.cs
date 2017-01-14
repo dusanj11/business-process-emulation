@@ -119,5 +119,8 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool GetOutsourcingCompanyProjects(int hiringCompanyId);
+
+        [OperationContract]
+        bool SendUserStoryToOc(UserStory userStory);
     }
 }

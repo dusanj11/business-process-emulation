@@ -6,15 +6,12 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using System.ServiceModel;
 using WcfCommon;
-using WcfCommon.Data;
 
 namespace HiringCompanyService
 {
     public class HiringCompanyService : IHiringCompany, IHcContract
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-   
 
         public List<Employee> GetAllEmployees()
         {
@@ -119,7 +116,6 @@ namespace HiringCompanyService
 
             using (SmtpClient smtpClient = new SmtpClient())
             {
-
                 using (MailMessage message = new MailMessage())
                 {
                     message.Subject = "KASNJENJE!";
@@ -138,14 +134,11 @@ namespace HiringCompanyService
             }
         }
 
-      
-
         public List<Employee> GetReallyAllEmployees()
         {
             Console.WriteLine("GetReallyAllEmployees...");
             return EmployeeDB.Instance.GetReallyEmployees();
         }
-
 
         //public List<HiringCompanyData.UserStory> GetUserStoryes(string projectName)
         //{
@@ -157,7 +150,6 @@ namespace HiringCompanyService
         {
             log.Info("AddPartnershipToDB...");
             return PartnershipDB.Instance.AddPartnership(hc, oc);
-            
         }
 
         public List<HiringCompanyData.OutsourcingCompany> GetPartnershipOc(int hiringCompany)
@@ -232,14 +224,11 @@ namespace HiringCompanyService
             return ProjectDB.Instance.GetProjects(hiringCompanyId);
         }
 
-
-
         /// <summary>
         ///     INTERFACE IHcContract
         /// </summary>
         public bool RegisterOutsourcingCompany(WcfCommon.Data.OutsourcingCompany oc)
         {
-
             HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
             try
             {
@@ -251,7 +240,6 @@ namespace HiringCompanyService
                 log.Error("Attempt to register outsourcing company that doesn't have Id or Name.");
                 return false;
             }
-           
 
             bool ret = OCompanyDB.Instance.AddOutsourcingCompany(oc_data);
 
@@ -275,7 +263,7 @@ namespace HiringCompanyService
 
             hc_data = HiringCompanyDB.Instance.GetCompany(hc.IdFromHiringCompanyDB);
             oc_data = OCompanyDB.Instance.GetOutsourcingCompany(oc.Name);
-        
+
             return PartnershipDB.Instance.AddPartnership(hc_data, oc_data);
         }
 
@@ -285,8 +273,6 @@ namespace HiringCompanyService
             List<HiringCompanyData.UserStory> userStories = UserStoryDB.Instance.GetUserStory(projectName);
 
             List<WcfCommon.Data.UserStory> retval = new List<WcfCommon.Data.UserStory>();
-
-
 
             foreach (HiringCompanyData.UserStory us in userStories)
             {
@@ -303,7 +289,6 @@ namespace HiringCompanyService
             return retval;
         }
 
-
         /// <summary>
         ///     Method that call ServiceProxy to outsourcing company service
         /// </summary>
@@ -315,9 +300,8 @@ namespace HiringCompanyService
             hc_data.Ceo = hiringCompany.Ceo;
             hc_data.IdFromHiringCompanyDB = hiringCompany.IDHc;
             hc_data.Name = hiringCompany.Name;
-           
 
-            bool ret =  ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
+            bool ret = ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
 
             if (ret)
             {
@@ -325,13 +309,11 @@ namespace HiringCompanyService
             }
             else
             {
-                log.Warn("Failed to sent partnership request.") ;
+                log.Warn("Failed to sent partnership request.");
             }
 
             return ret;
         }
-
-
 
         public bool SendProjectRequest(int hiringCompanyID, int outsourcingCompanyId, HiringCompanyData.Project project)
         {
@@ -367,8 +349,7 @@ namespace HiringCompanyService
 
         public bool AcceptProject(string projectName, int outsourcingCompanyId)
         {
-          
-            bool ret = ProjectDB.Instance.SetOcToProject(projectName, outsourcingCompanyId); 
+            bool ret = ProjectDB.Instance.SetOcToProject(projectName, outsourcingCompanyId);
 
             if (ret)
             {
@@ -401,7 +382,7 @@ namespace HiringCompanyService
                 return false;
             }
 
-            foreach( var p in projects)
+            foreach (var p in projects)
             {
                 HiringCompanyData.Project pr = new HiringCompanyData.Project();
                 pr.Approved = p.Approved;
@@ -416,9 +397,8 @@ namespace HiringCompanyService
             }
 
             return true;
-
         }
-    
+
         public int GetHcIdForUser(string username)
         {
             return EmployeeDB.Instance.GetHcIdForUser(username);
@@ -432,11 +412,10 @@ namespace HiringCompanyService
             {
                 userStories_common = ServiceProxy.Instance.GetUserStoryes(projectName);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
-            
 
             List<HiringCompanyData.UserStory> userStories = new List<HiringCompanyData.UserStory>();
 
@@ -447,8 +426,8 @@ namespace HiringCompanyService
                 us.Description = u.Description;
                 us.Name = u.Name;
                 us.Progress = u.Progress;
-                
-                switch(u.UserStoryState)
+
+                switch (u.UserStoryState)
                 {
                     case WcfCommon.Enums.UserStoryState.Approved:
                         {
@@ -500,8 +479,6 @@ namespace HiringCompanyService
                 us.Project = p;
 
                 UserStoryDB.Instance.AddUserStory(us);
-
-                
             }
             return true;
         }
@@ -509,6 +486,70 @@ namespace HiringCompanyService
         public HiringCompanyData.HiringCompany GetHiringCompanyForThr(int thrId)
         {
             return HiringCompanyDB.Instance.GetHiringCompanyFromThr(thrId);
+        }
+
+        public bool SendUserStoryToOc(HiringCompanyData.UserStory userStory)
+        {
+            WcfCommon.Data.UserStory us_common = new WcfCommon.Data.UserStory();
+            us_common.Id = userStory.IdFromOcDB;
+            us_common.Name = userStory.Name;
+            us_common.Progress = userStory.Progress;
+
+            switch (userStory.UserStoryState)
+            {
+                case UserStoryState.Approved:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Approved;
+                        break;
+                    }
+                case UserStoryState.Closed:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Closed;
+                        break;
+                    }
+                case UserStoryState.Finished:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Finished;
+                        break;
+                    }
+                case UserStoryState.New:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.New;
+                        break;
+                    }
+                case UserStoryState.Open:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Open;
+                        break;
+                    }
+                case UserStoryState.Pending:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Proposed;
+                        break;
+                    }
+                case UserStoryState.Rejected:
+                    {
+                        us_common.UserStoryState = WcfCommon.Enums.UserStoryState.Rejected;
+                        break;
+                    }
+
+                   
+            }
+
+            us_common.WeightOfUserStory = userStory.WeightOfUserStory;
+
+            bool ret = ServiceProxy.Instance.SendUserStory(us_common);
+
+            if (ret)
+            {
+                log.Info("User story successfully send.");
+            }
+            else
+            {
+                log.Warn("Failed to send user story.");
+            }
+
+            return ret;
         }
     }
 }

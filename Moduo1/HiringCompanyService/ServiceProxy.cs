@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.ServiceModel;
 using WcfCommon;
+using WcfCommon.Data;
 
 namespace HiringCompanyService
 {
@@ -99,6 +100,19 @@ namespace HiringCompanyService
             {
                 Console.WriteLine("ERROR: GetUserStoryes: \n{0}", e.Message);
                 return null;
+            }
+        }
+
+        public bool SendUserStory(UserStory userStory)
+        {
+            try
+            {
+                return proxy.SendUserStory(userStory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetUserStoryes: \n{0}", e.Message);
+                return false;
             }
         }
     }

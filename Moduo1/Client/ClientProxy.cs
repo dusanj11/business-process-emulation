@@ -525,5 +525,18 @@ namespace Client
                 return null;
             }
         }
+
+        public bool SendUserStoryToOc(UserStory userStory)
+        {
+            try
+            {
+                return proxy.SendUserStoryToOc(userStory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetHcIdForUser: \n{0}", e.Message);
+                return false;
+            }
+        }
     }
 }
