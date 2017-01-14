@@ -1,5 +1,6 @@
 ﻿using HiringCompanyData;
 using System.Linq;
+using System;
 
 namespace HiringCompanyService.Access
 {
@@ -64,6 +65,25 @@ namespace HiringCompanyService.Access
             using (var acces = new AccessDB())
             {
                 HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.IDHc == id);
+
+                if (cm != null)
+                {
+                    log.Info("Successfully returned hiring company data.");
+                }
+                else
+                {
+                    log.Warn("Company with thad id doesn't exists in DB");
+                }
+                return cm;
+            }
+        }
+
+        public HiringCompany GetHiringCompanyFromThr(int hiringCompanyThr)
+        {
+            log.Debug("Enter GetCompany method.");
+            using (var acces = new AccessDB())
+            {
+                HiringCompany cm = acces.HcActions.FirstOrDefault(f => f.CompanyIdThr == hiringCompanyThr);
 
                 if (cm != null)
                 {

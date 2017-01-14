@@ -512,5 +512,18 @@ namespace Client
                 return false;
             }
         }
+
+        public HiringCompany GetHiringCompanyForThr(int thrId)
+        {
+            try
+            {
+                return proxy.GetHiringCompanyForThr(thrId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetHcIdForUser: \n{0}", e.Message);
+                return null;
+            }
+        }
     }
 }

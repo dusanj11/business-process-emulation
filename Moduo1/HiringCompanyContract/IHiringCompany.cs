@@ -97,6 +97,9 @@ namespace HiringCompanyContract
         [OperationContract]
         bool GetUserStories(string projectName);
 
+        [OperationContract]
+        HiringCompany GetHiringCompanyForThr(int thrId);
+
         /// ************************************** TEST ************************************** 
 
         [OperationContract]

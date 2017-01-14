@@ -21,20 +21,20 @@ namespace Client.Command
         {
             try
             {
-                //int threadId = Thread.CurrentThread.ManagedThreadId;
-                //HiringCompany company = new HiringCompany();
-                //company.Name = "HC";
-                //company.Ceo = "Marko Jelaca";
-                //company.CompanyIdThr = threadId;
+                int threadId = Thread.CurrentThread.ManagedThreadId;
+                HiringCompany company = new HiringCompany();
+                company.Name = "HC";
+                company.Ceo = "Marko Jelaca";
+                company.CompanyIdThr = threadId;
 
                 try
                 {
-                    //log.Debug("proxy poziv - AddHiringCompany");
-                    //ClientProxy.Instance.AddHiringCompany(company);
+                    log.Debug("proxy poziv - AddHiringCompany");
+                    ClientProxy.Instance.AddHiringCompany(company);
 
-                    
-                    //LoadDB(threadId);
-                    
+
+                    LoadDB(threadId);
+
 
                 }
                 catch (CommunicationException ce)
@@ -57,7 +57,7 @@ namespace Client.Command
         { 
 
 
-            HiringCompany hc = ClientProxy.Instance.GetHiringCompany(threadId);
+            HiringCompany hc = ClientProxy.Instance.GetHiringCompanyForThr(threadId);
 
             Employee testEmp = new Employee();
             testEmp.Name = "Milica";
@@ -119,74 +119,74 @@ namespace Client.Command
 
             ClientProxy.Instance.AddEmployee(testEmp4);
 
-            HiringCompanyData.OutsourcingCompany oc = new HiringCompanyData.OutsourcingCompany();
-            oc.Name = "OC1";
+            //HiringCompanyData.OutsourcingCompany oc = new HiringCompanyData.OutsourcingCompany();
+            //oc.Name = "OC1";
 
 
-            bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
+            //bool ret = ClientProxy.Instance.AddOutsourcingCompany(oc);
 
-            HiringCompany hCompany = ClientProxy.Instance.GetHiringCompany(threadId);
-            HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany("OC1");
+            //HiringCompany hCompany = ClientProxy.Instance.GetHiringCompany(threadId);
+            //HiringCompanyData.OutsourcingCompany oCompany = ClientProxy.Instance.GetOutsourcingCompany("OC1");
 
 
-            ClientProxy.Instance.AddPartnershipToDB(hCompany, oCompany);
+            //ClientProxy.Instance.AddPartnershipToDB(hCompany, oCompany);
 
-            Project p = new Project();
-            p.Name = "P1";
-            p.Description = "Opis projekta";
-            p.Company = oCompany;
-            p.EndDate = DateTime.Now;
-            p.Ended = false;
-            p.HiringCompany = hCompany;
-            p.ProductOwner = ClientProxy.Instance.GetEmployee("naci", "naci");
-            p.Progress = 40;
-            p.ProjectState = ProjectState.Accepted;
-            p.StartDate = DateTime.Now;
-            p.Team = null;
+            //Project p = new Project();
+            //p.Name = "P1";
+            //p.Description = "Opis projekta";
+            //p.Company = oCompany;
+            //p.EndDate = DateTime.Now;
+            //p.Ended = false;
+            //p.HiringCompany = hCompany;
+            //p.ProductOwner = ClientProxy.Instance.GetEmployee("naci", "naci");
+            //p.Progress = 40;
+            //p.ProjectState = ProjectState.Accepted;
+            //p.StartDate = DateTime.Now;
+            //p.Team = null;
 
-            ClientProxy.Instance.AddProjectDefinition(p);
+            //ClientProxy.Instance.AddProjectDefinition(p);
 
-            Project p2 = new Project();
-            p2.Name = "P2";
-            p2.Description = "Opis projekta 2";
-            p2.Company = oCompany;
-            p2.EndDate = DateTime.Now;
-            p2.Ended = false;
-            p2.HiringCompany = hCompany;
-            p2.ProductOwner = ClientProxy.Instance.GetEmployee("naci", "naci");
-            p2.Progress = 40;
-            p2.ProjectState = ProjectState.Accepted;
-            p2.StartDate = DateTime.Now;
-            p2.Team = null;
+            //Project p2 = new Project();
+            //p2.Name = "P2";
+            //p2.Description = "Opis projekta 2";
+            //p2.Company = oCompany;
+            //p2.EndDate = DateTime.Now;
+            //p2.Ended = false;
+            //p2.HiringCompany = hCompany;
+            //p2.ProductOwner = ClientProxy.Instance.GetEmployee("naci", "naci");
+            //p2.Progress = 40;
+            //p2.ProjectState = ProjectState.Accepted;
+            //p2.StartDate = DateTime.Now;
+            //p2.Team = null;
 
-            ClientProxy.Instance.AddProjectDefinition(p2);
+            //ClientProxy.Instance.AddProjectDefinition(p2);
 
-            UserStory us1 = new UserStory();
-            us1.Description = "Opis Us1";
-            us1.Name = "US1";
-            us1.Progress = 50;
-            us1.Project = ClientProxy.Instance.GetProject("P1");
-            us1.UserStoryState = UserStoryState.Pending;
+            //UserStory us1 = new UserStory();
+            //us1.Description = "Opis Us1";
+            //us1.Name = "US1";
+            //us1.Progress = 50;
+            //us1.Project = ClientProxy.Instance.GetProject("P1");
+            //us1.UserStoryState = UserStoryState.Pending;
 
-            ClientProxy.Instance.AddUserStory(us1);
+            //ClientProxy.Instance.AddUserStory(us1);
 
-            UserStory us2_1 = new UserStory();
-            us2_1.Description = "Opis Us2_1";
-            us2_1.Name = "US2_1";
-            us2_1.Progress = 50;
-            us2_1.Project = ClientProxy.Instance.GetProject("P2");
-            us2_1.UserStoryState = UserStoryState.Pending;
+            //UserStory us2_1 = new UserStory();
+            //us2_1.Description = "Opis Us2_1";
+            //us2_1.Name = "US2_1";
+            //us2_1.Progress = 50;
+            //us2_1.Project = ClientProxy.Instance.GetProject("P2");
+            //us2_1.UserStoryState = UserStoryState.Pending;
 
-            ClientProxy.Instance.AddUserStory(us2_1);
+            //ClientProxy.Instance.AddUserStory(us2_1);
 
-            UserStory us2_2 = new UserStory();
-            us2_2.Description = "Opis Us2_2";
-            us2_2.Name = "US2_2";
-            us2_2.Progress = 50;
-            us2_2.Project = ClientProxy.Instance.GetProject("P2");
-            us2_2.UserStoryState = UserStoryState.Pending;
+            //UserStory us2_2 = new UserStory();
+            //us2_2.Description = "Opis Us2_2";
+            //us2_2.Name = "US2_2";
+            //us2_2.Progress = 50;
+            //us2_2.Project = ClientProxy.Instance.GetProject("P2");
+            //us2_2.UserStoryState = UserStoryState.Pending;
 
-            ClientProxy.Instance.AddUserStory(us2_2);
+            //ClientProxy.Instance.AddUserStory(us2_2);
 
 
         }
