@@ -505,5 +505,10 @@ namespace HiringCompanyService
             }
             return true;
         }
+
+        public HiringCompanyData.HiringCompany GetHiringCompanyForThr(int thrId)
+        {
+            return HiringCompanyDB.Instance.GetHiringCompanyFromThr(thrId);
+        }
     }
 }

@@ -13,6 +13,6 @@ namespace HiringCompanyService.Access
 
         HiringCompany GetCompany(int id);
 
-       
+        HiringCompany GetHiringCompanyFromThr(int hiringCompanyThr);
     }
 }
