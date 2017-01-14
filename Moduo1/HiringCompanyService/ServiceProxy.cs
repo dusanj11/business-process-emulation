@@ -89,11 +89,11 @@ namespace HiringCompanyService
             }
         }
 
-        List<WcfCommon.Data.UserStory> IOcContract.GetUserStoryes(int outsourcingCompanyIdFromDB, string projectName)
+        List<WcfCommon.Data.UserStory> IOcContract.GetUserStoryes(string projectName)
         {
             try
             {
-                return proxy.GetUserStoryes(outsourcingCompanyIdFromDB, projectName);
+                return proxy.GetUserStoryes(projectName);
             }
             catch (Exception e)
             {

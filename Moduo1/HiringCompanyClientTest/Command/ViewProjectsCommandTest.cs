@@ -38,7 +38,7 @@ namespace HiringCompanyClientTest.Command
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
 
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientProxy.Instance.GetProjects().Returns(new List<HiringCompanyData.Project>() {
+            ClientProxy.Instance.GetProjects(1).Returns(new List<HiringCompanyData.Project>() {
                 new HiringCompanyData.Project() {
                     Name = "P1",
                     Description = "Desc",

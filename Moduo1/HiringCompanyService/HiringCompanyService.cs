@@ -105,11 +105,11 @@ namespace HiringCompanyService
             return ProjectDB.Instance.AddProject(project);
         }
 
-        public List<HiringCompanyData.Project> GetProjects()
+        public List<HiringCompanyData.Project> GetProjects(int hiringCompanyId)
         {
             log.Debug("GetProjects Servisni poziv");
             Console.WriteLine("GetProjects...");
-            return ProjectDB.Instance.GetProjects();
+            return ProjectDB.Instance.GetProjects(hiringCompanyId);
         }
 
         public bool SendDelayingEmail(string username)
@@ -417,6 +417,93 @@ namespace HiringCompanyService
 
             return true;
 
+        }
+    
+        public int GetHcIdForUser(string username)
+        {
+            return EmployeeDB.Instance.GetHcIdForUser(username);
+        }
+
+        public bool GetUserStories(string projectName)
+        {
+            List<WcfCommon.Data.UserStory> userStories_common = new List<WcfCommon.Data.UserStory>();
+
+            try
+            {
+                userStories_common = ServiceProxy.Instance.GetUserStoryes(projectName);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
+
+            List<HiringCompanyData.UserStory> userStories = new List<HiringCompanyData.UserStory>();
+
+            foreach (WcfCommon.Data.UserStory u in userStories_common)
+            {
+                HiringCompanyData.UserStory us = new HiringCompanyData.UserStory();
+                us.IdFromOcDB = u.Id;
+                us.Description = u.Description;
+                us.Name = u.Name;
+                us.Progress = u.Progress;
+                
+                switch(u.UserStoryState)
+                {
+                    case WcfCommon.Enums.UserStoryState.Approved:
+                        {
+                            us.UserStoryState = UserStoryState.Approved;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.Closed:
+                        {
+                            us.UserStoryState = UserStoryState.Closed;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.Finished:
+                        {
+                            us.UserStoryState = UserStoryState.Finished;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.New:
+                        {
+                            us.UserStoryState = UserStoryState.New;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.Open:
+                        {
+                            us.UserStoryState = UserStoryState.Open;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.Proposed:
+                        {
+                            us.UserStoryState = UserStoryState.Pending;
+                            break;
+                        }
+
+                    case WcfCommon.Enums.UserStoryState.Rejected:
+                        {
+                            us.UserStoryState = UserStoryState.Rejected;
+                            break;
+                        }
+                }
+
+                us.WeightOfUserStory = u.WeightOfUserStory;
+
+                HiringCompanyData.Project p = ProjectDB.Instance.GetProject(projectName);
+
+                us.Project = p;
+
+                UserStoryDB.Instance.AddUserStory(us);
+
+                
+            }
+            return true;
         }
     }
 }

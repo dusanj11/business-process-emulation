@@ -224,11 +224,11 @@ namespace Client
             }
         }
 
-        public List<Project> GetProjects()
+        public List<Project> GetProjects(int hiringCompanyId)
         {
             try
             {
-                return proxy.GetProjects();
+                return proxy.GetProjects(hiringCompanyId);
             }
             catch (Exception e)
             {
@@ -483,6 +483,32 @@ namespace Client
             catch (Exception e)
             {
                 Console.WriteLine("ERROR: GetOutsourcingCompanyProjects: \n{0}", e.Message);
+                return false;
+            }
+        }
+
+        public int GetHcIdForUser(string username)
+        {
+            try
+            {
+                return proxy.GetHcIdForUser(username);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetHcIdForUser: \n{0}", e.Message);
+                return 0;
+            }
+        }
+
+        public bool GetUserStories(string projectName)
+        {
+            try
+            {
+                return proxy.GetUserStories(projectName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetHcIdForUser: \n{0}", e.Message);
                 return false;
             }
         }

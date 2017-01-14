@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace HiringCompanyService.Access
 {
@@ -351,6 +352,19 @@ namespace HiringCompanyService.Access
                 log.Info("Successfully returned list of employees");
                 return employees;
             }
+        }
+
+        public int GetHcIdForUser(string username)
+        {
+            using (var access = new AccessDB())
+            {
+                var employee = access.Actions.Include(x => x.HiringCompanyId).FirstOrDefault(f => f.Username.Equals(username));
+
+                return employee.HiringCompanyId.IDHc;
+
+            }
+
+
         }
     }
 }

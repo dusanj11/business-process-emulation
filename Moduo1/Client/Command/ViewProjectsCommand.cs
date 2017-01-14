@@ -1,4 +1,5 @@
-﻿using Client.ViewModel;
+﻿using Client.Model;
+using Client.ViewModel;
 using HiringCompanyData;
 using System;
 using System.Collections.Generic;
@@ -38,13 +39,20 @@ namespace Client.Command
                 Resources.Clear();
             }
 
-            bool ret = ClientProxy.Instance.GetOutsourcingCompanyProjects(Thread.CurrentThread.ManagedThreadId);
+            LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
 
+            Employee emp = ClientProxy.Instance.GetEmployee(logInUser.Username, logInUser.Password);
 
-            List<Project> projects = ClientProxy.Instance.GetProjects();
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(logInUser.Username);
+
+            bool ret = ClientProxy.Instance.GetOutsourcingCompanyProjects(hiringCompanyId);
+            List<Project> projects = ClientProxy.Instance.GetProjects(hiringCompanyId);
+
+            
 
             foreach (Project p in projects)
             {
+                
                 Resources.Add(p);
             }
 

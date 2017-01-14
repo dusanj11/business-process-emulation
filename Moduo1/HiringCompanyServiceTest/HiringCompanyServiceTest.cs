@@ -553,7 +553,7 @@ namespace HiringCompanyServiceTest
         {
             isCalled = false;
 
-            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjects(); });
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjects(1); });
 
             Assert.IsTrue(isCalled);
         }

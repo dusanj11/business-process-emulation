@@ -1,4 +1,5 @@
-﻿using Client.ViewModel;
+﻿using Client.Model;
+using Client.ViewModel;
 using HiringCompanyData;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,12 @@ namespace Client.Command
             }
 
             List<OutsourcingCompany> list = ClientProxy.Instance.GetPartnershipOc(Thread.CurrentThread.ManagedThreadId);
-            List<Project> listP = ClientProxy.Instance.GetProjects();
+
+            LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
+
+            int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(logInUser.Username);
+
+            List<Project> listP = ClientProxy.Instance.GetProjects(hiringCompanyId);
 
             Resources = new ObservableCollection<OutsourcingCompany>(list);
             PrResources = new ObservableCollection<Project>(listP);

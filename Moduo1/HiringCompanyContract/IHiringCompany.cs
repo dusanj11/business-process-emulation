@@ -53,7 +53,7 @@ namespace HiringCompanyContract
         bool AddProjectDefinition(Project project);
 
         [OperationContract]
-        List<Project> GetProjects();
+        List<Project> GetProjects(int hiringCompanyId);
 
         [OperationContract]
         bool SendDelayingEmail(string username);
@@ -90,6 +90,12 @@ namespace HiringCompanyContract
 
         [OperationContract]
         bool MarkProjectEnded(Project p);
+
+        [OperationContract]
+        int GetHcIdForUser(string username);
+
+        [OperationContract]
+        bool GetUserStories(string projectName);
 
         /// ************************************** TEST ************************************** 
 

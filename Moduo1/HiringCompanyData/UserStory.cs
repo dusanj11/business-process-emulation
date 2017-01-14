@@ -20,6 +20,7 @@ namespace HiringCompanyData
         private UserStoryState userStoryState;
         private List<Task> tasks;
         private Project project;
+        private int idFromOcDB;
 
         public UserStory()
         {
@@ -92,6 +93,20 @@ namespace HiringCompanyData
         {
             get { return this.weightOfUserStory; }
             set { this.weightOfUserStory = value; }
+        }
+
+        [DataMember]
+        public int IdFromOcDB
+        {
+            get
+            {
+                return idFromOcDB;
+            }
+
+            set
+            {
+                idFromOcDB = value;
+            }
         }
 
         public override string ToString()

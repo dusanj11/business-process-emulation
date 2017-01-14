@@ -17,13 +17,13 @@ namespace Proba.Steps
         [When(@"I have requested to see current projects")]
         public void WhenIHaveRequestedToSeeCurrentProjects()
         {
-            lp = ClientProxy.Instance.GetProjects();
+            lp = ClientProxy.Instance.GetProjects(1);
         }
 
         [When(@"I have requested current projects data")]
         public void WhenIHaveRequestedCurrentProjectsData()
         {
-            lp = ClientProxy.Instance.GetProjects();
+            lp = ClientProxy.Instance.GetProjects(1);
         }
 
         [Then(@"the result should be a list of projects")]

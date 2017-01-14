@@ -79,9 +79,18 @@ namespace Client.ViewModel
             set
             {
                 project = value;
-
                 try
                 {
+                    ClientProxy.Instance.GetUserStories(Project.Name);
+                }
+                catch(Exception e)
+                {
+
+                }
+               
+                try
+                {
+                    
                     UserStories = ClientProxy.Instance.GetProjectPendingUserStory(Project.Name);
                 }
                 catch (Exception e)

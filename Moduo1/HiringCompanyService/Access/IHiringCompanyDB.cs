@@ -12,5 +12,7 @@ namespace HiringCompanyService.Access
         bool AddCompany(HiringCompany company);
 
         HiringCompany GetCompany(int id);
+
+       
     }
 }

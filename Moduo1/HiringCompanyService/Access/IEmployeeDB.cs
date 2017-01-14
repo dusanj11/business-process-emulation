@@ -31,5 +31,7 @@ namespace HiringCompanyService.Access
 
         String GetEmployeeEmail(string username);
 
+        int GetHcIdForUser(string username);
+
     }
 }
