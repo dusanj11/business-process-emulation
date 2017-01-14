@@ -44,7 +44,12 @@ namespace Client.Command
 
             // preuzmi projekte kompanija sa kojima ima partnerstvo 
             List<Project> partnershipProject = new List<Project>();
-            int hiringCompanyTh = Thread.CurrentThread.ManagedThreadId;
+
+            string username = ClientDialogViewModel.Instance.LogInUser().Username;
+
+
+
+            int hiringCompanyTh = ClientProxy.Instance.GetHcIdForUser(username);
 
             partnershipProject = ClientProxy.Instance.GetPartnershipProjects(hiringCompanyTh);
 
