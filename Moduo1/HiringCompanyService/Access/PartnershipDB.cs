@@ -77,7 +77,7 @@ namespace HiringCompanyService.Access
 
                 foreach (var pr in partnership)
                 {
-                    if (pr.HiringCompany.CompanyIdThr.Equals(hiringCompany))
+                    if (pr.HiringCompany.IDHc.Equals(hiringCompany))
                     {
                         OutsourcingCompany oc = new OutsourcingCompany();
                         oc.Id = pr.OutsourcingCompany.Id;

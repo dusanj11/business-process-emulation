@@ -63,11 +63,14 @@ namespace Client.Command
                 Resources.Clear();
             }
 
-            List<OutsourcingCompany> list = ClientProxy.Instance.GetPartnershipOc(Thread.CurrentThread.ManagedThreadId);
-
             LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
 
             int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(logInUser.Username);
+
+
+            List<OutsourcingCompany> list = ClientProxy.Instance.GetPartnershipOc(hiringCompanyId);
+
+            
 
             List<Project> listP = ClientProxy.Instance.GetProjects(hiringCompanyId);
 
