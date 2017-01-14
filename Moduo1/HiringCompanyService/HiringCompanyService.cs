@@ -365,14 +365,26 @@ namespace HiringCompanyService
             return ProjectDB.Instance.MarkProjectEnded(p);
         }
 
-        public bool AcceptProject(string projectName)
+        public bool AcceptProject(string projectName, int outsourcingCompanyId)
         {
-            throw new NotImplementedException();
+          
+            bool ret = ProjectDB.Instance.SetOcToProject(projectName, outsourcingCompanyId); 
+
+            if (ret)
+            {
+                log.Info("Outosurcing company accepted project.");
+            }
+            else
+            {
+                log.Warn("Failed to accept project.");
+            }
+            return ret;
         }
 
         public bool RejectProject(string projectName)
         {
-            throw new NotImplementedException();
+            log.Warn("Outsourcing company rejected project.");
+            return true;
         }
 
         public bool GetOutsourcingCompanyProjects(int hiringCompanyId)

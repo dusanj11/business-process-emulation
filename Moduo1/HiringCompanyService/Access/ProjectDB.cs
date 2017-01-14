@@ -225,5 +225,50 @@ namespace HiringCompanyService.Access
                 }
             }
         }
+
+        public bool SetOcToProject(string projectName, int outsourcingCompanyId)
+        {
+            using (var access = new AccessDB())
+            {
+                Project p = access.PrActions.FirstOrDefault(f => f.Name.Equals(projectName));
+
+                if (p != null)
+                {
+                    OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.IdFromOutSourcingDB == outsourcingCompanyId);
+
+                    if (oc != null)
+                    {
+                        p.Company = oc;
+                        access.OcActions.Attach(p.Company);
+
+                        
+                    }
+                    else
+                    {
+                        log.Warn("Outsourcing company doesn't exists.");
+
+                    }
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+                        log.Info("Successfully assigned project to Outsourcing company.");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    log.Warn("Project doesn't exists.");
+                    return false;
+                }
+
+                
+            }
+        }
     }
 }

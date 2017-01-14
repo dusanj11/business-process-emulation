@@ -22,5 +22,7 @@ namespace HiringCompanyService.Access
         List<UserStory> GetProjectPendingUserStory(string projectName);
 
         bool MarkProjectEnded(Project p);
+
+        bool SetOcToProject(string projectName, int outsourcingCompanyId);
     }
 }
