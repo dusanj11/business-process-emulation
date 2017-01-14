@@ -21,6 +21,7 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private EditPositionCommand editPositionCommandUnderTest;
+        private ObservableCollection<Employee> res = new ObservableCollection<Employee>();
 
         #endregion Declarations
 
@@ -29,7 +30,12 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                Employee p = new Employee();
+                p.Name = i.ToString();
+                res.Add(p);
+            }
 
             this.editPositionCommandUnderTest = new EditPositionCommand();
             this.editPositionCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };

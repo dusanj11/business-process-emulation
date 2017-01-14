@@ -105,8 +105,11 @@
     <Compile Include="Command\DefineUserStoriesCommandTest.cs" />
     <Compile Include="Command\EditPersonalDataCommandTest.cs" />
     <Compile Include="Command\EditPositionCommandTest.cs" />
+    <Compile Include="Command\EndProjectCommandTest.cs" />
     <Compile Include="Command\LoadedCommandTest.cs" />
     <Compile Include="Command\LogOutCommandTest.cs" />
+    <Compile Include="Command\MarkProjectFinishedCommandTest.cs" />
+    <Compile Include="Command\RejectUserStoryCommandTest.cs" />
     <Compile Include="Command\SaveEditPositionCommandTest.cs" />
     <Compile Include="Command\SaveNewEmployeeCommandTest.cs" />
     <Compile Include="Command\SaveNewPasswordCommandTest.cs" />

@@ -1,7 +1,10 @@
-﻿using Client.Command;
+﻿using Client;
+using Client.Command;
+using Client.Model;
 using Client.ViewModel;
 using Client.ViewModelInterfaces;
 using HiringCompanyContract;
+using HiringCompanyData;
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -17,6 +20,8 @@ namespace HiringCompanyClientTest.Command
     {
         #region Declarations
         private EditPersonalDataCommand editPersonalDataCommandUnderTest;
+        string password = "dule";
+        string username = "dule";
         #endregion Declarations
 
         #region setup
@@ -28,10 +33,18 @@ namespace HiringCompanyClientTest.Command
 
             this.editPersonalDataCommandUnderTest = new EditPersonalDataCommand();
             this.editPersonalDataCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
-
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
-            ClientDialogViewModel.Instance.LogInUser().Username.Returns("dule");
-            ClientDialogViewModel.Instance.LogInUser().Password.Returns("dule");
+            ClientDialogViewModel.Instance.LogInUser().Returns(new LogInUser() { Username = username, Password = password });
+
+            ClientProxy.Instance = Substitute.For<IHiringCompany>();
+            ClientProxy.Instance.GetEmployee("", "").ReturnsForAnyArgs(new Employee());
+
+            EditPersonalDataViewModel.Instance = Substitute.For<IEditPersonalDataViewModel>();
+            EditPersonalDataViewModel.Instance.Name("");
+            EditPersonalDataViewModel.Instance.Surname("");
+            EditPersonalDataViewModel.Instance.Username("");
+
+            ClientDialogViewModel.Instance.ShowEditPersonalDataView();
 
         }
 

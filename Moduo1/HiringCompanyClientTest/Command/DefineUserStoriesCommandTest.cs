@@ -1,5 +1,6 @@
 ﻿using Client;
 using Client.Command;
+using Client.Model;
 using Client.ViewModel;
 using Client.ViewModelInterfaces;
 using HiringCompanyContract;
@@ -49,9 +50,14 @@ namespace HiringCompanyClientTest.Command
             this.defineUserStoriesCommandUnderTest.Resources = resTest;
             this.defineUserStoriesCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
+            
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientProxy.Instance.GetPartnershipProjects(7).Returns(new List<HiringCompanyData.Project>() {
-                new HiringCompanyData.Project() {
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+
+            ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new LogInUser("dule", "dule"));
+            ClientProxy.Instance.GetHcIdForUser("").ReturnsForAnyArgs(7);
+            ClientProxy.Instance.GetPartnershipProjects(7).Returns(new List<Project>() {
+                new Project() {
                     Name = "P1",
                     Description = "Desc",
                     StartDate = DateTime.Now,
@@ -59,7 +65,7 @@ namespace HiringCompanyClientTest.Command
                 }
             });
 
-            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            
             ClientDialogViewModel.Instance.PrResources(defineUserStoriesCommandUnderTest.Resources);
             ClientDialogViewModel.Instance.ShowDefineUserStoriesView();
         }

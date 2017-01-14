@@ -1,6 +1,7 @@
 ﻿using Client;
 using Client.Command;
 using HiringCompanyContract;
+using HiringCompanyData;
 using HiringCompanyService.Access;
 using NSubstitute;
 using NUnit.Framework;
@@ -18,6 +19,8 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private LoadedCommand loadedCommandUnderTest;
+        int id;
+        Employee emp;
 
         #endregion Declarations
 
@@ -35,8 +38,8 @@ namespace HiringCompanyClientTest.Command
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
 
             ClientProxy.Instance.AddHiringCompany(null).ReturnsForAnyArgs(true);
-
-
+            ClientProxy.Instance.GetHiringCompanyForThr(id).ReturnsForAnyArgs(new HiringCompany());
+            ClientProxy.Instance.AddEmployee(emp).ReturnsForAnyArgs(true);
         }
 
         #endregion setup
@@ -80,6 +83,13 @@ namespace HiringCompanyClientTest.Command
         {
             
             Assert.DoesNotThrow(() => { loadedCommandUnderTest.Execute(new object()); });
+        }
+
+        [Test]
+        public void DBTest()
+        {
+
+            Assert.DoesNotThrow(() => { loadedCommandUnderTest.LoadDB(id); });
         }
         #endregion Tests
     }
