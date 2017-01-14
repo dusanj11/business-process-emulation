@@ -104,5 +104,11 @@ namespace HiringCompanyContract
 
         [OperationContract]
         OutsourcingCompany GetOutsourcingCompany(string name);
+
+
+        // OC
+
+        [OperationContract]
+        bool GetOutsourcingCompanyProjects(int hiringCompanyId);
     }
 }

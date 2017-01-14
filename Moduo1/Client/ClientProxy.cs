@@ -473,5 +473,18 @@ namespace Client
                 return false;
             }
         }
+
+        public bool GetOutsourcingCompanyProjects(int hiringCompanyId)
+        {
+            try
+            {
+                return proxy.GetOutsourcingCompanyProjects(hiringCompanyId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: GetOutsourcingCompanyProjects: \n{0}", e.Message);
+                return false;
+            }
+        }
     }
 }

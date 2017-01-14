@@ -3,6 +3,7 @@ using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Windows.Input;
 
 namespace Client.Command
@@ -36,6 +37,9 @@ namespace Client.Command
             {
                 Resources.Clear();
             }
+
+            bool ret = ClientProxy.Instance.GetOutsourcingCompanyProjects(Thread.CurrentThread.ManagedThreadId);
+
 
             List<Project> projects = ClientProxy.Instance.GetProjects();
 

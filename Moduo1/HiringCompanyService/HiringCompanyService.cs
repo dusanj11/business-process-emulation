@@ -374,5 +374,37 @@ namespace HiringCompanyService
         {
             throw new NotImplementedException();
         }
+
+        public bool GetOutsourcingCompanyProjects(int hiringCompanyId)
+        {
+            List<WcfCommon.Data.Project> projects = new List<WcfCommon.Data.Project>();
+
+            try
+            {
+                projects = ServiceProxy.Instance.GetProjects(hiringCompanyId);
+            }
+            catch (Exception e)
+            {
+                log.Error("Can not establish communication with outstoucing companies service.");
+                return false;
+            }
+
+            foreach( var p in projects)
+            {
+                HiringCompanyData.Project pr = new HiringCompanyData.Project();
+                pr.Approved = p.Approved;
+                pr.Description = p.Description;
+                pr.EndDate = p.EndDate;
+                pr.Ended = p.Ended;
+                pr.Name = p.Name;
+                pr.Progress = p.Progress;
+                pr.EndDate = p.EndDate;
+
+                ProjectDB.Instance.AddProject(pr);
+            }
+
+            return true;
+
+        }
     }
 }
