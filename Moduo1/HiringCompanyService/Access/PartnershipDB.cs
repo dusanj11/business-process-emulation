@@ -119,16 +119,20 @@ namespace HiringCompanyService.Access
                     //var project = access.PrActions.Include(x => x.Company).FirstOrDefault(f => f.Company.Id.Equals(o.Id));
                     foreach (Project pr in allProjectList)
                     {
-                        if(pr.Company.Id.Equals(o.Id))
+                        if (pr.Company != null)
                         {
-                            Project p = new Project();
-                            p.Name = pr.Name;
-                            p.Id = pr.Id;
-                            p.ProjectState = pr.ProjectState;
-                            p.Description = pr.Description;
+                            if (pr.Company.Id.Equals(o.Id))
+                            {
+                                Project p = new Project();
+                                p.Name = pr.Name;
+                                p.Id = pr.Id;
+                                p.ProjectState = pr.ProjectState;
+                                p.Description = pr.Description;
 
-                            ret.Add(p);
+                                ret.Add(p);
+                            }
                         }
+                        
                     }
                     
                 }
