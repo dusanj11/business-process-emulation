@@ -15,6 +15,19 @@ namespace Client.Model
         private string startTime;
         private string endTime;
         private string position;
+        private string email;
+
+        public string Email
+        {
+            get 
+            { 
+                return email; 
+            }
+            set 
+            { 
+                email = value; 
+            }
+        }
 
         public string Name
         {
@@ -116,6 +129,7 @@ namespace Client.Model
             this.StartTime = "";
             this.EndTime = "";
             this.Position = "";
+            this.email = "";
         }
 
         public NewEmployee(string name, string surname, string username, string password, string startTime, string endTime, string position)
@@ -127,6 +141,7 @@ namespace Client.Model
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Position = position;
+            this.Email = email;
         }
     }
 }
