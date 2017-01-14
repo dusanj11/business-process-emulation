@@ -243,7 +243,7 @@ namespace HiringCompanyService
             HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
             try
             {
-                oc_data.IdFromOutSourcingDB = oc.Id;
+                oc_data.IdFromOutSourcingDB = oc.IdFromOutSourcingDB;
                 oc_data.Name = oc.Name;
             }
             catch (Exception e)
