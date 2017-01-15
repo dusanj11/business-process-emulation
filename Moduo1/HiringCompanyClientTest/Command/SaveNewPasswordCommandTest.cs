@@ -45,9 +45,10 @@ namespace HiringCompanyClientTest.Command
 
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
             ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser("mici", "mici"));
-            //ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog() {
-                  
-            //});
+            ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog()
+            {
+
+            });
 
             ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
             ChangePasswordViewModel.Instance.OldPassword().Returns("mici");
