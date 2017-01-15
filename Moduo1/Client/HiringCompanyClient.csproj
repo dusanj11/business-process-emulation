@@ -199,7 +199,6 @@
     <Compile Include="Command\SaveNewProjectDefinition.cs" />
     <Compile Include="Command\SavePersonalDataCommand.cs" />
     <Compile Include="Command\SaveWorkingHoursCommand.cs" />
-    <Compile Include="Command\SelectItemsCommand.cs" />
     <Compile Include="Command\SendRequestCompanyCommand.cs" />
     <Compile Include="Command\SendRequestProjectCommand.cs" />
     <Compile Include="Command\SendRequestProjectViewCommand.cs" />
