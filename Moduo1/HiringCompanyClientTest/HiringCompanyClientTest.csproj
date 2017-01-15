@@ -116,6 +116,8 @@
     <Compile Include="Command\SendRequestCompanyCommandTest.cs" />
     <Compile Include="Command\SendRequestCompanyViewCommandTest.cs" />
     <Compile Include="Command\SendRequestProjectCommandTest.cs" />
+    <Compile Include="Command\SendRequestProjectViewCommandTest.cs" />
+    <Compile Include="Command\ShowCompaniesCommandTest.cs" />
     <Compile Include="Command\SignInCommandTest.cs" />
     <Compile Include="Command\ViewProjectsCommandTest.cs" />
     <Compile Include="Command\ViewWorkersCommandTest.cs" />
