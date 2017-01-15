@@ -113,9 +113,15 @@
     <Compile Include="Command\SaveNewProjectDefinitionTest.cs" />
     <Compile Include="Command\SavePersonalDataCommandTest.cs" />
     <Compile Include="Command\SaveWorkingHoursCommandTest.cs" />
+    <Compile Include="Command\SendRequestCompanyCommandTest.cs" />
+    <Compile Include="Command\SendRequestCompanyViewCommandTest.cs" />
+    <Compile Include="Command\SendRequestProjectCommandTest.cs" />
+    <Compile Include="Command\SendRequestProjectViewCommandTest.cs" />
+    <Compile Include="Command\ShowCompaniesCommandTest.cs" />
     <Compile Include="Command\SignInCommandTest.cs" />
     <Compile Include="Command\ViewProjectsCommandTest.cs" />
     <Compile Include="Command\ViewWorkersCommandTest.cs" />
+    <Compile Include="Command\WorkingHoursCommandTest.cs" />
     <Compile Include="Model\LogInUserTest.cs" />
     <Compile Include="Model\NewEmployeeTest.cs" />
     <Compile Include="Model\NewProjectDefinitionTest.cs" />
