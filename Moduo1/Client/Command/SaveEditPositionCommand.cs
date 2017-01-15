@@ -23,7 +23,7 @@ namespace Client.Command
         {
 
             Employee emp = EditPositionViewModel.Instance.Employee();
-            string position = EditPositionViewModel.Instance.Position();
+            string position = Parser.Parse(EditPositionViewModel.Instance.Position());
 
             ClientProxy.Instance.ChangeEmployeePosition(emp.Username, position);
         }

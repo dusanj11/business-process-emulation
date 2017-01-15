@@ -25,8 +25,9 @@ namespace Client.View
         public ShowProjectsView()
         {
             InitializeComponent();
-            this.DataContext = ClientDialogViewModel.Instance;
-     
+            //this.DataContext = ClientDialogViewModel.Instance;
+            this.DataContext = ViewProjectsViewModel.Instance;
+            
         }
 
         private void ProjectsDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

@@ -164,26 +164,34 @@ namespace HiringCompanyService
                 {
                     if ((proj.Progress <= 8.00) && ((proj.EndDate.Month == DateTime.Now.Month) && ((proj.EndDate.Day - DateTime.Now.Day) <= 10)))
                     {
-                        po = proj.ProductOwner;
+                        List<Employee> smasteri = EmployeeDB.Instance.GetReallyEmployees();
 
-                        using (SmtpClient smtpClient = new SmtpClient())
+                        foreach(Employee em in smasteri)
                         {
-                            using (MailMessage message = new MailMessage())
+                            if(em.Position.Equals("SM"))
                             {
-                                message.Subject = "ALARMNO STANJE PROJEKAT NIJE GOTOV!";
-                                message.Body = "Kolega " + po.Name + " " + po.Surname + ", vasi zaposleni NE RADE dobro posao. Slede penali!";
-                                message.To.Add(new MailAddress(po.Email));
-                                try
+                                using (SmtpClient smtpClient = new SmtpClient())
                                 {
-                                    smtpClient.Send(message);
-                                }
-                                catch (Exception exc)
-                                {
-                                    throw new FaultException(exc.Message);
-                                }
+                                    using (MailMessage message = new MailMessage())
+                                    {
+                                        message.Subject = "ALARMNO STANJE PROJEKAT NIJE GOTOV!";
+                                        message.Body = "Kolega " + em.Name + " " + em.Surname + ", vasi zaposleni NE RADE dobro posao. Slede penali!";
+                                        message.To.Add(new MailAddress(em.Email));
+                                        try
+                                        {
+                                            smtpClient.Send(message);
+                                        }
+                                        catch (Exception exc)
+                                        {
+                                            throw new FaultException(exc.Message);
+                                        }
 
+                                    }
+                                }
                             }
                         }
+
+                        
                     }
                 }
             }
