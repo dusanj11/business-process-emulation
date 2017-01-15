@@ -68,12 +68,12 @@ namespace HiringCompanyService
 
         private void Cc_Opened(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
         private void Cc_Faulted(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool EmployeeLogOut(string username)
