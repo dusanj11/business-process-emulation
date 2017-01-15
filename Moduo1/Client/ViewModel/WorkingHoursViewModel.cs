@@ -13,7 +13,6 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static WorkingHoursViewModel model;
         private string startTime;
         private string endTime;
 

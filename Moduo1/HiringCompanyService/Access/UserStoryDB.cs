@@ -9,6 +9,8 @@ namespace HiringCompanyService.Access
 {
     public class UserStoryDB : IUserStoryDB
     {
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static IUserStoryDB myDB;
 
         public static IUserStoryDB Instance
@@ -34,23 +36,26 @@ namespace HiringCompanyService.Access
         {
             using (var access = new AccessDB())
             {
+                Log.Info("Enter AddUserStory");
                 UserStory uStory = access.UsAction.FirstOrDefault(f => f.Name.Equals(us.Name));
-                if(uStory == null)
+                if (uStory == null)
                 {
                     access.PrActions.Attach(us.Project);
                     access.UsAction.Add(us);
 
                     int i = access.SaveChanges();
 
-                    if(i > 0)
+                    if (i > 0)
                     {
-                        
+                        Log.Info("Successfullye added user story to DB.");
                         return true;
                     }
+                    Log.Warn("Failed to add user story do DB.");
                     return false;
                 }
                 else
                 {
+                    Log.Warn("User story allready exists in DB.");
                     return false;
                 }
             }
@@ -58,8 +63,10 @@ namespace HiringCompanyService.Access
 
         public bool ChangeUserStoryState(int id, UserStoryState state)
         {
-            using(var access = new AccessDB())
+            using (var access = new AccessDB())
             {
+
+                Log.Info("Enter Change user story state");
                 UserStory us = access.UsAction.FirstOrDefault(f => f.Id == id);
 
                 if (us != null)
@@ -68,18 +75,20 @@ namespace HiringCompanyService.Access
 
                     int i = access.SaveChanges();
 
-                    if(i > 0)
+                    if (i > 0)
                     {
-                        
+                        Log.Info("Successfully changed user story state.");
                         return true;
                     }
                     else
                     {
+                        Log.Warn("Failed to changed user story state.");
                         return false;
                     }
                 }
                 else
                 {
+                    Log.Warn("User story doesn't exists in DB.");
                     return false;
                 }
             }
@@ -99,6 +108,7 @@ namespace HiringCompanyService.Access
                     }
                 }
 
+                Log.Info("Successfully returned user stories for specified project name.");
                 return ret;
             }
         }
@@ -109,6 +119,15 @@ namespace HiringCompanyService.Access
             {
                 UserStory us = access.UsAction.FirstOrDefault(f => f.Id == id);
 
+                if (us != null)
+                {
+                    Log.Info("Successfully returned user story for specified id.");
+                }
+                else
+                {
+                    Log.Warn("User story for specified id doesn't exist.");
+                }
+              
                 return us;
             }
         }
@@ -132,17 +151,18 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-
+                        Log.Info("Successfully update user story.");
                         return true;
                     }
                     else
                     {
+                        Log.Warn("Failed to update user story.");
                         return false;
                     }
                 }
                 else
                 {
-                    
+                    Log.Warn("User story for specified name doesn't exist.");
                     return false;
                 }
 

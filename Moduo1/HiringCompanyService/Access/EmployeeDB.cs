@@ -11,7 +11,7 @@ namespace HiringCompanyService.Access
         private static IEmployeeDB myDB;
         private static object lockThis = new object();
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static IEmployeeDB Instance
         {
@@ -53,7 +53,7 @@ namespace HiringCompanyService.Access
         /// <returns></returns>
         public bool AddEmployee(Employee action)
         {
-            log.Debug("Enter AddEmployee method.");
+            Log.Debug("Enter AddEmployee method.");
             using (AccessDB access = new AccessDB())
             {
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(action.Username));
@@ -68,15 +68,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("SaveChanges to DB success.");
+                        Log.Info("SaveChanges to DB success.");
                         return true;
                     }
-                    log.Warn("SaveChanges return 0");
+                    Log.Warn("SaveChanges return 0");
                     return false;
                 }
                 else
                 {
-                    log.Warn("User  with username you are trying to add to the database, already exists!");
+                    Log.Warn("User  with username you are trying to add to the database, already exists!");
                     return false;
                 }
             }
@@ -88,7 +88,7 @@ namespace HiringCompanyService.Access
         /// <returns></returns>
         public List<Employee> GetEmployees()
         {
-            log.Debug("Enter GetEmployees method.");
+            Log.Debug("Enter GetEmployees method.");
             using (var access = new AccessDB())
             {
                 List<Employee> employees = new List<Employee>(20);
@@ -100,7 +100,7 @@ namespace HiringCompanyService.Access
                         employees.Add(em);
                     }
                 }
-                log.Info("Successfully returned list of employees");
+                Log.Info("Successfully returned list of employees");
                 return employees;
             }
         }
@@ -114,19 +114,19 @@ namespace HiringCompanyService.Access
         /// <returns></returns>
         public Employee GetEmployee(string username, string password)
         {
-            log.Debug("Enter GetEmployee method.");
+            Log.Debug("Enter GetEmployee method.");
             using (var access = new AccessDB())
             {
                 Employee employee = access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(password));
 
-                log.Info("Successfully returned employee");
+                Log.Info("Successfully returned employee");
                 return employee;
             }
         }
 
         public bool ChangeEmployeePosition(string username, string position)
         {
-            log.Debug("Enter ChangeEmployeePosition method.");
+            Log.Debug("Enter ChangeEmployeePosition method.");
             using (var access = new AccessDB())
             {
                 Employee em = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
@@ -140,15 +140,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB");
+                        Log.Info("Successfully updated DB");
                         return true;
                     }
-                    log.Warn("Failed to update DB");
+                    Log.Warn("Failed to update DB");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed chainging position.");
+                    Log.Warn("Employee with that username does not exist. Failed chainging position.");
                     return false;
                 }
             }
@@ -156,7 +156,7 @@ namespace HiringCompanyService.Access
 
         public bool ChangeEmployeePassword(string username, string oldPassword, string newPassword)
         {
-            log.Debug("Enter ChangeEmployeePassword method.");
+            Log.Debug("Enter ChangeEmployeePassword method.");
             using (var access = new AccessDB())
             {
                 //access.Actions.FirstOrDefault(f => f.Username.Equals(username) && f.Password.Equals(oldPassword)).Password = newPassword;
@@ -173,15 +173,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB");
+                        Log.Info("Successfully updated DB");
                         return true;
                     }
-                    log.Warn("Failed to update DB");
+                    Log.Warn("Failed to update DB");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed chainging password.");
+                    Log.Warn("Employee with that username does not exist. Failed chainging password.");
                     return false;
                 }
                
@@ -190,14 +190,14 @@ namespace HiringCompanyService.Access
 
         public bool UpdateEmployee(Employee employee)
         {
-            log.Debug("Enter UpdateEmployee method.");
+            Log.Debug("Enter UpdateEmployee method.");
             using (var access = new AccessDB())
             {
                 //access.Actions.Attach(employee);
                 Employee em = access.Actions.FirstOrDefault(f => f.Email.Equals(employee.Email));
                 if (em != null)
                 {
-                    log.Debug("Employee exists");
+                    Log.Debug("Employee exists");
                     em.Email = employee.Email;
                     em.EndTime = employee.EndTime;
                     em.HiringCompanyId = employee.HiringCompanyId;
@@ -218,15 +218,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB");
+                        Log.Info("Successfully updated DB");
                         return true;
                     }
-                    log.Warn("Failed to update DB");
+                    Log.Warn("Failed to update DB");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed updating employee.");
+                    Log.Warn("Employee with that username does not exist. Failed updating employee.");
                     return false;
                 }
             }
@@ -234,7 +234,7 @@ namespace HiringCompanyService.Access
 
         public bool EmployeeLogIn(string username)
         {
-            log.Debug("Enter EmployeeLogIn method.");
+            Log.Debug("Enter EmployeeLogIn method.");
             using (var access = new AccessDB())
             {
 
@@ -250,15 +250,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB");
+                        Log.Info("Successfully updated DB");
                         return true;
                     }
-                    log.Warn("Failed to update DB");
+                    Log.Warn("Failed to update DB");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed to login.");
+                    Log.Warn("Employee with that username does not exist. Failed to login.");
                     return false;
                 }
            
@@ -267,7 +267,7 @@ namespace HiringCompanyService.Access
 
         public bool EmployeeLogOut(string username)
         {
-            log.Debug("Enter EmployeeLogOut method.");
+            Log.Debug("Enter EmployeeLogOut method.");
             using (var access = new AccessDB())
             {
 
@@ -283,15 +283,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB");
+                        Log.Info("Successfully updated DB");
                         return true;
                     }
-                    log.Warn("Failed to update DB");
+                    Log.Warn("Failed to update DB");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed to logout.");
+                    Log.Warn("Employee with that username does not exist. Failed to logout.");
                     return false;
                 }
 
@@ -300,19 +300,19 @@ namespace HiringCompanyService.Access
 
         public String GetEmployeeEmail(string username)
         {
-            log.Debug("Enter GetEmployeeEmail method.");
+            Log.Debug("Enter GetEmployeeEmail method.");
             using (var access = new AccessDB())
             {
                 Employee emp = access.Actions.FirstOrDefault(f => f.Username.Equals(username));
 
                 if (emp != null)
                 {
-                    log.Info("Successfully returned employee email");
+                    Log.Info("Successfully returned employee email");
                     return emp.Email;
                 }
                 else
                 {
-                    log.Warn("Employee with that username does not exist. Failed to retrieve email.");
+                    Log.Warn("Employee with that username does not exist. Failed to retrieve email.");
                     return string.Empty;
                 }
                 
@@ -321,7 +321,7 @@ namespace HiringCompanyService.Access
 
         public List<Employee> GetAllNotSignedInEmployees()
         {
-            log.Debug("Enter GetAllNotSignedInEmployees method.");
+            Log.Debug("Enter GetAllNotSignedInEmployees method.");
             using (var access = new AccessDB())
             {
                 List<Employee> employees = new List<Employee>(20);
@@ -333,14 +333,14 @@ namespace HiringCompanyService.Access
                         employees.Add(em);
                     }
                 }
-                log.Info("Successfully returned not signedIn employees");
+                Log.Info("Successfully returned not signedIn employees");
                 return employees;
             }
         }
 
         public List<Employee> GetReallyEmployees()
         {
-            log.Debug("Enter GetReallyEmployees method.");
+            Log.Debug("Enter GetReallyEmployees method.");
             using (var access = new AccessDB())
             {
                 List<Employee> employees = new List<Employee>(20);
@@ -349,7 +349,7 @@ namespace HiringCompanyService.Access
                 {
                         employees.Add(em);
                 }
-                log.Info("Successfully returned list of employees");
+                Log.Info("Successfully returned list of employees");
                 return employees;
             }
         }
@@ -358,6 +358,8 @@ namespace HiringCompanyService.Access
         {
             using (var access = new AccessDB())
             {
+
+                Log.Info("Successfully returned company id for employee username.");
                 var employee = access.Actions.Include(x => x.HiringCompanyId).FirstOrDefault(f => f.Username.Equals(username));
 
                 return employee.HiringCompanyId.IDHc;

@@ -13,7 +13,6 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static EditPersonalDataViewModel model;
         private string name;
         private string surname;
         private string username;

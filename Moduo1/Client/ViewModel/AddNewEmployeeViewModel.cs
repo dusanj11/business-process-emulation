@@ -13,7 +13,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static AddNewEmployeeViewModel model;
+        
         private NewEmployee newEmployee;
 
         public SaveNewEmployeeCommand SaveNewEmployeeCommand { get; set; }

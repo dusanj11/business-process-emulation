@@ -14,7 +14,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static EditPositionViewModel model;
+    
         private Employee employee;
         private string position;
 

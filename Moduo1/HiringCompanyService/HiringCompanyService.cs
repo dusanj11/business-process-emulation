@@ -12,7 +12,7 @@ namespace HiringCompanyService
 {
     public class HiringCompanyService : IHiringCompany, IHcContract
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public List<Employee> GetAllEmployees()
         {
@@ -34,7 +34,7 @@ namespace HiringCompanyService
 
         public bool AddEmployee(Employee employee)
         {
-            log.Info("AddEmployee...");
+            Log.Info("AddEmployee...");
             return EmployeeDB.Instance.AddEmployee(employee);
         }
 
@@ -84,28 +84,28 @@ namespace HiringCompanyService
 
         public bool AddHiringCompany(HiringCompanyData.HiringCompany company)
         {
-            log.Debug("AddHiringCompany Servisni poziv");
+            Log.Debug("AddHiringCompany Servisni poziv");
             Console.WriteLine("AddHiringCompany...");
             return HiringCompanyDB.Instance.AddCompany(company);
         }
 
         public HiringCompanyData.HiringCompany GetHiringCompany(int id)
         {
-            log.Debug("GetHiringCompany Servisni poziv");
+            Log.Debug("GetHiringCompany Servisni poziv");
             Console.WriteLine("GetHiringCompany...");
             return HiringCompanyDB.Instance.GetCompany(id);
         }
 
         public bool AddProjectDefinition(HiringCompanyData.Project project)
         {
-            log.Debug("AddProjectDefinition Servisni poziv");
+            Log.Debug("AddProjectDefinition Servisni poziv");
             Console.WriteLine("AddProjectDefinition...");
             return ProjectDB.Instance.AddProject(project);
         }
 
         public List<HiringCompanyData.Project> GetProjects(int hiringCompanyId)
         {
-            log.Debug("GetProjects Servisni poziv");
+            Log.Debug("GetProjects Servisni poziv");
             Console.WriteLine("GetProjects...");
             return ProjectDB.Instance.GetProjects(hiringCompanyId);
         }
@@ -149,79 +149,79 @@ namespace HiringCompanyService
 
         public bool AddPartnershipToDB(HiringCompanyData.HiringCompany hc, HiringCompanyData.OutsourcingCompany oc)
         {
-            log.Info("AddPartnershipToDB...");
+            Log.Info("AddPartnershipToDB...");
             return PartnershipDB.Instance.AddPartnership(hc, oc);
         }
 
         public List<HiringCompanyData.OutsourcingCompany> GetPartnershipOc(int hiringCompany)
         {
-            log.Info("GetPartnershipOc..");
+            Log.Info("GetPartnershipOc..");
             return PartnershipDB.Instance.GetPartnerOc(hiringCompany);
         }
 
         public bool AddOutsourcingCompany(HiringCompanyData.OutsourcingCompany oc)
         {
-            log.Info("AddOutsourcingCompany...");
+            Log.Info("AddOutsourcingCompany...");
             return OCompanyDB.Instance.AddOutsourcingCompany(oc);
         }
 
         public Object GetOutsourcingCompany(string name)
         {
-            log.Info("GetOutsourcingCompany...");
+            Log.Info("GetOutsourcingCompany...");
             return OCompanyDB.Instance.GetOutsourcingCompany(name);
         }
 
         public HiringCompanyData.Project GetProject(string projectName)
         {
-            log.Info("GetProject...");
+            Log.Info("GetProject...");
             return ProjectDB.Instance.GetProject(projectName);
         }
 
         public bool AddUserStory(HiringCompanyData.UserStory us)
         {
-            log.Info("AddUserStory...");
+            Log.Info("AddUserStory...");
             return UserStoryDB.Instance.AddUserStory(us);
         }
 
         public List<HiringCompanyData.Project> GetPartnershipProjects(int hiringCompanyTr)
         {
-            log.Info("GetPartnershipProjects...");
+            Log.Info("GetPartnershipProjects...");
             return PartnershipDB.Instance.GetPartnershipProjects(hiringCompanyTr);
         }
 
         public bool ChangeUserStoryState(int id, UserStoryState state)
         {
-            log.Info("ChangeUserStoryState...");
+            Log.Info("ChangeUserStoryState...");
             return UserStoryDB.Instance.ChangeUserStoryState(id, state);
         }
 
         public List<HiringCompanyData.UserStory> GetProjectUserStory(string projectName)
         {
-            log.Info("GetProjectUserStory...");
+            Log.Info("GetProjectUserStory...");
             return ProjectDB.Instance.GetProjectUserStory(projectName);
         }
 
         public List<HiringCompanyData.UserStory> GetProjectPendingUserStory(string projectName)
         {
-            log.Info("GetProjectPendingUserStory...");
+            Log.Info("GetProjectPendingUserStory...");
             return ProjectDB.Instance.GetProjectPendingUserStory(projectName);
         }
 
         HiringCompanyData.OutsourcingCompany IHiringCompany.GetOutsourcingCompany(string name)
         {
-            log.Info("GetOutsourcingCompany...");
+            Log.Info("GetOutsourcingCompany...");
             return OCompanyDB.Instance.GetOutsourcingCompany(name);
         }
 
         public List<HiringCompanyData.OutsourcingCompany> GetOutsourcingCompanies()
         {
-            log.Info("GetOutsourcingCompanies...");
+            Log.Info("GetOutsourcingCompanies...");
             return OCompanyDB.Instance.GetOutsourcingCompanies();
         }
 
         public List<HiringCompanyData.Project> GetProjectsForHc(int hiringCompanyId)
         {
-            log.Info("GetProject for specified hiring company...");
+            Log.Info("GetProject for specified hiring company...");
             return ProjectDB.Instance.GetProjects(hiringCompanyId);
         }
 
@@ -238,7 +238,7 @@ namespace HiringCompanyService
             }
             catch (Exception e)
             {
-                log.Error("Attempt to register outsourcing company that doesn't have Id or Name.");
+                Log.Error("Attempt to register outsourcing company that doesn't have Id or Name.");
                 return false;
             }
 
@@ -246,11 +246,11 @@ namespace HiringCompanyService
 
             if (ret)
             {
-                log.Info("Successfully added Outsourcing company to DB");
+                Log.Info("Successfully added Outsourcing company to DB");
             }
             else
             {
-                log.Warn("Failed to add Outsourcing company to DB");
+                Log.Warn("Failed to add Outsourcing company to DB");
             }
 
             return ret;
@@ -258,7 +258,7 @@ namespace HiringCompanyService
 
         public bool AcceptPartnership(WcfCommon.Data.HiringCompany hc, WcfCommon.Data.OutsourcingCompany oc)
         {
-            log.Info("AddPartnershipToDB...");
+            Log.Info("AddPartnershipToDB...");
             HiringCompanyData.HiringCompany hc_data = new HiringCompanyData.HiringCompany();
             HiringCompanyData.OutsourcingCompany oc_data = new HiringCompanyData.OutsourcingCompany();
 
@@ -270,7 +270,7 @@ namespace HiringCompanyService
 
         public List<WcfCommon.Data.UserStory> GetUserStoryes(string projectName)
         {
-            log.Info("Successfully returned User storyes for defined project name");
+            Log.Info("Successfully returned User storyes for defined project name");
             List<HiringCompanyData.UserStory> userStories = UserStoryDB.Instance.GetUserStory(projectName);
 
             List<WcfCommon.Data.UserStory> retval = new List<WcfCommon.Data.UserStory>();
@@ -308,24 +308,24 @@ namespace HiringCompanyService
             {
                 ret = ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
             }
-            catch(CommunicationException ce)
+            catch (CommunicationException ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
             }
 
             if (ret)
             {
-                log.Info("SUCCESSFULLY SENT PARTNERSHIP REQUEST!");
+                Log.Info("SUCCESSFULLY SENT PARTNERSHIP REQUEST!");
             }
             else
             {
-                log.Warn("Failed to sent partnership request.");
+                Log.Warn("Failed to sent partnership request.");
             }
 
             return ret;
@@ -353,21 +353,21 @@ namespace HiringCompanyService
             catch (CommunicationException ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
             }
             catch (Exception e)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
             }
 
             if (ret)
             {
-                log.Info("SUCCESSFULLY SENT PROJECT REQUEST!");
+                Log.Info("SUCCESSFULLY SENT PROJECT REQUEST!");
             }
             else
             {
-                log.Warn("Failed to sent project request.");
+                Log.Warn("Failed to sent project request.");
             }
 
             return ret;
@@ -375,7 +375,7 @@ namespace HiringCompanyService
 
         public bool MarkProjectEnded(HiringCompanyData.Project p)
         {
-            log.Info("MarkProjectEnded");
+            Log.Info("MarkProjectEnded");
             return ProjectDB.Instance.MarkProjectEnded(p);
         }
 
@@ -385,18 +385,18 @@ namespace HiringCompanyService
 
             if (ret)
             {
-                log.Info("Outosurcing company accepted project.");
+                Log.Info("Outosurcing company accepted project.");
             }
             else
             {
-                log.Warn("Failed to accept project.");
+                Log.Warn("Failed to accept project.");
             }
             return ret;
         }
 
         public bool RejectProject(string projectName)
         {
-            log.Warn("Outsourcing company rejected project.");
+            Log.Warn("Outsourcing company rejected project.");
             return true;
         }
 
@@ -413,13 +413,13 @@ namespace HiringCompanyService
             catch (CommunicationException ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception e)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
 
@@ -462,13 +462,13 @@ namespace HiringCompanyService
             catch (CommunicationException ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception e)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
 
@@ -610,23 +610,23 @@ namespace HiringCompanyService
             catch (CommunicationException ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception ce)
             {
                 ServiceProxy.Instance = null;
-                log.Error("Connection to Outsourcing company service failed.");
+                Log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
 
             if (ret)
             {
-                log.Info("User story successfully send.");
+                Log.Info("User story successfully send.");
             }
             else
             {
-                log.Warn("Failed to send user story.");
+                Log.Warn("Failed to send user story.");
             }
 
             return ret;
@@ -634,7 +634,7 @@ namespace HiringCompanyService
 
         public UserStory GetUserStoryFromId(int id)
         {
-            log.Info("Successfully get user story from DB.");
+            Log.Info("Successfully get user story from DB.");
             return UserStoryDB.Instance.GetUserStoryFromId(id);
         }
     }

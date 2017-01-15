@@ -14,7 +14,7 @@ namespace Client.ViewModel
 {
     public class ClientDialogViewModel : INotifyPropertyChanged, IClientDialogViewModel
     {
-        private static ClientDialogViewModel model;
+        
 
         private MainWindow main;
 

@@ -19,8 +19,8 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private LoadedCommand loadedCommandUnderTest;
-        int id;
-        Employee emp;
+        int id = 1;
+ 
 
         #endregion Declarations
 
@@ -29,8 +29,8 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-
-
+         
+            
             this.loadedCommandUnderTest = new LoadedCommand();
             this.loadedCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
@@ -39,7 +39,7 @@ namespace HiringCompanyClientTest.Command
 
             ClientProxy.Instance.AddHiringCompany(null).ReturnsForAnyArgs(true);
             ClientProxy.Instance.GetHiringCompanyForThr(id).ReturnsForAnyArgs(new HiringCompany());
-            ClientProxy.Instance.AddEmployee(emp).ReturnsForAnyArgs(true);
+            ClientProxy.Instance.AddEmployee(null).ReturnsForAnyArgs(true);
         }
 
         #endregion setup
