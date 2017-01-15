@@ -110,7 +110,7 @@ namespace HiringCompanyService
             binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
             binding.SendTimeout = new TimeSpan(0, 10, 0);
            
-            string address = "net.tcp://10.1.212.118:9092/HiringCompanyService";
+            string address = "net.tcp://localhost:9092/HiringCompanyService";
           
 
             ServiceHost serviceHost = new ServiceHost(typeof(HiringCompanyService));

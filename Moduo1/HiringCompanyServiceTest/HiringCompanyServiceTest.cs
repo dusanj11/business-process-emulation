@@ -412,7 +412,7 @@ namespace HiringCompanyServiceTest
             #endregion UserStoryDB
 
             #region ServiceProxy
-
+/*
             ServiceProxy.Instance = Substitute.For<IOcContract>();
 
             ServiceProxy.Instance.SendOcRequest(1, null).ReturnsForAnyArgs(true);
@@ -443,7 +443,7 @@ namespace HiringCompanyServiceTest
             
                 }
             });
-
+*/
             #endregion ServiceProxy
         }
 
