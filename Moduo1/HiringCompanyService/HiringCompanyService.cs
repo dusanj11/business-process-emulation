@@ -68,12 +68,12 @@ namespace HiringCompanyService
 
         private void Cc_Opened(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
         private void Cc_Faulted(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool EmployeeLogOut(string username)
@@ -434,7 +434,12 @@ namespace HiringCompanyService
                 pr.Progress = p.Progress;
                 pr.EndDate = p.EndDate;
 
-                ProjectDB.Instance.AddProject(pr);
+                bool projectAdded = ProjectDB.Instance.AddProject(pr);
+
+                if (!projectAdded)
+                {
+                    ProjectDB.Instance.UpdateProject(pr);
+                }
             }
 
             return true;
@@ -528,7 +533,13 @@ namespace HiringCompanyService
 
                 us.Project = p;
 
-                UserStoryDB.Instance.AddUserStory(us);
+                bool userStoryAdded = UserStoryDB.Instance.AddUserStory(us);
+
+                if (!userStoryAdded)
+                {
+                    UserStoryDB.Instance.UpdateUserStory(us);
+                }
+
             }
             return true;
         }

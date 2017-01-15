@@ -45,6 +45,7 @@ namespace Client.View
             
             if(p != null)
             {
+                ClientProxy.Instance.GetUserStories(p.Name);
                 List<UserStory> list = ClientProxy.Instance.GetProjectUserStory(p.Name);
                 userStoriesProjectsDataGrid.ItemsSource = new ObservableCollection<UserStory>(list);
             }

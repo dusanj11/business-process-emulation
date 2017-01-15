@@ -270,5 +270,38 @@ namespace HiringCompanyService.Access
                 
             }
         }
+
+        public bool UpdateProject(Project p)
+        {
+            using (var access = new AccessDB())
+            {
+                Project pr = access.PrActions.FirstOrDefault(f => f.Name.Equals(p.Name));
+
+                if (pr != null)
+                {
+                    pr.Approved = p.Approved;
+                    pr.Description = p.Description;
+                    pr.EndDate = p.EndDate;
+                    pr.Ended = p.Ended;
+                    pr.Name = p.Name;
+                    pr.Progress = p.Progress;
+                    pr.EndDate = p.EndDate;
+
+                    int i = access.SaveChanges();
+
+                    if (i>0)
+                    {
+                        log.Info("Project successfully updated.");
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    log.Warn("Project doesn't exists in DB");
+                    return false;
+                }
+            }
+        }
     }
 }

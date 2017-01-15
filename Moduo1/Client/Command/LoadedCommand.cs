@@ -21,19 +21,19 @@ namespace Client.Command
         {
             try
             {
-                //int threadId = Thread.CurrentThread.ManagedThreadId;
-                //HiringCompany company = new HiringCompany();
-                //company.Name = "HC";
-                //company.Ceo = "Marko Jelaca";
-                //company.CompanyIdThr = threadId;
+                int threadId = Thread.CurrentThread.ManagedThreadId;
+                HiringCompany company = new HiringCompany();
+                company.Name = "HC";
+                company.Ceo = "Marko Jelaca";
+                company.CompanyIdThr = threadId;
 
                 try
                 {
-                    //log.Debug("proxy poziv - AddHiringCompany");
-                    //ClientProxy.Instance.AddHiringCompany(company);
+                    log.Debug("proxy poziv - AddHiringCompany");
+                    ClientProxy.Instance.AddHiringCompany(company);
 
 
-                    //LoadDB(threadId);
+                    LoadDB(threadId);
 
 
                 }
