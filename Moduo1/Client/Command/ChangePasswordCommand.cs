@@ -11,6 +11,8 @@ namespace Client.Command
 {
     public class ChangePasswordCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -20,7 +22,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-
+            log.Info("Employee started changing his/hers password.");
             ClientDialogViewModel.Instance.ShowChangePasswordView();
         }
     }

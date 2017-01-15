@@ -9,6 +9,8 @@ namespace Client.Command
 {
     public class EditPositionCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public event EventHandler CanExecuteChanged;
 
         private ObservableCollection<Employee> resources = new ObservableCollection<Employee>();
@@ -33,6 +35,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee started editing employee's position");
             if (Resources.Count != 0)
             {
                 Resources.Clear();
@@ -40,10 +43,13 @@ namespace Client.Command
 
             List<Employee> logInEmployees = new List<Employee>(50);
 
+            log.Debug("proxy poziv - GetAllEmployees ");
             logInEmployees = ClientProxy.Instance.GetAllEmployees();
+            log.Info("Successfully returned all logged employees");
 
+            log.Debug("proxy poziv - GetAllotSignedInEmployees ");
             List<Employee> noLogInEmployees = ClientProxy.Instance.GetAllNotSignedInEmployees();
-
+            log.Info("Successfully returned all not logged employees");
             foreach (Employee em in logInEmployees)
             {
                 Resources.Add(em);

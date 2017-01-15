@@ -19,6 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Lodaded ommand started.");
             try
             {
                 int threadId = Thread.CurrentThread.ManagedThreadId;

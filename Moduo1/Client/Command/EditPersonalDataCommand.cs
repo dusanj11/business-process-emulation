@@ -19,6 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee started editing personal information.");
             try
             {
                 string username = ClientDialogViewModel.Instance.LogInUser().Username;

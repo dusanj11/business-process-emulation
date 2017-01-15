@@ -9,6 +9,8 @@ namespace Client.Command
 {
     public class SelectItemsCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -18,7 +20,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            Console.WriteLine("Selection changed");
+            log.Info("Selection changed");
         }
     }
 }

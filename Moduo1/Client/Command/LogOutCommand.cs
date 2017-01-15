@@ -7,6 +7,8 @@ namespace Client.Command
 {
     public class LogOutCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -16,6 +18,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee is loging out");
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
             if (username.Equals("") || username.Equals(null))
@@ -23,7 +26,9 @@ namespace Client.Command
                 return;
             }
 
+            log.Debug("proxy poziv - EmployeeLogIn");
             ClientProxy.Instance.EmployeeLogOut(username);
+            log.Info("Successfully logged user out");
 
             Application.Current.Windows[1].Close();
             Application.Current.MainWindow.Show();

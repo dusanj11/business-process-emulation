@@ -16,6 +16,8 @@ namespace Client.Command
     /// </summary>
     public class SendRequestCompanyViewCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -40,6 +42,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee stated sending request to comapny.");
             Console.WriteLine("Izvrsavanje prikaya u toku");
 
             if (Resources.Count != 0)
@@ -47,7 +50,9 @@ namespace Client.Command
                 Resources.Clear();
             }
 
+            log.Debug("proxy poziv - GetOutsourcingCompanies");
             List<OutsourcingCompany> oclist = ClientProxy.Instance.GetOutsourcingCompanies();
+            log.Info("Successfully retunr list of outsorucing companies");
 
             Resources = new ObservableCollection<OutsourcingCompany>(oclist);
 

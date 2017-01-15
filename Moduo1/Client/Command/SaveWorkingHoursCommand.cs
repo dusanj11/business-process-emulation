@@ -7,6 +7,8 @@ namespace Client.Command
 {
     public class SaveWorkingHoursCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -16,19 +18,25 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee saved working hours.");
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
             string password = ClientDialogViewModel.Instance.LogInUser().Password;
 
             string startTime = WorkingHoursViewModel.Instance.StartTime();
             string endTime = WorkingHoursViewModel.Instance.EndTime();
 
+            log.Debug("proxy poziv - GetEmployee");
             Employee em = ClientProxy.Instance.GetEmployee(username, password);
+            log.Info("Successfully returned employee.");
+
             if (em != null)
             {
                 em.StartTime = Parser.Parse(startTime);
                 em.EndTime = Parser.Parse(endTime);
 
+                log.Debug("proxy poziv - UpdateEmployee");
                 ClientProxy.Instance.UpdateEmployee(em);
+                log.Info("Successfully updated employee.");
             }
         }
     }

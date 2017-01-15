@@ -9,6 +9,9 @@ namespace Client.Command
 {
     public class SaveNewEmployeeCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -18,6 +21,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
+            log.Info("Employee saved new employee");
             NewEmployee newEmp = AddNewEmployeeViewModel.Instance.NewEmployee();
 
             Employee employee = new Employee();
@@ -33,14 +37,21 @@ namespace Client.Command
 
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
+            log.Debug("proxy poziv - GetHcIdForUser");
             int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
+            log.Info("Successfully returned id of hiring company");
 
 
+            log.Debug("proxy poziv - GetHcIdForUser");
             employee.HiringCompanyId = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
+            log.Info("Successfully returned  hiring company");
 
+            log.Debug("proxy poziv - GetHcIdForUser");
             bool ret = ClientProxy.Instance.AddEmployee(employee);
+            log.Info("Successfully added employee");
 
-            
+
+
         }
     }
 }
