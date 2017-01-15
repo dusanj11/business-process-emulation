@@ -58,6 +58,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\AcceptRejectUserStory.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcceptRejectUserStory.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\AddHiringCompany.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +93,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeLogOut.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EndProject.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EndProject.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\GetHiringCompanies.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,11 +113,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SendDelayingEmail.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SendPartnershipRequest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendPartnershipRequest.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\SendProjectRequest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendProjectRequest.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateEmployee.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateEmployee.feature</DependentUpon>
     </Compile>
+    <Compile Include="Steps\AcceptRejectUserStorySteps.cs" />
     <Compile Include="Steps\AddEmployeeSteps.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Features\AddEmployee.feature.cs">
@@ -136,6 +157,7 @@
     <Compile Include="Steps\ChangePasswordSteps.cs" />
     <Compile Include="Steps\EmployeeLogInSteps.cs" />
     <Compile Include="Steps\EmployeeLogOutSteps.cs" />
+    <Compile Include="Steps\EndProjectSteps.cs" />
     <Compile Include="Steps\GetAllNotLoggedEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllEmployeesSteps.cs" />
     <Compile Include="Steps\GetAllLoggedEmployeesSteps.cs">
@@ -151,10 +173,16 @@
     <Compile Include="Steps\GetHiringCompaniesSteps.cs" />
     <Compile Include="Steps\GetProjectsSteps.cs" />
     <Compile Include="Steps\SendDelayingEmailSteps.cs" />
+    <Compile Include="Steps\SendPartnershipRequestSteps.cs" />
+    <Compile Include="Steps\SendProjectRequestSteps.cs" />
     <Compile Include="Steps\UpdateEmployeeSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\AcceptRejectUserStory.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AcceptRejectUserStory.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\AddEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddEmployee.feature.cs</LastGenOutput>
@@ -183,6 +211,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EmployeeLogOut.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\EndProject.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EndProject.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\GetAllEmployees.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetAllEmployees.feature.cs</LastGenOutput>
@@ -206,6 +238,14 @@
     <None Include="Features\SendDelayingEmail.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SendDelayingEmail.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SendPartnershipRequest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SendPartnershipRequest.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SendProjectRequest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SendProjectRequest.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UpdateEmployee.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
