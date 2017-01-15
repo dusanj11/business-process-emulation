@@ -47,7 +47,7 @@ namespace Proba.Steps
         [Then(@"the result should be an empty list")]
         public void ThenTheResultShouldBeAnEmptyList()
         {
-            Assert.That(allEmployees.Count == 0, Is.True);
+            Assert.That(allEmployees.Count == 0, Is.True);   
         }
     }
 }
