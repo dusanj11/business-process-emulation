@@ -22,6 +22,7 @@ namespace HiringCompanyClientTest.Model
         private string startTime = "10.00";
         private string endTime = "17.00";
         private string position = "CEO";
+        private string email = "lol@gmail.com";
 
         #endregion Declarations
 
@@ -46,13 +47,13 @@ namespace HiringCompanyClientTest.Model
         [Test]
         public void ConstructorWithParametersTest()
         {
-            Assert.DoesNotThrow(() => new NewEmployee(name, surname, username, password, startTime, endTime, position));
+            Assert.DoesNotThrow(() => new NewEmployee(name, surname, username, password, startTime, endTime, position, email));
         }
 
         [Test]
         public void NullParametersConstructorTest()
         {
-            Assert.DoesNotThrow(() => new NewEmployee(null, null, null, null, null, null, null));
+            Assert.DoesNotThrow(() => new NewEmployee(null, null, null, null, null, null, null, null));
         }
 
         [Test]

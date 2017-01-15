@@ -132,7 +132,7 @@ namespace Client.Model
             this.email = "";
         }
 
-        public NewEmployee(string name, string surname, string username, string password, string startTime, string endTime, string position)
+        public NewEmployee(string name, string surname, string username, string password, string startTime, string endTime, string position, string email)
         {
             this.Name = name;
             this.Surname = surname;
