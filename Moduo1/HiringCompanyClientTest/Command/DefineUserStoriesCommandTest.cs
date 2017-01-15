@@ -52,10 +52,7 @@ namespace HiringCompanyClientTest.Command
 
             
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
-
-            ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new LogInUser("dule", "dule"));
-            ClientProxy.Instance.GetHcIdForUser("").ReturnsForAnyArgs(7);
+            ClientProxy.Instance.GetHcIdForUser(null).Returns(1);
             ClientProxy.Instance.GetPartnershipProjects(7).Returns(new List<Project>() {
                 new Project() {
                     Name = "P1",
@@ -65,7 +62,8 @@ namespace HiringCompanyClientTest.Command
                 }
             });
 
-            
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ClientDialogViewModel.Instance.LogInUser().Returns(new LogInUser("dule", "dule"));
             ClientDialogViewModel.Instance.PrResources(defineUserStoriesCommandUnderTest.Resources);
             ClientDialogViewModel.Instance.ShowDefineUserStoriesView();
         }

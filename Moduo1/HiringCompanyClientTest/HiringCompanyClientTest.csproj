@@ -147,6 +147,9 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Client\HiringCompanyClient.csproj">
       <Project>{991966e6-7be8-428a-93b1-c184f4d3ef91}</Project>
       <Name>HiringCompanyClient</Name>
@@ -163,9 +166,6 @@
       <Project>{e06bf5bb-e141-49c6-b639-43e8bd79f8ab}</Project>
       <Name>HiringCompanyService</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,76 +41,13 @@ namespace HiringCompanyService
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AccessDB, Configuration>());
 
 
-
-            //EmployeeDB.Instance.AddEmployee(new Employee
-            //{
-            //    Name = "Marko",
-            //    Surname = "Jelaca",
-            //    Username = "maki",
-            //    Password = "maki",
-            //    Position = PositionEnum.HR.ToString(),
-            //    StartTime = "10.00",
-            //    EndTime = "17.00",
-            //    Email = "jelaca.marko@gmail.com",
-            //    Login = false,
-            //    PasswordUpadateDate = DateTime.Now,
-            //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
-
-            //});
-
-            //EmployeeDB.Instance.AddEmployee(new Employee
-            //{
-            //    Name = "Dusan",
-            //    Surname = "Jeftic",
-            //    Username = "dule",
-            //    Password = "dule",
-            //    Position = PositionEnum.CEO.ToString(),
-            //    StartTime = "09.00",
-            //    EndTime = "16.00",
-            //    Email = "dusan.jeftic11@gmail.com",
-            //    Login = false,
-            //    PasswordUpadateDate = DateTime.Now,
-            //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
-
-            //});
-
-            //EmployeeDB.Instance.AddEmployee(new Employee
-            //{
-            //    Name = "Natasa",
-            //    Surname = "Subic",
-            //    Username = "naci",
-            //    Password = "naci",
-            //    Position = PositionEnum.SM.ToString(),
-            //    StartTime = "10.00",
-            //    EndTime = "17.00",
-            //    Login = false,
-            //    PasswordUpadateDate = DateTime.Now,
-            //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
-
-            //});
-
-            //EmployeeDB.Instance.AddEmployee(new Employee
-            //{
-            //    Name = "Milica",
-            //    Surname = "Kapetina",
-            //    Username = "mici",
-            //    Password = "mici",
-            //    Position = PositionEnum.PO.ToString(),
-            //    StartTime = "09.00",
-            //    EndTime = "16.00",
-            //    Login = false,
-            //    PasswordUpadateDate = DateTime.Now,
-            //    HiringCompanyId = HiringCompanyDB.Instance.GetCompany(Thread.CurrentThread.ManagedThreadId)
-
-            //});
-
             NetTcpBinding binding = new NetTcpBinding();
             binding.OpenTimeout = new TimeSpan(0, 10, 0);
             binding.CloseTimeout = new TimeSpan(0, 10, 0);
             binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
             binding.SendTimeout = new TimeSpan(0, 10, 0);
            
-            string address = "net.tcp://localhost:9092/HiringCompanyService";
+            string address = "net.tcp://localhost:9090/HiringCompanyService";
           
 
             ServiceHost serviceHost = new ServiceHost(typeof(HiringCompanyService));

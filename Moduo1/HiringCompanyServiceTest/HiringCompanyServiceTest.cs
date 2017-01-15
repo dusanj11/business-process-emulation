@@ -409,10 +409,19 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
+
+            UserStoryDB.Instance.GetUserStoryFromId(1).Returns(us);
+
+            UserStoryDB.Instance
+                .WhenForAnyArgs(p => p.GetUserStoryFromId(1))
+                .Do(p => {
+                    isCalled = true;
+                });
+
             #endregion UserStoryDB
 
             #region ServiceProxy
-/*
+
             ServiceProxy.Instance = Substitute.For<IOcContract>();
 
             ServiceProxy.Instance.SendOcRequest(1, null).ReturnsForAnyArgs(true);
@@ -443,7 +452,7 @@ namespace HiringCompanyServiceTest
             
                 }
             });
-*/
+
             #endregion ServiceProxy
         }
 
@@ -792,6 +801,56 @@ namespace HiringCompanyServiceTest
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
         }
 
+
+        [Test]
+        public void SendUserStoryToOcClosedTest()
+        {
+            us.UserStoryState = UserStoryState.Closed;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcFinishedTest()
+        {
+            us.UserStoryState = UserStoryState.Finished;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcNewTest()
+        {
+            us.UserStoryState = UserStoryState.New;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcOpenTest()
+        {
+            us.UserStoryState = UserStoryState.Open;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcPendingTest()
+        {
+            us.UserStoryState = UserStoryState.Pending;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcRejectTest()
+        {
+            us.UserStoryState = UserStoryState.Rejected;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void SendUserStoryToOcApprovedTest()
+        {
+            us.UserStoryState = UserStoryState.Approved;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
         [Test]
         public void GetUserStoriesTest()
         {
@@ -898,6 +957,23 @@ namespace HiringCompanyServiceTest
             Assert.IsTrue(isCalled);
         }
 
-        #endregion test
-    }
+
+        [Test]
+        public void GetUserStoryFromIdTest()
+        {
+            isCalled = false;
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetUserStoryFromId(1); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetProjectTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProject(projectTest.Name); });
+        }
+
+
+    #endregion test
+}
 }

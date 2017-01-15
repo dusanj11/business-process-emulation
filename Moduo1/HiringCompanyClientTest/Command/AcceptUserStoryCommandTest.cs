@@ -35,10 +35,10 @@ namespace HiringCompanyClientTest.Command
             DefineUserStoriesViewModel.Instance = Substitute.For<IDefineUserStoriesViewModel>();
 
             DefineUserStoriesViewModel.Instance.Project().Returns(new Project());
-            DefineUserStoriesViewModel.Instance.UserStory().Returns(new UserStory() { Id=1 });
+            DefineUserStoriesViewModel.Instance.UserStory().Returns(new UserStory() { Id = 1 });
 
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientProxy.Instance.ChangeUserStoryState(1, UserStoryState.Approved).Returns(true);
+            //ClientProxy.Instance.GetUserStoryFromId(1).ReturnsForAnyArgs(new UserStory());
         }
         #endregion setup
 
@@ -56,7 +56,7 @@ namespace HiringCompanyClientTest.Command
         }
 
         [Test]
-        public void  ConstructorTest()
+        public void ConstructorTest()
         {
             Assert.DoesNotThrow(() => new AcceptUserStoryCommand());
         }
