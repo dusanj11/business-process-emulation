@@ -12,6 +12,7 @@ using Client.ViewModelInterfaces;
 using Client;
 using HiringCompanyContract;
 using HiringCompanyData;
+using Client.Model;
 
 namespace HiringCompanyClientTest.Command
 {
@@ -35,27 +36,18 @@ namespace HiringCompanyClientTest.Command
             this.saveNewPasswordCommandUnderTest = new SaveNewPasswordCommand();
             this.saveNewPasswordCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
-            EmployeeDB.Instance = Substitute.For<IEmployeeDB>();
-
             ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
+            ChangePasswordViewModel.Instance.OldPassword().ReturnsForAnyArgs("");
+            ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
+
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>(); ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
+            ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new LogInUser());
 
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
-            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position="PO"});
             ClientProxy.Instance.ChangePassword(null, null, null).ReturnsForAnyArgs(true);
-
-            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
-            ClientDialogViewModel.Instance.LogInUser().Returns(new Client.Model.LogInUser("mici", "mici"));
-            ClientDialogViewModel.Instance.CDialog().ReturnsForAnyArgs(new ClientDialog()
-            {
-
-            });
-
-            ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
-            ChangePasswordViewModel.Instance.OldPassword().Returns("mici");
-            ChangePasswordViewModel.Instance.NewPassword().Returns("milica");
-
-
-        
+            ClientProxy.Instance.GetEmployee(null, null).ReturnsForAnyArgs(new Employee() { Position = "PO" });
+            ClientProxy.Instance.UpdateEmployee(null).ReturnsForAnyArgs(true);
+  
         }
 
         #endregion setup

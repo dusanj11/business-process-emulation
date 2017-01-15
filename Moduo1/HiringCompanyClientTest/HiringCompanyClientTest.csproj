@@ -105,8 +105,11 @@
     <Compile Include="Command\DefineUserStoriesCommandTest.cs" />
     <Compile Include="Command\EditPersonalDataCommandTest.cs" />
     <Compile Include="Command\EditPositionCommandTest.cs" />
+    <Compile Include="Command\EndProjectCommandTest.cs" />
     <Compile Include="Command\LoadedCommandTest.cs" />
     <Compile Include="Command\LogOutCommandTest.cs" />
+    <Compile Include="Command\MarkProjectFinishedCommandTest.cs" />
+    <Compile Include="Command\RejectUserStoryCommandTest.cs" />
     <Compile Include="Command\SaveEditPositionCommandTest.cs" />
     <Compile Include="Command\SaveNewEmployeeCommandTest.cs" />
     <Compile Include="Command\SaveNewPasswordCommandTest.cs" />
@@ -122,10 +125,13 @@
     <Compile Include="Command\ViewProjectsCommandTest.cs" />
     <Compile Include="Command\ViewWorkersCommandTest.cs" />
     <Compile Include="Command\WorkingHoursCommandTest.cs" />
+    <Compile Include="ViewModel\AddNewEmployeeViewModelTest.cs" />
     <Compile Include="Model\LogInUserTest.cs" />
     <Compile Include="Model\NewEmployeeTest.cs" />
     <Compile Include="Model\NewProjectDefinitionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ChangePasswordViewModelTest.cs" />
+    <Compile Include="ViewModel\CreateProjectViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
