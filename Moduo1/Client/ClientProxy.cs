@@ -19,7 +19,10 @@ namespace Client
         {
             get
             {
-                if (proxy == null)
+                if (proxy == null ||
+                    OperationContext.Current == null ||
+                    OperationContext.Current.Channel == null ||
+                    OperationContext.Current.Channel.State != CommunicationState.Opened)
                 {
                     NetTcpBinding binding = new NetTcpBinding();
                     binding.OpenTimeout = new TimeSpan(0, 10, 0);

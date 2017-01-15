@@ -21,14 +21,9 @@
         </Grid.RowDefinitions>   
        <DataGrid  Grid.Row="0" AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="projectsDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
-                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn"
+                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn" SelectionChanged="projectsDataGrid_SelectionChanged"
                    ItemsSource="{Binding Path=PrResources, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedProject, Mode=TwoWay}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SelectItemsCommand}"
-                        CommandParameter="{Binding Path=SelectedItem, ElementName=projectsDataGrid}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+           
         </DataGrid>
 
         <DataGrid  Grid.Row="1" AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
