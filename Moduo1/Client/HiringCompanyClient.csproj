@@ -199,14 +199,17 @@
     <Compile Include="Command\SaveNewProjectDefinition.cs" />
     <Compile Include="Command\SavePersonalDataCommand.cs" />
     <Compile Include="Command\SaveWorkingHoursCommand.cs" />
+    <Compile Include="Command\SelectItemsCommand.cs" />
     <Compile Include="Command\SendRequestCompanyCommand.cs" />
     <Compile Include="Command\SendRequestProjectCommand.cs" />
     <Compile Include="Command\SendRequestProjectViewCommand.cs" />
     <Compile Include="Command\ShowCompaniesCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
+    <Compile Include="Dependency\CustomDataGrid.cs" />
     <Compile Include="Model\LogInUser.cs" />
     <Compile Include="Model\NewEmployee.cs" />
     <Compile Include="Model\NewProjectDefinition.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="PassingConverter\PassingArguments.cs" />
     <Compile Include="Behaviors\PasswordBoxAssistant.cs" />
     <Compile Include="ViewModelInterfaces\IChangePasswordViewModel.cs" />
@@ -218,6 +221,7 @@
     <Compile Include="ViewModelInterfaces\IEndProjectViewModel.cs" />
     <Compile Include="ViewModelInterfaces\ISendRequestCompanyViewModel.cs" />
     <Compile Include="ViewModelInterfaces\ISendRequestProjectViewModel.cs" />
+    <Compile Include="ViewModelInterfaces\IViewProjectsViewModel.cs" />
     <Compile Include="ViewModelInterfaces\IWorkingHoursViewModel.cs" />
     <Compile Include="ViewModel\AddNewEmployeeViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
@@ -230,6 +234,7 @@
     <Compile Include="ViewModel\EndProjectViewModel.cs" />
     <Compile Include="ViewModel\SendRequestCompanyViewModel.cs" />
     <Compile Include="ViewModel\SendRequestProjectViewModel.cs" />
+    <Compile Include="ViewModel\ViewProjectsViewModel.cs" />
     <Compile Include="ViewModel\WorkingHoursViewModel.cs" />
     <Compile Include="View\AddEmployeeView.xaml.cs">
       <DependentUpon>AddEmployeeView.xaml</DependentUpon>

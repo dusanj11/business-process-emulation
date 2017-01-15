@@ -37,7 +37,7 @@ namespace Client
                     //CommunicationState sto = co.State;
 
                     IContextChannel cc = proxy as IContextChannel;
-                    Console.WriteLine(cc.State);
+                    Console.WriteLine("HC Service state: " + cc.State);
 
 
 

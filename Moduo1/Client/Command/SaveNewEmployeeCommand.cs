@@ -25,11 +25,11 @@ namespace Client.Command
             employee.Password = newEmp.Password;
             employee.Name = newEmp.Name;
             employee.Surname = newEmp.Surname;
-            employee.StartTime = newEmp.StartTime;
-            employee.EndTime = newEmp.EndTime;
-            employee.Position = newEmp.Position;
+            employee.StartTime = Parser.Parse(newEmp.StartTime);
+            employee.EndTime = Parser.Parse(newEmp.EndTime);
+            employee.Position = Parser.Parse(newEmp.Position);
             employee.PasswordUpadateDate = DateTime.Now;
-
+            employee.Email = newEmp.Email;
 
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 

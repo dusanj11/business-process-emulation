@@ -41,7 +41,7 @@ namespace Client.Command
 
                     if (outValue.Position.ToString().Equals("PO"))
                     {
-                        if (outValue.PasswordUpadateDate.AddMonths(6) > DateTime.Now)
+                        if (outValue.PasswordUpadateDate.AddMonths(6) < DateTime.Now)
                         {
                             Application.Current.MainWindow.Hide();
                             ClientDialog cd = new ClientDialog();
@@ -83,7 +83,7 @@ namespace Client.Command
                     }
                     else if (outValue.Position.ToString().Equals("HR"))
                     {
-                        if (outValue.PasswordUpadateDate.AddMonths(6) > DateTime.Now)
+                        if (outValue.PasswordUpadateDate.AddMonths(6) < DateTime.Now)
                         {
                             //((Window)parameters[2]).Hide();
                             Application.Current.MainWindow.Hide();
@@ -126,7 +126,7 @@ namespace Client.Command
                     }
                     else if (outValue.Position.ToString().Equals("CEO"))
                     {
-                        if (outValue.PasswordUpadateDate.AddMonths(6) > DateTime.Now)
+                        if (outValue.PasswordUpadateDate.AddMonths(6) < DateTime.Now)
                         {
                             //((Window)parameters[2]).Hide();
                             Application.Current.MainWindow.Hide();
@@ -169,7 +169,7 @@ namespace Client.Command
                     }
                     else if (outValue.Position.ToString().Equals("SM"))
                     {
-                        if (outValue.PasswordUpadateDate.AddMonths(6) > DateTime.Now)
+                        if (outValue.PasswordUpadateDate.AddMonths(6) < DateTime.Now)
                         {
                             //((Window)parameters[2]).Hide();
                             Application.Current.MainWindow.Hide();

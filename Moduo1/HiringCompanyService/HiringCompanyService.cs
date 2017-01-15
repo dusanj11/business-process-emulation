@@ -400,6 +400,8 @@ namespace HiringCompanyService
         {
             List<WcfCommon.Data.Project> projects = new List<WcfCommon.Data.Project>();
 
+            CommunicationState cs = ServiceProxy.State;
+
             try
             {
                 projects = ServiceProxy.Instance.GetProjects(hiringCompanyId);

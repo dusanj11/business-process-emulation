@@ -29,6 +29,10 @@ namespace HiringCompanyService
 
                     factory = new ChannelFactory<IOcContract>(binding, new EndpointAddress(address));
                     proxy = factory.CreateChannel();
+
+                    IContextChannel cc = proxy as IContextChannel;
+                    Console.WriteLine("OC Service state: " + cc.State);
+                    State = cc.State;
                 }
 
                 return proxy;
@@ -41,6 +45,8 @@ namespace HiringCompanyService
                 }
             }
         }
+
+        public static CommunicationState State { get; set; }
 
         public void Dispose()
         {
