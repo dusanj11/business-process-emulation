@@ -25,8 +25,8 @@ namespace Client.Command
             Employee em = ClientProxy.Instance.GetEmployee(username, password);
             if (em != null)
             {
-                em.StartTime = startTime;
-                em.EndTime = endTime;
+                em.StartTime = Parser.Parse(startTime);
+                em.EndTime = Parser.Parse(endTime);
 
                 ClientProxy.Instance.UpdateEmployee(em);
             }

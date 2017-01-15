@@ -54,7 +54,7 @@ namespace Client.Command
 
             foreach (Project p in list)
             {
-                if (p.Progress == 100)
+                if (p.Progress == 100 && !p.Ended)
                 {
                     Resources.Add(p);
                 }

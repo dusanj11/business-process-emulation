@@ -310,10 +310,12 @@ namespace HiringCompanyService
             }
             catch(CommunicationException ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
             }
             catch(Exception e)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
             }
 
@@ -350,10 +352,12 @@ namespace HiringCompanyService
             }
             catch (CommunicationException ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
             }
             catch (Exception e)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
             }
 
@@ -400,17 +404,21 @@ namespace HiringCompanyService
         {
             List<WcfCommon.Data.Project> projects = new List<WcfCommon.Data.Project>();
 
+            CommunicationState cs = ServiceProxy.State;
+
             try
             {
                 projects = ServiceProxy.Instance.GetProjects(hiringCompanyId);
             }
             catch (CommunicationException ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception e)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
@@ -448,11 +456,13 @@ namespace HiringCompanyService
             }
             catch (CommunicationException ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception e)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
@@ -588,11 +598,13 @@ namespace HiringCompanyService
             }
             catch (CommunicationException ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
             catch (Exception ce)
             {
+                ServiceProxy.Instance = null;
                 log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
