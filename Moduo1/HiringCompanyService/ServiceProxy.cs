@@ -43,10 +43,10 @@ namespace HiringCompanyService
             }
             set
             {
-                if (proxy == null)
-                {
+                //if (proxy == null)
+               // {
                     proxy = value;
-                }
+                //}
             }
         }
 

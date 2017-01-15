@@ -50,10 +50,10 @@ namespace Client
             }
             set
             {
-                if (proxy == null)
-                {
+                //if (proxy == null)
+                //{
                     proxy = value;
-                }
+                //}
             }
         }
 
