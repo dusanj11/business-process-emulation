@@ -132,6 +132,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModelTest.cs" />
     <Compile Include="ViewModel\CreateProjectViewModelTest.cs" />
+    <Compile Include="ViewModel\EndProjectViewModelTest.cs" />
+    <Compile Include="ViewModel\SendRequestCompanyViewModelTest.cs" />
+    <Compile Include="ViewModel\SendRequestProjectViewModelTest.cs" />
+    <Compile Include="ViewModel\WorkingHoursViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

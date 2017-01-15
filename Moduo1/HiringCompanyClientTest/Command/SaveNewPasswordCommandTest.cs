@@ -37,8 +37,8 @@ namespace HiringCompanyClientTest.Command
             this.saveNewPasswordCommandUnderTest.CanExecuteChanged += (object sender, EventArgs e) => { Console.WriteLine("CanExecuteChanged"); };
 
             ChangePasswordViewModel.Instance = Substitute.For<IChangePasswordViewModel>();
-            ChangePasswordViewModel.Instance.OldPassword().ReturnsForAnyArgs("");
-            ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
+            ChangePasswordViewModel.Instance.OldPassword().ReturnsForAnyArgs("dule");
+            ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("dule");
 
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>(); ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
             ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new LogInUser());
