@@ -187,14 +187,17 @@ namespace Client.ViewModel
 
             set
             {
-                selectedProject = value;
-                List<UserStory> list = ClientProxy.Instance.GetProjectUserStory(SelectedProject.Name);
-                foreach (UserStory l in list)
+                if (selectedProject != value)
                 {
-                    UsResources.Add(l);
+                    selectedProject = value;
+                    List<UserStory> list = ClientProxy.Instance.GetProjectUserStory(SelectedProject.Name);
+                    foreach (UserStory l in list)
+                    {
+                        UsResources.Add(l);
+                    }
+                    //UsResources = new ObservableCollection<UserStory>(list);
+                    OnPropertyChanged(new PropertyChangedEventArgs("SelectedProject"));
                 }
-                //UsResources = new ObservableCollection<UserStory>(list);
-                OnPropertyChanged(new PropertyChangedEventArgs("SelectedProject"));
             }
         }
 

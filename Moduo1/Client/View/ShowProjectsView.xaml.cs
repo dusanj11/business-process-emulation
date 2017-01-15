@@ -1,4 +1,5 @@
 ﻿using Client.ViewModel;
+using HiringCompanyData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Client.View
         {
             InitializeComponent();
             this.DataContext = ClientDialogViewModel.Instance;
+     
         }
 
         private void ProjectsDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

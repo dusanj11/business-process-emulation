@@ -19,8 +19,8 @@
 
         <DataGrid  Grid.Row="1" AutoGenerateColumns="True" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="12,0,-171,0"
                    Name="userStoriesProjectsDataGrid" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True" 
-                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn"
-                   ItemsSource="{Binding Path=UsResources, Mode=TwoWay}">
+                   AutoGeneratingColumn="ProjectsDataGrid_AutoGeneratingColumn" >
+
 
         </DataGrid>
     </Grid>
