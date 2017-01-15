@@ -434,7 +434,12 @@ namespace HiringCompanyService
                 pr.Progress = p.Progress;
                 pr.EndDate = p.EndDate;
 
-                ProjectDB.Instance.AddProject(pr);
+                bool projectAdded = ProjectDB.Instance.AddProject(pr);
+
+                if (!projectAdded)
+                {
+                    ProjectDB.Instance.UpdateProject(pr);
+                }
             }
 
             return true;
