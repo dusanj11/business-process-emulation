@@ -112,5 +112,41 @@ namespace HiringCompanyService.Access
                 return us;
             }
         }
+
+        public bool UpdateUserStory(UserStory us)
+        {
+            using (var access = new AccessDB())
+            {
+                UserStory u = access.UsAction.FirstOrDefault(f => f.Name.Equals(us.Name));
+                
+                if (u != null)
+                {
+                    u.IdFromOcDB = us.Id;
+                    u.Description = us.Description;
+                    u.Name = us.Name;
+                    u.Progress = us.Progress;
+                    u.UserStoryState = us.UserStoryState;
+                    u.WeightOfUserStory = us.WeightOfUserStory;
+
+                    int i = access.SaveChanges();
+
+                    if (i > 0)
+                    {
+
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    
+                    return false;
+                }
+
+            }
+        }
     }
 }

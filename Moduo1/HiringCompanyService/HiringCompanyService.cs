@@ -533,7 +533,13 @@ namespace HiringCompanyService
 
                 us.Project = p;
 
-                UserStoryDB.Instance.AddUserStory(us);
+                bool userStoryAdded = UserStoryDB.Instance.AddUserStory(us);
+
+                if (!userStoryAdded)
+                {
+                    UserStoryDB.Instance.UpdateUserStory(us);
+                }
+
             }
             return true;
         }
