@@ -24,5 +24,7 @@ namespace HiringCompanyService.Access
         bool MarkProjectEnded(Project p);
 
         bool SetOcToProject(string projectName, int outsourcingCompanyId);
+
+        bool UpdateProject(Project p);
     }
 }
