@@ -291,7 +291,7 @@ namespace HiringCompanyService
         }
 
         /// <summary>
-        ///     Method that call ServiceProxy to outsourcing company service
+        ///     Methods that call ServiceProxy to outsourcing company service
         /// </summary>
 
         public bool SendPartnershipRequest(int outsourcingCompanyId, HiringCompanyData.HiringCompany hiringCompany)
@@ -302,17 +302,20 @@ namespace HiringCompanyService
             hc_data.IdFromHiringCompanyDB = hiringCompany.IDHc;
             hc_data.Name = hiringCompany.Name;
 
-            TcpClient tc = null;
+            bool ret = false;
+
             try
             {
-                tc = new TcpClient("10.1.212.109", 9091);
+                ret = ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
+            }
+            catch(CommunicationException ce)
+            {
+                log.Error("Connection to Outsourcing company service failed.");
             }
             catch(Exception e)
             {
-                return false;
+                log.Error("Connection to Outsourcing company service failed.");
             }
-
-            bool ret = ServiceProxy.Instance.SendOcRequest(outsourcingCompanyId, hc_data);
 
             if (ret)
             {
@@ -338,17 +341,21 @@ namespace HiringCompanyService
             pr_data.Progress = project.Progress;
             pr_data.StartDate = project.StartDate;
 
-            TcpClient tc = null;
+
+            bool ret = false;
+
             try
             {
-                tc = new TcpClient("10.1.212.109", 9091);
+                ret = ServiceProxy.Instance.SendProject(hiringCompanyID, outsourcingCompanyId, pr_data);
+            }
+            catch (CommunicationException ce)
+            {
+                log.Error("Connection to Outsourcing company service failed.");
             }
             catch (Exception e)
             {
-                return false;
+                log.Error("Connection to Outsourcing company service failed.");
             }
-
-            bool ret = ServiceProxy.Instance.SendProject(hiringCompanyID, outsourcingCompanyId, pr_data);
 
             if (ret)
             {
@@ -393,25 +400,18 @@ namespace HiringCompanyService
         {
             List<WcfCommon.Data.Project> projects = new List<WcfCommon.Data.Project>();
 
-            TcpClient tc = null;
-            try
-            {
-                tc = new TcpClient("10.1.212.109", 9091);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
-
-
             try
             {
                 projects = ServiceProxy.Instance.GetProjects(hiringCompanyId);
             }
+            catch (CommunicationException ce)
+            {
+                log.Error("Connection to Outsourcing company service failed.");
+                return false;
+            }
             catch (Exception e)
             {
-                log.Error("Can not establish communication with outstoucing companies service.");
+                log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
 
@@ -441,23 +441,19 @@ namespace HiringCompanyService
         {
             List<WcfCommon.Data.UserStory> userStories_common = new List<WcfCommon.Data.UserStory>();
 
-            TcpClient tc = null;
-            try
-            {
-                tc = new TcpClient("10.1.212.109", 9091);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
 
             try
             {
                 userStories_common = ServiceProxy.Instance.GetUserStoryes(projectName);
             }
+            catch (CommunicationException ce)
+            {
+                log.Error("Connection to Outsourcing company service failed.");
+                return false;
+            }
             catch (Exception e)
             {
+                log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
 
@@ -583,17 +579,23 @@ namespace HiringCompanyService
 
             us_common.WeightOfUserStory = userStory.WeightOfUserStory;
 
-            TcpClient tc = null;
+            bool ret = false;
+
             try
             {
-                tc = new TcpClient("10.1.212.109", 9091);
+
+                ret = ServiceProxy.Instance.SendUserStory(us_common);
             }
-            catch (Exception e)
+            catch (CommunicationException ce)
             {
+                log.Error("Connection to Outsourcing company service failed.");
                 return false;
             }
-
-            bool ret = ServiceProxy.Instance.SendUserStory(us_common);
+            catch (Exception ce)
+            {
+                log.Error("Connection to Outsourcing company service failed.");
+                return false;
+            }
 
             if (ret)
             {

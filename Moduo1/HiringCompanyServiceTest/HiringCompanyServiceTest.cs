@@ -29,7 +29,7 @@ namespace HiringCompanyServiceTest
 
         private WcfCommon.Data.OutsourcingCompany ocTest_common;
         private WcfCommon.Data.HiringCompany hcTest_common;
-        
+
         private UserStory us;
 
         private OutsourcingCompany ocTestH;
@@ -78,14 +78,12 @@ namespace HiringCompanyServiceTest
             ocTest_common = new WcfCommon.Data.OutsourcingCompany()
             {
                 Name = "OC1",
-   
             };
 
             ocTestH = new OutsourcingCompany()
             {
                 Name = "OC1",
                 IdFromOutSourcingDB = 1
-
             };
 
             hcTest_common = new WcfCommon.Data.HiringCompany()
@@ -101,7 +99,9 @@ namespace HiringCompanyServiceTest
                 Id = 1,
                 Progress = 80,
                 UserStoryState = UserStoryState.Approved,
-                WeightOfUserStory = 3
+                WeightOfUserStory = 3,
+                Description = "Opis",
+                IdFromOcDB = 1
             };
 
             #region EmployeeDB
@@ -207,6 +207,15 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
+            EmployeeDB.Instance.GetHcIdForUser(employeeTest.Username).Returns(1);
+
+            EmployeeDB.Instance
+                .WhenForAnyArgs(p => p.GetHcIdForUser(null))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
             #endregion EmployeeDB
 
             #region HiringCompanyDB
@@ -257,6 +266,40 @@ namespace HiringCompanyServiceTest
 
             ProjectDB.Instance.MarkProjectEnded(projectTest).Returns(true);
 
+            ProjectDB.Instance.SetOcToProject(projectTest.Name, ocTestH.Id).ReturnsForAnyArgs(true);
+
+            ProjectDB.Instance
+                .WhenForAnyArgs(p => p.SetOcToProject(null, ocTestH.Id))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            ProjectDB.Instance.GetProjectUserStory(projectTest.Name).ReturnsForAnyArgs(new List<UserStory>());
+
+            ProjectDB.Instance
+                .WhenForAnyArgs(p => p.GetProjectUserStory(projectTest.Name))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            ProjectDB.Instance.GetProjectPendingUserStory(projectTest.Name).ReturnsForAnyArgs(new List<UserStory>());
+
+            ProjectDB.Instance
+                .WhenForAnyArgs(p => p.GetProjectPendingUserStory(projectTest.Name))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            ProjectDB.Instance.GetProjects(hiringCompanyTest.IDHc).ReturnsForAnyArgs(new List<Project>());
+
+            ProjectDB.Instance
+                .WhenForAnyArgs(p => p.GetProjects(hiringCompanyTest.IDHc))
+                .Do(p => {
+                    isCalled = true;
+                });
 
 
             #endregion ProjectDB
@@ -285,6 +328,14 @@ namespace HiringCompanyServiceTest
                 });
 
 
+            OCompanyDB.Instance.GetOutsourcingCompanies().Returns(new List<OutsourcingCompany>());
+
+            OCompanyDB.Instance
+                .When(p => p.GetOutsourcingCompanies())
+                .Do(p => {
+                    isCalled = true;
+                });
+
             #endregion OcCompanyDB
 
             #region PartnershipDB
@@ -294,11 +345,10 @@ namespace HiringCompanyServiceTest
 
             PartnershipDB.Instance
                 .WhenForAnyArgs(p => p.AddPartnership(null, null))
-                .Do(p => 
+                .Do(p =>
                 {
                     isCalled = true;
                 });
-
 
             PartnershipDB.Instance.GetPartnerOc(hiringCompanyTest.IDHc).Returns(new List<OutsourcingCompany>()
             {
@@ -312,8 +362,16 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
-            #endregion PartnershipDB
+            PartnershipDB.Instance.GetPartnershipProjects(hiringCompanyTest.IDHc).Returns(new List<Project>());
 
+            PartnershipDB.Instance
+                .WhenForAnyArgs(p => p.GetPartnershipProjects(hiringCompanyTest.IDHc))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion PartnershipDB
 
             #region UserStoryDB
 
@@ -326,7 +384,6 @@ namespace HiringCompanyServiceTest
                 us
             });
 
-
             UserStoryDB.Instance
                 .WhenForAnyArgs(p => p.GetUserStory(null))
                 .Do(p =>
@@ -334,8 +391,25 @@ namespace HiringCompanyServiceTest
                     isCalled = true;
                 });
 
-            #endregion UserStoryDB
+            UserStoryDB.Instance.AddUserStory(us).ReturnsForAnyArgs(true);
 
+            UserStoryDB.Instance
+                .WhenForAnyArgs(p => p.AddUserStory(null))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            UserStoryDB.Instance.ChangeUserStoryState(projectTest.Id, UserStoryState.Approved).ReturnsForAnyArgs(true);
+
+            UserStoryDB.Instance
+                .WhenForAnyArgs(p => p.ChangeUserStoryState(projectTest.Id, UserStoryState.Approved))
+                .Do(p =>
+                {
+                    isCalled = true;
+                });
+
+            #endregion UserStoryDB
 
             #region ServiceProxy
 
@@ -343,9 +417,32 @@ namespace HiringCompanyServiceTest
 
             ServiceProxy.Instance.SendOcRequest(1, null).ReturnsForAnyArgs(true);
             ServiceProxy.Instance.SendProject(hiringCompanyTest.IDHc, ocTestH.Id, null).ReturnsForAnyArgs(true);
-
-
-
+            ServiceProxy.Instance.SendUserStory(null).ReturnsForAnyArgs(true);
+            ServiceProxy.Instance.GetUserStoryes(projectTest.Name).Returns(new List<WcfCommon.Data.UserStory>()
+            {
+                new WcfCommon.Data.UserStory()
+                {
+                    Name = "us1",
+                    Description = "Opis",
+                    Progress = 70,
+                    Id = 1,
+                    UserStoryState = WcfCommon.Enums.UserStoryState.Proposed,
+                    WeightOfUserStory = 5
+                }
+            });
+            ServiceProxy.Instance.GetProjects(hiringCompanyTest.IDHc).Returns(new List<WcfCommon.Data.Project>()
+            {
+                new WcfCommon.Data.Project() {
+                    Name = "p1",
+                    Approved = true,
+                    Description = "Opis",
+                    EndDate = DateTime.Now,
+                    StartDate = DateTime.Now,
+                    Ended = false,
+                    Progress = 60
+            
+                }
+            });
 
             #endregion ServiceProxy
         }
@@ -355,6 +452,7 @@ namespace HiringCompanyServiceTest
         #region test
 
         #region EmployeeTest
+
         [Test]
         public void GetAllEmployeesTest()
         {
@@ -538,6 +636,7 @@ namespace HiringCompanyServiceTest
         #endregion HiringCompanyTest
 
         #region ProjectTest
+
         [Test]
         public void AddProjectDefinition()
         {
@@ -564,7 +663,6 @@ namespace HiringCompanyServiceTest
         public void SendDelayingEmailTest()
         {
             isCalled = false;
-           
 
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendDelayingEmail(usernameTest); });
 
@@ -622,17 +720,14 @@ namespace HiringCompanyServiceTest
         //    Assert.IsTrue(isCalled);
         //}
 
-
         [Test]
         public void AcceptPartnershipTest()
         {
-
             isCalled = true;
 
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AcceptPartnership(hcTest_common, ocTest_common); });
 
             Assert.IsTrue(isCalled);
-
         }
 
         [Test]
@@ -643,9 +738,7 @@ namespace HiringCompanyServiceTest
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetUserStoryes(projectTest.Name); });
 
             Assert.IsTrue(isCalled);
-
         }
-
 
         [Test]
         public void AddPartnershipToDB()
@@ -656,7 +749,6 @@ namespace HiringCompanyServiceTest
 
             Assert.IsTrue(isCalled);
         }
-
 
         [Test]
         public void GetPartnershipOc()
@@ -677,9 +769,7 @@ namespace HiringCompanyServiceTest
         [Test]
         public void AddOutsourcingCompanyTest()
         {
-
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddOutsourcingCompany(ocTestH); });
-
         }
 
         #region ServiceProxyTest
@@ -687,9 +777,7 @@ namespace HiringCompanyServiceTest
         [Test]
         public void SendPartnershipRequest()
         {
-
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendPartnershipRequest(ocTestH.IdFromOutSourcingDB, hiringCompanyTest); });
-   
         }
 
         [Test]
@@ -698,8 +786,117 @@ namespace HiringCompanyServiceTest
             Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendProjectRequest(hiringCompanyTest.IDHc, ocTestH.IdFromOutSourcingDB, projectTest); });
         }
 
+        [Test]
+        public void SendUserStoryToOcTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.SendUserStoryToOc(us); });
+        }
+
+        [Test]
+        public void GetUserStoriesTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetUserStories(projectTest.Name); });
+        }
+
+        [Test]
+        public void GetOutsourcingCompanyProjectsTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetOutsourcingCompanyProjects(hiringCompanyTest.IDHc); });
+        }
 
         #endregion ServiceProxyTest
+
+        [Test]
+        public void GetHcIdForUserTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetHcIdForUser(employeeTest.Username); });
+        }
+
+        [Test]
+        public void RejectProjectTest()
+        {
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.RejectProject(projectTest.Name); });
+        }
+
+        [Test]
+        public void AcceptProjectTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AcceptProject(projectTest.Name, ocTestH.Id); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void AddUserStoryTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.AddUserStory(us); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetPartnershipProjectsTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetPartnershipProjects(hiringCompanyTest.IDHc); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void ChangeUserStoryStateTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.ChangeUserStoryState(projectTest.Id, UserStoryState.Approved); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetProjectUserStoryTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjectUserStory(projectTest.Name); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetProjectPendingUserStoryTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjectPendingUserStory(projectTest.Name); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetOutsourcingCompaniesTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetOutsourcingCompanies(); });
+
+            Assert.IsTrue(isCalled);
+        }
+
+        [Test]
+        public void GetProjectsForHcTest()
+        {
+            isCalled = false;
+
+            Assert.DoesNotThrow(() => { hirignCompanyServiceUnderTest.GetProjectsForHc(hiringCompanyTest.IDHc); });
+
+            Assert.IsTrue(isCalled);
+        }
 
         #endregion test
     }
