@@ -105,6 +105,20 @@ namespace HiringCompanyDataTest
 
             Assert.AreEqual(userStory, taskUnderTest.UserStory);
         }
+        [Test]
+        public void ToStringTest()
+        {
+            taskUnderTest.Id = 1;
+            taskUnderTest.Name = "proba";
+            taskUnderTest.Description = "proba";
+            taskUnderTest.Progress = 8;
+            taskUnderTest.TaskState = TaskState.New;
+            Assert.AreEqual("ID: " + 1 +
+                   " Name: " + this.name +
+                   " Description: " + this.description +
+                   " Progress: " + this.progress.ToString() +
+                   " State: " + this.taskState.ToString(), taskUnderTest.ToString());
+        }
         #endregion Tests
     }
 }
