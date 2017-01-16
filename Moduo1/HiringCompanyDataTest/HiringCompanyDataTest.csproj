@@ -49,6 +49,7 @@
     <Compile Include="OutsourcingCompanyTest.cs" />
     <Compile Include="PartnershipTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

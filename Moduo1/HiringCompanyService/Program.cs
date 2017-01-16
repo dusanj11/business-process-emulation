@@ -99,7 +99,7 @@ namespace HiringCompanyService
             {
                 foreach (Project proj in currentProjects)
                 {
-                    if ((proj.Progress <= 8.00) && ((proj.EndDate.Month == DateTime.Now.Month) && ((proj.EndDate.Day - DateTime.Now.Day) <= 10)))
+                    if ((proj.Progress <= 80.00) && ((proj.EndDate.Month == DateTime.Now.Month) && ((proj.EndDate.Day - DateTime.Now.Day) <= 10)))
                     {
                         List<Employee> smasteri = EmployeeDB.Instance.GetReallyEmployees();
 
