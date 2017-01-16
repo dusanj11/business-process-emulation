@@ -26,7 +26,7 @@ namespace HiringCompanyClientTest.Model
         [OneTimeSetUp]
         public void SetupTest()
         {
-            ne = new NewEmployee() { Name= "Dulo"};
+            ne = new NewEmployee() { Name = "Dulo" };
             addNewEmployeeViewModelUnderTest.NewEmployee = ne;
             NewEmployee em = addNewEmployeeViewModelUnderTest.NewEmployee;
             NewEmployee pm = em;

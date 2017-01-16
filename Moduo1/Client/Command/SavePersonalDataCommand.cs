@@ -8,7 +8,7 @@ namespace Client.Command
 {
     public class SavePersonalDataCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler CanExecuteChanged;
 
@@ -43,27 +43,27 @@ namespace Client.Command
                         ClientDialogViewModel.Instance.LogInUser().Username = employee.Username;
                         ClientDialogViewModel.Instance.LogInUser().Password = employee.Password;
 
-                        log.Info("Successfully changed employee personal data.");
+                        Log.Info("Successfully changed employee personal data.");
                     }
                     else
                     {
-                        log.Warn("Failed to change employee personal data.");
+                        Log.Warn("Failed to change employee personal data.");
                     }
                 }
                 catch (CommunicationException ce)
                 {
                     Console.WriteLine("Error: CommunicationException {0}", ce.Message);
-                    log.Error("Communication exception while trying to change employee personal data.");
+                    Log.Error("Communication exception while trying to change employee personal data.");
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: Exception {0}", e.Message);
-                    log.Error("Exception while trying to change employee personal data.");
+                    Log.Error("Exception while trying to change employee personal data.");
                 }
             }
             catch (Exception e)
             {
-                log.Error("Error while trying to create communication proxy.");
+                Log.Error("Error while trying to create communication proxy.");
             }
         }
     }

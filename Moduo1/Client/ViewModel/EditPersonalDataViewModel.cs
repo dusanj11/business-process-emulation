@@ -20,7 +20,7 @@ namespace Client.ViewModel
         public SavePersonalDataCommand SavePersonalDataCommand { get; set; }
 
 
-        public static IEditPersonalDataViewModel _editPersonalDataViewModel;
+        private static IEditPersonalDataViewModel _editPersonalDataViewModel;
 
         public static IEditPersonalDataViewModel Instance
         {

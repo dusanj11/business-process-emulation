@@ -8,7 +8,7 @@ namespace Client.Command
 {
     public class EditPersonalDataCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -19,7 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started editing personal information.");
+            Log.Info("Employee started editing personal information.");
             try
             {
                 string username = ClientDialogViewModel.Instance.LogInUser().Username;
@@ -31,20 +31,20 @@ namespace Client.Command
                 {
                     employeeFromDB = ClientProxy.Instance.GetEmployee(username, password);
 
-                    EditPersonalDataViewModel.Instance.Name(employeeFromDB.Name) ;
+                    EditPersonalDataViewModel.Instance.Name(employeeFromDB.Name);
                     EditPersonalDataViewModel.Instance.Surname(employeeFromDB.Surname);
                     EditPersonalDataViewModel.Instance.Username(employeeFromDB.Username);
 
-                    log.Info("Successfully returned employee personal data.");
+                    Log.Info("Successfully returned employee personal data.");
                 }
                 catch (CommunicationException ce)
                 {
                     Console.WriteLine("Error: CommunicationException {0}", ce.Message);
-                    log.Error("Communication Exception while trying to return employee personal data.");
+                    Log.Error("Communication Exception while trying to return employee personal data.");
                 }
                 catch (Exception e)
                 {
-                    log.Error("Exception while trying to return employee personal data.");
+                    Log.Error("Exception while trying to return employee personal data.");
                     Console.WriteLine("Error: {0}", e.Message);
                 }
 

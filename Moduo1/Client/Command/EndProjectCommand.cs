@@ -11,7 +11,7 @@ namespace Client.Command
 {
     public class EndProjectCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -22,7 +22,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started to end projects.");
+            Log.Info("Employee started to end projects.");
 
             Project p = EndProjectViewModel.Instance.Project();
 

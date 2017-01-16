@@ -17,7 +17,7 @@ namespace HiringCompanyDataTest
         private HiringCompany hcUnderTest;
         private string name = "HC";
  		private string ceo = "Marko Jelaca";
- 		private int companyIdThr = 1;
+        private int companyIdThr = 1;
  		private List<Employee> employees;
  		private List<Project> projects;
  	    private List<Partnership> partnerships;
@@ -105,9 +105,10 @@ namespace HiringCompanyDataTest
         [Test]
         public void ToStringTest()
         {
-            string toString = "HC Marko Jelaca";
+            
             hcUnderTest.Name = name;
             hcUnderTest.Ceo = ceo;
+            string toString = "Name: " + hcUnderTest.Name + " Ceo: " + hcUnderTest.Ceo;
 
             Assert.AreEqual(toString, hcUnderTest.ToString());
 

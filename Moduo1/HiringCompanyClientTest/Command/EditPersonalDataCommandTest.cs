@@ -20,8 +20,8 @@ namespace HiringCompanyClientTest.Command
     {
         #region Declarations
         private EditPersonalDataCommand editPersonalDataCommandUnderTest;
-        string password = "dule";
-        string username = "dule";
+        private string password = "dule";
+        private string username = "dule";
         #endregion Declarations
 
         #region setup

@@ -12,7 +12,7 @@ namespace Client.Command
     public class SaveEditPositionCommand : ICommand
 
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -23,13 +23,13 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee saved chaged position");
+            Log.Info("Employee saved chaged position");
             Employee emp = EditPositionViewModel.Instance.Employee();
             string position = Parser.Parse(EditPositionViewModel.Instance.Position());
 
-            log.Debug("proxy poziv - ChangeEmployeePosition ");
+            Log.Debug("proxy poziv - ChangeEmployeePosition ");
             ClientProxy.Instance.ChangeEmployeePosition(emp.Username, position);
-            log.Info("Successfully changed employees position");
+            Log.Info("Successfully changed employees position");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Client
         {
             get
             {
-                if (proxy == null )
+                if (proxy == null)
                 {
                     NetTcpBinding binding = new NetTcpBinding();
                     binding.OpenTimeout = new TimeSpan(0, 10, 0);
@@ -281,7 +281,7 @@ namespace Client
         {
             try
             {
-                return proxy.AddPartnershipToDB(hc,oc);
+                return proxy.AddPartnershipToDB(hc, oc);
             }
             catch (Exception e)
             {

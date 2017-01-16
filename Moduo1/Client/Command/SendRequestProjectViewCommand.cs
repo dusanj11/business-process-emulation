@@ -17,7 +17,7 @@ namespace Client.Command
     /// </summary>
     public class SendRequestProjectViewCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -67,17 +67,17 @@ namespace Client.Command
 
             LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
 
-            log.Debug("proxy poziv - GetHcIdForUser");
+            Log.Debug("proxy poziv - GetHcIdForUser");
             int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(logInUser.Username);
-            log.Info("Succesfully returned hiring company id.");
+            Log.Info("Succesfully returned hiring company id.");
 
-            log.Debug("proxy poziv - GetPartnershipOc");
+            Log.Debug("proxy poziv - GetPartnershipOc");
             List<OutsourcingCompany> list = ClientProxy.Instance.GetPartnershipOc(hiringCompanyId);
-            log.Info("Succesfully returned list of Outsourcing companies.");
+            Log.Info("Succesfully returned list of Outsourcing companies.");
 
-            log.Debug("proxy poziv - GetProjects");
+            Log.Debug("proxy poziv - GetProjects");
             List<Project> listP = ClientProxy.Instance.GetProjects(hiringCompanyId);
-            log.Info("Succesfully returned list of projects.");
+            Log.Info("Succesfully returned list of projects.");
 
             Resources = new ObservableCollection<OutsourcingCompany>(list);
             PrResources = new ObservableCollection<Project>(listP);

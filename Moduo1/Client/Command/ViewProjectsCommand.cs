@@ -11,7 +11,7 @@ namespace Client.Command
 {
     public class ViewProjectsCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -36,7 +36,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started viewing projects.");
+            Log.Info("Employee started viewing projects.");
             if (Resources.Count != 0)
             {
                 Resources.Clear();
@@ -44,22 +44,22 @@ namespace Client.Command
 
             LogInUser logInUser = ClientDialogViewModel.Instance.LogInUser();
 
-            log.Debug("proxy poziv - GetEmployee");
+            Log.Debug("proxy poziv - GetEmployee");
             Employee emp = ClientProxy.Instance.GetEmployee(logInUser.Username, logInUser.Password);
-            log.Info("Successfully returned employee.");
+            Log.Info("Successfully returned employee.");
 
-            log.Debug("proxy poziv - GetHcIdForUser");
+            Log.Debug("proxy poziv - GetHcIdForUser");
             int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(logInUser.Username);
-            log.Info("Successfully returned hiring company id.");
+            Log.Info("Successfully returned hiring company id.");
 
 
-            log.Debug("proxy poziv - GetOutsourcingCompanyProjects");
+            Log.Debug("proxy poziv - GetOutsourcingCompanyProjects");
             bool ret = ClientProxy.Instance.GetOutsourcingCompanyProjects(hiringCompanyId);
-            log.Info("Successfully done.");
+            Log.Info("Successfully done.");
 
-            log.Debug("proxy poziv - GetProjects");
+            Log.Debug("proxy poziv - GetProjects");
             List<Project> projects = ClientProxy.Instance.GetProjects(hiringCompanyId);
-            log.Info("Successfully returned list of projects.");
+            Log.Info("Successfully returned list of projects.");
 
 
 

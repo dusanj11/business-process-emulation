@@ -34,7 +34,7 @@ namespace Client.ViewModel
             set { cDialog = value; }
         }
 
-        public static IClientDialogViewModel _clientDialogViewModel;
+        private static IClientDialogViewModel _clientDialogViewModel;
 
         public static IClientDialogViewModel Instance
         {
@@ -266,7 +266,7 @@ namespace Client.ViewModel
             {
                 CDialog.MainWindowDockPanel.Children.RemoveAt(0);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Error {0}", e.Message);
             }

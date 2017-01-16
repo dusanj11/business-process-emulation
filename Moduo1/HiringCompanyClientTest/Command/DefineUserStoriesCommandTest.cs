@@ -53,8 +53,10 @@ namespace HiringCompanyClientTest.Command
             
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
             ClientProxy.Instance.GetHcIdForUser(null).Returns(1);
-            ClientProxy.Instance.GetPartnershipProjects(7).Returns(new List<Project>() {
-                new Project() {
+            ClientProxy.Instance.GetPartnershipProjects(7).Returns(new List<Project>()
+            {
+                new Project()
+                {
                     Name = "P1",
                     Description = "Desc",
                     StartDate = DateTime.Now,

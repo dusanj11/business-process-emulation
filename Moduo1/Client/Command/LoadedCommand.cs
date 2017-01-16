@@ -10,7 +10,7 @@ namespace Client.Command
     {
         public event EventHandler CanExecuteChanged;
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -19,7 +19,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Lodaded ommand started.");
+            Log.Info("Lodaded ommand started.");
             try
             {
                 int threadId = Thread.CurrentThread.ManagedThreadId;
@@ -30,7 +30,7 @@ namespace Client.Command
 
                 try
                 {
-                    log.Debug("proxy poziv - AddHiringCompany");
+                    Log.Debug("proxy poziv - AddHiringCompany");
                     ClientProxy.Instance.AddHiringCompany(company);
 
 

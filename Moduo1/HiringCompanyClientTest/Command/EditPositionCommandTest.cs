@@ -43,11 +43,11 @@ namespace HiringCompanyClientTest.Command
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
             ClientProxy.Instance.GetAllEmployees().Returns(new List<Employee>()
                 {
-                    new Employee(){}
+                    new Employee() { }
                 });
             ClientProxy.Instance.GetAllNotSignedInEmployees().Returns(new List<Employee>()
                 {
-                    new Employee(){}
+                    new Employee() { }
                 });
             ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
             

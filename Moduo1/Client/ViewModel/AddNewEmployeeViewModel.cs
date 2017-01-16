@@ -18,7 +18,7 @@ namespace Client.ViewModel
 
         public SaveNewEmployeeCommand SaveNewEmployeeCommand { get; set; }
 
-        public static IAddNewEmployeeViewModel _addNewEmployeeViewModel;
+        private static IAddNewEmployeeViewModel _addNewEmployeeViewModel;
 
         public static IAddNewEmployeeViewModel Instance
         {

@@ -40,7 +40,8 @@ namespace HiringCompanyClientTest.Command
             ChangePasswordViewModel.Instance.OldPassword().ReturnsForAnyArgs("dule");
             ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("dule");
 
-            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>(); ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
+            ClientDialogViewModel.Instance = Substitute.For<IClientDialogViewModel>();
+            ChangePasswordViewModel.Instance.NewPassword().ReturnsForAnyArgs("");
             ClientDialogViewModel.Instance.LogInUser().ReturnsForAnyArgs(new LogInUser());
 
             ClientProxy.Instance = Substitute.For<IHiringCompany>();

@@ -46,7 +46,7 @@ namespace Client.ViewModel
             }
         }
 
-        public static IWorkingHoursViewModel _workingHoursViewModel;
+        private static IWorkingHoursViewModel _workingHoursViewModel;
 
         public static IWorkingHoursViewModel Instance
         {

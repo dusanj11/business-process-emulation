@@ -47,10 +47,11 @@ namespace HiringCompanyClientTest.Command
             ClientProxy.Instance = Substitute.For<IHiringCompany>();
             ClientProxy.Instance.GetHcIdForUser("").ReturnsForAnyArgs(7);
             ClientProxy.Instance.GetHiringCompany(7).ReturnsForAnyArgs(new HiringCompany());
-            ClientProxy.Instance.GetProjectsForHc(7).ReturnsForAnyArgs(new List<Project>() { 
-                new Project() {},
+            ClientProxy.Instance.GetProjectsForHc(7).ReturnsForAnyArgs(new List<Project>()
+            {
+                new Project() { },
                 new Project() { Progress = 100},
-                new Project() {}
+                new Project() { }
             });
 
             ClientDialogViewModel.Instance.PrResources(null);

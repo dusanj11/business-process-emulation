@@ -21,7 +21,7 @@ namespace Client.ViewModel
         public AcceptUserStoryCommand AcceptUserStoryCommand { get; set; }
         public RejectUserStoryCommand RejectUserStoryCommand { get; set; }
 
-        public static IDefineUserStoriesViewModel _defineUserStoriesViewModel;
+        private static IDefineUserStoriesViewModel _defineUserStoriesViewModel;
 
         public static IDefineUserStoriesViewModel Instance
         {
@@ -79,7 +79,7 @@ namespace Client.ViewModel
             set
             {
                 project = value;
-                if(Project.Name != null)
+                if (Project.Name != null)
                 {
                     try
                     {

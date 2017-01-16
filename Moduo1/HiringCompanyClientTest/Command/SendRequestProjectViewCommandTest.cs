@@ -42,11 +42,12 @@ namespace HiringCompanyClientTest.Command
             ClientProxy.Instance.GetHcIdForUser("").ReturnsForAnyArgs(7);
             ClientProxy.Instance.GetPartnershipOc(7).ReturnsForAnyArgs(new List<OutsourcingCompany>()
             {
-                new OutsourcingCompany() {Name = "lol" }
+                new OutsourcingCompany() {Name = "lol"}
             });
-            ClientProxy.Instance.GetProjects(7).ReturnsForAnyArgs(new List<Project>() {
-
-            new Project() { Name= "lol" } });
+            ClientProxy.Instance.GetProjects(7).ReturnsForAnyArgs(new List<Project>()
+            {
+                new Project() { Name = "lol" }
+            });
 
             ClientDialogViewModel.Instance.PrResources(res2);
             ClientDialogViewModel.Instance.OcResources(res);

@@ -19,7 +19,7 @@ namespace Client.ViewModel
 
         public SendRequestCompanyCommand SendRequestCompanyCommand { get; set; }
 
-        public static ISendRequestCompanyViewModel _sendRequestCompanyViewModel;
+        private static ISendRequestCompanyViewModel _sendRequestCompanyViewModel;
 
         public static ISendRequestCompanyViewModel Instance
         {

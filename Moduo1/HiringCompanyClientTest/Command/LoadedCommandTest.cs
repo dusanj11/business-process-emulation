@@ -19,7 +19,7 @@ namespace HiringCompanyClientTest.Command
         #region Declarations
 
         private LoadedCommand loadedCommandUnderTest;
-        int id = 1;
+        private int id = 1;
  
 
         #endregion Declarations

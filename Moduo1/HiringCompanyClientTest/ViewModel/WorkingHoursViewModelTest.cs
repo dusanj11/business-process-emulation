@@ -22,7 +22,7 @@ namespace HiringCompanyClientTest.ViewModel
         public void ConstructorTest()
         {
             WorkingHoursViewModel.Instance.ToString();
-            Assert.That(WorkingHoursViewModel._workingHoursViewModel != null, Is.True);
+            Assert.That(WorkingHoursViewModel.Instance != null, Is.True);
         }
         [Test]
         public void ChangedCall()
