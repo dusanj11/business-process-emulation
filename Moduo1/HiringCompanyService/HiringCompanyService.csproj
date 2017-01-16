@@ -112,6 +112,7 @@
     <Compile Include="Access\PartnershipDB.cs" />
     <Compile Include="Access\ProjectDB.cs" />
     <Compile Include="Access\UserStoryDB.cs" />
+    <Compile Include="Delaying.cs" />
     <Compile Include="HiringCompanyService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
