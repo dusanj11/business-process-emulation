@@ -14,7 +14,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static SendRequestCompanyViewModel model;
+
         private OutsourcingCompany company;
 
         public SendRequestCompanyCommand SendRequestCompanyCommand { get; set; }

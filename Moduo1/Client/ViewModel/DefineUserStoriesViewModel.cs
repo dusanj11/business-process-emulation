@@ -11,7 +11,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static DefineUserStoriesViewModel model;
+       
         private Project project;
         private UserStory userStory;
         private List<UserStory> userStories;

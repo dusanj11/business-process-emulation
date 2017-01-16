@@ -14,7 +14,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static CreateProjectViewModel model;
+      
         private NewProjectDefinition newProjectDefinition;
 
         public SaveNewProjectDefinition SaveNewProjectDefinition { get; set; }

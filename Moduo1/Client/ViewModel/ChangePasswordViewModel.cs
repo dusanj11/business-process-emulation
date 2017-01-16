@@ -13,7 +13,7 @@ namespace Client.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static ChangePasswordViewModel model;
+        
         private string oldPassword;
         private string newPassword;
 

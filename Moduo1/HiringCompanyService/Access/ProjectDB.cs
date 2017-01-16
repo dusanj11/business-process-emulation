@@ -10,7 +10,7 @@ namespace HiringCompanyService.Access
 {
     public class ProjectDB : IProjectDB
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static IProjectDB myDB;
         public static IProjectDB Instance
@@ -36,7 +36,7 @@ namespace HiringCompanyService.Access
      
         public bool AddProject(Project project)
         {
-            log.Debug("Enter AddProject method.");
+            Log.Debug("Enter AddProject method.");
             using (var access = new AccessDB())
             {
 
@@ -44,7 +44,7 @@ namespace HiringCompanyService.Access
                 
                 if (proj == null)
                 {
-                    if(project.Company != null)
+                    if (project.Company != null)
                     {
                         access.OcActions.Attach(project.Company);
                     }
@@ -57,15 +57,15 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully updated DB.");
+                        Log.Info("Successfully updated DB.");
                         return true;
                     }
-                    log.Warn("Failed to update DB.");
+                    Log.Warn("Failed to update DB.");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Project with specified name already exists in DB");
+                    Log.Warn("Project with specified name already exists in DB");
                     return false;
                 }
                
@@ -79,13 +79,13 @@ namespace HiringCompanyService.Access
             {
                 Project p = access.PrActions.FirstOrDefault(f => f.Name.Equals(name));
 
-                if ( p == null)
+                if (p == null)
                 {
-                    log.Warn("Project with specified name doesn't exist in DB.");
+                    Log.Warn("Project with specified name doesn't exist in DB.");
                 }
                 else
                 {
-                    log.Info("Successfully returned project from DB.");
+                    Log.Info("Successfully returned project from DB.");
                 }
 
                 return p;
@@ -95,7 +95,7 @@ namespace HiringCompanyService.Access
         public List<Project> GetProjects()
         {
 
-            log.Debug("Enter GetProjects method.");
+            Log.Debug("Enter GetProjects method.");
             using (var access = new AccessDB())
             {
                 List<Project> ret = new List<Project>();
@@ -104,7 +104,7 @@ namespace HiringCompanyService.Access
                     ret.Add(pr);
                 }
 
-                log.Info("Successfully returned list of projects.");
+                Log.Info("Successfully returned list of projects.");
                 return ret;
             }
         }
@@ -133,7 +133,7 @@ namespace HiringCompanyService.Access
                     }
                 }
 
-                log.Info("Successfully returned user stories for given project.");
+                Log.Info("Successfully returned user stories for given project.");
                 return ret; 
             }
         }
@@ -162,14 +162,14 @@ namespace HiringCompanyService.Access
                     }
                 }
 
-                log.Info("Successfully returned user stories for given project.");
+                Log.Info("Successfully returned user stories for given project.");
                 return ret;
             }
         }
 
         public List<Project> GetProjects(int hiringCompanyId)
         {
-            log.Debug("Enter GetProjects for specified hiring company method.");
+            Log.Debug("Enter GetProjects for specified hiring company method.");
             using (var access = new AccessDB())
             {
                 List<Project> ret = new List<Project>();
@@ -193,7 +193,7 @@ namespace HiringCompanyService.Access
                     
                 }
 
-                log.Info("Successfully returned list of projects.");
+                Log.Info("Successfully returned list of projects.");
                 return ret;
             }
         }
@@ -204,23 +204,23 @@ namespace HiringCompanyService.Access
             {
                 Project project = access.PrActions.FirstOrDefault(f => f.Id == p.Id);
 
-                if(project != null)
+                if (project != null)
                 {
                     project.Ended = true;
 
                     int i = access.SaveChanges();
                     if (i > 0)
                     {
-                        log.Info("Successfully marked project as ended.");
+                        Log.Info("Successfully marked project as ended.");
                         return true;
                     }
 
-                    log.Warn("Failed to mark project as ended.");
+                    Log.Warn("Failed to mark project as ended.");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Project with specified id doesn't exists. ");
+                    Log.Warn("Project with specified id doesn't exists. ");
                     return false;
                 }
             }
@@ -245,7 +245,7 @@ namespace HiringCompanyService.Access
                     }
                     else
                     {
-                        log.Warn("Outsourcing company doesn't exists.");
+                        Log.Warn("Outsourcing company doesn't exists.");
 
                     }
 
@@ -253,7 +253,7 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully assigned project to Outsourcing company.");
+                        Log.Info("Successfully assigned project to Outsourcing company.");
                         return true;
                     }
                     else
@@ -263,7 +263,7 @@ namespace HiringCompanyService.Access
                 }
                 else
                 {
-                    log.Warn("Project doesn't exists.");
+                    Log.Warn("Project doesn't exists.");
                     return false;
                 }
 
@@ -289,16 +289,16 @@ namespace HiringCompanyService.Access
 
                     int i = access.SaveChanges();
 
-                    if (i>0)
+                    if (i > 0)
                     {
-                        log.Info("Project successfully updated.");
+                        Log.Info("Project successfully updated.");
                         return true;
                     }
                     return false;
                 }
                 else
                 {
-                    log.Warn("Project doesn't exists in DB");
+                    Log.Warn("Project doesn't exists in DB");
                     return false;
                 }
             }

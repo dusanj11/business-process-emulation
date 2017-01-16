@@ -46,7 +46,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void UsernameTest()
         {
-            String username = "marko";
+        
             empUnderTest.Username= username;
 
             Assert.AreEqual(username, empUnderTest.Username);
@@ -55,7 +55,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void PasswordTest()
         {
-            String password = "marko";
+          
             empUnderTest.Password = password;
 
             Assert.AreEqual(password, empUnderTest.Password);
@@ -64,7 +64,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void NameTest()
         {
-            String name = "Marko";
+    
             empUnderTest.Name = name;
 
             Assert.AreEqual(name, empUnderTest.Name);
@@ -74,7 +74,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void SurnameTest()
         {
-            String surname = "Jelaca";
+          
             empUnderTest.Surname = surname;
 
             Assert.AreEqual(surname, empUnderTest.Surname);
@@ -83,7 +83,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void PositionTest()
         {
-            String position = "CEO";
+          
             empUnderTest.Position = position;
 
             Assert.AreEqual(position, empUnderTest.Position);
@@ -92,7 +92,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void StartTimeTest()
         {
-            String startTime = "10.0";
+        
             empUnderTest.StartTime = startTime;
 
             Assert.AreEqual(startTime, empUnderTest.StartTime);
@@ -101,7 +101,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void EndTimeTest()
         {
-            String endTime = "18.0";
+           
             empUnderTest.EndTime = endTime;
 
             Assert.AreEqual(endTime, empUnderTest.EndTime);
@@ -110,7 +110,7 @@ namespace HiringCompanyDataTest
         [Test]
         public void EmailTest()
         {
-            String email = "jelaca.marko@gmail.com";
+          
             empUnderTest.Email = email;
 
             Assert.AreEqual(email, empUnderTest.Email);

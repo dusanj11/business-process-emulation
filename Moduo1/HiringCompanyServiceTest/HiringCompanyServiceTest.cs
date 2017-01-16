@@ -34,10 +34,6 @@ namespace HiringCompanyServiceTest
 
         private OutsourcingCompany ocTestH;
 
-        private bool AddOcTrue;
-
-        private bool AddOcFalse;
-
         #endregion Declaration
 
         #region setup

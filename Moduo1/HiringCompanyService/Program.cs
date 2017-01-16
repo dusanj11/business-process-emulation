@@ -17,12 +17,12 @@ namespace HiringCompanyService
     public class Program
     {
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void Main(string[] args)
         {
 
-            log.Debug("Start Program.cs HiringCompanyService.");
+            Log.Debug("Start Program.cs HiringCompanyService.");
 
             // set |DataDirectory| in App.config
             string path = System.Environment.CurrentDirectory;
@@ -63,8 +63,8 @@ namespace HiringCompanyService
                 serviceHost.Open();
 
 
-                log.Info("HiringCompany service started.");
-                log.Info("Press <enter> to stop service...");
+                Log.Info("HiringCompany service started.");
+                Log.Info("Press <enter> to stop service...");
                 //Delaying del = new Delaying();
                 //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
                 //{
@@ -95,17 +95,17 @@ namespace HiringCompanyService
         {
             List<Project> currentProjects = new List<Project>(30);
             Employee po = new Employee();
-            while(currentProjects.Count != 0)
+            while (currentProjects.Count != 0)
             {
-                foreach(Project proj in currentProjects)
+                foreach (Project proj in currentProjects)
                 {
                     if ((proj.Progress <= 8.00) && ((proj.EndDate.Month == DateTime.Now.Month) && ((proj.EndDate.Day - DateTime.Now.Day) <= 10)))
                     {
                         List<Employee> smasteri = EmployeeDB.Instance.GetReallyEmployees();
 
-                        foreach(Employee em in smasteri)
+                        foreach (Employee em in smasteri)
                         {
-                            if(em.Position.Equals("SM"))
+                            if (em.Position.Equals("SM"))
                             {
                                 using (SmtpClient smtpClient = new SmtpClient())
                                 {

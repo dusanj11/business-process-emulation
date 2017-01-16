@@ -9,7 +9,7 @@ namespace HiringCompanyService.Access
 {
     public class OCompanyDB : IOCompanyDB
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static IOCompanyDB myDB;
 
@@ -17,7 +17,7 @@ namespace HiringCompanyService.Access
         {
             get
             {
-                if(myDB == null)
+                if (myDB == null)
                 {
                     myDB = new OCompanyDB();
                 }
@@ -26,7 +26,7 @@ namespace HiringCompanyService.Access
 
             set
             {
-                if(myDB == null)
+                if (myDB == null)
                 {
                     myDB = value;
                 }
@@ -46,14 +46,14 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully added outsourcing company into DB");
+                        Log.Info("Successfully added outsourcing company into DB");
                         return true;
                     }
                     return false;
                 }
                 else
                 {
-                    log.Warn("Outsourcing company already exists in DB");
+                    Log.Warn("Outsourcing company already exists in DB");
                     return false;
                 }
             }
@@ -72,11 +72,11 @@ namespace HiringCompanyService.Access
 
                 if (ret != null)
                 {
-                    log.Info("Successfully returned list of outsourcing companies.");
+                    Log.Info("Successfully returned list of outsourcing companies.");
                 }
                 else
                 {
-                    log.Warn("No outsourcing company to show.");
+                    Log.Warn("No outsourcing company to show.");
                 }
                 
 
@@ -90,13 +90,13 @@ namespace HiringCompanyService.Access
             {
                 HiringCompanyData.OutsourcingCompany oc = access.OcActions.FirstOrDefault(f => f.Name.Equals(name));
 
-                if(oc == null)
+                if (oc == null)
                 {
-                    log.Warn("Requestet Outsourcing company doesn't exists in DB.");
+                    Log.Warn("Requestet Outsourcing company doesn't exists in DB.");
                 }
                 else
                 {
-                    log.Info("Successfully returned Outsourcing company with specified name.");
+                    Log.Info("Successfully returned Outsourcing company with specified name.");
                 }
 
                 return oc;

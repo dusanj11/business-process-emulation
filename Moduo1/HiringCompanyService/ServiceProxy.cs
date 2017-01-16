@@ -19,7 +19,7 @@ namespace HiringCompanyService
         {
             get
             {
-                if (proxy == null )
+                if (proxy == null)
                 {
                     NetTcpBinding binding = new NetTcpBinding();
                     binding.OpenTimeout = new TimeSpan(0, 10, 0);

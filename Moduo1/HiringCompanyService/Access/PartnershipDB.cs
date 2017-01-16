@@ -7,7 +7,7 @@ namespace HiringCompanyService.Access
 {
     public class PartnershipDB : IPartnershipDB
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static IPartnershipDB myDB;
 
@@ -50,16 +50,16 @@ namespace HiringCompanyService.Access
 
                     if (i > 0)
                     {
-                        log.Info("Successfully added partnership.");
+                        Log.Info("Successfully added partnership.");
                         return true;
                     }
 
-                    log.Warn("Failed to add partnership");
+                    Log.Warn("Failed to add partnership");
                     return false;
                 }
                 else
                 {
-                    log.Warn("Partnership already exists.");
+                    Log.Warn("Partnership already exists.");
                     return false;
                 }
             }
@@ -67,7 +67,7 @@ namespace HiringCompanyService.Access
 
         public List<OutsourcingCompany> GetPartnerOc(int hiringCompany)
         {
-            log.Debug("Enter GetPartnerOc method.");
+            Log.Debug("Enter GetPartnerOc method.");
             using (var access = new AccessDB())
             {
                 List<OutsourcingCompany> ret = new List<OutsourcingCompany>();
@@ -89,11 +89,11 @@ namespace HiringCompanyService.Access
                 }
                 if (ret.Count == 0)
                 {
-                    log.Warn("Hiring company doesn't have parnership.");
+                    Log.Warn("Hiring company doesn't have parnership.");
                 }
                 else
                 {
-                    log.Info("Successfully returned list of outsourcing companyes.");
+                    Log.Info("Successfully returned list of outsourcing companyes.");
                 }
 
                 return ret;
@@ -139,11 +139,11 @@ namespace HiringCompanyService.Access
 
                 if (ret.Count == 0)
                 {
-                    log.Warn("No project to return");
+                    Log.Warn("No project to return");
                 }
                 else
                 {
-                    log.Info("Successfully returned project");
+                    Log.Info("Successfully returned project");
                 }
 
                 return ret;
