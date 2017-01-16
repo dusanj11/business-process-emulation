@@ -22,6 +22,7 @@ namespace HiringCompanyDataTest
         #endregion Declarations
 
         #region Setup
+        [OneTimeSetUp]
         public void SetupTest()
         {
             this.taskUnderTest = new HiringCompanyData.Task();
@@ -43,13 +44,9 @@ namespace HiringCompanyDataTest
         [Test]
         public void ConstructorTest2()
         {
-            Assert.DoesNotThrow(() => new Employee());
+            Assert.DoesNotThrow(() => new HiringCompanyData.Task(name, description, userStory, developmentEngineer));
         }
-        [Test]
-        public void ConstructorTest3()
-        {
-            Assert.DoesNotThrow(() => new UserStory());
-        }
+       
         [Test]
         public void IdTest()
         {

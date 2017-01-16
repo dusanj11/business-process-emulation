@@ -65,14 +65,14 @@ namespace HiringCompanyService
 
                 Log.Info("HiringCompany service started.");
                 Log.Info("Press <enter> to stop service...");
-                Delaying del = new Delaying();
-                if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
-                {
-                    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
-                    checkThread.Start();
-                }
-                Thread alarmPo = new Thread(new ThreadStart(del.CheckIfProjectAlmostLate));
-                alarmPo.Start();
+                //Delaying del = new Delaying();
+                //if (5 <= DateTime.Now.Hour && DateTime.Now.Hour <= 24)
+                //{
+                //    Thread checkThread = new Thread(new ThreadStart(del.CheckIfSomeoneIsLate));
+                //    checkThread.Start();
+                //}
+                //Thread alarmPo = new Thread(new ThreadStart(del.CheckIfProjectAlmostLate));
+                //alarmPo.Start();
 
                 Console.ReadLine();
 
