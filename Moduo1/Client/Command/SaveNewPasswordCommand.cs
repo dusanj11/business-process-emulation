@@ -8,7 +8,7 @@ namespace Client.Command
 {
     public class SaveNewPasswordCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public event EventHandler CanExecuteChanged;
@@ -20,15 +20,15 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee saved his/hers new password.");
+            Log.Info("Employee saved his/hers new password.");
             string oldPassword = ChangePasswordViewModel.Instance.OldPassword();
             string newPassword = ChangePasswordViewModel.Instance.NewPassword();
 
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
-            log.Debug("proxy poziv - ChangePassword");
+            Log.Debug("proxy poziv - ChangePassword");
             bool ret = ClientProxy.Instance.ChangePassword(username, oldPassword, newPassword);
-            log.Info("Successfully changed password");
+            Log.Info("Successfully changed password");
 
             if (ret)
             {
@@ -36,14 +36,21 @@ namespace Client.Command
             }
 
             //omogucavanje normalnog prikaza nakon promene sifre
-            log.Debug("proxy poziv - GetEmployee");
+            Log.Debug("proxy poziv - GetEmployee");
             Employee signedUser = ClientProxy.Instance.GetEmployee(username, newPassword);
-            log.Info("Successfully returned employee");
+
+            if (signedUser == null)
+            {
+                Log.Warn("User with that username doesn't exists");
+                return;
+            }
+
+            Log.Info("Successfully returned employee");
             signedUser.PasswordUpadateDate = DateTime.Today;
 
-            log.Debug("proxy poziv - UpdateEmployee");
+            Log.Debug("proxy poziv - UpdateEmployee");
             ClientProxy.Instance.UpdateEmployee(signedUser);
-            log.Info("Successfully updated employee");
+            Log.Info("Successfully updated employee");
             if (signedUser.Position.ToString().Equals("PO"))
             {
                 ClientDialog cd = ClientDialogViewModel.Instance.CDialog();

@@ -7,12 +7,6 @@
              mc:Ignorable="d" 
     d:DesignHeight="300" Width="700">
 
-<!--    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Selected">
-            <i:InvokeCommandAction Command="{Binding SelectItemsCommand}" CommandParameter="{Binding Path=SelectedItem,ElementName=projectsDataGrid}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
--->
     <Grid DataContext="ClientDialogViewModel">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

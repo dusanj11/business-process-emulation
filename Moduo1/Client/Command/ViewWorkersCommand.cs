@@ -9,7 +9,7 @@ namespace Client.Command
 {
     public class ViewWorkersCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         ///     Collection for mapping items to DataGrid
@@ -27,15 +27,15 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started viewing all employees.");
+            Log.Info("Employee started viewing all employees.");
             if (resources.Count != 0)
             {
                 resources.Clear();
             }
 
-            log.Debug("proxy poziv - GetAllEmployees");
+            Log.Debug("proxy poziv - GetAllEmployees");
             employees = ClientProxy.Instance.GetAllEmployees();
-            log.Info("Successfully returned logged users.");
+            Log.Info("Successfully returned logged users.");
 
             foreach (Employee em in employees)
             {

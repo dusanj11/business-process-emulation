@@ -12,7 +12,7 @@ namespace Client.Command
     public class AcceptUserStoryCommand : ICommand
     {
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler CanExecuteChanged;
 
@@ -23,7 +23,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee accepted user story.");
+            Log.Info("Employee accepted user story.");
 
             Project project = DefineUserStoriesViewModel.Instance.Project();
             UserStory userStory = DefineUserStoriesViewModel.Instance.UserStory();

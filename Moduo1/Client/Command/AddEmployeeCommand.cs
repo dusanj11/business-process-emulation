@@ -6,7 +6,7 @@ namespace Client.Command
 {
     public class AddEmployeeCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool CanExecute(object parameter)
         {
             return true;
@@ -16,7 +16,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started adding new employee.");
+            Log.Info("Employee started adding new employee.");
             AddNewEmployeeViewModel.Instance.NewEmployee().Username = string.Empty;
             AddNewEmployeeViewModel.Instance.NewEmployee().Password = string.Empty;
             AddNewEmployeeViewModel.Instance.NewEmployee().Name = string.Empty;

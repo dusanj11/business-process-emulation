@@ -19,7 +19,7 @@ namespace Client.ViewModel
 
         public SaveNewPasswordCommand SaveNewPasswordCommand { get; set; }
 
-        public static IChangePasswordViewModel _changePasswordViewModel;
+        private static IChangePasswordViewModel _changePasswordViewModel;
 
         public static IChangePasswordViewModel Instance
         {

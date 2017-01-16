@@ -16,7 +16,7 @@ namespace HiringCompanyClientTest.ViewModel
         #region Declarations
         private SaveNewProjectDefinition saveNewProjectCommandUnderTest = new SaveNewProjectDefinition();
         private CreateProjectViewModel createProjectViewModelUndertest;
-        NewProjectDefinition npd = new NewProjectDefinition();
+        private NewProjectDefinition npd = new NewProjectDefinition();
         #endregion Declarations
 
         #region setup
@@ -24,7 +24,7 @@ namespace HiringCompanyClientTest.ViewModel
         public void SetupTest()
         {
             createProjectViewModelUndertest = new CreateProjectViewModel();
-            createProjectViewModelUndertest.NewProjectDefinition = new NewProjectDefinition() {Name="definicijica"};
+            createProjectViewModelUndertest.NewProjectDefinition = new NewProjectDefinition() { Name = "definicijica" };
         }
         #endregion setup
 

@@ -14,10 +14,7 @@ namespace Client.ViewModel
     public class ViewProjectsViewModel : INotifyPropertyChanged, IViewProjectsViewModel
     {
 
-        public SelectItemsCommand selectItemsCommand
-        {
-            get; set;
-        }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -59,7 +56,7 @@ namespace Client.ViewModel
             }
 
         }
-        public Project selectedProject;
+        private Project selectedProject;
 
         public Project SelectedProject
         {
@@ -88,8 +85,8 @@ namespace Client.ViewModel
         public ViewProjectsViewModel()
         {
             SelectedProject = new Project();
-            UsResources =  new ObservableCollection<UserStory>();
-            selectItemsCommand = new SelectItemsCommand();
+            UsResources = new ObservableCollection<UserStory>();
+         
         }
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)

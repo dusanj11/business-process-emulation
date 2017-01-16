@@ -9,7 +9,7 @@ namespace Client.Command
 {
     public class SignInCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -20,7 +20,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started logging in.");
+            Log.Info("Employee started logging in.");
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
             string password = ClientDialogViewModel.Instance.LogInUser().Password;
 
@@ -32,15 +32,15 @@ namespace Client.Command
             else
             {
 
-                log.Debug("proxy poziv - GetEmployee ");
+                Log.Debug("proxy poziv - GetEmployee ");
                 Employee outValue = ClientProxy.Instance.GetEmployee(username, password);
-                log.Info("successfully returned employee.");
+                Log.Info("successfully returned employee.");
 
                 if (outValue != null)
                 {
-                    log.Debug("proxy poziv - EmployeeLogIn ");
+                    Log.Debug("proxy poziv - EmployeeLogIn ");
                     ClientProxy.Instance.EmployeeLogIn(username);
-                    log.Info("successfully logged in employee.");
+                    Log.Info("successfully logged in employee.");
                     //IContextChannel cc = ClientProxy.Instance as IContextChannel;
                     //Console.WriteLine(cc.State);
                     //cc.Faulted += Cc_Faulted;
@@ -220,13 +220,13 @@ namespace Client.Command
                     }
                     else
                     {
-                        log.Error("Uneli ste nevalidne podatke. Pokušajte ponovo!");
+                        Log.Error("Uneli ste nevalidne podatke. Pokušajte ponovo!");
                     }
                 }
                 else
                 {
                     ClientDialogViewModel.Instance.ErrorMessage("Uneli ste nevalidne podatke. Pokušajte ponovo!");
-                   log.Error(ClientDialogViewModel.Instance.LogInUser().Username.ToString());
+                   Log.Error(ClientDialogViewModel.Instance.LogInUser().Username.ToString());
                 }
             }
         }

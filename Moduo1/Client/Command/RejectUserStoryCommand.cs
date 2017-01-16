@@ -11,8 +11,7 @@ namespace Client.Command
 {
     public class RejectUserStoryCommand :  ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool CanExecute(object parameter)
         {
             return true;
@@ -22,24 +21,24 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee rejected user story");
+            Log.Info("Employee rejected user story");
             Project project = DefineUserStoriesViewModel.Instance.Project();
             UserStory userStory = DefineUserStoriesViewModel.Instance.UserStory();
 
             userStory.UserStoryState = UserStoryState.Rejected;
 
             //PROXY POZIV KA UPDATE USER STORY - verovatno na osnovu samo id-a. 
-            log.Debug("proxy poziv - ChangeUserStoryState");
+            Log.Debug("proxy poziv - ChangeUserStoryState");
             ClientProxy.Instance.ChangeUserStoryState(userStory.Id, userStory.UserStoryState);
-            log.Info("Successfully changed story state");
+            Log.Info("Successfully changed story state");
 
-            log.Debug("proxy poziv - GetUserStoryFromId");
+            Log.Debug("proxy poziv - GetUserStoryFromId");
             UserStory us = ClientProxy.Instance.GetUserStoryFromId(userStory.Id);
-            log.Info("Successfully returned user story");
+            Log.Info("Successfully returned user story");
 
-            log.Debug("proxy poziv - SendUserStoryToOc");
+            Log.Debug("proxy poziv - SendUserStoryToOc");
             ClientProxy.Instance.SendUserStoryToOc(us);
-            log.Info("Successfully sent story to OC");
+            Log.Info("Successfully sent story to OC");
         }
     }
 }

@@ -55,7 +55,7 @@ namespace HiringCompanyClientTest.ViewModel
         {
             
             //sendRequestCompanyViewModelUnderTest.Company = new OutsourcingCompany("lol");
-            Assert.That( SendRequestCompanyViewModel.Instance.Company() !=null, Is.False);
+            Assert.That(SendRequestCompanyViewModel.Instance.Company() != null, Is.False);
         }
         [Test]
         public void ChangedCall()

@@ -11,7 +11,7 @@ namespace Client.Command
 {
     public class SendRequestCompanyCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler CanExecuteChanged;
 
@@ -22,22 +22,22 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee sent request for partnership.");
+            Log.Info("Employee sent request for partnership.");
             OutsourcingCompany oc = SendRequestCompanyViewModel.Instance.Company();
 
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
-            log.Debug("proxy poziv - GetHcIdForUser");
+            Log.Debug("proxy poziv - GetHcIdForUser");
             int hiringCompanyId = ClientProxy.Instance.GetHcIdForUser(username);
-            log.Info("Successfully returner hiring company id.");
+            Log.Info("Successfully returner hiring company id.");
 
-            log.Debug("proxy poziv - GetHiringCompany");
+            Log.Debug("proxy poziv - GetHiringCompany");
             HiringCompany hc = ClientProxy.Instance.GetHiringCompany(hiringCompanyId);
-            log.Info("Successfully returned hiring company.");
+            Log.Info("Successfully returned hiring company.");
 
-            log.Debug("proxy poziv - SendPartnershipRequest");
+            Log.Debug("proxy poziv - SendPartnershipRequest");
             ClientProxy.Instance.SendPartnershipRequest(oc.IdFromOutSourcingDB, hc);
-            log.Info("Successfully sent partnership request.");
+            Log.Info("Successfully sent partnership request.");
 
 
         }

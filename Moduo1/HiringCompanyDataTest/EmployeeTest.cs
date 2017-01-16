@@ -47,7 +47,7 @@ namespace HiringCompanyDataTest
         public void UsernameTest()
         {
         
-            empUnderTest.Username= username;
+            empUnderTest.Username = username;
 
             Assert.AreEqual(username, empUnderTest.Username);
         }

@@ -20,7 +20,7 @@ namespace Client.ViewModel
         public SaveNewProjectDefinition SaveNewProjectDefinition { get; set; }
 
 
-        public static ICreateProjectViewModel _createProjectViewModel;
+        private static ICreateProjectViewModel _createProjectViewModel;
 
         public static ICreateProjectViewModel Instance
         {

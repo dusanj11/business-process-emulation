@@ -20,7 +20,7 @@ namespace Client.ViewModel
 
         public SendRequestProjectCommand SendRequestProjectCommand { get; set; }
 
-        public static ISendRequestProjectViewModel _sendRequestProjectViewModel;
+        private static ISendRequestProjectViewModel _sendRequestProjectViewModel;
 
         public static ISendRequestProjectViewModel Instance
         {

@@ -12,7 +12,7 @@ namespace HiringCompanyServiceTest
     [TestFixture]
     public class HiringCompanyServiceTest
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #region Declaration
 
@@ -328,7 +328,8 @@ namespace HiringCompanyServiceTest
 
             OCompanyDB.Instance
                 .When(p => p.GetOutsourcingCompanies())
-                .Do(p => {
+                .Do(p => 
+                {
                     isCalled = true;
                 });
 
@@ -410,7 +411,8 @@ namespace HiringCompanyServiceTest
 
             UserStoryDB.Instance
                 .WhenForAnyArgs(p => p.GetUserStoryFromId(1))
-                .Do(p => {
+                .Do(p => 
+                {
                     isCalled = true;
                 });
 
@@ -437,7 +439,8 @@ namespace HiringCompanyServiceTest
             });
             ServiceProxy.Instance.GetProjects(hiringCompanyTest.IDHc).Returns(new List<WcfCommon.Data.Project>()
             {
-                new WcfCommon.Data.Project() {
+                new WcfCommon.Data.Project()
+                {
                     Name = "p1",
                     Approved = true,
                     Description = "Opis",

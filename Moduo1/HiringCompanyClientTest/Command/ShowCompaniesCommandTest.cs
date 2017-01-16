@@ -41,7 +41,7 @@ namespace HiringCompanyClientTest.Command
             ClientProxy.Instance.GetHcIdForUser("").ReturnsForAnyArgs(7);
             ClientProxy.Instance.GetPartnershipOc(7).ReturnsForAnyArgs(new List<OutsourcingCompany>()
             {
-                new OutsourcingCompany() {Name = "lol" }
+                new OutsourcingCompany() { Name = "lol" }
             });
 
             ClientDialogViewModel.Instance.OcResources(res);

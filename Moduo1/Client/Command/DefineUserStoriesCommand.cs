@@ -12,7 +12,7 @@ namespace Client.Command
 {
     public class DefineUserStoriesCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler CanExecuteChanged;
 
@@ -38,7 +38,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started accepting/rejecting user stories.");
+            Log.Info("Employee started accepting/rejecting user stories.");
             if (Resources.Count != 0)
             {
                 Resources.Clear();
@@ -50,12 +50,12 @@ namespace Client.Command
             string username = ClientDialogViewModel.Instance.LogInUser().Username;
 
 
-            log.Debug("proxy poziv - GetHcIdForUser");
+            Log.Debug("proxy poziv - GetHcIdForUser");
             int hiringCompanyTh = ClientProxy.Instance.GetHcIdForUser(username);
-            log.Info("Successfully returned Hiring company Id");
-            log.Debug("proxy poziv - GetPartnershipProjects");
+            Log.Info("Successfully returned Hiring company Id");
+            Log.Debug("proxy poziv - GetPartnershipProjects");
             partnershipProject = ClientProxy.Instance.GetPartnershipProjects(hiringCompanyTh);
-            log.Info("Successfully returned list of partnership projects.");
+            Log.Info("Successfully returned list of partnership projects.");
             foreach (Project p in partnershipProject)
             {
                 Resources.Add(p);

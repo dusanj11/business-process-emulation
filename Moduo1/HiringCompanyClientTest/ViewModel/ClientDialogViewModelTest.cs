@@ -42,7 +42,7 @@ namespace HiringCompanyClientTest.ViewModel
         {
             viewProjectsCommand = new ViewProjectsCommand();
             addEmployeeCommand = new AddEmployeeCommand();
-            changePasswordCommand = new ChangePasswordCommand ();
+            changePasswordCommand = new ChangePasswordCommand();
             editPersonalDataCommand = new EditPersonalDataCommand();
             sendRequestCompanyViewCommand = new SendRequestCompanyViewCommand();
             viewWorkersCommand = new ViewWorkersCommand();

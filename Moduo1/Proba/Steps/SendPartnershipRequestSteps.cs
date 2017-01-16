@@ -12,7 +12,7 @@ namespace Proba.Steps
         private static OutsourcingCompany oc1;
         private static OutsourcingCompany oc2;
         private static HiringCompany hc1;
-        private static  HiringCompany hc2;
+        private static HiringCompany hc2;
         private static bool val1;
         private static bool val2;
 

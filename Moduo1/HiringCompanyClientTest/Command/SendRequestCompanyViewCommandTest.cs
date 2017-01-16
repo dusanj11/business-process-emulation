@@ -29,7 +29,7 @@ namespace HiringCompanyClientTest.Command
         [OneTimeSetUp]
         public void SetupTest()
         {
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 OutsourcingCompany oc = new OutsourcingCompany();
                 oc.Id = 7;

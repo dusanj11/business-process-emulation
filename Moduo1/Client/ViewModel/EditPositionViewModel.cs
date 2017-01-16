@@ -21,7 +21,7 @@ namespace Client.ViewModel
         public SaveEditPositionCommand SaveEditPositionCommand { get; set; }
 
 
-        public static IEditPositionViewModel _editPositionViewModel;
+        private static IEditPositionViewModel _editPositionViewModel;
 
         public static IEditPositionViewModel Instance
         {

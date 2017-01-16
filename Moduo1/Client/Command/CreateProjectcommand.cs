@@ -10,7 +10,7 @@ namespace Client.Command
 {
     public class CreateProjectCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler CanExecuteChanged;
 
@@ -21,7 +21,7 @@ namespace Client.Command
 
         public void Execute(object parameter)
         {
-            log.Info("Employee started creating project");
+            Log.Info("Employee started creating project");
             ClientDialogViewModel.Instance.ShowCreateProjectView();
         }
     }

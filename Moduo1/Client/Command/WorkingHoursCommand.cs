@@ -6,7 +6,7 @@ namespace Client.Command
 {
     public class WorkingHoursCommand : ICommand
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool CanExecute(object parameter)
         {
@@ -18,7 +18,7 @@ namespace Client.Command
         public void Execute(object parameter)
         {
 
-            log.Info("Eployee started to edit working hours.");
+            Log.Info("Eployee started to edit working hours.");
             ClientDialogViewModel.Instance.ShowWorkingHoursView();
         }
     }

@@ -32,7 +32,7 @@
                 <ComboBoxItem FontSize="14">PO</ComboBoxItem>
                 <ComboBoxItem FontSize="14">SM</ComboBoxItem>
                 <ComboBoxItem FontSize="14">CEO</ComboBoxItem>
-                <ComboBoxItem FontSize="14">SM</ComboBoxItem>
+                <ComboBoxItem FontSize="14">HR</ComboBoxItem>
             </ComboBox>
         </Grid>
         <Button Name="sendProjReqBtn" Grid.Row="6" Style="{StaticResource StyleButton}"  Margin="50,37,50,-29" Command="{Binding SaveEditPositionCommand}" Width="Auto">
