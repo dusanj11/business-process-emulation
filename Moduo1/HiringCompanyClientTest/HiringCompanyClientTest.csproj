@@ -140,6 +140,7 @@
     <Compile Include="ViewModel\SendRequestCompanyViewModelTest.cs" />
     <Compile Include="ViewModel\SendRequestProjectViewModelTest.cs" />
     <Compile Include="ViewModel\WorkingHoursViewModelTest.cs" />
+    <Compile Include="View\ShowProjectsViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
